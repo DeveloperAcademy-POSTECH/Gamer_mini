@@ -11,6 +11,7 @@
 		910F970F27FD14CB00401874 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910F970E27FD14CB00401874 /* ContentView.swift */; };
 		910F971127FD14CE00401874 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 910F971027FD14CE00401874 /* Assets.xcassets */; };
 		910F971427FD14CE00401874 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 910F971327FD14CE00401874 /* Preview Assets.xcassets */; };
+		910F971C27FD17BC00401874 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910F971B27FD17BC00401874 /* RecordView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		910F970E27FD14CB00401874 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		910F971027FD14CE00401874 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		910F971327FD14CE00401874 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		910F971B27FD17BC00401874 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +53,8 @@
 		910F970B27FD14CB00401874 /* donggle */ = {
 			isa = PBXGroup;
 			children = (
+				910F971A27FD171A00401874 /* view */,
 				910F970C27FD14CB00401874 /* donggleApp.swift */,
-				910F970E27FD14CB00401874 /* ContentView.swift */,
 				910F971027FD14CE00401874 /* Assets.xcassets */,
 				910F971227FD14CE00401874 /* Preview Content */,
 			);
@@ -65,6 +67,15 @@
 				910F971327FD14CE00401874 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		910F971A27FD171A00401874 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				910F970E27FD14CB00401874 /* ContentView.swift */,
+				910F971B27FD17BC00401874 /* RecordView.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				910F970F27FD14CB00401874 /* ContentView.swift in Sources */,
+				910F971C27FD17BC00401874 /* RecordView.swift in Sources */,
 				910F970D27FD14CB00401874 /* donggleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
