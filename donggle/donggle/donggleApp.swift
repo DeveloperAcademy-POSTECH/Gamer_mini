@@ -11,7 +11,9 @@ import SwiftUI
 struct donggleApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+//            TimelineView()
+            GiftCheckView()
         }
     }
 }
