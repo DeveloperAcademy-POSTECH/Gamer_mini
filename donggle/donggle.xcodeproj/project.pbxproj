@@ -7,147 +7,102 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		31ADE1DB27FD1971007F76D9 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ADE1DA27FD1971007F76D9 /* TimelineView.swift */; };
-		31ADE1DD27FD1B15007F76D9 /* GiftCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ADE1DC27FD1B15007F76D9 /* GiftCheckView.swift */; };
-		910F970D27FD14CB00401874 /* donggleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910F970C27FD14CB00401874 /* donggleApp.swift */; };
-		910F970F27FD14CB00401874 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910F970E27FD14CB00401874 /* ContentView.swift */; };
-		910F971127FD14CE00401874 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 910F971027FD14CE00401874 /* Assets.xcassets */; };
-		910F971427FD14CE00401874 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 910F971327FD14CE00401874 /* Preview Assets.xcassets */; };
-		910F971C27FD17BC00401874 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910F971B27FD17BC00401874 /* RecordView.swift */; };
+		91BF869B27FECD2300A95FA9 /* donggleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF869A27FECD2300A95FA9 /* donggleApp.swift */; };
+		91BF869D27FECD2300A95FA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF869C27FECD2300A95FA9 /* ContentView.swift */; };
+		91BF869F27FECD2300A95FA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91BF869E27FECD2300A95FA9 /* Assets.xcassets */; };
+		91BF86A227FECD2300A95FA9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91BF86A127FECD2300A95FA9 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		31ADE1DA27FD1971007F76D9 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
-		31ADE1DC27FD1B15007F76D9 /* GiftCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCheckView.swift; sourceTree = "<group>"; };
-		910F970927FD14CB00401874 /* donggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = donggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		910F970C27FD14CB00401874 /* donggleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = donggleApp.swift; sourceTree = "<group>"; };
-		910F970E27FD14CB00401874 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		910F971027FD14CE00401874 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		910F971327FD14CE00401874 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		F239F37727FD1D8B0096F53D /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
-		F239F37927FD236C0096F53D /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
-		F239F37B27FD298B0096F53D /* StressReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressReportView.swift; sourceTree = "<group>"; };
-		F239F37D27FD29BE0096F53D /* RewardReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardReportView.swift; sourceTree = "<group>"; };
-		F239F37F27FD29F60096F53D /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
-		F239F38127FD2A9E0096F53D /* CustomTopTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTopTabBar.swift; sourceTree = "<group>"; };
-		F239F38327FD2D250096F53D /* EdgeBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeBorder.swift; sourceTree = "<group>"; };
-		F239F38527FD2D640096F53D /* CustomTapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTapView.swift; sourceTree = "<group>"; };
-		F239F39227FD6A6F0096F53D /* NavigationBarWithButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarWithButton.swift; sourceTree = "<group>"; };
-		F278CC0227FDDC3200FD308A /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
-		F2D2D36A27FE92A600B64594 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
-		910F971B27FD17BC00401874 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		91BF869727FECD2300A95FA9 /* donggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = donggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		91BF869A27FECD2300A95FA9 /* donggleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = donggleApp.swift; sourceTree = "<group>"; };
+		91BF869C27FECD2300A95FA9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		91BF869E27FECD2300A95FA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		91BF86A127FECD2300A95FA9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		910F970627FD14CB00401874 /* Frameworks */ = {
+		91BF869427FECD2300A95FA9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F239F38B27FD348F0096F53D /* SwiftUICharts in Frameworks */,
-				F239F38E27FD35560096F53D /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3170208B27FD17D000035C2D /* view */ = {
+		91BF868E27FECD2300A95FA9 = {
 			isa = PBXGroup;
 			children = (
-				910F970E27FD14CB00401874 /* ContentView.swift */,
-				31ADE1DA27FD1971007F76D9 /* TimelineView.swift */,
-				31ADE1DC27FD1B15007F76D9 /* GiftCheckView.swift */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		910F970027FD14CB00401874 = {
-			isa = PBXGroup;
-			children = (
-				910F970B27FD14CB00401874 /* donggle */,
-				910F970A27FD14CB00401874 /* Products */,
+				91BF869927FECD2300A95FA9 /* donggle */,
+				91BF869827FECD2300A95FA9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		910F970A27FD14CB00401874 /* Products */ = {
+		91BF869827FECD2300A95FA9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				910F970927FD14CB00401874 /* donggle.app */,
+				91BF869727FECD2300A95FA9 /* donggle.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		910F970B27FD14CB00401874 /* donggle */ = {
+		91BF869927FECD2300A95FA9 /* donggle */ = {
 			isa = PBXGroup;
 			children = (
-				910F971A27FD171A00401874 /* view */,
-				910F970C27FD14CB00401874 /* donggleApp.swift */,
-				910F971027FD14CE00401874 /* Assets.xcassets */,
-				F239F37927FD236C0096F53D /* TimelineView.swift */,
-				910F971227FD14CE00401874 /* Preview Content */,
-				F239F39227FD6A6F0096F53D /* NavigationBarWithButton.swift */,
+				91BF869A27FECD2300A95FA9 /* donggleApp.swift */,
+				91BF869C27FECD2300A95FA9 /* ContentView.swift */,
+				91BF869E27FECD2300A95FA9 /* Assets.xcassets */,
+				91BF86A027FECD2300A95FA9 /* Preview Content */,
 			);
 			path = donggle;
 			sourceTree = "<group>";
 		};
-		910F971227FD14CE00401874 /* Preview Content */ = {
+		91BF86A027FECD2300A95FA9 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				910F971327FD14CE00401874 /* Preview Assets.xcassets */,
+				91BF86A127FECD2300A95FA9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-
-		910F971A27FD171A00401874 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				910F970E27FD14CB00401874 /* ContentView.swift */,
-				910F971B27FD17BC00401874 /* RecordView.swift */,
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		910F970827FD14CB00401874 /* donggle */ = {
+		91BF869627FECD2300A95FA9 /* donggle */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 910F971727FD14CE00401874 /* Build configuration list for PBXNativeTarget "donggle" */;
+			buildConfigurationList = 91BF86A527FECD2300A95FA9 /* Build configuration list for PBXNativeTarget "donggle" */;
 			buildPhases = (
-				910F970527FD14CB00401874 /* Sources */,
-				910F970627FD14CB00401874 /* Frameworks */,
-				910F970727FD14CB00401874 /* Resources */,
+				91BF869327FECD2300A95FA9 /* Sources */,
+				91BF869427FECD2300A95FA9 /* Frameworks */,
+				91BF869527FECD2300A95FA9 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = donggle;
-			packageProductDependencies = (
-				F239F38A27FD348F0096F53D /* SwiftUICharts */,
-				F239F38D27FD35560096F53D /* SwiftUICharts */,
-			);
 			productName = donggle;
-			productReference = 910F970927FD14CB00401874 /* donggle.app */;
+			productReference = 91BF869727FECD2300A95FA9 /* donggle.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		910F970127FD14CB00401874 /* Project object */ = {
+		91BF868F27FECD2300A95FA9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
-					910F970827FD14CB00401874 = {
+					91BF869627FECD2300A95FA9 = {
 						CreatedOnToolsVersion = 13.3;
 					};
 				};
 			};
-			buildConfigurationList = 910F970427FD14CB00401874 /* Build configuration list for PBXProject "donggle" */;
+			buildConfigurationList = 91BF869227FECD2300A95FA9 /* Build configuration list for PBXProject "donggle" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -155,56 +110,42 @@
 				en,
 				Base,
 			);
-			mainGroup = 910F970027FD14CB00401874;
-			packageReferences = (
-				F239F38927FD348F0096F53D /* XCRemoteSwiftPackageReference "ChartView" */,
-				F239F38C27FD35560096F53D /* XCRemoteSwiftPackageReference "ChartView" */,
-			);
-			productRefGroup = 910F970A27FD14CB00401874 /* Products */;
+			mainGroup = 91BF868E27FECD2300A95FA9;
+			productRefGroup = 91BF869827FECD2300A95FA9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				910F970827FD14CB00401874 /* donggle */,
+				91BF869627FECD2300A95FA9 /* donggle */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		910F970727FD14CB00401874 /* Resources */ = {
+		91BF869527FECD2300A95FA9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				910F971427FD14CE00401874 /* Preview Assets.xcassets in Resources */,
-				910F971127FD14CE00401874 /* Assets.xcassets in Resources */,
+				91BF86A227FECD2300A95FA9 /* Preview Assets.xcassets in Resources */,
+				91BF869F27FECD2300A95FA9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		910F970527FD14CB00401874 /* Sources */ = {
+		91BF869327FECD2300A95FA9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F239F37C27FD298B0096F53D /* StressReportView.swift in Sources */,
-				F239F37E27FD29BE0096F53D /* RewardReportView.swift in Sources */,
-				F239F38227FD2A9E0096F53D /* CustomTopTabBar.swift in Sources */,
-				F239F39327FD6A6F0096F53D /* NavigationBarWithButton.swift in Sources */,
-				F239F37A27FD236C0096F53D /* TimelineView.swift in Sources */,
-				F239F37827FD1D8B0096F53D /* ModalView.swift in Sources */,
-				F239F38627FD2D640096F53D /* CustomTapView.swift in Sources */,
-				F2D2D36B27FE92A600B64594 /* ReportView.swift in Sources */,
-				F239F38027FD29F60096F53D /* TabBarButton.swift in Sources */,
-				910F970F27FD14CB00401874 /* ContentView.swift in Sources */,
-				910F971C27FD17BC00401874 /* RecordView.swift in Sources */,
-				910F970D27FD14CB00401874 /* donggleApp.swift in Sources */,
+				91BF869D27FECD2300A95FA9 /* ContentView.swift in Sources */,
+				91BF869B27FECD2300A95FA9 /* donggleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		910F971527FD14CE00401874 /* Debug */ = {
+		91BF86A327FECD2300A95FA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -264,7 +205,7 @@
 			};
 			name = Debug;
 		};
-		910F971627FD14CE00401874 /* Release */ = {
+		91BF86A427FECD2300A95FA9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -318,7 +259,7 @@
 			};
 			name = Release;
 		};
-		910F971827FD14CE00401874 /* Debug */ = {
+		91BF86A627FECD2300A95FA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -346,7 +287,7 @@
 			};
 			name = Debug;
 		};
-		910F971927FD14CE00401874 /* Release */ = {
+		91BF86A727FECD2300A95FA9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -377,57 +318,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		910F970427FD14CB00401874 /* Build configuration list for PBXProject "donggle" */ = {
+		91BF869227FECD2300A95FA9 /* Build configuration list for PBXProject "donggle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				910F971527FD14CE00401874 /* Debug */,
-				910F971627FD14CE00401874 /* Release */,
+				91BF86A327FECD2300A95FA9 /* Debug */,
+				91BF86A427FECD2300A95FA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		910F971727FD14CE00401874 /* Build configuration list for PBXNativeTarget "donggle" */ = {
+		91BF86A527FECD2300A95FA9 /* Build configuration list for PBXNativeTarget "donggle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				910F971827FD14CE00401874 /* Debug */,
-				910F971927FD14CE00401874 /* Release */,
+				91BF86A627FECD2300A95FA9 /* Debug */,
+				91BF86A727FECD2300A95FA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		F239F38927FD348F0096F53D /* XCRemoteSwiftPackageReference "ChartView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/ChartView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-		F239F38C27FD35560096F53D /* XCRemoteSwiftPackageReference "ChartView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/ChartView";
-			requirement = {
-				kind = exactVersion;
-				version = 1.5.5;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		F239F38A27FD348F0096F53D /* SwiftUICharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F239F38927FD348F0096F53D /* XCRemoteSwiftPackageReference "ChartView" */;
-			productName = SwiftUICharts;
-		};
-		F239F38D27FD35560096F53D /* SwiftUICharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F239F38C27FD35560096F53D /* XCRemoteSwiftPackageReference "ChartView" */;
-			productName = SwiftUICharts;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 910F970127FD14CB00401874 /* Project object */;
+	rootObject = 91BF868F27FECD2300A95FA9 /* Project object */;
 }
