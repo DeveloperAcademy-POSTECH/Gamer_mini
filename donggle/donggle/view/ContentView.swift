@@ -2,13 +2,8 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Text("Hello, world!")
-                .padding()
-            Button("gift check") {
-                
-            }
-        }
+        Text("Hello, world!")
+            .padding()
     }
 }
 
