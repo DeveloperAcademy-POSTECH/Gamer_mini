@@ -15,8 +15,18 @@
 		CCD9C74427FED4FB00C21709 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74327FED4FB00C21709 /* HomeView.swift */; };
 		CCD9C74627FED50A00C21709 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74527FED50A00C21709 /* SettingView.swift */; };
 		CCD9C74827FED51F00C21709 /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74727FED51F00C21709 /* CalenderView.swift */; };
-		CCD9C74A27FED52C00C21709 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74927FED52C00C21709 /* ReportView.swift */; };
 		CCD9C74C27FED53C00C21709 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74B27FED53C00C21709 /* TabBarView.swift */; };
+		F23139B627FEE0A500D4EB9F /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139B527FEE0A500D4EB9F /* ReportView.swift */; };
+		F23139BB27FEE13700D4EB9F /* StressReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139BA27FEE13700D4EB9F /* StressReportView.swift */; };
+		F23139BD27FEE13900D4EB9F /* RewardReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139BC27FEE13900D4EB9F /* RewardReportView.swift */; };
+		F23139BF27FEE13C00D4EB9F /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139BE27FEE13C00D4EB9F /* ProgressBar.swift */; };
+		F23139C427FEE1CF00D4EB9F /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = F23139C327FEE1CF00D4EB9F /* SwiftUICharts */; };
+		F23139C827FEE24300D4EB9F /* CustomTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139C727FEE24300D4EB9F /* CustomTapView.swift */; };
+		F23139CA27FEE24700D4EB9F /* CustomTopTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139C927FEE24700D4EB9F /* CustomTopTabBar.swift */; };
+		F23139CC27FEE24900D4EB9F /* EdgeBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139CB27FEE24900D4EB9F /* EdgeBorder.swift */; };
+		F23139CE27FEE24B00D4EB9F /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139CD27FEE24B00D4EB9F /* TabBarButton.swift */; };
+		F23139D027FEE25800D4EB9F /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139CF27FEE25800D4EB9F /* ModalView.swift */; };
+		F23139D327FEE2A100D4EB9F /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139D227FEE2A100D4EB9F /* TimelineView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,8 +39,17 @@
 		CCD9C74327FED4FB00C21709 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CCD9C74527FED50A00C21709 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		CCD9C74727FED51F00C21709 /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
-		CCD9C74927FED52C00C21709 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		CCD9C74B27FED53C00C21709 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		F23139B527FEE0A500D4EB9F /* ReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		F23139BA27FEE13700D4EB9F /* StressReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StressReportView.swift; sourceTree = "<group>"; };
+		F23139BC27FEE13900D4EB9F /* RewardReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardReportView.swift; sourceTree = "<group>"; };
+		F23139BE27FEE13C00D4EB9F /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		F23139C727FEE24300D4EB9F /* CustomTapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTapView.swift; sourceTree = "<group>"; };
+		F23139C927FEE24700D4EB9F /* CustomTopTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTopTabBar.swift; sourceTree = "<group>"; };
+		F23139CB27FEE24900D4EB9F /* EdgeBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgeBorder.swift; sourceTree = "<group>"; };
+		F23139CD27FEE24B00D4EB9F /* TabBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
+		F23139CF27FEE25800D4EB9F /* ModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+		F23139D227FEE2A100D4EB9F /* TimelineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F23139C427FEE1CF00D4EB9F /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,10 +83,8 @@
 		91BF869927FECD2300A95FA9 /* donggle */ = {
 			isa = PBXGroup;
 			children = (
+				F23139B727FEE0C700D4EB9F /* Views */,
 				91BF869A27FECD2300A95FA9 /* donggleApp.swift */,
-				91BF86A827FED68400A95FA9 /* RecordView.swift */,
-				CCD9C74B27FED53C00C21709 /* TabBarView.swift */,
-				91BF869C27FECD2300A95FA9 /* ContentView.swift */,
 				CCD9C74227FED4EB00C21709 /* Tab bar Views */,
 				91BF869E27FECD2300A95FA9 /* Assets.xcassets */,
 				91BF86A027FECD2300A95FA9 /* Preview Content */,
@@ -87,10 +105,37 @@
 			children = (
 				CCD9C74327FED4FB00C21709 /* HomeView.swift */,
 				CCD9C74527FED50A00C21709 /* SettingView.swift */,
+				F23139B527FEE0A500D4EB9F /* ReportView.swift */,
 				CCD9C74727FED51F00C21709 /* CalenderView.swift */,
-				CCD9C74927FED52C00C21709 /* ReportView.swift */,
 			);
 			path = "Tab bar Views";
+			sourceTree = "<group>";
+		};
+		F23139B727FEE0C700D4EB9F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				91BF869C27FECD2300A95FA9 /* ContentView.swift */,
+				CCD9C74B27FED53C00C21709 /* TabBarView.swift */,
+				F23139D127FEE26800D4EB9F /* UpperTab */,
+				91BF86A827FED68400A95FA9 /* RecordView.swift */,
+				F23139BA27FEE13700D4EB9F /* StressReportView.swift */,
+				F23139BC27FEE13900D4EB9F /* RewardReportView.swift */,
+				F23139BE27FEE13C00D4EB9F /* ProgressBar.swift */,
+				F23139CF27FEE25800D4EB9F /* ModalView.swift */,
+				F23139D227FEE2A100D4EB9F /* TimelineView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F23139D127FEE26800D4EB9F /* UpperTab */ = {
+			isa = PBXGroup;
+			children = (
+				F23139CD27FEE24B00D4EB9F /* TabBarButton.swift */,
+				F23139CB27FEE24900D4EB9F /* EdgeBorder.swift */,
+				F23139C927FEE24700D4EB9F /* CustomTopTabBar.swift */,
+				F23139C727FEE24300D4EB9F /* CustomTapView.swift */,
+			);
+			path = UpperTab;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,6 +154,9 @@
 			dependencies = (
 			);
 			name = donggle;
+			packageProductDependencies = (
+				F23139C327FEE1CF00D4EB9F /* SwiftUICharts */,
+			);
 			productName = donggle;
 			productReference = 91BF869727FECD2300A95FA9 /* donggle.app */;
 			productType = "com.apple.product-type.application";
@@ -137,6 +185,9 @@
 				Base,
 			);
 			mainGroup = 91BF868E27FECD2300A95FA9;
+			packageReferences = (
+				F23139C227FEE1CF00D4EB9F /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = 91BF869827FECD2300A95FA9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -164,12 +215,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCD9C74427FED4FB00C21709 /* HomeView.swift in Sources */,
+				F23139CA27FEE24700D4EB9F /* CustomTopTabBar.swift in Sources */,
+				F23139D027FEE25800D4EB9F /* ModalView.swift in Sources */,
+				F23139BF27FEE13C00D4EB9F /* ProgressBar.swift in Sources */,
+				F23139BB27FEE13700D4EB9F /* StressReportView.swift in Sources */,
 				CCD9C74627FED50A00C21709 /* SettingView.swift in Sources */,
+				F23139B627FEE0A500D4EB9F /* ReportView.swift in Sources */,
 				CCD9C74C27FED53C00C21709 /* TabBarView.swift in Sources */,
-				CCD9C74A27FED52C00C21709 /* ReportView.swift in Sources */,
+				F23139BD27FEE13900D4EB9F /* RewardReportView.swift in Sources */,
+				F23139CE27FEE24B00D4EB9F /* TabBarButton.swift in Sources */,
+				F23139CC27FEE24900D4EB9F /* EdgeBorder.swift in Sources */,
 				91BF869D27FECD2300A95FA9 /* ContentView.swift in Sources */,
 				91BF86A927FED68400A95FA9 /* RecordView.swift in Sources */,
+				F23139C827FEE24300D4EB9F /* CustomTapView.swift in Sources */,
 				CCD9C74827FED51F00C21709 /* CalenderView.swift in Sources */,
+				F23139D327FEE2A100D4EB9F /* TimelineView.swift in Sources */,
 				91BF869B27FECD2300A95FA9 /* donggleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,6 +429,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F23139C227FEE1CF00D4EB9F /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F23139C327FEE1CF00D4EB9F /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F23139C227FEE1CF00D4EB9F /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 91BF868F27FECD2300A95FA9 /* Project object */;
 }
