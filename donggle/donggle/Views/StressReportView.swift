@@ -27,22 +27,19 @@ struct ListRow: View {
 
 struct StressReportView: View {
     var body: some View {
-        NavigationView {
-            List {
-                LineView(data: [0, 1, 12, 3, 7, 2, 12], style: ChartStyle(backgroundColor: .white, accentColor: .blue, gradientColor: GradientColor(start: .blue, end: .purple), textColor: .red, legendTextColor: .green, dropShadowColor: .black))
-                    .padding(.bottom)
-                    .frame(height: 300)
-                
-                ProgressBar(width: 300, height: 20, percent: 69)
-                    .padding(.vertical, 20)
-                
-                ListRow(name: "인간관계")
-                ListRow(name: "직장")
-                ListRow(name: "수면")
-                ListRow(name: "다이어트")
-                ListRow(name: "그외 3개")
-                
-            }
+        List {
+            LineView(data: [0, 1, 12, 3, 7, 2, 12], style: ChartStyle(backgroundColor: .white, accentColor: .blue, gradientColor: GradientColor(start: .blue, end: .purple), textColor: .red, legendTextColor: .green, dropShadowColor: .black))
+                .padding(.bottom)
+                .frame(height: 300)
+            
+            ProgressBar(width: 300, height: 20, percent: 69)
+                .padding(.vertical, 20)
+            
+            ListRow(name: "인간관계")
+            ListRow(name: "직장")
+            ListRow(name: "수면")
+            ListRow(name: "다이어트")
+            ListRow(name: "그외 3개")
         }
     }
 }
