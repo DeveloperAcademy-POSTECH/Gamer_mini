@@ -23,6 +23,7 @@ struct MultipleSelectionRow: View {
 
 struct RecordView: View {
     @State var sliderValue: Double = 50
+    @State var sliderRGB: Double = 50
     @State var stressSelectionOn: Bool = false
     @State var rewardSelectionOn: Bool = false
     @State var rewardIsOn: Bool = false
@@ -33,6 +34,8 @@ struct RecordView: View {
     @State var stressCategory: [String] = ["직장", "날씨", "수면", "가족", "돈", "그냥"]
     @State var rewardCategory: [String] = ["잠자기", "알콜", "쇼핑", "운동", "음식", "놀기"]
     @State private var rewardDate = Date()
+    
+    
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
 
     var body: some View {
@@ -41,14 +44,19 @@ struct RecordView: View {
                 Section{
                     VStack{
                         Circle()
-                            .fill(Color.gray)
+                            .fill(Color.init(red: sliderValue*2/255, green: sliderRGB*2/255, blue: sliderRGB*2/255))
                             .padding()
                             .frame(width: 130.0, height: 120.0)
                         HStack{
                             Text("😄")
                             Slider(value: $sliderValue, in: 0...100)
+                                .onChange(of: sliderValue){
+                                    (newValue) in
+                                    sliderRGB = 100 - newValue
+                                }
                             Text("🤯")
                         }
+                        Text("\(sliderValue)")
                     }
                 }
                 TextEditor(text: $stressDescription)
