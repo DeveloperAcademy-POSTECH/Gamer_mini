@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31ADE1DB27FD1971007F76D9 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ADE1DA27FD1971007F76D9 /* TimelineView.swift */; };
+		31ADE1DD27FD1B15007F76D9 /* GiftCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ADE1DC27FD1B15007F76D9 /* GiftCheckView.swift */; };
 		910F970D27FD14CB00401874 /* donggleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910F970C27FD14CB00401874 /* donggleApp.swift */; };
 		910F970F27FD14CB00401874 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910F970E27FD14CB00401874 /* ContentView.swift */; };
 		910F971127FD14CE00401874 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 910F971027FD14CE00401874 /* Assets.xcassets */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31ADE1DA27FD1971007F76D9 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		31ADE1DC27FD1B15007F76D9 /* GiftCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCheckView.swift; sourceTree = "<group>"; };
 		910F970927FD14CB00401874 /* donggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = donggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		910F970C27FD14CB00401874 /* donggleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = donggleApp.swift; sourceTree = "<group>"; };
 		910F970E27FD14CB00401874 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -47,6 +51,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3170208B27FD17D000035C2D /* view */ = {
+			isa = PBXGroup;
+			children = (
+				910F970E27FD14CB00401874 /* ContentView.swift */,
+				31ADE1DA27FD1971007F76D9 /* TimelineView.swift */,
+				31ADE1DC27FD1B15007F76D9 /* GiftCheckView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		910F970027FD14CB00401874 = {
 			isa = PBXGroup;
 			children = (
