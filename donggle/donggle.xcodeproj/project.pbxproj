@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31A38ABB27FEEB7600F4EAE8 /* GiftCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A38ABA27FEEB7600F4EAE8 /* GiftCheckView.swift */; };
 		91BF869B27FECD2300A95FA9 /* donggleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF869A27FECD2300A95FA9 /* donggleApp.swift */; };
 		91BF869D27FECD2300A95FA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF869C27FECD2300A95FA9 /* ContentView.swift */; };
 		91BF869F27FECD2300A95FA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91BF869E27FECD2300A95FA9 /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31A38ABA27FEEB7600F4EAE8 /* GiftCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCheckView.swift; sourceTree = "<group>"; };
 		91BF869727FECD2300A95FA9 /* donggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = donggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91BF869A27FECD2300A95FA9 /* donggleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = donggleApp.swift; sourceTree = "<group>"; };
 		91BF869C27FECD2300A95FA9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				F23139BE27FEE13C00D4EB9F /* ProgressBar.swift */,
 				F23139CF27FEE25800D4EB9F /* ModalView.swift */,
 				F23139D227FEE2A100D4EB9F /* TimelineView.swift */,
+				31A38ABA27FEEB7600F4EAE8 /* GiftCheckView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				CCD9C74427FED4FB00C21709 /* HomeView.swift in Sources */,
 				F23139CA27FEE24700D4EB9F /* CustomTopTabBar.swift in Sources */,
 				F23139D027FEE25800D4EB9F /* ModalView.swift in Sources */,
+				31A38ABB27FEEB7600F4EAE8 /* GiftCheckView.swift in Sources */,
 				F23139BF27FEE13C00D4EB9F /* ProgressBar.swift in Sources */,
 				F23139BB27FEE13700D4EB9F /* StressReportView.swift in Sources */,
 				CCD9C74627FED50A00C21709 /* SettingView.swift in Sources */,
