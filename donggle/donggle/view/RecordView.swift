@@ -1,10 +1,3 @@
-//
-//  RecordView.swift
-//  donggle
-//
-//  Created by Lee Myeonghwan on 2022/04/06.
-//
-
 import SwiftUI
 
 struct MultipleSelectionRow: View {
