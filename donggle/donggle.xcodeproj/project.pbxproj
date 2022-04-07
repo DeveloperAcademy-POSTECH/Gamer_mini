@@ -11,6 +11,10 @@
 		910F970F27FD14CB00401874 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910F970E27FD14CB00401874 /* ContentView.swift */; };
 		910F971127FD14CE00401874 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 910F971027FD14CE00401874 /* Assets.xcassets */; };
 		910F971427FD14CE00401874 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 910F971327FD14CE00401874 /* Preview Assets.xcassets */; };
+		CC070AB627FE93310019191F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC070AB527FE93310019191F /* HomeView.swift */; };
+		CC070AB827FE93490019191F /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC070AB727FE93490019191F /* ReportView.swift */; };
+		CC070ABA27FE935C0019191F /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC070AB927FE935C0019191F /* CalenderView.swift */; };
+		CC070ABC27FE93690019191F /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC070ABB27FE93690019191F /* SettingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		910F970E27FD14CB00401874 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		910F971027FD14CE00401874 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		910F971327FD14CE00401874 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CC070AB527FE93310019191F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CC070AB727FE93490019191F /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		CC070AB927FE935C0019191F /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
+		CC070ABB27FE93690019191F /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +61,7 @@
 			children = (
 				910F970C27FD14CB00401874 /* donggleApp.swift */,
 				910F970E27FD14CB00401874 /* ContentView.swift */,
+				CC070ABD27FE937D0019191F /* Tab bar Views */,
 				910F971027FD14CE00401874 /* Assets.xcassets */,
 				910F971227FD14CE00401874 /* Preview Content */,
 			);
@@ -65,6 +74,17 @@
 				910F971327FD14CE00401874 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CC070ABD27FE937D0019191F /* Tab bar Views */ = {
+			isa = PBXGroup;
+			children = (
+				CC070AB527FE93310019191F /* HomeView.swift */,
+				CC070ABB27FE93690019191F /* SettingView.swift */,
+				CC070AB927FE935C0019191F /* CalenderView.swift */,
+				CC070AB727FE93490019191F /* ReportView.swift */,
+			);
+			path = "Tab bar Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +159,10 @@
 			files = (
 				910F970F27FD14CB00401874 /* ContentView.swift in Sources */,
 				910F970D27FD14CB00401874 /* donggleApp.swift in Sources */,
+				CC070AB827FE93490019191F /* ReportView.swift in Sources */,
+				CC070ABC27FE93690019191F /* SettingView.swift in Sources */,
+				CC070ABA27FE935C0019191F /* CalenderView.swift in Sources */,
+				CC070AB627FE93310019191F /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
