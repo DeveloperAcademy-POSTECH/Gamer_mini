@@ -22,6 +22,7 @@ struct Reward : Codable{
     var content : String?
     var date : Date
     var category : String
+    var isEffective : Bool?
     var stressKey : UUID?
 }
 
