@@ -30,7 +30,7 @@ struct RecordView: View {
     
     
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
-
+    
     var body: some View {
         VStack{
             Form {
