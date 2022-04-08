@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		31A38ABB27FEEB7600F4EAE8 /* GiftCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A38ABA27FEEB7600F4EAE8 /* GiftCheckView.swift */; };
+		918E3B5E2800350A0045DA4F /* SRdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918E3B5D2800350A0045DA4F /* SRdata.swift */; };
 		91BF869B27FECD2300A95FA9 /* donggleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF869A27FECD2300A95FA9 /* donggleApp.swift */; };
 		91BF869D27FECD2300A95FA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF869C27FECD2300A95FA9 /* ContentView.swift */; };
 		91BF869F27FECD2300A95FA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91BF869E27FECD2300A95FA9 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		31A38ABA27FEEB7600F4EAE8 /* GiftCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCheckView.swift; sourceTree = "<group>"; };
+		918E3B5D2800350A0045DA4F /* SRdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRdata.swift; sourceTree = "<group>"; };
 		91BF869727FECD2300A95FA9 /* donggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = donggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91BF869A27FECD2300A95FA9 /* donggleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = donggleApp.swift; sourceTree = "<group>"; };
 		91BF869C27FECD2300A95FA9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +70,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		918E3B5C280033BB0045DA4F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				918E3B5D2800350A0045DA4F /* SRdata.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		91BF868E27FECD2300A95FA9 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +97,7 @@
 		91BF869927FECD2300A95FA9 /* donggle */ = {
 			isa = PBXGroup;
 			children = (
+				918E3B5C280033BB0045DA4F /* Model */,
 				F23139B727FEE0C700D4EB9F /* Views */,
 				91BF869A27FECD2300A95FA9 /* donggleApp.swift */,
 				CCD9C74227FED4EB00C21709 /* Tab bar Views */,
@@ -238,6 +249,7 @@
 				F23139C827FEE24300D4EB9F /* CustomTapView.swift in Sources */,
 				CCD9C74827FED51F00C21709 /* CalenderView.swift in Sources */,
 				F23139D327FEE2A100D4EB9F /* TimelineView.swift in Sources */,
+				918E3B5E2800350A0045DA4F /* SRdata.swift in Sources */,
 				91BF869B27FECD2300A95FA9 /* donggleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,6 +379,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"donggle/Preview Content\"";
+				DEVELOPMENT_TEAM = 54QH6LCWDM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -395,6 +408,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"donggle/Preview Content\"";
+				DEVELOPMENT_TEAM = 54QH6LCWDM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
