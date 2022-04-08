@@ -11,7 +11,7 @@
 ### Summary
 
 ```kotlin
-type(옵션):[#issueNumber]Subject //-> 제목
+type(옵션):#issueNumber[태그] Subject //-> 제목
 개행
 body(옵션):// ->본문
 개행
