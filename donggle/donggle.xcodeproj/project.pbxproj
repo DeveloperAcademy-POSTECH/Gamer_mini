@@ -17,6 +17,7 @@
 		CCD9C74627FED50A00C21709 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74527FED50A00C21709 /* SettingView.swift */; };
 		CCD9C74827FED51F00C21709 /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74727FED51F00C21709 /* CalenderView.swift */; };
 		CCD9C74C27FED53C00C21709 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74B27FED53C00C21709 /* TabBarView.swift */; };
+		E61F252B27FFC45D00D3A96C /* RewardCard2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61F252A27FFC45D00D3A96C /* RewardCard2.swift */; };
 		F23139B627FEE0A500D4EB9F /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139B527FEE0A500D4EB9F /* ReportView.swift */; };
 		F23139BB27FEE13700D4EB9F /* StressReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139BA27FEE13700D4EB9F /* StressReportView.swift */; };
 		F23139BD27FEE13900D4EB9F /* RewardReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139BC27FEE13900D4EB9F /* RewardReportView.swift */; };
@@ -42,6 +43,7 @@
 		CCD9C74527FED50A00C21709 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		CCD9C74727FED51F00C21709 /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
 		CCD9C74B27FED53C00C21709 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		E61F252A27FFC45D00D3A96C /* RewardCard2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardCard2.swift; sourceTree = "<group>"; };
 		F23139B527FEE0A500D4EB9F /* ReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		F23139BA27FEE13700D4EB9F /* StressReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StressReportView.swift; sourceTree = "<group>"; };
 		F23139BC27FEE13900D4EB9F /* RewardReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardReportView.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		F23139B727FEE0C700D4EB9F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E61F252A27FFC45D00D3A96C /* RewardCard2.swift */,
 				91BF869C27FECD2300A95FA9 /* ContentView.swift */,
 				CCD9C74B27FED53C00C21709 /* TabBarView.swift */,
 				F23139D127FEE26800D4EB9F /* UpperTab */,
@@ -227,6 +230,7 @@
 				F23139B627FEE0A500D4EB9F /* ReportView.swift in Sources */,
 				CCD9C74C27FED53C00C21709 /* TabBarView.swift in Sources */,
 				F23139BD27FEE13900D4EB9F /* RewardReportView.swift in Sources */,
+				E61F252B27FFC45D00D3A96C /* RewardCard2.swift in Sources */,
 				F23139CE27FEE24B00D4EB9F /* TabBarButton.swift in Sources */,
 				F23139CC27FEE24900D4EB9F /* EdgeBorder.swift in Sources */,
 				91BF869D27FECD2300A95FA9 /* ContentView.swift in Sources */,
