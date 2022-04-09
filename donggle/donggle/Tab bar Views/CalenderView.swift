@@ -12,17 +12,17 @@ struct CalendarView: View {
     @State private var selectedDate = Date()
     
     static let dateFormat: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "YYYY.MM.dd"
-            return formatter
-        }()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY.MM.dd"
+        return formatter
+    }()
     
     static let dateFormatText: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "YYYY년 M월 d일"
-            return formatter
-        }()
-
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY년 M월 d일"
+        return formatter
+    }()
+    
     struct Reward {
         var id: Int
         var title: String
@@ -43,36 +43,36 @@ struct CalendarView: View {
         Reward(id : 6, title : "꿈틀거리기", description : "메로나 먹고싶어", date : "2022.04.12", category : "🪱", isEffective : nil, stressKey : 1 )]
     
     let columns = [
-            GridItem(.flexible()),
-            GridItem(.flexible()),
-            GridItem(.flexible())
-        ]
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
     
     var body: some View {
         
-                NavigationView {
+        NavigationView {
             VStack {
-                        DatePicker("Selected Date",
-                                   selection: $selectedDate,
-                                   in : Date()...,
-                                displayedComponents: [.date]
-                            )
-                            .datePickerStyle(.graphical)
-                            .navigationBarTitle(Text("보상캘린더"))
-                        .navigationBarTitleDisplayMode(.inline)
-                        .toolbar {
-                                ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
-                                    Button(action: {
-                                                    
-                                    }) {
-                                            Image(systemName: "plus")
-                                    }
-                                }
+                DatePicker("Selected Date",
+                           selection: $selectedDate,
+                           in : Date()...,
+                           displayedComponents: [.date]
+                )
+                .datePickerStyle(.graphical)
+                .navigationBarTitle(Text("보상캘린더"))
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
+                        Button(action: {
+                            
+                        }) {
+                            Image(systemName: "plus")
                         }
-
-                    Divider()
+                    }
+                }
                 
-                    Text("\(selectedDate, formatter: CalendarView.dateFormatText)")
+                Divider()
+                
+                Text("\(selectedDate, formatter: CalendarView.dateFormatText)")
                     .padding(10)
                     .font(.title)
                 
@@ -93,16 +93,16 @@ struct CalendarView: View {
                             
                             ForEach(currentInfo, id: \.self.id) { reward in
                                 
-                                    VStack{
-                                        Text(reward.category)
-                                            .font(Font.system(size: 50, design: .default))
-                                        Text(reward.title)
-                                        }.padding(20)
-                                        .frame(height: 160)
-                                        .overlay(
-                                                    RoundedRectangle(cornerRadius: 15)
-                                                    .stroke(lineWidth: 1)
-                                        )
+                                VStack{
+                                    Text(reward.category)
+                                        .font(Font.system(size: 50, design: .default))
+                                    Text(reward.title)
+                                }.padding(20)
+                                    .frame(height: 160)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 15)
+                                            .stroke(lineWidth: 1)
+                                    )
                                 
                             }.padding(10)
                         })

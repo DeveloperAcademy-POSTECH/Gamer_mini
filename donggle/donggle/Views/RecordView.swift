@@ -15,6 +15,7 @@ struct MultipleSelectionRow: View {
 }
 
 struct RecordView: View {
+    @Environment(\.dismiss) private var dismiss
     @State var sliderValue: Double = 50
     @State var sliderRGB: Double = 50
     @State var stressSelectionOn: Bool = false
@@ -28,11 +29,10 @@ struct RecordView: View {
     @State var rewardCategory: [String] = ["잠자기", "알콜", "쇼핑", "운동", "음식", "놀기"]
     @State private var rewardDate = Date()
     
-    
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
     
     var body: some View {
-        VStack{
+        NavigationView{
             Form {
                 Section{
                     VStack{
@@ -111,12 +111,27 @@ struct RecordView: View {
                     }
                 }
             }
+            .navigationTitle(Text("기록하기"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar{
+                ToolbarItem(placement: .navigationBarLeading){
+                    Button(action:{
+                        dismiss()
+                    }){
+                        Text("취소")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing){
+                    Button("추가"){
+                    }
+                }
+            }
         }
     }
 }
 
-struct RecordView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecordView()
-    }
-}
+//struct RecordView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RecordView()
+//    }
+//}
