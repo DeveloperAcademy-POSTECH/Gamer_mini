@@ -44,11 +44,11 @@ struct RewardReportView: View {
             ProgressBar(width: 300, height: 20, percent: 69)
                 .padding(.vertical, 20)
             
-            ListRow(name: "인간관계")
-            ListRow(name: "직장")
-            ListRow(name: "수면")
-            ListRow(name: "다이어트")
-            ListRow(name: "그외 3개")
+                ListRow(name: "인간관계")
+                ListRow(name: "직장")
+                ListRow(name: "수면")
+                ListRow(name: "다이어트")
+                ListRow(name: "그외 3개")
             
         }
     }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		31A38ABB27FEEB7600F4EAE8 /* GiftCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A38ABA27FEEB7600F4EAE8 /* GiftCheckView.swift */; };
+		620C7FC713E2EF00080C3BCE /* Pods_donggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F11CE440F5C63B454FAF76 /* Pods_donggle.framework */; };
 		913108EE2801704C00C4BAB2 /* RecordTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913108ED2801704C00C4BAB2 /* RecordTestingView.swift */; };
 		918E3B5E2800350A0045DA4F /* SRdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918E3B5D2800350A0045DA4F /* SRdata.swift */; };
 		91BF869B27FECD2300A95FA9 /* donggleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF869A27FECD2300A95FA9 /* donggleApp.swift */; };
@@ -15,6 +16,8 @@
 		91BF869F27FECD2300A95FA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91BF869E27FECD2300A95FA9 /* Assets.xcassets */; };
 		91BF86A227FECD2300A95FA9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91BF86A127FECD2300A95FA9 /* Preview Assets.xcassets */; };
 		91BF86A927FED68400A95FA9 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF86A827FED68400A95FA9 /* RecordView.swift */; };
+		CCAF999B2801D3D20096362E /* RecordRewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF999A2801D3D20096362E /* RecordRewardView.swift */; };
+		CCAF999D2801D3E00096362E /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF999C2801D3E00096362E /* DetailView.swift */; };
 		CCD9C74427FED4FB00C21709 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74327FED4FB00C21709 /* HomeView.swift */; };
 		CCD9C74627FED50A00C21709 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74527FED50A00C21709 /* SettingView.swift */; };
 		CCD9C74827FED51F00C21709 /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74727FED51F00C21709 /* CalenderView.swift */; };
@@ -35,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		31A38ABA27FEEB7600F4EAE8 /* GiftCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCheckView.swift; sourceTree = "<group>"; };
+		32F11CE440F5C63B454FAF76 /* Pods_donggle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_donggle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		913108ED2801704C00C4BAB2 /* RecordTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTestingView.swift; sourceTree = "<group>"; };
 		918E3B5D2800350A0045DA4F /* SRdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRdata.swift; sourceTree = "<group>"; };
 		91BF869727FECD2300A95FA9 /* donggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = donggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,6 +47,9 @@
 		91BF869E27FECD2300A95FA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91BF86A127FECD2300A95FA9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		91BF86A827FED68400A95FA9 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		BB0671F90418B35B91DBFAA9 /* Pods-donggle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-donggle.debug.xcconfig"; path = "Target Support Files/Pods-donggle/Pods-donggle.debug.xcconfig"; sourceTree = "<group>"; };
+		CCAF999A2801D3D20096362E /* RecordRewardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRewardView.swift; sourceTree = "<group>"; };
+		CCAF999C2801D3E00096362E /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		CCD9C74327FED4FB00C21709 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CCD9C74527FED50A00C21709 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		CCD9C74727FED51F00C21709 /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
@@ -58,6 +65,7 @@
 		F23139CD27FEE24B00D4EB9F /* TabBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
 		F23139CF27FEE25800D4EB9F /* ModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		F23139D227FEE2A100D4EB9F /* TimelineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		FB3C5575839D4ED8C5E6171E /* Pods-donggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-donggle.release.xcconfig"; path = "Target Support Files/Pods-donggle/Pods-donggle.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,12 +74,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				F23139C427FEE1CF00D4EB9F /* SwiftUICharts in Frameworks */,
+				620C7FC713E2EF00080C3BCE /* Pods_donggle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1727697B90A635340C1FAAD9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BB0671F90418B35B91DBFAA9 /* Pods-donggle.debug.xcconfig */,
+				FB3C5575839D4ED8C5E6171E /* Pods-donggle.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		52AF6A443F47359784CB5506 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				32F11CE440F5C63B454FAF76 /* Pods_donggle.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		918E3B5C280033BB0045DA4F /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +111,8 @@
 			children = (
 				91BF869927FECD2300A95FA9 /* donggle */,
 				91BF869827FECD2300A95FA9 /* Products */,
+				1727697B90A635340C1FAAD9 /* Pods */,
+				52AF6A443F47359784CB5506 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,6 +166,8 @@
 				91BF86A827FED68400A95FA9 /* RecordView.swift */,
 				913108ED2801704C00C4BAB2 /* RecordTestingView.swift */,
 				F23139BA27FEE13700D4EB9F /* StressReportView.swift */,
+				CCAF999A2801D3D20096362E /* RecordRewardView.swift */,
+				CCAF999C2801D3E00096362E /* DetailView.swift */,
 				F23139BC27FEE13900D4EB9F /* RewardReportView.swift */,
 				F23139BE27FEE13C00D4EB9F /* ProgressBar.swift */,
 				F23139CF27FEE25800D4EB9F /* ModalView.swift */,
@@ -165,9 +195,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 91BF86A527FECD2300A95FA9 /* Build configuration list for PBXNativeTarget "donggle" */;
 			buildPhases = (
+				C635A36E505E3F2905708A81 /* [CP] Check Pods Manifest.lock */,
 				91BF869327FECD2300A95FA9 /* Sources */,
 				91BF869427FECD2300A95FA9 /* Frameworks */,
 				91BF869527FECD2300A95FA9 /* Resources */,
+				2A9558EC8B9C7086C9FEA7C3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -229,6 +261,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2A9558EC8B9C7086C9FEA7C3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-donggle/Pods-donggle-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-donggle/Pods-donggle-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-donggle/Pods-donggle-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C635A36E505E3F2905708A81 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-donggle-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		91BF869327FECD2300A95FA9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -251,7 +325,9 @@
 				91BF869D27FECD2300A95FA9 /* ContentView.swift in Sources */,
 				91BF86A927FED68400A95FA9 /* RecordView.swift in Sources */,
 				F23139C827FEE24300D4EB9F /* CustomTapView.swift in Sources */,
+				CCAF999D2801D3E00096362E /* DetailView.swift in Sources */,
 				CCD9C74827FED51F00C21709 /* CalenderView.swift in Sources */,
+				CCAF999B2801D3D20096362E /* RecordRewardView.swift in Sources */,
 				F23139D327FEE2A100D4EB9F /* TimelineView.swift in Sources */,
 				918E3B5E2800350A0045DA4F /* SRdata.swift in Sources */,
 				91BF869B27FECD2300A95FA9 /* donggleApp.swift in Sources */,
@@ -377,6 +453,7 @@
 		};
 		91BF86A627FECD2300A95FA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB0671F90418B35B91DBFAA9 /* Pods-donggle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -406,6 +483,7 @@
 		};
 		91BF86A727FECD2300A95FA9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB3C5575839D4ED8C5E6171E /* Pods-donggle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
