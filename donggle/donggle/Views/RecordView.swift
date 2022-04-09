@@ -20,7 +20,6 @@ struct RecordView: View {
     @Environment(\.dismiss) private var dismiss
     @Binding var stressIndex: Int
     @Binding var sliderValue : Double
-    @State var sliderRGB: Double = 50
     @State var stressSelectionOn: Bool = false
     @State var rewardSelectionOn: Bool = false
     @State var rewardIsOn: Bool = false
@@ -67,8 +66,6 @@ struct RecordView: View {
             print("-----------------")
         }
     }
-
-    
     
     var body: some View {
         NavigationView{
@@ -76,19 +73,16 @@ struct RecordView: View {
                 Section{
                     VStack{
                         Circle()
-                            .fill(Color.init(red: sliderValue*2/255, green: sliderRGB*2/255, blue: sliderRGB*2/255))
+                            .fill(Color.init(red: (sliderValue+1)*2/255, green: (101-sliderValue)*2/255, blue: (101-sliderValue)*2/255))
                             .padding()
                             .frame(width: 130.0, height: 120.0)
+                        Text("\(Int(sliderValue))%")
                         HStack{
                             Text("😄")
                             Slider(value: $sliderValue, in: 0...100,step: 1.0)
-                                .onChange(of: sliderValue){
-                                    (newValue) in
-                                    sliderRGB = 100 - newValue
-                                }
                             Text("🤯")
                         }
-                        Text("\(sliderValue)")
+ 
                     }
                 }
                 TextEditor(text: $stressDescription)
