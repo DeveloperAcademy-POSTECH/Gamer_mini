@@ -10,7 +10,7 @@ import Foundation
 struct Stress : Codable{
     var id : UUID
     var index : Int
-    var content : String?
+    var content : String
     var date : Date
     var category : [String]
     var rewardKey : UUID?
@@ -19,7 +19,7 @@ struct Stress : Codable{
 struct Reward : Codable{
     var id : UUID
     var title : String
-    var content : String?
+    var content : String
     var date : Date
     var category : [String]
     var isEffective : Bool?

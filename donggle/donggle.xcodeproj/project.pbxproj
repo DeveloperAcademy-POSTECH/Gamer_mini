@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		31A38ABB27FEEB7600F4EAE8 /* GiftCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A38ABA27FEEB7600F4EAE8 /* GiftCheckView.swift */; };
+		913108EE2801704C00C4BAB2 /* RecordTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913108ED2801704C00C4BAB2 /* RecordTestingView.swift */; };
 		918E3B5E2800350A0045DA4F /* SRdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918E3B5D2800350A0045DA4F /* SRdata.swift */; };
 		91BF869B27FECD2300A95FA9 /* donggleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF869A27FECD2300A95FA9 /* donggleApp.swift */; };
 		91BF869D27FECD2300A95FA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF869C27FECD2300A95FA9 /* ContentView.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		31A38ABA27FEEB7600F4EAE8 /* GiftCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCheckView.swift; sourceTree = "<group>"; };
+		913108ED2801704C00C4BAB2 /* RecordTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTestingView.swift; sourceTree = "<group>"; };
 		918E3B5D2800350A0045DA4F /* SRdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRdata.swift; sourceTree = "<group>"; };
 		91BF869727FECD2300A95FA9 /* donggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = donggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91BF869A27FECD2300A95FA9 /* donggleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = donggleApp.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				CCD9C74B27FED53C00C21709 /* TabBarView.swift */,
 				F23139D127FEE26800D4EB9F /* UpperTab */,
 				91BF86A827FED68400A95FA9 /* RecordView.swift */,
+				913108ED2801704C00C4BAB2 /* RecordTestingView.swift */,
 				F23139BA27FEE13700D4EB9F /* StressReportView.swift */,
 				F23139BC27FEE13900D4EB9F /* RewardReportView.swift */,
 				F23139BE27FEE13C00D4EB9F /* ProgressBar.swift */,
@@ -241,6 +244,7 @@
 				F23139B627FEE0A500D4EB9F /* ReportView.swift in Sources */,
 				CCD9C74C27FED53C00C21709 /* TabBarView.swift in Sources */,
 				F23139BD27FEE13900D4EB9F /* RewardReportView.swift in Sources */,
+				913108EE2801704C00C4BAB2 /* RecordTestingView.swift in Sources */,
 				E61F252B27FFC45D00D3A96C /* RewardCard2.swift in Sources */,
 				F23139CE27FEE24B00D4EB9F /* TabBarButton.swift in Sources */,
 				F23139CC27FEE24900D4EB9F /* EdgeBorder.swift in Sources */,
