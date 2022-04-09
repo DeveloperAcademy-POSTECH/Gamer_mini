@@ -33,6 +33,8 @@ struct HomeView: View {
                 }
                 .padding(.top, 40.0)
             
+            donggle(TopPointX: 100, TopPointY: 0, RightPointX: 200, RightPointY: 100, BottomPointX: 100, BottomPointY: 200, LeftPointX: 0, LeftPointY: 100)
+            /*
                 Circle()
                     .fill(Color.gray)
                     .frame(width: 200.0, height: 200.0)
@@ -44,6 +46,7 @@ struct HomeView: View {
                     .gesture(dragGesture)
                     .animation(.default)
                     //.position(x:195, y:0)
+             */
                 Text("72%")
                     .font(.system(size: 24, weight: .regular))
                     .foregroundColor(Color.gray)

@@ -15,9 +15,12 @@ struct RewardCard2: View {
     var body: some View {
         VStack(){
             Text("list.Dday")
-                .font(.system(size: 10, weight: .light))
-            Circle().frame(width: 60, height: 60)
+                .font(.system(size: 12, weight: .light))
+                .padding(.top, 12.0)
+            Spacer()
             Text("list.title")
+                .font(.system(size: 14, weight: .semibold))
+                .padding(.bottom, 12.0)
         }
         .frame(width: 106.0, height: 140.0)
         .background(Color.gray)
