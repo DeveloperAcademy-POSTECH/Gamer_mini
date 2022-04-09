@@ -10,7 +10,6 @@ import SwiftUI
 import Foundation
 
 struct ContentView: View {
-    @State private var showModal = false
     var body: some View {
         Text("Hello world")
     }
