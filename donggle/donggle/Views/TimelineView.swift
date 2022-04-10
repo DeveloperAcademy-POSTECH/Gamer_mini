@@ -14,29 +14,9 @@ struct TimelineView: View {
     var date1 = Date()
     
     
-    struct Reward2 {
-        var id: Int
-        var title: String
-        var content: String
-        var date: Date
-        var category: String
-        var isEffective: Bool?
-        var stressKey: Int?
-        var type: Int //스트레스(0) or 보상(1) 데이터 체크
-        var icon: String //보상 카테고리 아이콘
-    }
-
-    
-    @State private var rewardInfo : [Reward2] = [
-        Reward2(id : 0, title : "맥주 한 잔!", content : "오늘 요정들과 함께 뿌링클 치킨 사서 치맥하기!", date : Date(), category : "음주", isEffective : nil, stressKey : nil, type: 1, icon : "🍺" ),
-        Reward2(id : 1, title : "맛난 식사", content : "메로나 먹고싶어", date : Date(), category : "음식", isEffective : nil, stressKey : 1, type: 1, icon : "🍔" ),
-        Reward2(id : 2, title : "여행가기", content : "메로나 먹고싶어", date : Date(), category : "외출", isEffective : nil, stressKey : 1, type: 1, icon : "🚚" ),
-        Reward2(id : 3, title : "운동하기", content : "메로나 먹고싶어", date : Date(), category : "운동", isEffective : nil, stressKey : 1, type: 1, icon : "⚽️" ),
-        Reward2(id : 4, title : "잠자기", content : "메로나 먹고싶어", date : Date(), category : "수면", isEffective : nil, stressKey : 1, type: 1, icon : "💤" ),
-        Reward2(id : 5, title : "흐느적거리기", content : "메로나 먹고싶어", date : Date(), category : "휴식", isEffective : nil, stressKey : 1, type: 1, icon : "🐙" ),
-        Reward2(id : 6, title : "꿈틀거리기", content : "메로나 먹고싶어", date : Date(), category : "휴식", isEffective : nil, stressKey : 1, type: 1, icon : "🪱" )]
     
     let stressSet = UserDefaults.stressArray ?? []
+    let rewardSet = UserDefaults.rewardArray ?? []
 
     
     var body: some View {
@@ -78,8 +58,8 @@ struct TimelineView: View {
                                 ForEach(stressSet, id: \.self.id) { stress in
                                     StressCard(stressIndex:stress.index, stressContent: stress.content, stressCateList: getStressCateList(stressCategory : stress.category))
                                 }
-                                ForEach(rewardInfo, id: \.self.id) { reward in
-                                    GiftCard(giftIcon: reward.icon, giftName: reward.category, giftTitle: reward.title, giftContent: reward.content)
+                                ForEach(rewardSet, id: \.self.id) { reward in
+                                    GiftCard(giftIcon: "🍺", giftName: reward.category[0], giftTitle: reward.title, giftContent: reward.content)
                                 }
                             }
                         }
@@ -98,8 +78,8 @@ struct TimelineView: View {
                     } else if (selectedView == 3){ //보상
                         ScrollView(showsIndicators: false) {
                             LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 5){
-                                ForEach(rewardInfo, id: \.self.id) { reward in
-                                    GiftCard(giftIcon: reward.icon, giftName: reward.category, giftTitle: reward.title, giftContent: reward.content)
+                                ForEach(rewardSet, id: \.self.id) { reward in
+                                    GiftCard(giftIcon: "🍺", giftName: reward.category[0], giftTitle: reward.title, giftContent: reward.content)
                                 }
                             }
                         }
