@@ -22,7 +22,11 @@
 		CCD9C74627FED50A00C21709 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74527FED50A00C21709 /* SettingView.swift */; };
 		CCD9C74827FED51F00C21709 /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74727FED51F00C21709 /* CalenderView.swift */; };
 		CCD9C74C27FED53C00C21709 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74B27FED53C00C21709 /* TabBarView.swift */; };
+		E604B6002801D2780099464C /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E604B5FF2801D2780099464C /* CardDetailView.swift */; };
+		E604B6022801D2AD0099464C /* DetailCardFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = E604B6012801D2AD0099464C /* DetailCardFront.swift */; };
+		E604B6042801E2100099464C /* DetailCardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E604B6032801E2100099464C /* DetailCardBack.swift */; };
 		E61F252B27FFC45D00D3A96C /* RewardCard2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61F252A27FFC45D00D3A96C /* RewardCard2.swift */; };
+		E61F252F27FFCE6B00D3A96C /* DonggleInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61F252E27FFCE6B00D3A96C /* DonggleInteraction.swift */; };
 		F23139B627FEE0A500D4EB9F /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139B527FEE0A500D4EB9F /* ReportView.swift */; };
 		F23139BB27FEE13700D4EB9F /* StressReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139BA27FEE13700D4EB9F /* StressReportView.swift */; };
 		F23139BD27FEE13900D4EB9F /* RewardReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139BC27FEE13900D4EB9F /* RewardReportView.swift */; };
@@ -54,7 +58,11 @@
 		CCD9C74527FED50A00C21709 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		CCD9C74727FED51F00C21709 /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
 		CCD9C74B27FED53C00C21709 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		E604B5FF2801D2780099464C /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
+		E604B6012801D2AD0099464C /* DetailCardFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCardFront.swift; sourceTree = "<group>"; };
+		E604B6032801E2100099464C /* DetailCardBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCardBack.swift; sourceTree = "<group>"; };
 		E61F252A27FFC45D00D3A96C /* RewardCard2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardCard2.swift; sourceTree = "<group>"; };
+		E61F252E27FFCE6B00D3A96C /* DonggleInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonggleInteraction.swift; sourceTree = "<group>"; };
 		F23139B527FEE0A500D4EB9F /* ReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		F23139BA27FEE13700D4EB9F /* StressReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StressReportView.swift; sourceTree = "<group>"; };
 		F23139BC27FEE13900D4EB9F /* RewardReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardReportView.swift; sourceTree = "<group>"; };
@@ -160,8 +168,12 @@
 			isa = PBXGroup;
 			children = (
 				E61F252A27FFC45D00D3A96C /* RewardCard2.swift */,
+				E604B5FF2801D2780099464C /* CardDetailView.swift */,
+				E604B6012801D2AD0099464C /* DetailCardFront.swift */,
+				E604B6032801E2100099464C /* DetailCardBack.swift */,
 				91BF869C27FECD2300A95FA9 /* ContentView.swift */,
 				CCD9C74B27FED53C00C21709 /* TabBarView.swift */,
+				E61F252E27FFCE6B00D3A96C /* DonggleInteraction.swift */,
 				F23139D127FEE26800D4EB9F /* UpperTab */,
 				91BF86A827FED68400A95FA9 /* RecordView.swift */,
 				913108ED2801704C00C4BAB2 /* RecordTestingView.swift */,
@@ -309,11 +321,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCD9C74427FED4FB00C21709 /* HomeView.swift in Sources */,
+				E604B6042801E2100099464C /* DetailCardBack.swift in Sources */,
 				F23139CA27FEE24700D4EB9F /* CustomTopTabBar.swift in Sources */,
 				F23139D027FEE25800D4EB9F /* ModalView.swift in Sources */,
 				31A38ABB27FEEB7600F4EAE8 /* GiftCheckView.swift in Sources */,
 				F23139BF27FEE13C00D4EB9F /* ProgressBar.swift in Sources */,
 				F23139BB27FEE13700D4EB9F /* StressReportView.swift in Sources */,
+				E604B6002801D2780099464C /* CardDetailView.swift in Sources */,
 				CCD9C74627FED50A00C21709 /* SettingView.swift in Sources */,
 				F23139B627FEE0A500D4EB9F /* ReportView.swift in Sources */,
 				CCD9C74C27FED53C00C21709 /* TabBarView.swift in Sources */,
@@ -325,12 +339,14 @@
 				91BF869D27FECD2300A95FA9 /* ContentView.swift in Sources */,
 				91BF86A927FED68400A95FA9 /* RecordView.swift in Sources */,
 				F23139C827FEE24300D4EB9F /* CustomTapView.swift in Sources */,
+				E604B6022801D2AD0099464C /* DetailCardFront.swift in Sources */,
 				CCAF999D2801D3E00096362E /* DetailView.swift in Sources */,
 				CCD9C74827FED51F00C21709 /* CalenderView.swift in Sources */,
 				CCAF999B2801D3D20096362E /* RecordRewardView.swift in Sources */,
 				F23139D327FEE2A100D4EB9F /* TimelineView.swift in Sources */,
 				918E3B5E2800350A0045DA4F /* SRdata.swift in Sources */,
 				91BF869B27FECD2300A95FA9 /* donggleApp.swift in Sources */,
+				E61F252F27FFCE6B00D3A96C /* DonggleInteraction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
