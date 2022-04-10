@@ -64,15 +64,15 @@ struct HomeView: View {
                      
                 if showDetails{
                     if selectedDate == 1{
-                        RewardCard2()
+                        RewardCard()
                     }else{
                     }
                     HStack{
-                        RewardCard2()
+                        RewardCard()
                         Spacer()
-                        RewardCard2()
+                        RewardCard()
                         Spacer()
-                        RewardCard2()
+                        RewardCard()
                     }
                 }
                 Spacer()

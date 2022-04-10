@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct RewardCard2: View {
+struct RewardCard: View {
     
     //var list: RewardList
     
@@ -17,6 +17,10 @@ struct RewardCard2: View {
             Text("list.Dday")
                 .font(.system(size: 10, weight: .light))
             Circle().frame(width: 60, height: 60)
+                .overlay {
+                    Text("🍔")
+                        .font(Font.system(size: 50, design: .default))
+                }
             Text("list.title")
         }
         .frame(width: 106.0, height: 140.0)
@@ -31,8 +35,8 @@ struct RewardList: Identifiable{
     let title: String
 }
 */
-struct RewardCard2_Previews: PreviewProvider {
+struct RewardCard_Previews: PreviewProvider {
     static var previews: some View {
-        RewardCard2()
+        RewardCard()
     }
 }

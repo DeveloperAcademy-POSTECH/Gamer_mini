@@ -37,7 +37,7 @@ struct ModalView: View {
                 Text("2021년 9월")
                 Text("2021년 8월")
 
-            }
+            }.listStyle(.plain)
             
             Spacer()
             

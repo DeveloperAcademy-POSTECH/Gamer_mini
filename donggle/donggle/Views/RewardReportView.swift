@@ -6,26 +6,11 @@
 //
 import SwiftUI
 
-struct RewardCard: View {
-    var name: String
-    var body: some View {
-        VStack {
-            Text("🍔")
-                .font(Font.system(size: 50, design: .default))
-            Text(name)
-        }.padding(20)
-            .frame(height: 160)
-        .overlay(
-            RoundedRectangle(cornerRadius: 15)
-            .stroke(lineWidth: 1)
-        )
-    }
-}
-
 struct RewardReportView: View {
+    @EnvironmentObject var store: Store
     var arr = ["치킨먹자", "버거먹자", "족발먹자", "피자먹자", "닭발먹자", "밥먹자"]
     var body: some View {
-        List {
+        ScrollView {
             VStack {
                 Text("Top 6 스트레스 해소 보상")
                     .font(.system(size: 22, weight: .semibold))
@@ -34,22 +19,29 @@ struct RewardReportView: View {
                 ScrollView(.horizontal) {
                             HStack {
                                 ForEach(arr, id: \.self) {name in
-                                    RewardCard(name: name)
+                                    RewardCard()
                                 }
                             }
                             .frame(maxHeight: .infinity)
                         }
             }
+            .padding(32)
             
-            ProgressBar(width: 300, height: 20, percent: 69)
-                .padding(.vertical, 20)
+            Rectangle()
+                .frame(height: 16)
+                .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.946))
             
-            ListRow(name: "인간관계")
-            ListRow(name: "직장")
-            ListRow(name: "수면")
-            ListRow(name: "다이어트")
-            ListRow(name: "그외 3개")
             
+            ProgressBar(width: .infinity, height: 22, percent: 69)
+                .padding(32)
+            
+            VStack {
+                ForEach(store.stressList) { stress in
+                    ListRow(title: stress.title, category: stress.category)
+                        .padding(.vertical, 8)
+                }
+            }
+            .padding(.horizontal, 32)
         }
     }
 }
@@ -57,5 +49,6 @@ struct RewardReportView: View {
 struct RewardReportView_Previews: PreviewProvider {
     static var previews: some View {
         RewardReportView()
+            .environmentObject(Store())
     }
 }

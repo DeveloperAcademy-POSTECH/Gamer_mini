@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct donggleApp: App {
+    @StateObject var store = Store()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(store)
         }
     }
 }

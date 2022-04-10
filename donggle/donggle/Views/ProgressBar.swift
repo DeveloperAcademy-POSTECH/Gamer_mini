@@ -8,33 +8,30 @@
 import SwiftUI
 
 struct ProgressBar: View {
-    var width: CGFloat = 300
-    var height: CGFloat = 20
-    var percent: CGFloat = 59
+    var width: CGFloat
+    var height: CGFloat
+    var percent: CGFloat
     
     
     var body: some View {
         let multiplier = width / 100
         VStack {
             Text("인간관계가 가장 스트레스에요")
-                .font(.system(size: 22, weight: .semibold))
+                .font(.system(size: 22, weight: .bold))
                 .frame(maxWidth: width, alignment: .leading)
                 
             
             ZStack(alignment: .leading) {
-                RoundedRectangle(cornerRadius: height
-                                 , style: .continuous)
+                Rectangle()
                     .frame(width: width, height: height)
-                    .clipShape(RoundedRectangle(cornerRadius: height
-                                                , style: .continuous))
                     .foregroundColor(.black.opacity(0.1))
                 
-                RoundedRectangle(cornerRadius: height, style: .continuous)
+                Rectangle()
                     .frame(width: percent * multiplier, height: height)
-                    .background(.blue)
-                    .clipShape(RoundedRectangle(cornerRadius: height, style: .continuous))
+                    .background(.green)
                     .foregroundColor(.clear)
             }
+            .cornerRadius(height)
         }
         
     }
@@ -42,6 +39,6 @@ struct ProgressBar: View {
 
 struct ProgressBar_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressBar()
+        ProgressBar(width: 300, height: 20, percent: 59)
     }
 }

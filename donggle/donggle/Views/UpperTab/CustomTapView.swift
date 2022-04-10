@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CustomTapView: View {
-    
     @State var tabIndex = 0
     
     var body: some View {
@@ -22,8 +21,7 @@ struct CustomTapView: View {
             }
             Spacer()
         }
-        .frame(width: UIScreen.main.bounds.width - 24, alignment: .center)
-        .padding(.horizontal, 12)
+        .frame(alignment: .center)
     }
 }
 
@@ -37,5 +35,6 @@ extension View {
 struct CustomTapView_Previews: PreviewProvider {
     static var previews: some View {
         CustomTapView()
+            .environmentObject(Store())
     }
 }
