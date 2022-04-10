@@ -11,9 +11,9 @@ import Foundation
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Text("Hello world")
-        }
+            VStack {
+                Text("Hello world")
+            }
     }
 }
 

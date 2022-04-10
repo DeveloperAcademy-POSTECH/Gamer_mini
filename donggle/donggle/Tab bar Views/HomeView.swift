@@ -43,17 +43,20 @@ struct HomeView: View {
             }
             .padding(.top, 40.0)
             
-            Circle()
-                .fill(Color.init(red: (sliderValue+1)*2/255, green: (101-sliderValue)*2/255, blue: (101-sliderValue)*2/255))
-                .frame(width: 200.0, height: 200.0)
-                .padding(50)
-                .scaleEffect(isLongPressed ? 1.15 : 1)
-                .gesture(longPressGesture)
-                .animation(.spring())
-                .offset(x: offset.width, y: offset.height)
-                .gesture(dragGesture)
-                .animation(.default)
-            //.position(x:195, y:0)
+
+            donggle(TopPointX: 100, TopPointY: 0, RightPointX: 200, RightPointY: 100, BottomPointX: 100, BottomPointY: 200, LeftPointX: 0, LeftPointY: 100)
+          
+//             Circle()
+//                 .fill(Color.init(red: (sliderValue+1)*2/255, green: (101-sliderValue)*2/255, blue: (101-sliderValue)*2/255))
+//                 .frame(width: 200.0, height: 200.0)
+//                 .padding(50)
+//                 .scaleEffect(isLongPressed ? 1.15 : 1)
+//                 .gesture(longPressGesture)
+//                 .animation(.spring())
+//                 .offset(x: offset.width, y: offset.height)
+//                 .gesture(dragGesture)
+//                 .animation(.default)
+
             Text("\(stressIndex)%")
                 .font(.system(size: 24, weight: .regular))
                 .foregroundColor(Color.gray)
