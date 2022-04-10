@@ -22,6 +22,8 @@ struct RewardCard2: View {
                         .font(Font.system(size: 50, design: .default))
                 }
             Text("list.title")
+                .font(.system(size: 14, weight: .semibold))
+                .padding(.bottom, 12.0)
         }
         .frame(width: 106.0, height: 140.0)
         .background(Color.gray)

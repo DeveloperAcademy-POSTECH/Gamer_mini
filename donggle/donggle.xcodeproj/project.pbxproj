@@ -8,16 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		31A38ABB27FEEB7600F4EAE8 /* GiftCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A38ABA27FEEB7600F4EAE8 /* GiftCheckView.swift */; };
+		620C7FC713E2EF00080C3BCE /* Pods_donggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F11CE440F5C63B454FAF76 /* Pods_donggle.framework */; };
+		913108EE2801704C00C4BAB2 /* RecordTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913108ED2801704C00C4BAB2 /* RecordTestingView.swift */; };
+		918E3B5E2800350A0045DA4F /* SRdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918E3B5D2800350A0045DA4F /* SRdata.swift */; };
 		91BF869B27FECD2300A95FA9 /* donggleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF869A27FECD2300A95FA9 /* donggleApp.swift */; };
 		91BF869D27FECD2300A95FA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF869C27FECD2300A95FA9 /* ContentView.swift */; };
 		91BF869F27FECD2300A95FA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91BF869E27FECD2300A95FA9 /* Assets.xcassets */; };
 		91BF86A227FECD2300A95FA9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91BF86A127FECD2300A95FA9 /* Preview Assets.xcassets */; };
 		91BF86A927FED68400A95FA9 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF86A827FED68400A95FA9 /* RecordView.swift */; };
+		CCAF999B2801D3D20096362E /* RecordRewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF999A2801D3D20096362E /* RecordRewardView.swift */; };
+		CCAF999D2801D3E00096362E /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF999C2801D3E00096362E /* DetailView.swift */; };
 		CCD9C74427FED4FB00C21709 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74327FED4FB00C21709 /* HomeView.swift */; };
 		CCD9C74627FED50A00C21709 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74527FED50A00C21709 /* SettingView.swift */; };
 		CCD9C74827FED51F00C21709 /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74727FED51F00C21709 /* CalenderView.swift */; };
 		CCD9C74C27FED53C00C21709 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74B27FED53C00C21709 /* TabBarView.swift */; };
+		E604B6002801D2780099464C /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E604B5FF2801D2780099464C /* CardDetailView.swift */; };
+		E604B6022801D2AD0099464C /* DetailCardFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = E604B6012801D2AD0099464C /* DetailCardFront.swift */; };
+		E604B6042801E2100099464C /* DetailCardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E604B6032801E2100099464C /* DetailCardBack.swift */; };
 		E61F252B27FFC45D00D3A96C /* RewardCard2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61F252A27FFC45D00D3A96C /* RewardCard2.swift */; };
+		E61F252F27FFCE6B00D3A96C /* DonggleInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61F252E27FFCE6B00D3A96C /* DonggleInteraction.swift */; };
 		F23139B627FEE0A500D4EB9F /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139B527FEE0A500D4EB9F /* ReportView.swift */; };
 		F23139BB27FEE13700D4EB9F /* StressReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139BA27FEE13700D4EB9F /* StressReportView.swift */; };
 		F23139BD27FEE13900D4EB9F /* RewardReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139BC27FEE13900D4EB9F /* RewardReportView.swift */; };
@@ -36,17 +45,27 @@
 
 /* Begin PBXFileReference section */
 		31A38ABA27FEEB7600F4EAE8 /* GiftCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCheckView.swift; sourceTree = "<group>"; };
+		32F11CE440F5C63B454FAF76 /* Pods_donggle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_donggle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		913108ED2801704C00C4BAB2 /* RecordTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTestingView.swift; sourceTree = "<group>"; };
+		918E3B5D2800350A0045DA4F /* SRdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRdata.swift; sourceTree = "<group>"; };
 		91BF869727FECD2300A95FA9 /* donggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = donggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91BF869A27FECD2300A95FA9 /* donggleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = donggleApp.swift; sourceTree = "<group>"; };
 		91BF869C27FECD2300A95FA9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		91BF869E27FECD2300A95FA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91BF86A127FECD2300A95FA9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		91BF86A827FED68400A95FA9 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		BB0671F90418B35B91DBFAA9 /* Pods-donggle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-donggle.debug.xcconfig"; path = "Target Support Files/Pods-donggle/Pods-donggle.debug.xcconfig"; sourceTree = "<group>"; };
+		CCAF999A2801D3D20096362E /* RecordRewardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRewardView.swift; sourceTree = "<group>"; };
+		CCAF999C2801D3E00096362E /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		CCD9C74327FED4FB00C21709 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CCD9C74527FED50A00C21709 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		CCD9C74727FED51F00C21709 /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
 		CCD9C74B27FED53C00C21709 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		E604B5FF2801D2780099464C /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
+		E604B6012801D2AD0099464C /* DetailCardFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCardFront.swift; sourceTree = "<group>"; };
+		E604B6032801E2100099464C /* DetailCardBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCardBack.swift; sourceTree = "<group>"; };
 		E61F252A27FFC45D00D3A96C /* RewardCard2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardCard2.swift; sourceTree = "<group>"; };
+		E61F252E27FFCE6B00D3A96C /* DonggleInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonggleInteraction.swift; sourceTree = "<group>"; };
 		F23139B527FEE0A500D4EB9F /* ReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		F23139BA27FEE13700D4EB9F /* StressReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StressReportView.swift; sourceTree = "<group>"; };
 		F23139BC27FEE13900D4EB9F /* RewardReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardReportView.swift; sourceTree = "<group>"; };
@@ -57,6 +76,7 @@
 		F23139CD27FEE24B00D4EB9F /* TabBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
 		F23139CF27FEE25800D4EB9F /* ModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		F23139D227FEE2A100D4EB9F /* TimelineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		FB3C5575839D4ED8C5E6171E /* Pods-donggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-donggle.release.xcconfig"; path = "Target Support Files/Pods-donggle/Pods-donggle.release.xcconfig"; sourceTree = "<group>"; };
 		F29F7CB927FFCB5600BCB18D /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		F29F7CBC27FFCB9100BCB18D /* Stress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stress.swift; sourceTree = "<group>"; };
 		F29F7CBE27FFCBDC00BCB18D /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
@@ -68,17 +88,45 @@
 			buildActionMask = 2147483647;
 			files = (
 				F23139C427FEE1CF00D4EB9F /* SwiftUICharts in Frameworks */,
+				620C7FC713E2EF00080C3BCE /* Pods_donggle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1727697B90A635340C1FAAD9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BB0671F90418B35B91DBFAA9 /* Pods-donggle.debug.xcconfig */,
+				FB3C5575839D4ED8C5E6171E /* Pods-donggle.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		52AF6A443F47359784CB5506 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				32F11CE440F5C63B454FAF76 /* Pods_donggle.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		918E3B5C280033BB0045DA4F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				918E3B5D2800350A0045DA4F /* SRdata.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		91BF868E27FECD2300A95FA9 = {
 			isa = PBXGroup;
 			children = (
 				91BF869927FECD2300A95FA9 /* donggle */,
 				91BF869827FECD2300A95FA9 /* Products */,
+				1727697B90A635340C1FAAD9 /* Pods */,
+				52AF6A443F47359784CB5506 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,6 +141,8 @@
 		91BF869927FECD2300A95FA9 /* donggle */ = {
 			isa = PBXGroup;
 			children = (
+				918E3B5C280033BB0045DA4F /* Model */,
+				F23139B727FEE0C700D4EB9F /* Views */,
 				91BF869A27FECD2300A95FA9 /* donggleApp.swift */,
 				F29F7CB827FFCB3600BCB18D /* Memory */,
 				F23139B727FEE0C700D4EB9F /* Views */,
@@ -126,11 +176,18 @@
 			isa = PBXGroup;
 			children = (
 				E61F252A27FFC45D00D3A96C /* RewardCard2.swift */,
+				E604B5FF2801D2780099464C /* CardDetailView.swift */,
+				E604B6012801D2AD0099464C /* DetailCardFront.swift */,
+				E604B6032801E2100099464C /* DetailCardBack.swift */,
 				91BF869C27FECD2300A95FA9 /* ContentView.swift */,
 				CCD9C74B27FED53C00C21709 /* TabBarView.swift */,
+				E61F252E27FFCE6B00D3A96C /* DonggleInteraction.swift */,
 				F23139D127FEE26800D4EB9F /* UpperTab */,
 				91BF86A827FED68400A95FA9 /* RecordView.swift */,
+				913108ED2801704C00C4BAB2 /* RecordTestingView.swift */,
 				F23139BA27FEE13700D4EB9F /* StressReportView.swift */,
+				CCAF999A2801D3D20096362E /* RecordRewardView.swift */,
+				CCAF999C2801D3E00096362E /* DetailView.swift */,
 				F23139BC27FEE13900D4EB9F /* RewardReportView.swift */,
 				F23139BE27FEE13C00D4EB9F /* ProgressBar.swift */,
 				F23139CF27FEE25800D4EB9F /* ModalView.swift */,
@@ -168,9 +225,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 91BF86A527FECD2300A95FA9 /* Build configuration list for PBXNativeTarget "donggle" */;
 			buildPhases = (
+				C635A36E505E3F2905708A81 /* [CP] Check Pods Manifest.lock */,
 				91BF869327FECD2300A95FA9 /* Sources */,
 				91BF869427FECD2300A95FA9 /* Frameworks */,
 				91BF869527FECD2300A95FA9 /* Resources */,
+				2A9558EC8B9C7086C9FEA7C3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -232,23 +291,68 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2A9558EC8B9C7086C9FEA7C3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-donggle/Pods-donggle-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-donggle/Pods-donggle-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-donggle/Pods-donggle-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C635A36E505E3F2905708A81 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-donggle-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		91BF869327FECD2300A95FA9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CCD9C74427FED4FB00C21709 /* HomeView.swift in Sources */,
+				E604B6042801E2100099464C /* DetailCardBack.swift in Sources */,
 				F23139CA27FEE24700D4EB9F /* CustomTopTabBar.swift in Sources */,
 				F23139D027FEE25800D4EB9F /* ModalView.swift in Sources */,
 				31A38ABB27FEEB7600F4EAE8 /* GiftCheckView.swift in Sources */,
 				F29F7CBF27FFCBDC00BCB18D /* Reward.swift in Sources */,
 				F23139BF27FEE13C00D4EB9F /* ProgressBar.swift in Sources */,
 				F23139BB27FEE13700D4EB9F /* StressReportView.swift in Sources */,
+				E604B6002801D2780099464C /* CardDetailView.swift in Sources */,
 				CCD9C74627FED50A00C21709 /* SettingView.swift in Sources */,
 				F23139B627FEE0A500D4EB9F /* ReportView.swift in Sources */,
 				CCD9C74C27FED53C00C21709 /* TabBarView.swift in Sources */,
 				F29F7CBD27FFCB9100BCB18D /* Stress.swift in Sources */,
 				F23139BD27FEE13900D4EB9F /* RewardReportView.swift in Sources */,
+				913108EE2801704C00C4BAB2 /* RecordTestingView.swift in Sources */,
 				E61F252B27FFC45D00D3A96C /* RewardCard2.swift in Sources */,
 				F23139CE27FEE24B00D4EB9F /* TabBarButton.swift in Sources */,
 				F23139CC27FEE24900D4EB9F /* EdgeBorder.swift in Sources */,
@@ -256,9 +360,14 @@
 				91BF86A927FED68400A95FA9 /* RecordView.swift in Sources */,
 				F29F7CBA27FFCB5600BCB18D /* Store.swift in Sources */,
 				F23139C827FEE24300D4EB9F /* CustomTapView.swift in Sources */,
+				E604B6022801D2AD0099464C /* DetailCardFront.swift in Sources */,
+				CCAF999D2801D3E00096362E /* DetailView.swift in Sources */,
 				CCD9C74827FED51F00C21709 /* CalenderView.swift in Sources */,
+				CCAF999B2801D3D20096362E /* RecordRewardView.swift in Sources */,
 				F23139D327FEE2A100D4EB9F /* TimelineView.swift in Sources */,
+				918E3B5E2800350A0045DA4F /* SRdata.swift in Sources */,
 				91BF869B27FECD2300A95FA9 /* donggleApp.swift in Sources */,
+				E61F252F27FFCE6B00D3A96C /* DonggleInteraction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,12 +490,14 @@
 		};
 		91BF86A627FECD2300A95FA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB0671F90418B35B91DBFAA9 /* Pods-donggle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"donggle/Preview Content\"";
+				DEVELOPMENT_TEAM = 54QH6LCWDM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -409,12 +520,14 @@
 		};
 		91BF86A727FECD2300A95FA9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB3C5575839D4ED8C5E6171E /* Pods-donggle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"donggle/Preview Content\"";
+				DEVELOPMENT_TEAM = 54QH6LCWDM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
