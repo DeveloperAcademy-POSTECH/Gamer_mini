@@ -13,7 +13,7 @@ struct donggleApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabBarView()
                 .environmentObject(store)
         }
     }

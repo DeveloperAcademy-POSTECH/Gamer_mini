@@ -19,7 +19,7 @@ struct RewardReportView: View {
                 ScrollView(.horizontal) {
                             HStack {
                                 ForEach(arr, id: \.self) {name in
-                                    RewardCard()
+                                    RewardCard2()
                                 }
                             }
                             .frame(maxHeight: .infinity)
