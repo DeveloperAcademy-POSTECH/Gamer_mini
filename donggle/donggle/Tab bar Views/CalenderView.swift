@@ -9,40 +9,38 @@ import SwiftUI
 import UIKit
 import FSCalendar
 
-struct Reward1 {
-    var id: Int
-    var title: String
-    var description: String
-    var date: String
-    var category: String
-    var isEffective: Bool?
-    var stressKey: Int?
-}
+//struct Reward1 {
+//    var id: Int
+//    var title: String
+//    var description: String
+//    var date: String
+//    var category: String
+//    var isEffective: Bool?
+//    var stressKey: Int?
+//}
 
-var rewardInfo : [Reward1] = [
-    Reward1(id : 0, title : "맥마시기", description : "역할매에서 술마실테야", date : "2022.04.09", category : "🍺", isEffective : true, stressKey : nil ),
-    Reward1(id : 1, title : "맛난 식사", description : "메로나 먹고싶어", date : "2022.04.09", category : "🍔", isEffective : nil, stressKey : 1 ),
-    Reward1(id : 2, title : "여행가기", description : "메로나 먹고싶어", date : "2022.04.10", category : "🚚", isEffective : nil, stressKey : 1 ),
-    Reward1(id : 3, title : "운동하기", description : "메로나 먹고싶어", date : "2022.04.11", category : "⚽️", isEffective : false, stressKey : 1 ),
-    Reward1(id : 4, title : "잠자기", description : "메로나 먹고싶어", date : "2022.04.11", category : "💤", isEffective : nil, stressKey : 1 ),
-    Reward1(id : 5, title : "흐느적거리기", description : "메로나 먹고싶어", date : "2022.04.11", category : "🐙", isEffective : false, stressKey : 1 ),
-    Reward1(id : 6, title : "꿈틀거리기", description : "메로나 먹고싶어", date : "2022.04.12", category : "🪱", isEffective : nil, stressKey : 1 )
-]
+//var rewardInfo : [Reward1] = [
+//    Reward1(id : 0, title : "맥마시기", description : "역할매에서 술마실테야", date : "2022.04.09", category : "🍺", isEffective : true, stressKey : nil ),
+//    Reward1(id : 1, title : "맛난 식사", description : "메로나 먹고싶어", date : "2022.04.09", category : "🍔", isEffective : nil, stressKey : 1 ),
+//    Reward1(id : 2, title : "여행가기", description : "메로나 먹고싶어", date : "2022.04.10", category : "🚚", isEffective : nil, stressKey : 1 ),
+//    Reward1(id : 3, title : "운동하기", description : "메로나 먹고싶어", date : "2022.04.11", category : "⚽️", isEffective : false, stressKey : 1 ),
+//    Reward1(id : 4, title : "잠자기", description : "메로나 먹고싶어", date : "2022.04.11", category : "💤", isEffective : nil, stressKey : 1 ),
+//    Reward1(id : 5, title : "흐느적거리기", description : "메로나 먹고싶어", date : "2022.04.11", category : "🐙", isEffective : false, stressKey : 1 ),
+//    Reward1(id : 6, title : "꿈틀거리기", description : "메로나 먹고싶어", date : "2022.04.12", category : "🪱", isEffective : nil, stressKey : 1 )
+//]
+
+
+var Mainreward : [Reward] = UserDefaults.rewardArray ?? []
 
 struct CalendarView: View {
     
-    static let dateFormat: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY.MM.dd"
-        return formatter
-    }()
+    
     
     static let dateFormatText: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY년 M월 d일"
         return formatter
     }()
-    
     
     let columns = [
         GridItem(.flexible()),
@@ -83,13 +81,19 @@ struct CalendarView: View {
                 Text("\(selectedDate, formatter: CalendarView.dateFormatText)")
                     .padding(10)
                     .font(.title2)
+                Button("추가"){
+                        print("--- 보상상 ---")
+                        print(Mainreward)
+                        print("-----------------")
+                }
+
                 
                 ScrollView {
-                    let currentInfo = rewardInfo.filter { (reward : Reward1 ) -> Bool in
-                        let dataFormatter = DateFormatter()
-                        dataFormatter.dateFormat = "YYYY.MM.dd"
-                        let dateString = dataFormatter.string(from: selectedDate)
-                        return dateString == reward.date }.sorted(by: {$1.isEffective != nil})
+                    let currentInfo = Mainreward.filter { (reward : Reward ) -> Bool in
+//                        let dataFormatter = DateFormatter()
+//                        dataFormatter.dateFormat = "YYYY.MM.dd"
+//                        let dateString = dataFormatter.string(from: selectedDate)
+                        return selectedDate == reward.date }.sorted(by: {$1.isEffective != nil})
                     if(currentInfo.count == 0){
                         Text("입력하신 보상이 없습니다 :)")
                             .padding(20)
@@ -111,9 +115,9 @@ struct CalendarView: View {
                                     }){
                                         //gridView // lazyHgrid 찾아보기 !
                                         VStack{
-                                            Text(reward.category)
+                                            Text("\(reward.category[0])")
                                                 .font(Font.system(size: 50, design: .default))
-                                            Text(reward.title).foregroundColor(Color.black)
+                                            Text("\(reward.title)").foregroundColor(Color.black)
                                         }// : VStack
                                         .padding(20)
                                         .frame(height: 160)
@@ -249,20 +253,39 @@ struct CalendarRepresentable: UIViewRepresentable{
             cell.eventIndicator.transform = CGAffineTransform(scaleX: eventScaleFactor, y: eventScaleFactor)
         }
         
+        let eventdate : [Date] = Mainreward.map({(reward) in
+            return reward.date
+        })
+        
         // 이벤트 표시 개수
         func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
             
-            let dfMatter = DateFormatter()
-            dfMatter.locale = Locale(identifier: "ko_KR")
-            dfMatter.dateFormat = "yyyy.MM.dd"
-            
-            let eventdate : [String] = rewardInfo.map({(reward) in
+//            let formatter = DateFormatter()
+//            formatter.dateStyle = .long
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy년 MM월 dd일 a hh시 mm분"
+
+            let eventdate : [Date] = Mainreward.map({(reward) in
+//                print(reward.date)
+//                print(dfMatter.string(from: reward.date))
                 return reward.date
             })
             
-            let result = eventdate.map( {(eventdate: String) -> Bool in
-                return eventdate == dfMatter.string(from: date)
+
+            let result = eventdate.map( {(eventdate: Date) -> Bool in
+                
+                print("======")
+                print(eventdate)
+                print(formatter.string(from: eventdate))
+                print(date)
+                print(formatter.string(from: date))
+
+                print(formatter.string(from: eventdate) == formatter.string(from: date))
+                print("======")
+                
+                return formatter.string(from: eventdate) == formatter.string(from: date)
             })
+            
             
             if(result.contains(true)){
                 return 1
