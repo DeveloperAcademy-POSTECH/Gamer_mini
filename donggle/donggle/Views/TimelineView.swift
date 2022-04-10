@@ -56,10 +56,10 @@ struct TimelineView: View {
                         ScrollView(showsIndicators: false) {
                             LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 5){
                                 ForEach(stressSet, id: \.self.id) { stress in
-                                    StressCard(stressIndex:stress.index, stressContent: stress.content, stressCateList: getStressCateList(stressCategory : stress.category))
+                                    stressTimeCard(stressIndex:stress.index, stressContent: stress.content, stressCateList: getStressCateList(stressCategory : stress.category))
                                 }
                                 ForEach(rewardSet, id: \.self.id) { reward in
-                                    GiftCard(giftIcon: "🍺", giftName: reward.category[0], giftTitle: reward.title, giftContent: reward.content)
+                                    RewardTimeCard(rewardIcon: "🍺", rewardName: reward.category[0], rewardTitle: reward.title, rewardContent: reward.content)
                                 }
                             }
                         }
@@ -69,7 +69,7 @@ struct TimelineView: View {
                         ScrollView(showsIndicators: false) {
                             LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 5){
                                 ForEach(stressSet, id: \.self.id) { stress in
-                                    StressCard(stressIndex:stress.index, stressContent: stress.content, stressCateList: getStressCateList(stressCategory : stress.category))
+                                    stressTimeCard(stressIndex:stress.index, stressContent: stress.content, stressCateList: getStressCateList(stressCategory : stress.category))
                                 }
                             }
                         }
@@ -79,7 +79,7 @@ struct TimelineView: View {
                         ScrollView(showsIndicators: false) {
                             LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 5){
                                 ForEach(rewardSet, id: \.self.id) { reward in
-                                    GiftCard(giftIcon: "🍺", giftName: reward.category[0], giftTitle: reward.title, giftContent: reward.content)
+                                    RewardTimeCard(rewardIcon: "🍺", rewardName: reward.category[0], rewardTitle: reward.title, rewardContent: reward.content)
                                 }
                             }
                         }
@@ -96,11 +96,11 @@ struct TimelineView: View {
 }
 
 
-struct GiftCard : View {
-    var giftIcon: String
-    var giftName: String
-    var giftTitle: String
-    var giftContent: String
+struct RewardTimeCard : View {
+    var rewardIcon: String
+    var rewardName: String
+    var rewardTitle: String
+    var rewardContent: String
     var body: some View {
         VStack(spacing: 5.0){
             Text("7 목")
@@ -111,9 +111,9 @@ struct GiftCard : View {
             
             HStack(alignment: .center){
                 VStack(alignment: .center){
-                    Text(giftIcon)
+                    Text(rewardIcon)
                         .font(Font.system(size: 50, design: .default))
-                    Text(giftName)
+                    Text(rewardName)
                         .fontWeight(.bold)
                 }.padding(10.0)
                     .frame(width: 80)
@@ -124,10 +124,10 @@ struct GiftCard : View {
                 
                 Spacer()
                 VStack(alignment: .leading){
-                    Text(giftTitle)
+                    Text(rewardTitle)
                         .fontWeight(.bold)
                     Divider()
-                    Text(giftContent)
+                    Text(rewardContent)
                     Spacer()
                 }
             }
@@ -141,7 +141,7 @@ struct GiftCard : View {
 }
 
 
-struct StressCard : View {
+struct stressTimeCard : View {
     var stressIndex: Int
     var stressContent: String
     var stressCateList: String
