@@ -1,7 +1,7 @@
 ---
 name: Issue_template
-about: "[태그] 제목"
-title: ''
+about: issue template
+title: "[태그] 제목"
 labels: ''
 assignees: ''
 
