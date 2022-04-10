@@ -89,21 +89,20 @@ struct TimelineView: View {
                     
                     if (selectedView == 1){ //전체
                         ScrollView(showsIndicators: false) {
-                            VStack(alignment: .center){
+                            LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 5){
                                 ForEach(stressInfo, id: \.self.id) { stress in
                                     StressCard(stressIndex:stress.index, stressName: stress.category, stressContent: stress.content)
                                 }
                                 ForEach(rewardInfo, id: \.self.id) { reward in
                                     GiftCard(giftIcon: reward.icon, giftName: reward.category, giftTitle: reward.title, giftContent: reward.content)
                                 }
-                                
                             }
                         }
                         .padding(.horizontal, 10.0)
                         
                     }else if (selectedView == 2){ //스트레스
                         ScrollView(showsIndicators: false) {
-                            VStack(alignment: .center){
+                            LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 5){
                                 ForEach(stressInfo, id: \.self.id) { stress in
                                     StressCard(stressIndex:stress.index, stressName: stress.category, stressContent: stress.content)
                                 }
@@ -113,7 +112,7 @@ struct TimelineView: View {
                         
                     } else if (selectedView == 3){ //보상
                         ScrollView(showsIndicators: false) {
-                            VStack(alignment: .center){
+                            LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 5){
                                 ForEach(rewardInfo, id: \.self.id) { reward in
                                     GiftCard(giftIcon: reward.icon, giftName: reward.category, giftTitle: reward.title, giftContent: reward.content)
                                 }
