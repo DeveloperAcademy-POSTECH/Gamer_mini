@@ -13,14 +13,11 @@ struct TimelineView: View {
     
     var date1 = Date()
     
-    
-    
     let stressSet = UserDefaults.stressArray ?? []
     let rewardSet = UserDefaults.rewardArray ?? []
 
     
     var body: some View {
-        
         
                 VStack{
                     
@@ -56,10 +53,10 @@ struct TimelineView: View {
                         ScrollView(showsIndicators: false) {
                             LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 5){
                                 ForEach(stressSet, id: \.self.id) { stress in
-                                    stressTimeCard(stressIndex:stress.index, stressContent: stress.content, stressCateList: getStressCateList(stressCategory : stress.category))
+                                    stressTimeCard(stressIndex:stress.index, stressContent: stress.content, stressCateList: getStressCateList(stressCategory : stress.category), stressDate: dateToString(dateInfo: stress.date))
                                 }
                                 ForEach(rewardSet, id: \.self.id) { reward in
-                                    RewardTimeCard(rewardIcon: "🍺", rewardName: reward.category[0], rewardTitle: reward.title, rewardContent: reward.content)
+                                    RewardTimeCard(rewardIcon: "🍺", rewardName: reward.category[0], rewardTitle: reward.title, rewardContent: reward.content, rewardDate: dateToString(dateInfo: reward.date))
                                 }
                             }
                         }
@@ -69,7 +66,7 @@ struct TimelineView: View {
                         ScrollView(showsIndicators: false) {
                             LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 5){
                                 ForEach(stressSet, id: \.self.id) { stress in
-                                    stressTimeCard(stressIndex:stress.index, stressContent: stress.content, stressCateList: getStressCateList(stressCategory : stress.category))
+                                    stressTimeCard(stressIndex:stress.index, stressContent: stress.content, stressCateList: getStressCateList(stressCategory : stress.category), stressDate: dateToString(dateInfo: stress.date))
                                 }
                             }
                         }
@@ -79,7 +76,7 @@ struct TimelineView: View {
                         ScrollView(showsIndicators: false) {
                             LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 5){
                                 ForEach(rewardSet, id: \.self.id) { reward in
-                                    RewardTimeCard(rewardIcon: "🍺", rewardName: reward.category[0], rewardTitle: reward.title, rewardContent: reward.content)
+                                    RewardTimeCard(rewardIcon: "🍺", rewardName: reward.category[0], rewardTitle: reward.title, rewardContent: reward.content, rewardDate: dateToString(dateInfo: reward.date))
                                 }
                             }
                         }
@@ -101,9 +98,10 @@ struct RewardTimeCard : View {
     var rewardName: String
     var rewardTitle: String
     var rewardContent: String
+    var rewardDate: String
     var body: some View {
         VStack(spacing: 5.0){
-            Text("7 목")
+            Text(rewardDate)
                 .font(.title3)
                 .fontWeight(.bold)
                 .padding(.leading, 5.0)
@@ -145,10 +143,11 @@ struct stressTimeCard : View {
     var stressIndex: Int
     var stressContent: String
     var stressCateList: String
+    var stressDate: String
         
     var body: some View {
         VStack(spacing: 5.0){
-            Text("7 목")
+            Text(stressDate)
                 .font(.title3)
                 .fontWeight(.bold)
                 .padding(.leading, 5.0)
@@ -215,6 +214,17 @@ func getStressCateList(stressCategory : [String]) -> String {
     stressCateList = stressCateArr.joined(separator: ", ")
     
     return stressCateList
+}
+
+func dateToString(dateInfo : Date) -> String {
+    
+    var dateString : String
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy.MM.dd"
+    dateString = dateFormatter.string(from: dateInfo)
+    
+    return dateString
 }
 
 
