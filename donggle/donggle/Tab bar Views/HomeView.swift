@@ -1,6 +1,10 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var showModal = false
+    @State var sliderValue : Double = UserDefaults.standard.double(forKey:"sliderValue")
+    @State var stressIndex : Int = UserDefaults.standard.integer(forKey:"stressIndex")
+    
     @State private var showDetails = false
     
     @GestureState var isLongPressed = false
@@ -21,72 +25,77 @@ struct HomeView: View {
                 self.offset = value.translation
             }
         
-        VStack(alignment: .center) {
-                HStack{
-                    Text("동글이")
-                        .font(.system(size: 28, weight: .bold))
-                        .multilineTextAlignment(.leading)
-                        //.position(x:62, y:80)
-                    Spacer()
+        VStack{
+            HStack{
+                Text("동글이")
+                    .font(.system(size: 28, weight: .bold))
+                    
+                Spacer()
+                Button(action: {
+                self.showModal = true
+                }){
                     Image(systemName: "square.and.pencil")
                         .imageScale(.large)
                 }
-                .padding(.top, 40.0)
+                .sheet(isPresented: self.$showModal) {
+                    RecordView(stressIndex: $stressIndex ,sliderValue: $sliderValue)
+                }
+            }
+            .padding(.top, 40.0)
             
+
             donggle(TopPointX: 100, TopPointY: 0, RightPointX: 200, RightPointY: 100, BottomPointX: 100, BottomPointY: 200, LeftPointX: 0, LeftPointY: 100)
-            /*
-                Circle()
-                    .fill(Color.gray)
-                    .frame(width: 200.0, height: 200.0)
-                    .padding(50)
-                    .scaleEffect(isLongPressed ? 1.15 : 1)
-                    .gesture(longPressGesture)
-                    .animation(.spring())
-                    .offset(x: offset.width, y: offset.height)
-                    .gesture(dragGesture)
-                    .animation(.default)
-                    //.position(x:195, y:0)
-             */
-                Text("72%")
-                    .font(.system(size: 24, weight: .regular))
-                    .foregroundColor(Color.gray)
-                Divider()
+          
+//             Circle()
+//                 .fill(Color.init(red: (sliderValue+1)*2/255, green: (101-sliderValue)*2/255, blue: (101-sliderValue)*2/255))
+//                 .frame(width: 200.0, height: 200.0)
+//                 .padding(50)
+//                 .scaleEffect(isLongPressed ? 1.15 : 1)
+//                 .gesture(longPressGesture)
+//                 .animation(.spring())
+//                 .offset(x: offset.width, y: offset.height)
+//                 .gesture(dragGesture)
+//                 .animation(.default)
+
+            Text("\(stressIndex)%")
+                .font(.system(size: 24, weight: .regular))
+                .foregroundColor(Color.gray)
+            Divider()
             Spacer().frame(height: 10)
+            HStack{
+                ForEach(dateList, id: \.self){ index in
+                    Button(
+                        action: {
+                            self.showDetails.toggle()
+                            selectedDate = Int(index) ?? 0
+                        }, label:{
+                            Text(index)
+                        }).buttonStyle(DateButtonStyle())
+                }
+            }
+            .padding()
+            
+            if showDetails{
+                if selectedDate == 1{
+                    RewardCard2()
+                }else{
+                }
                 HStack{
-                    ForEach(dateList, id: \.self){ index in
-                        Button(
-                            action: {
-                                self.showDetails.toggle()
-                                selectedDate = Int(index) ?? 0
-                            }, label:{
-                                Text(index)
-                            }).buttonStyle(DateButtonStyle())
-                    }
+                    RewardCard2()
+                    Spacer()
+                    RewardCard2()
+                    Spacer()
+                    RewardCard2()
                 }
-                .padding()
-                     
-                if showDetails{
-                    if selectedDate == 1{
-                        RewardCard2()
-                    }else{
-                    }
-                    HStack{
-                        RewardCard2()
-                        Spacer()
-                        RewardCard2()
-                        Spacer()
-                        RewardCard2()
-                    }
-                }
-                Spacer()
+            }
+            Spacer()
         }
         .padding(.horizontal, 24.0)
-            
+        
     }
 }
 
 struct DateButtonStyle: ButtonStyle {
-    
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .frame(width: 30.0, height: 30.0)
