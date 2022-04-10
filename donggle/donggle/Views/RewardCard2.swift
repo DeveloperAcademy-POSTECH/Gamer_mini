@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct RewardCard: View {
+struct RewardCard2: View {
     
     //var list: RewardList
     
@@ -35,8 +35,8 @@ struct RewardList: Identifiable{
     let title: String
 }
 */
-struct RewardCard_Previews: PreviewProvider {
+struct RewardCard2_Previews: PreviewProvider {
     static var previews: some View {
-        RewardCard()
+        RewardCard2()
     }
 }
