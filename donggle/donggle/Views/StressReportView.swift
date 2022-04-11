@@ -8,37 +8,60 @@ import SwiftUI
 import SwiftUICharts
 
 struct ListRow: View {
-    var name: String
+    var title: String
+    var category: String
     
     var body: some View {
         HStack {
             HStack {
-                Image(systemName: "star")
-                Text(name)
+                ZStack {
+                    Text(category)
+                        .font(.system(size: 24))
+                }
+                .frame(width: 50, height: 50, alignment: .center)
+                .background(.quaternary)
+                .cornerRadius(50)
+                .padding(.trailing)
+                
+                Text(title)
+                    .font(.system(size: 18, weight: .semibold))
             }
             
             Spacer()
             
             Text("30%")
+                .font(.system(size: 18, weight: .semibold))
         }
+        .frame(height: 50)
     }
 }
 
+
 struct StressReportView: View {
+    let stressSet: [Stress] = UserDefaults.stressArray ?? []
+    
     var body: some View {
-        List {
-            LineView(data: [0, 1, 12, 3, 7, 2, 13], style: ChartStyle(backgroundColor: .white, accentColor: .blue, gradientColor: GradientColor(start: .blue, end: .purple), textColor: .red, legendTextColor: .green, dropShadowColor: .black))
-                .padding(.bottom)
+        ScrollView {
+            LineView(data: [0, 1, 12, 3, 7, 2, 13], style: ChartStyle(backgroundColor: .white, accentColor: .blue, gradientColor: GradientColor(start: .green, end: .teal), textColor: .red, legendTextColor: .green, dropShadowColor: .black))
                 .frame(height: 300)
+                .padding(32)
+                .padding(.bottom, 8)
             
-            ProgressBar(width: 300, height: 20, percent: 69)
-                .padding(.vertical, 20)
+            Rectangle()
+                .frame(height: 16)
+                .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.946))
             
-            ListRow(name: "인간관계")
-            ListRow(name: "직장")
-            ListRow(name: "수면")
-            ListRow(name: "다이어트")
-            ListRow(name: "그외 3개")
+            
+            ProgressBar(width: .infinity, height: 22, percents: [59, 23, 10])
+                .padding(32)
+            
+            VStack {
+                ForEach(stressSet, id: \.self.id) { stress in
+                    ListRow(title: stress.category[0], category: stress.category[0])
+                        .padding(.vertical, 8)
+                }
+            }
+            .padding(.horizontal, 32)
         }
     }
 }

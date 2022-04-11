@@ -10,17 +10,36 @@ import SwiftUI
 
 struct RewardCard2: View {
     
-    //var list: RewardList
+    var title: String
+    var category: [String]
+    var index: Int
     
     var body: some View {
-        VStack(){
-            Text("list.Dday")
-                .font(.system(size: 10, weight: .light))
+        VStack{
+            HStack {
+                Circle()
+                    .frame(width: 26, height: 26)
+                    .foregroundColor(Color.gray.opacity(0.2))
+                    .overlay {
+                        Text(String(index))
+                            .font(.system(size: 12, weight: .semibold))
+                    }
+                
+                Spacer()
+            }
+            .padding(4)
+            
             Circle().frame(width: 60, height: 60)
-            Text("list.title")
+                .overlay {
+                    Text("\(category[0])")
+                        .font(Font.system(size: 50, design: .default))
+                }
+            Text(title)
+                .font(.system(size: 14, weight: .semibold))
+                .padding(.bottom, 12.0)
         }
         .frame(width: 106.0, height: 140.0)
-        .background(Color.gray)
+        .background(.white)
         .cornerRadius(20)
     }
 }
@@ -33,6 +52,6 @@ struct RewardList: Identifiable{
 */
 struct RewardCard2_Previews: PreviewProvider {
     static var previews: some View {
-        RewardCard2()
+        RewardCard2(title: "쩌러", category: ["🍟"], index: 0)
     }
 }

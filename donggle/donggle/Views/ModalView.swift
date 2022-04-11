@@ -28,16 +28,26 @@ struct ModalView: View {
             
             List {
                 Text("2022년 4월")
+                    .padding(.vertical)
                 Text("2022년 3월")
+                    .padding(.vertical)
                 Text("2022년 2월")
+                    .padding(.vertical)
                 Text("2022년 1월")
+                    .padding(.vertical)
                 Text("2021년 12월")
+                    .padding(.vertical)
                 Text("2021년 11월")
+                    .padding(.vertical)
                 Text("2021년 10월")
+                    .padding(.vertical)
                 Text("2021년 9월")
+                    .padding(.vertical)
                 Text("2021년 8월")
+                    .padding(.vertical)
 
             }
+            .listStyle(.plain)
             
             Spacer()
             
