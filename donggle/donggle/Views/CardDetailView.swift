@@ -9,6 +9,10 @@ import SwiftUI
 
 struct CardDetailView: View {
     
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    
+    @State var showingSheet = false
+    
     @State var backDegree = 0.0
     @State var frontDegree = -90.0
     @State var isFlipped = false
@@ -39,15 +43,32 @@ struct CardDetailView: View {
     @State var Evaluation = false
     
     var body: some View {
+        NavigationView{
         ZStack{
             Color(red: 249/255, green: 249/255, blue: 249/255).ignoresSafeArea()
-            VStack{
-                Text("보상 상세")
-                    .font(.system(size: 17, weight: .semibold))
-                    .multilineTextAlignment(.center)
-                    .padding(.top, 12.0)
-                Spacer()
-            }
+            /*
+            ZStack{
+                VStack{
+                    HStack{
+                        Image(systemName: "chevron.left")
+                            .padding(.leading, 24)
+                            .padding(.top, 12.0)
+                        Spacer()
+                        Image(systemName: "ellipsis")
+                            .padding(.trailing, 24)
+                            .padding(.top, 12.0)
+                    }
+                    Spacer()
+                }
+                VStack{
+                    Text("보상 상세")
+                        .font(.system(size: 17, weight: .semibold))
+                        .multilineTextAlignment(.center)
+                        .padding(.top, 12.0)
+                    Spacer()
+                }
+            } */
+            
             VStack{
                 ZStack{
                     DetailCardFront(width: width, height: height, degree: $backDegree)
@@ -72,6 +93,34 @@ struct CardDetailView: View {
                     GiftCheckView()
                 }
             }
+        }
+        .navigationBarTitle("보상 상세", displayMode: .inline)
+        .navigationBarItems(leading: Button(action : {
+            self.mode.wrappedValue.dismiss()
+        }){
+            Image(systemName: "chevron.left")
+                .foregroundColor(Color.black)
+                .padding(8)
+        }, trailing:
+                Button(action: {
+                    self.showingSheet = true
+                }, label: {
+                    Image(systemName: "ellipsis")
+                        .padding(8)
+                        .foregroundColor(Color.black)
+        })
+                    .confirmationDialog("", isPresented: $showingSheet, titleVisibility: .hidden){
+                        Button("보상 수정"){
+
+                        }
+                        Button("보상 삭제", role: .destructive){
+                            
+                        }
+                        Button("취소", role: .cancel){
+                            
+                        }
+                    }
+        )
         }
     }
 }
