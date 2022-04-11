@@ -52,6 +52,8 @@ func stringToImoticon(category:String) -> String {
     case "알콜":
         return "🍻"
 // -----보상--------
+    case "기타":
+        return "🧚‍♀️"
 
     default:
         return "🈚️"
