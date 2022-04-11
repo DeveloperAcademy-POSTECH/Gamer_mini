@@ -47,21 +47,18 @@ func initDateCircle(){
         return String(date.split(separator: " ")[2].split(separator: "일")[0])
     }
     
+    RewardCardInfo = RewardDateArray[0]
     dateCircle = array
 }
 
 var RewardCardInfo : [Reward] = []
-
-func initRewardCardInfo(index : Int){
-    RewardCardInfo = RewardDateArray[index]
-}
 
 struct HomeView: View {
     @State private var showModal = false
     @State var sliderValue : Double = UserDefaults.standard.double(forKey:"sliderValue")
     @State var stressIndex : Int = UserDefaults.standard.integer(forKey:"stressIndex")
     
-    @State private var selectedDate : Int = 1
+    @State private var selectedDate : Int = 0
     
     @GestureState var isLongPressed = false
     @State private var isDetailView = false
@@ -137,7 +134,7 @@ struct HomeView: View {
                             Button(
                                 action: {
                                     selectedDate = index
-                                    initRewardCardInfo(index: index)
+                                    RewardCardInfo = RewardDateArray[index]
                                 }, label:{
                                     Text("\(dateCircle[index])")
                                         .foregroundColor(Color.black)
