@@ -9,7 +9,6 @@ import SwiftUI
 
 var mainReward : [Reward] = UserDefaults.rewardArray ?? []
 
-
 struct TabBarView: View{
     @State private var selection = 1
     
@@ -26,8 +25,9 @@ struct TabBarView: View{
                     Text("Home")
                 }.tag(1)
                 .onAppear{
-                    InitRewardDateArray()
-                    initDateCircle()
+                    RewardDate = initRewardDate()
+                    RewardDateArray = initRewardDateArray(RewardDate : RewardDate)
+                    dateCircle = initDateCircle(RewardDateArray: RewardDateArray)
                 }
 
             ReportView()

@@ -206,7 +206,6 @@ struct CalendarRepresentable: UIViewRepresentable{
         
         // 이벤트 표시 개수
         func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-            
             let rewardEvents : [String] = mainReward.map({(reward) in
                 let formatter = DateFormatter()
                 formatter.dateFormat = "YYYY년 M월 d일"

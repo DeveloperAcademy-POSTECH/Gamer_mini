@@ -1,23 +1,31 @@
 import SwiftUI
 
-
-var dateCircle : [String] = []
-
 //Date String 추출 -> 중복값 삭제 후 정렬
-var RewardDate : [String] = Array(Set(mainReward.map { reward in
-    let formatter = DateFormatter()
-    formatter.dateFormat = "YYYY년 M월 d일"
+var RewardDate : [String] = initRewardDate()
+
+func initRewardDate()-> [String] {
     
-    return formatter.string(from: reward.date)
-})).sorted(by: <)
-
-// Date에 해당하는 보상 넣기
-var RewardDateArray : [[Reward]] = []
-
-func InitRewardDateArray() {
+    var RewardDate : [String] = Array(Set(mainReward.map { reward in
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY년 M월 d일"
+        
+        return formatter.string(from: reward.date)
+    })).sorted(by: <)
+    
     if(RewardDate.count > 7){
         RewardDate.removeSubrange(7...RewardDate.count-1)
     }
+    
+    return RewardDate
+}
+
+// Date에 해당하는 보상 넣기
+var RewardDateArray : [[Reward]] = initRewardDateArray(RewardDate : RewardDate)
+
+func initRewardDateArray(RewardDate : [String])-> [[Reward]] {
+    
+    var RewardDateArray : [[Reward]] = []
+    
     RewardDate.forEach { dateCriteria in
         let DateReward = mainReward.filter{(reward : Reward)-> Bool in
             let formatter = DateFormatter()
@@ -28,13 +36,18 @@ func InitRewardDateArray() {
         print(dateCriteria)
         //        print(DateReward)
         print("-------------------")
+        
         RewardDateArray.append(DateReward)
     }
+    
+    return RewardDateArray
 }
 
-func initDateCircle(){
+var dateCircle : [String] = initDateCircle(RewardDateArray: RewardDateArray)
+
+func initDateCircle(RewardDateArray: [[Reward]])-> [String]{
     
-    dateCircle = []
+    var dateCircle: [String] = []
     
     let array = RewardDateArray.map { array -> String in
         let formatter = DateFormatter()
@@ -47,11 +60,12 @@ func initDateCircle(){
         return String(date.split(separator: " ")[2].split(separator: "일")[0])
     }
     
-    RewardCardInfo = RewardDateArray[0]
     dateCircle = array
+    
+    return dateCircle
 }
 
-var RewardCardInfo : [Reward] = []
+var RewardCardInfo : [Reward] = RewardDateArray.count==0 ? [] : RewardDateArray[0]
 
 struct HomeView: View {
     @State private var showModal = false
@@ -93,10 +107,9 @@ struct HomeView: View {
                 }
                 .sheet(isPresented: self.$showModal) {
                     RecordView(stressIndex: $stressIndex ,sliderValue: $sliderValue)
-                    .onDisappear{
-                        mainReward = UserDefaults.rewardArray ?? []
-                        print("RecordView is closed")
-                    }
+                        .onDisappear{
+                            print(dateCircle)
+                        }
                 }
             }
             .padding()
@@ -146,7 +159,6 @@ struct HomeView: View {
                         }
                     } // : 날짜 Hstack
                     .padding()
-                    
                 Spacer()
                 
                 //건빵 List
@@ -156,7 +168,7 @@ struct HomeView: View {
                             VStack{
                                 Text("\(reward.date)")
                                 Text("\(reward.category[0])")
-                                //                                    .font(Font.system(size: 50, design: .default))
+                                // .font(Font.system(size: 50, design: .default))
                                 Text("\(reward.title)").foregroundColor(Color.black)
                             }// : VStack
                             .padding(20)
@@ -173,8 +185,8 @@ struct HomeView: View {
     }
 }
 
+
 struct RewardCard3: View {
-    
     var body: some View {
         VStack(){
             Text("list.Dday")
