@@ -60,6 +60,7 @@ struct RecordView: View {
             let rewardInstance = Reward(id: rewardUUID, title: rewardTitle, content: rewardDescription, date: rewardDate, category: selectedReward, isEffective: nil, stressKey: stressUUID)
             rArray.append(rewardInstance)
             UserDefaults.rewardArray = rArray
+            
             print("---스트레스와 보상 함께 기록---")
             print(sArray)
             print(rArray)

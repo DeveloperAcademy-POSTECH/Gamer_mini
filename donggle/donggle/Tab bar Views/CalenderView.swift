@@ -170,16 +170,16 @@ struct CalendarRepresentable: UIViewRepresentable{
         
         // header 커스텀
         calendar.headerHeight = 45
-        calendar.appearance.headerTitleAlignment = .left
+        calendar.appearance.headerTitleAlignment = .center
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0 // 다음달 이전달 안보이게
         
         calendar.appearance.headerDateFormat = "YYYY년 M월"
         calendar.appearance.headerTitleColor = .black
         calendar.appearance.headerTitleFont = UIFont.systemFont(ofSize: 24)
         
-        // 일 월 화 수 목 금
-        calendar.locale = Locale(identifier: "ko_KR")
-        calendar.appearance.weekdayTextColor = .black
+        
+//        calendar.locale = Locale(identifier: "ko_KR") // 일 월 화 수 목 금
+        calendar.appearance.weekdayTextColor = .gray
         
         return calendar
     }
