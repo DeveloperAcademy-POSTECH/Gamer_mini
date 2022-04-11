@@ -72,3 +72,4 @@ struct StressReportView_Previews: PreviewProvider {
             .environmentObject(SSStore())
     }
 }
+

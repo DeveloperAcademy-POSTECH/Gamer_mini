@@ -43,3 +43,4 @@ class SSStore: ObservableObject {
         return removedArray
     }
 }
+

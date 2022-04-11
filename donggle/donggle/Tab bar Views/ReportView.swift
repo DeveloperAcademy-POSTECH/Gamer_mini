@@ -61,3 +61,4 @@ struct ReportView_Previews: PreviewProvider {
             .environmentObject(SSStore())
     }
 }
+

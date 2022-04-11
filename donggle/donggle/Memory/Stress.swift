@@ -27,3 +27,4 @@ class Stress2: Identifiable, ObservableObject  {
         self.rewardKey = rewardKey ?? nil
     }
 }
+
