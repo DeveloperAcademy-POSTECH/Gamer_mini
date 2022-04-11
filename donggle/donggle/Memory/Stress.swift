@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class Stress: Identifiable, ObservableObject  { 
+class Stress2: Identifiable, ObservableObject  { 
     var id: Int
     var title: String
     var description: String

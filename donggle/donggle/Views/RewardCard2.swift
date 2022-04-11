@@ -13,9 +13,16 @@ struct RewardCard2: View {
     //var list: RewardList
     
     var body: some View {
-        VStack(){
-            Text("list.Dday")
-                .font(.system(size: 10, weight: .light))
+        VStack{
+            HStack {
+                Circle()
+                    .frame(width: 26, height: 26)
+                    .foregroundColor(Color.gray.opacity(0.2))
+                
+                Spacer()
+            }
+            .padding(4)
+            
             Circle().frame(width: 60, height: 60)
                 .overlay {
                     Text("🍔")
@@ -26,7 +33,7 @@ struct RewardCard2: View {
                 .padding(.bottom, 12.0)
         }
         .frame(width: 106.0, height: 140.0)
-        .background(Color.gray)
+        .background(.white)
         .cornerRadius(20)
     }
 }

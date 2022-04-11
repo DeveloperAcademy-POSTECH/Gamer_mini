@@ -23,8 +23,6 @@
 		CCD9C74827FED51F00C21709 /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74727FED51F00C21709 /* CalenderView.swift */; };
 		CCD9C74C27FED53C00C21709 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74B27FED53C00C21709 /* TabBarView.swift */; };
 		E604B6002801D2780099464C /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E604B5FF2801D2780099464C /* CardDetailView.swift */; };
-		E604B6022801D2AD0099464C /* DetailCardFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = E604B6012801D2AD0099464C /* DetailCardFront.swift */; };
-		E604B6042801E2100099464C /* DetailCardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E604B6032801E2100099464C /* DetailCardBack.swift */; };
 		E61F252B27FFC45D00D3A96C /* RewardCard2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61F252A27FFC45D00D3A96C /* RewardCard2.swift */; };
 		E61F252F27FFCE6B00D3A96C /* DonggleInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61F252E27FFCE6B00D3A96C /* DonggleInteraction.swift */; };
 		F23139B627FEE0A500D4EB9F /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139B527FEE0A500D4EB9F /* ReportView.swift */; };
@@ -38,6 +36,8 @@
 		F23139CE27FEE24B00D4EB9F /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139CD27FEE24B00D4EB9F /* TabBarButton.swift */; };
 		F23139D027FEE25800D4EB9F /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139CF27FEE25800D4EB9F /* ModalView.swift */; };
 		F23139D327FEE2A100D4EB9F /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139D227FEE2A100D4EB9F /* TimelineView.swift */; };
+		F27F62C42803391A0013C6F5 /* DetailCardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27F62C32803391A0013C6F5 /* DetailCardBack.swift */; };
+		F27F62C6280339300013C6F5 /* DetailCardFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27F62C5280339300013C6F5 /* DetailCardFront.swift */; };
 		F29F7CBA27FFCB5600BCB18D /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29F7CB927FFCB5600BCB18D /* Store.swift */; };
 		F29F7CBD27FFCB9100BCB18D /* Stress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29F7CBC27FFCB9100BCB18D /* Stress.swift */; };
 		F29F7CBF27FFCBDC00BCB18D /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29F7CBE27FFCBDC00BCB18D /* Reward.swift */; };
@@ -62,8 +62,6 @@
 		CCD9C74727FED51F00C21709 /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
 		CCD9C74B27FED53C00C21709 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		E604B5FF2801D2780099464C /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
-		E604B6012801D2AD0099464C /* DetailCardFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCardFront.swift; sourceTree = "<group>"; };
-		E604B6032801E2100099464C /* DetailCardBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCardBack.swift; sourceTree = "<group>"; };
 		E61F252A27FFC45D00D3A96C /* RewardCard2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardCard2.swift; sourceTree = "<group>"; };
 		E61F252E27FFCE6B00D3A96C /* DonggleInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonggleInteraction.swift; sourceTree = "<group>"; };
 		F23139B527FEE0A500D4EB9F /* ReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
@@ -76,10 +74,12 @@
 		F23139CD27FEE24B00D4EB9F /* TabBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
 		F23139CF27FEE25800D4EB9F /* ModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		F23139D227FEE2A100D4EB9F /* TimelineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
-		FB3C5575839D4ED8C5E6171E /* Pods-donggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-donggle.release.xcconfig"; path = "Target Support Files/Pods-donggle/Pods-donggle.release.xcconfig"; sourceTree = "<group>"; };
+		F27F62C32803391A0013C6F5 /* DetailCardBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCardBack.swift; sourceTree = "<group>"; };
+		F27F62C5280339300013C6F5 /* DetailCardFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCardFront.swift; sourceTree = "<group>"; };
 		F29F7CB927FFCB5600BCB18D /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		F29F7CBC27FFCB9100BCB18D /* Stress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stress.swift; sourceTree = "<group>"; };
 		F29F7CBE27FFCBDC00BCB18D /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
+		FB3C5575839D4ED8C5E6171E /* Pods-donggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-donggle.release.xcconfig"; path = "Target Support Files/Pods-donggle/Pods-donggle.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				918E3B5C280033BB0045DA4F /* Model */,
-				F23139B727FEE0C700D4EB9F /* Views */,
 				91BF869A27FECD2300A95FA9 /* donggleApp.swift */,
 				F29F7CB827FFCB3600BCB18D /* Memory */,
 				F23139B727FEE0C700D4EB9F /* Views */,
@@ -177,8 +176,6 @@
 			children = (
 				E61F252A27FFC45D00D3A96C /* RewardCard2.swift */,
 				E604B5FF2801D2780099464C /* CardDetailView.swift */,
-				E604B6012801D2AD0099464C /* DetailCardFront.swift */,
-				E604B6032801E2100099464C /* DetailCardBack.swift */,
 				91BF869C27FECD2300A95FA9 /* ContentView.swift */,
 				CCD9C74B27FED53C00C21709 /* TabBarView.swift */,
 				E61F252E27FFCE6B00D3A96C /* DonggleInteraction.swift */,
@@ -193,6 +190,8 @@
 				F23139CF27FEE25800D4EB9F /* ModalView.swift */,
 				F23139D227FEE2A100D4EB9F /* TimelineView.swift */,
 				31A38ABA27FEEB7600F4EAE8 /* GiftCheckView.swift */,
+				F27F62C32803391A0013C6F5 /* DetailCardBack.swift */,
+				F27F62C5280339300013C6F5 /* DetailCardFront.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -339,10 +338,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCD9C74427FED4FB00C21709 /* HomeView.swift in Sources */,
-				E604B6042801E2100099464C /* DetailCardBack.swift in Sources */,
 				F23139CA27FEE24700D4EB9F /* CustomTopTabBar.swift in Sources */,
 				F23139D027FEE25800D4EB9F /* ModalView.swift in Sources */,
 				31A38ABB27FEEB7600F4EAE8 /* GiftCheckView.swift in Sources */,
+				F27F62C6280339300013C6F5 /* DetailCardFront.swift in Sources */,
 				F29F7CBF27FFCBDC00BCB18D /* Reward.swift in Sources */,
 				F23139BF27FEE13C00D4EB9F /* ProgressBar.swift in Sources */,
 				F23139BB27FEE13700D4EB9F /* StressReportView.swift in Sources */,
@@ -360,9 +359,9 @@
 				91BF86A927FED68400A95FA9 /* RecordView.swift in Sources */,
 				F29F7CBA27FFCB5600BCB18D /* Store.swift in Sources */,
 				F23139C827FEE24300D4EB9F /* CustomTapView.swift in Sources */,
-				E604B6022801D2AD0099464C /* DetailCardFront.swift in Sources */,
 				CCAF999D2801D3E00096362E /* DetailView.swift in Sources */,
 				CCD9C74827FED51F00C21709 /* CalenderView.swift in Sources */,
+				F27F62C42803391A0013C6F5 /* DetailCardBack.swift in Sources */,
 				CCAF999B2801D3D20096362E /* RecordRewardView.swift in Sources */,
 				F23139D327FEE2A100D4EB9F /* TimelineView.swift in Sources */,
 				918E3B5E2800350A0045DA4F /* SRdata.swift in Sources */,

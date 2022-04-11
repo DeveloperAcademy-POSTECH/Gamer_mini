@@ -8,11 +8,16 @@
 import SwiftUI
 
 
-
-
-
 struct ReportView: View {
     @State private var showModal = false
+    
+    func countTarget() {
+        var arr: [Stress] = UserDefaults.stressArray ?? []
+        let stl = Stress(id: UUID(), index: 0, content: "", date: Date(), category: ["직장"], rewardKey: nil)
+        arr.append(stl)
+        UserDefaults.stressArray = arr
+        print(arr)
+    }
     var body: some View {
         NavigationView {
             CustomTapView()
@@ -29,6 +34,7 @@ struct ReportView: View {
                     }
                     ToolbarItem(placement:.navigationBarLeading) {
                             Button(action: {
+                                countTarget()
                                 self.showModal = true
                             }) {
                                 HStack {
@@ -52,6 +58,6 @@ struct ReportView: View {
 struct ReportView_Previews: PreviewProvider {
     static var previews: some View {
         ReportView()
-            .environmentObject(Store())
+            .environmentObject(SSStore())
     }
 }

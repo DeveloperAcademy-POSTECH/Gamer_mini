@@ -26,10 +26,27 @@ struct ProgressBar: View {
                     .frame(width: width, height: height)
                     .foregroundColor(.black.opacity(0.1))
                 
-                Rectangle()
-                    .frame(width: percent * multiplier, height: height)
-                    .background(.green)
+                HStack {
+                    Rectangle()
+                        .frame(width: percent * multiplier, height: height)
+                        .background(.green)
                     .foregroundColor(.clear)
+                    
+                    Rectangle()
+                        .frame(width: percent * multiplier, height: height)
+                        .background(.red)
+                    .foregroundColor(.clear)
+                    
+                    Rectangle()
+                        .frame(width: percent * multiplier, height: height)
+                        .background(.blue)
+                    .foregroundColor(.clear)
+                    
+                    Rectangle()
+                        .frame(width: percent * multiplier, height: height)
+                        .background(.secondary)
+                    .foregroundColor(.clear)
+                }
             }
             .cornerRadius(height)
         }

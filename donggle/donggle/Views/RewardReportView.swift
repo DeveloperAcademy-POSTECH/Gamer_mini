@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct RewardReportView: View {
-    @EnvironmentObject var store: Store
+    @EnvironmentObject var store: SSStore
     var arr = ["치킨먹자", "버거먹자", "족발먹자", "피자먹자", "닭발먹자", "밥먹자"]
     var body: some View {
         ScrollView {
@@ -17,15 +17,18 @@ struct RewardReportView: View {
                     .frame(maxWidth: .infinity ,alignment: .leading)
                 
                 ScrollView(.horizontal) {
-                            HStack {
+                    HStack(spacing: 0) {
                                 ForEach(arr, id: \.self) {name in
                                     RewardCard2()
+                                        .padding(.horizontal, 4)
+                                        .shadow(color:  Color.black.opacity(0.2), radius: 5, y: 10)
                                 }
                             }
                             .frame(maxHeight: .infinity)
                         }
             }
-            .padding(32)
+            .frame(height: 240)
+            .padding(24)
             
             Rectangle()
                 .frame(height: 16)
@@ -33,7 +36,7 @@ struct RewardReportView: View {
             
             
             ProgressBar(width: .infinity, height: 22, percent: 69)
-                .padding(32)
+                .padding(24)
             
             VStack {
                 ForEach(store.stressList) { stress in
@@ -41,7 +44,7 @@ struct RewardReportView: View {
                         .padding(.vertical, 8)
                 }
             }
-            .padding(.horizontal, 32)
+            .padding(.horizontal, 24)
         }
     }
 }
@@ -49,6 +52,6 @@ struct RewardReportView: View {
 struct RewardReportView_Previews: PreviewProvider {
     static var previews: some View {
         RewardReportView()
-            .environmentObject(Store())
+            .environmentObject(SSStore())
     }
 }

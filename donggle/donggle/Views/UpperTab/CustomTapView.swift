@@ -35,6 +35,6 @@ extension View {
 struct CustomTapView_Previews: PreviewProvider {
     static var previews: some View {
         CustomTapView()
-            .environmentObject(Store())
+            .environmentObject(SSStore())
     }
 }

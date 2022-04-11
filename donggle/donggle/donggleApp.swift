@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct donggleApp: App {
-    @StateObject var store = Store()
+    @StateObject var store = SSStore()
     
     var body: some Scene {
         WindowGroup {

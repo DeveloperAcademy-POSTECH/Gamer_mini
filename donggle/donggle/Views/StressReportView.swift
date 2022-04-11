@@ -38,7 +38,7 @@ struct ListRow: View {
 
 
 struct StressReportView: View {
-    @EnvironmentObject var store: Store
+    @EnvironmentObject var store: SSStore
     
     var body: some View {
         ScrollView {
@@ -69,6 +69,6 @@ struct StressReportView: View {
 struct StressReportView_Previews: PreviewProvider {
     static var previews: some View {
         StressReportView()
-            .environmentObject(Store())
+            .environmentObject(SSStore())
     }
 }

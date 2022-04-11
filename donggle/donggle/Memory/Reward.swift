@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class Reward: Identifiable, ObservableObject  {
+class Reward2: Identifiable, ObservableObject  {
     var id: Int
     var title: String
     var description: String
