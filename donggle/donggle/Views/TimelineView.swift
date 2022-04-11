@@ -13,9 +13,20 @@ struct TimelineView: View {
     
     var date1 = Date()
     
-    let stressSet = UserDefaults.stressArray ?? []
-    let rewardSet = UserDefaults.rewardArray ?? []
 
+    struct Datas {
+        let stressSet : [Stress]
+        let rewardSet : [Reward]
+        
+        init(stressSet: [Stress], rewardSet: [Reward]){
+            self.stressSet = stressSet.sorted(by: { $0.date > $1.date})
+            self.rewardSet = rewardSet.sorted(by: { $0.date > $1.date})
+        }
+        
+    }
+    
+    var sortedData = Datas(stressSet: UserDefaults.stressArray ?? [], rewardSet: UserDefaults.rewardArray ?? [])
+    
     
     var body: some View {
         
@@ -52,10 +63,10 @@ struct TimelineView: View {
                     if (selectedView == 1){ //전체
                         ScrollView(showsIndicators: false) {
                             LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 5){
-                                ForEach(stressSet, id: \.self.id) { stress in
+                                ForEach(sortedData.stressSet, id: \.self.id) { stress in
                                     stressTimeCard(stressIndex:stress.index, stressContent: stress.content, stressCateList: getStressCateList(stressCategory : stress.category), stressDate: dateToString(dateInfo: stress.date))
                                 }
-                                ForEach(rewardSet, id: \.self.id) { reward in
+                                ForEach(sortedData.rewardSet, id: \.self.id) { reward in
                                     RewardTimeCard(rewardIcon: "🍺", rewardName: reward.category[0], rewardTitle: reward.title, rewardContent: reward.content, rewardDate: dateToString(dateInfo: reward.date))
                                 }
                             }
@@ -65,7 +76,7 @@ struct TimelineView: View {
                     }else if (selectedView == 2){ //스트레스
                         ScrollView(showsIndicators: false) {
                             LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 5){
-                                ForEach(stressSet, id: \.self.id) { stress in
+                                ForEach(sortDate(stressSet: sortedData.stressSet), id: \.self.id) { stress in
                                     stressTimeCard(stressIndex:stress.index, stressContent: stress.content, stressCateList: getStressCateList(stressCategory : stress.category), stressDate: dateToString(dateInfo: stress.date))
                                 }
                             }
@@ -75,7 +86,7 @@ struct TimelineView: View {
                     } else if (selectedView == 3){ //보상
                         ScrollView(showsIndicators: false) {
                             LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 5){
-                                ForEach(rewardSet, id: \.self.id) { reward in
+                                ForEach(sortedData.rewardSet, id: \.self.id) { reward in
                                     RewardTimeCard(rewardIcon: "🍺", rewardName: reward.category[0], rewardTitle: reward.title, rewardContent: reward.content, rewardDate: dateToString(dateInfo: reward.date))
                                 }
                             }
@@ -87,6 +98,7 @@ struct TimelineView: View {
                     
                 }
                 .navigationBarTitle("타임라인", displayMode: .inline)
+                .navigationBarItems(trailing: Text("hello"))
                     
         }
     
@@ -200,6 +212,13 @@ struct stressTimeCard : View {
     }
 
 }
+
+//sort by date
+//func sortDate(stressSet : [Stress]) -> [Stress]{
+//    let sortedStress = stressSet.sorted(by: { $0.date > $1.date })
+//
+//    return sortedStress
+//}
 
 //여러개의 카테고리가 ","로 구분되어 나열된 string 만들기
 func getStressCateList(stressCategory : [String]) -> String {
