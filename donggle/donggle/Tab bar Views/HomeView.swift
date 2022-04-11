@@ -1,7 +1,5 @@
 import SwiftUI
 
-var mainReward : [Reward] = UserDefaults.rewardArray ?? []
-
 var dateCircle : [String] = []
 
 //Date String 추출 -> 중복값 삭제 후 정렬
@@ -153,7 +151,7 @@ struct HomeView: View {
                         }
                     } // : 날짜 Hstack
                     .padding()
-                }// :ScrollView
+                } // :ScrollView
                 Spacer()
                 ScrollView(.horizontal, showsIndicators: false){
                     
@@ -176,21 +174,6 @@ struct HomeView: View {
                 }
             }
         }    }
-}
-
-
-struct 보상card: View {
-    var title: String
-    var isSelected: Bool
-    var action: () -> Void
-    var body: some View {
-        Button(action: self.action) {
-            VStack{
-                Text("☺️")
-                Text(self.title).foregroundColor(Color.black)
-            }.background(self.isSelected == false ? nil : RoundedRectangle(cornerRadius: 10).fill(Color.init(red: 193/255, green: 233/255, blue: 252/255)))
-        }
-    }
 }
 
 struct DateButtonStyle: ButtonStyle {

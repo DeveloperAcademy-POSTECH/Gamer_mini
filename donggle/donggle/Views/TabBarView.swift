@@ -15,7 +15,10 @@ struct TabBarView: View{
         UITabBar.appearance().backgroundColor = UIColor.white
     }
     
+    
     var body: some View{
+        
+        var mainReward : [Reward] = UserDefaults.rewardArray ?? []
         
         TabView(selection:$selection){
             HomeView()
@@ -35,6 +38,9 @@ struct TabBarView: View{
                     Image(systemName: "square.and.pencil")
                     Text("Calendar")
                 }.tag(3)
+                .onAppear{
+                    print("hi")
+                }
             
             SettingView()
                 .tabItem {

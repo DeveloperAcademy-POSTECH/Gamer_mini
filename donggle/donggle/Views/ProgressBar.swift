@@ -19,7 +19,6 @@ struct ProgressBar: View {
             Text("인간관계가 가장 스트레스에요")
                 .font(.system(size: 22, weight: .bold))
                 .frame(maxWidth: width, alignment: .leading)
-                
             
             ZStack(alignment: .leading) {
                 Rectangle()
