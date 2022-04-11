@@ -17,17 +17,10 @@ struct DetailCardBack: View {
 
         ZStack(){
             VStack{
-                ZStack(){
-                    Text("2022.04.03")
-                        .font(.system(size: 15, weight: .regular))
-                        .multilineTextAlignment(.center)
-                    HStack(){
-                        Spacer()
-                        Image(systemName: "pencil")
-                            .padding(.trailing, 30)
-                    }
-                }
-                .padding(.top, 30.0)
+                Text("2022.04.03")
+                    .font(.system(size: 15, weight: .regular))
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 30.0)
                 Spacer()
             }
             VStack{
