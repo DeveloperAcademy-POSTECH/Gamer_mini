@@ -15,6 +15,7 @@ struct donggleApp: App {
         WindowGroup {
             TabBarView()
                 .environmentObject(store)
+
         }
     }
 }
