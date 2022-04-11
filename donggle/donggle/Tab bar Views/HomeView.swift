@@ -2,15 +2,6 @@ import SwiftUI
 
 var mainReward : [Reward] = UserDefaults.rewardArray ?? []
 
-
-
-let columns = [
-    GridItem(.flexible()),
-    GridItem(.flexible()),
-    GridItem(.flexible())
-]
-
-
 var dateCircle : [String] = []
 
 //Date String 추출 -> 중복값 삭제 후 정렬
@@ -31,10 +22,10 @@ func InitRewardDateArray() {
             formatter.dateFormat = "YYYY년 M월 d일"
             return dateCriteria == formatter.string(from: reward.date)
         }
-        print("-------------------")
-        print(dateCriteria)
-//        print(DateReward)
-        print("-------------------")
+//        print("-------------------")
+//        print(dateCriteria)
+//        //        print(DateReward)
+//        print("-------------------")
         RewardDateArray.append(DateReward)
     }
 }
@@ -44,10 +35,10 @@ func initDateCircle(){
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY년 M월 d일"
         let date = formatter.string(from: array[0].date)
-//        print(date)
-//        print("--")
-//        print(String(date.split(separator: " ")[2].split(separator: "일")[0]))
-//        print("--")
+        //        print(date)
+        //        print("--")
+        //        print(String(date.split(separator: " ")[2].split(separator: "일")[0]))
+        //        print("--")
         return String(date.split(separator: " ")[2].split(separator: "일")[0])
     }
     dateCircle = array
@@ -92,10 +83,11 @@ struct HomeView: View {
                 Text("동글이")
                     .font(.system(size: 28, weight: .bold))
                     .padding(.leading, 20)
-                    
+                    .onAppear()
+                
                 Spacer()
                 Button(action: {
-                self.showModal = true
+                    self.showModal = true
                 }){
                     Image(systemName: "square.and.pencil")
                         .imageScale(.large)
@@ -124,6 +116,19 @@ struct HomeView: View {
             Spacer().frame(height: 10)
             
             if(dateCircle.count == 0){
+                
+                //                HStack{
+                //                    ForEach(dateCircle1, id: \.self){ index in
+                //                        Button(
+                //                            action: {
+                //                                selectedDate = Int(index) ?? 0
+                //                            }, label:{
+                //                                Text("\(index)")
+                //                            }).buttonStyle(DateButtonStyle())
+                //                    }
+                //                }
+                //                .padding()
+                
                 Text("아직 입력하신 보상이 없습니다 ~ !!")
                     .padding(20)
                     .frame(maxWidth:.infinity)
@@ -136,104 +141,65 @@ struct HomeView: View {
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack{
                         ForEach(dateCircle.indices, id: \.self){ index in
-                            Button(
-                                action: {
-                                    selectedDate = index
-                                    initRewardCardInfo(index: index)
-                                }, label:{
-                                    Text("\(dateCircle[index])")
-                                }).buttonStyle(DateButtonStyle())
+                            if(index < 7){ // 터치하는 거 알아보기
+                                Button(
+                                    action: {
+                                        selectedDate = index
+                                        initRewardCardInfo(index: index)
+                                    }, label:{
+                                        Text("\(dateCircle[index])")
+                                    }).buttonStyle(DateButtonStyle())
+                            }
                         }
                     } // : 날짜 Hstack
                     .padding()
                 }// :ScrollView
                 Spacer()
                 ScrollView(.horizontal, showsIndicators: false){
-//                    HStack{
-                        LazyVGrid(
-                            columns: columns,
-                            alignment: .center,
-                            spacing: 6,
-                            pinnedViews: [],
-                            content: {
+                    
+                    HStack{
                         ForEach(RewardCardInfo, id: \.self.id) { reward in
                             VStack{
                                 Text("\(reward.date)")
                                 Text("\(reward.category[0])")
-                                    .font(Font.system(size: 50, design: .default))
+                                //                                    .font(Font.system(size: 50, design: .default))
                                 Text("\(reward.title)").foregroundColor(Color.black)
                             }// : VStack
                             .padding(20)
-                            .frame(height: 160)
+                            .frame(width: 120, height: 160) // 가로값 고정 x...!
                             .overlay(
                                 RoundedRectangle(cornerRadius: 15)
                                     .stroke(lineWidth: 1)
                             )
                         }.padding(10)
-                            }) // : LazyVGrid
                     }
                 }
             }
-            
-            
-        }
-//            Spacer()
-            
-//            ScrollView(.horizontal, showsIndicators: false){
-//                ForEach(RewardDateDictionary[0], id: \.self.id) { reward in
-//                    let rewardCard = Button(action: {
-//                        isDetailView.toggle()
-//                    }){
-//                        VStack{
-//                            Text("\(reward.category[0])")
-//                                    .font(Font.system(size: 50, design: .default))
-//                            Text("\(reward.title)").foregroundColor(Color.black)
-//                        }// : VStack
-//                        .padding(20)
-//                        .frame(height: 160)
-//                        .overlay(
-//                            RoundedRectangle(cornerRadius: 15)
-//                                .stroke(lineWidth: 1)
-//                        )
-//                    }.padding(10)
-//                        .fullScreenCover(isPresented: $isDetailView) {
-//                            DetailView(isFullScreen: $isDetailView)
-//                        }
-//                    if(reward.isEffective == nil){
-//                        rewardCard.foregroundColor(Color.blue)
-//                    }else{
-//                        rewardCard.foregroundColor(Color.black)
-//                    }
-//                }
-//            }
-//        }
-//        .padding(.horizontal, 24.0)
-        
-//    }
+        }    }
 }
 
-struct RewardCard3: View {
-    
+
+struct 보상card: View {
+    var title: String
+    var isSelected: Bool
+    var action: () -> Void
     var body: some View {
-        VStack(){
-            Text("list.Dday")
-                .font(.system(size: 10, weight: .light))
-            Circle().frame(width: 60, height: 60)
-            Text("list.title")
+        Button(action: self.action) {
+            VStack{
+                Text("☺️")
+                Text(self.title).foregroundColor(Color.black)
+            }.background(self.isSelected == false ? nil : RoundedRectangle(cornerRadius: 10).fill(Color.init(red: 193/255, green: 233/255, blue: 252/255)))
         }
-        .frame(width: 106.0, height: 140.0)
-        .background(Color.gray)
-        .cornerRadius(20)
     }
 }
 
 struct DateButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .frame(width: 30.0, height: 30.0)
-            .padding()
+            .frame(width: 22, height: 22)
+            .padding(10)
             .foregroundColor(.white)
-            .background(configuration.isPressed ? Color.red : Color.gray)
+            .background(configuration.isPressed ? Color.yellow : Color.white)
             .cornerRadius(30)
     }
 }
