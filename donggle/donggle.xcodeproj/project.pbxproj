@@ -133,9 +133,9 @@
 		91BF869927FECD2300A95FA9 /* donggle */ = {
 			isa = PBXGroup;
 			children = (
+				91BF869A27FECD2300A95FA9 /* donggleApp.swift */,
 				918E3B5C280033BB0045DA4F /* Model */,
 				F23139B727FEE0C700D4EB9F /* Views */,
-				91BF869A27FECD2300A95FA9 /* donggleApp.swift */,
 				CCD9C74227FED4EB00C21709 /* Tab bar Views */,
 				91BF869E27FECD2300A95FA9 /* Assets.xcassets */,
 				91BF86A027FECD2300A95FA9 /* Preview Content */,
@@ -176,8 +176,8 @@
 			children = (
 				F23139BA27FEE13700D4EB9F /* StressReportView.swift */,
 				F23139BC27FEE13900D4EB9F /* RewardReportView.swift */,
-				E61F252A27FFC45D00D3A96C /* RewardCard2.swift */,
 				F23139BE27FEE13C00D4EB9F /* ProgressBar.swift */,
+				E61F252A27FFC45D00D3A96C /* RewardCard2.swift */,
 				91BF869C27FECD2300A95FA9 /* ContentView.swift */,
 				CCD9C74B27FED53C00C21709 /* TabBarView.swift */,
 				E604B60D2802F77E0099464C /* CardDetailView.swift */,
