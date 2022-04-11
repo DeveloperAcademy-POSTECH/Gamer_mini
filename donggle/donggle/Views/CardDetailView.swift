@@ -38,37 +38,40 @@ struct CardDetailView: View {
     
     @State var Evaluation = false
     
-    
     var body: some View {
-        VStack{
-            ZStack{
-                
-                DetailCardFront(width: width, height: height, degree: $frontDegree)
-                DetailCardBack(width: width, height: height, degree: $backDegree)
-                 
-            }.onTapGesture{
-                flipCard()
-            }
-            //RewardDetailCard()
-                //.padding(.top, 172)
-            Button(action: {
-                self.Evaluation = true
-            }) {
-                Text("평가하기")
-                    .font(.system(size: 17, weight: .regular))
-                    .foregroundColor(Color.black)
+        ZStack{
+            Color(red: 249/255, green: 249/255, blue: 249/255).ignoresSafeArea()
+            VStack{
+                Text("보상 상세")
+                    .font(.system(size: 17, weight: .semibold))
                     .multilineTextAlignment(.center)
-                    .frame(width: 160.0, height: 50)
-                    .background(Color.yellow)
-                    .cornerRadius(14)
+                    .padding(.top, 12.0)
+                Spacer()
             }
-            .padding(.top, 32.0)
-            .sheet(isPresented: self.$Evaluation){
-                GiftCheckView()
+            VStack{
+                ZStack{
+                    DetailCardFront(width: width, height: height, degree: $backDegree)
+                    DetailCardBack(width: width, height: height, degree: $frontDegree)
+
+                }.onTapGesture{
+                    flipCard()
+                }
+                Button(action: {
+                    self.Evaluation = true
+                }) {
+                    Text("평가하기")
+                        .font(.system(size: 17, weight: .regular))
+                        .foregroundColor(Color.black)
+                        .multilineTextAlignment(.center)
+                        .frame(width: 160.0, height: 50)
+                        .background(Color.yellow)
+                        .cornerRadius(14)
+                }
+                .padding(.top, 32.0)
+                .sheet(isPresented: self.$Evaluation){
+                    GiftCheckView()
+                }
             }
-        }
-        if Evaluation{
-            Text("Hello")
         }
     }
 }

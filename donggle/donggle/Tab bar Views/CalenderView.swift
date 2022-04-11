@@ -9,40 +9,15 @@ import SwiftUI
 import UIKit
 import FSCalendar
 
-struct Reward1 {
-    var id: Int
-    var title: String
-    var description: String
-    var date: String
-    var category: String
-    var isEffective: Bool?
-    var stressKey: Int?
-}
-
-var rewardInfo : [Reward1] = [
-    Reward1(id : 0, title : "맥마시기", description : "역할매에서 술마실테야", date : "2022.04.09", category : "🍺", isEffective : true, stressKey : nil ),
-    Reward1(id : 1, title : "맛난 식사", description : "메로나 먹고싶어", date : "2022.04.09", category : "🍔", isEffective : nil, stressKey : 1 ),
-    Reward1(id : 2, title : "여행가기", description : "메로나 먹고싶어", date : "2022.04.10", category : "🚚", isEffective : nil, stressKey : 1 ),
-    Reward1(id : 3, title : "운동하기", description : "메로나 먹고싶어", date : "2022.04.11", category : "⚽️", isEffective : false, stressKey : 1 ),
-    Reward1(id : 4, title : "잠자기", description : "메로나 먹고싶어", date : "2022.04.11", category : "💤", isEffective : nil, stressKey : 1 ),
-    Reward1(id : 5, title : "흐느적거리기", description : "메로나 먹고싶어", date : "2022.04.11", category : "🐙", isEffective : false, stressKey : 1 ),
-    Reward1(id : 6, title : "꿈틀거리기", description : "메로나 먹고싶어", date : "2022.04.12", category : "🪱", isEffective : nil, stressKey : 1 )
-]
+var Mainreward : [Reward] = UserDefaults.rewardArray ?? []
 
 struct CalendarView: View {
-    
-    static let dateFormat: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY.MM.dd"
-        return formatter
-    }()
     
     static let dateFormatText: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY년 M월 d일"
         return formatter
     }()
-    
     
     let columns = [
         GridItem(.flexible()),
@@ -51,6 +26,7 @@ struct CalendarView: View {
     ]
     
     @State var selectedDate: Date = Date()
+    
     @State private var isRecordView = false
     @State private var isDetailView = false
     
@@ -83,13 +59,19 @@ struct CalendarView: View {
                 Text("\(selectedDate, formatter: CalendarView.dateFormatText)")
                     .padding(10)
                     .font(.title2)
+                Button("보상전체 출력"){
+                        print("--- 보상상 ---")
+                        print(Mainreward)
+                        print("-----------------")
+                }
                 
                 ScrollView {
-                    let currentInfo = rewardInfo.filter { (reward : Reward1 ) -> Bool in
-                        let dataFormatter = DateFormatter()
-                        dataFormatter.dateFormat = "YYYY.MM.dd"
-                        let dateString = dataFormatter.string(from: selectedDate)
-                        return dateString == reward.date }.sorted(by: {$1.isEffective != nil})
+                    let currentInfo = Mainreward.filter { (reward : Reward ) -> Bool in
+                        
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = "YYYY년 M월 d일"
+                        
+                        return formatter.string(from: selectedDate) == formatter.string(from: reward.date) }.sorted(by: {$1.isEffective != nil})
                     if(currentInfo.count == 0){
                         Text("입력하신 보상이 없습니다 :)")
                             .padding(20)
@@ -111,9 +93,9 @@ struct CalendarView: View {
                                     }){
                                         //gridView // lazyHgrid 찾아보기 !
                                         VStack{
-                                            Text(reward.category)
-                                                .font(Font.system(size: 50, design: .default))
-                                            Text(reward.title).foregroundColor(Color.black)
+                                                Text("\(reward.category[0])")
+//                                                    .font(Font.system(size: 50, design: .default))
+                                            Text("\(reward.title)").foregroundColor(Color.black)
                                         }// : VStack
                                         .padding(20)
                                         .frame(height: 160)
@@ -159,9 +141,11 @@ struct CalendarRepresentable: UIViewRepresentable{
         // 색 시정
         // 캘린더 배경 색
 //        calendar.backgroundColor = UIColor(red: 241/255, green: 249/255, blue: 255/255, alpha: 1)
+        
         // 선택한 날짜 색
         calendar.appearance.selectionColor = UIColor(red: 38/255, green: 153/255, blue: 251/255, alpha: 1)
         calendar.appearance.borderSelectionColor = UIColor(red: 38/255, green: 153/255, blue: 251/255, alpha: 1)
+        
         // 오늘 날짜
         calendar.appearance.todayColor = UIColor(red: 188/255, green: 224/255, blue: 253/255, alpha: 1)
         
@@ -169,11 +153,14 @@ struct CalendarRepresentable: UIViewRepresentable{
         calendar.appearance.titleDefaultColor = .black  // 평일
         calendar.appearance.titleWeekendColor = .red    // 주말
         
-        //        calendar.rowHeight = 100
+        // dot 기본 색
+        calendar.appearance.eventDefaultColor = .gray
+        calendar.appearance.eventSelectionColor = .red
         
         //폰트
         // Weekday
         calendar.appearance.weekdayFont = UIFont(name: "NotoSansKR-Regular", size: 10)
+        
         // 각각의 일(날짜)
         calendar.appearance.titleFont = UIFont(name: "NotoSansKR-Regular", size: 14)
         
@@ -205,7 +192,11 @@ struct CalendarRepresentable: UIViewRepresentable{
     class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource{
         var parent: CalendarRepresentable
         
-        var events: [Date] = []
+        let rewardEvents : [String] = Mainreward.map({(reward) in
+            let formatter = DateFormatter()
+            formatter.dateFormat = "YYYY년 M월 d일"
+            return formatter.string(from: reward.date)
+        })
         
         init(_ parent: CalendarRepresentable) {
             self.parent = parent
@@ -214,12 +205,6 @@ struct CalendarRepresentable: UIViewRepresentable{
         // 날짜 선택 시 콜백 메소드
                 func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
                     parent.selectedDate = date
-        
-//                    let dfMatter = DateFormatter()
-//                    dfMatter.locale = Locale(identifier: "ko_KR")
-//                    dfMatter.dateFormat = "yyyy.MM.dd"
-//
-//                    print(dfMatter.string(from: date) + " 날짜가 선택되었습니다.")
                 }
         
         
@@ -249,32 +234,24 @@ struct CalendarRepresentable: UIViewRepresentable{
             cell.eventIndicator.transform = CGAffineTransform(scaleX: eventScaleFactor, y: eventScaleFactor)
         }
         
+        
         // 이벤트 표시 개수
         func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
             
-            let dfMatter = DateFormatter()
-            dfMatter.locale = Locale(identifier: "ko_KR")
-            dfMatter.dateFormat = "yyyy.MM.dd"
+            let formatter = DateFormatter()
+            formatter.dateFormat = "YYYY년 M월 d일"
             
-            let eventdate : [String] = rewardInfo.map({(reward) in
-                return reward.date
-            })
-            
-            let result = eventdate.map( {(eventdate: String) -> Bool in
-                return eventdate == dfMatter.string(from: date)
-            })
-            
-            if(result.contains(true)){
+            if(rewardEvents.contains(formatter.string(from: date))){
                 return 1
             }else{
                 return 0
             }
             
         }
+        
+        
     }
 }
-
-
 
 
 //struct RewardCard_river: View {
