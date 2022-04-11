@@ -17,6 +17,10 @@ struct RewardCard2: View {
             Text("list.Dday")
                 .font(.system(size: 10, weight: .light))
             Circle().frame(width: 60, height: 60)
+                .overlay {
+                    Text("🍔")
+                        .font(Font.system(size: 50, design: .default))
+                }
             Text("list.title")
         }
         .frame(width: 106.0, height: 140.0)

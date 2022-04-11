@@ -26,10 +26,15 @@ struct TimelineView: View {
                         Button(action: {
                             self.showModal = true
                         }) {
-                            Text("4월")
-                                .foregroundColor(.black)
-                                .font(.title2)
-                                .padding(10)
+                            HStack {
+                                Text("4월")
+                                    .foregroundColor(.black)
+                                    .font(.title2)
+                                
+                                Image(systemName: "chevron.down")
+                                    .padding(.vertical)
+                                    .foregroundColor(.black)
+                            }
                         }
                         .sheet(isPresented: self.$showModal) {
                             ModalView()

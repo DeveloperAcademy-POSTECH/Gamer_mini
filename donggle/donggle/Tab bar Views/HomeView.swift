@@ -122,6 +122,7 @@ struct HomeView: View {
                 .foregroundColor(Color.gray)
             Divider()
             Spacer().frame(height: 10)
+
             
             if(dateCircle.count == 0){
                 Text("아직 입력하신 보상이 없습니다 ~ !!")
