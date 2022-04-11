@@ -1,11 +1,10 @@
 import SwiftUI
 
-var mainReward : [Reward] = UserDefaults.rewardArray ?? []
 
 var dateCircle : [String] = []
 
 //Date String 추출 -> 중복값 삭제 후 정렬
-let RewardDate : [String] = Array(Set(mainReward.map { reward in
+var RewardDate : [String] = Array(Set(mainReward.map { reward in
     let formatter = DateFormatter()
     formatter.dateFormat = "YYYY년 M월 d일"
     
@@ -16,21 +15,27 @@ let RewardDate : [String] = Array(Set(mainReward.map { reward in
 var RewardDateArray : [[Reward]] = []
 
 func InitRewardDateArray() {
+    if(RewardDate.count > 7){
+        RewardDate.removeSubrange(7...RewardDate.count-1)
+    }
     RewardDate.forEach { dateCriteria in
         let DateReward = mainReward.filter{(reward : Reward)-> Bool in
             let formatter = DateFormatter()
             formatter.dateFormat = "YYYY년 M월 d일"
             return dateCriteria == formatter.string(from: reward.date)
         }
-//        print("-------------------")
-//        print(dateCriteria)
-//        //        print(DateReward)
-//        print("-------------------")
+        print("-------------------")
+        print(dateCriteria)
+        //        print(DateReward)
+        print("-------------------")
         RewardDateArray.append(DateReward)
     }
 }
 
 func initDateCircle(){
+    
+    dateCircle = []
+    
     let array = RewardDateArray.map { array -> String in
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY년 M월 d일"
@@ -41,14 +46,12 @@ func initDateCircle(){
         //        print("--")
         return String(date.split(separator: " ")[2].split(separator: "일")[0])
     }
+    
+    RewardCardInfo = RewardDateArray[0]
     dateCircle = array
 }
 
 var RewardCardInfo : [Reward] = []
-
-func initRewardCardInfo(index : Int){
-    RewardCardInfo = RewardDateArray[index]
-}
 
 struct HomeView: View {
     @State private var showModal = false
@@ -67,9 +70,6 @@ struct HomeView: View {
         let longPressGesture = LongPressGesture()
             .updating($isLongPressed){ newValue, state, transaction in
                 state = newValue
-                
-                InitRewardDateArray()
-                initDateCircle()
             }
         
         let dragGesture = DragGesture()
@@ -83,7 +83,6 @@ struct HomeView: View {
                 Text("동글이")
                     .font(.system(size: 28, weight: .bold))
                     .padding(.leading, 20)
-                    .onAppear()
                 
                 Spacer()
                 Button(action: {
@@ -94,6 +93,10 @@ struct HomeView: View {
                 }
                 .sheet(isPresented: self.$showModal) {
                     RecordView(stressIndex: $stressIndex ,sliderValue: $sliderValue)
+                    .onDisappear{
+                        mainReward = UserDefaults.rewardArray ?? []
+                        print("RecordView is closed")
+                    }
                 }
             }
             .padding()
@@ -116,19 +119,6 @@ struct HomeView: View {
             Spacer().frame(height: 10)
             
             if(dateCircle.count == 0){
-                
-                //                HStack{
-                //                    ForEach(dateCircle1, id: \.self){ index in
-                //                        Button(
-                //                            action: {
-                //                                selectedDate = Int(index) ?? 0
-                //                            }, label:{
-                //                                Text("\(index)")
-                //                            }).buttonStyle(DateButtonStyle())
-                //                    }
-                //                }
-                //                .padding()
-                
                 Text("아직 입력하신 보상이 없습니다 ~ !!")
                     .padding(20)
                     .frame(maxWidth:.infinity)
@@ -138,25 +128,29 @@ struct HomeView: View {
                     ).padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
                 Spacer()
             }else{
-                ScrollView(.horizontal, showsIndicators: false){
+                // dateCircle
                     HStack{
                         ForEach(dateCircle.indices, id: \.self){ index in
-                            if(index < 7){ // 터치하는 거 알아보기
-                                Button(
-                                    action: {
-                                        selectedDate = index
-                                        initRewardCardInfo(index: index)
-                                    }, label:{
-                                        Text("\(dateCircle[index])")
-                                    }).buttonStyle(DateButtonStyle())
-                            }
+                            Button(
+                                action: {
+                                    selectedDate = index
+                                    RewardCardInfo = RewardDateArray[index]
+                                }, label:{
+                                    Text("\(dateCircle[index])")
+                                        .foregroundColor(Color.black)
+                                })
+                            .frame(width: 22, height: 22)
+                            .padding(10)
+                            .background(selectedDate == index  ? Color.yellow : Color.white)
+                            .cornerRadius(30)
                         }
                     } // : 날짜 Hstack
                     .padding()
-                }// :ScrollView
-                Spacer()
-                ScrollView(.horizontal, showsIndicators: false){
                     
+                Spacer()
+                
+                //건빵 List
+                ScrollView(.horizontal, showsIndicators: false){
                     HStack{
                         ForEach(RewardCardInfo, id: \.self.id) { reward in
                             VStack{
@@ -175,32 +169,22 @@ struct HomeView: View {
                     }
                 }
             }
-        }    }
-}
-
-
-struct 보상card: View {
-    var title: String
-    var isSelected: Bool
-    var action: () -> Void
-    var body: some View {
-        Button(action: self.action) {
-            VStack{
-                Text("☺️")
-                Text(self.title).foregroundColor(Color.black)
-            }.background(self.isSelected == false ? nil : RoundedRectangle(cornerRadius: 10).fill(Color.init(red: 193/255, green: 233/255, blue: 252/255)))
         }
     }
 }
 
-struct DateButtonStyle: ButtonStyle {
-    func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .frame(width: 22, height: 22)
-            .padding(10)
-            .foregroundColor(.white)
-            .background(configuration.isPressed ? Color.yellow : Color.white)
-            .cornerRadius(30)
+struct RewardCard3: View {
+    
+    var body: some View {
+        VStack(){
+            Text("list.Dday")
+                .font(.system(size: 10, weight: .light))
+            Circle().frame(width: 60, height: 60)
+            Text("list.title")
+        }
+        .frame(width: 106.0, height: 140.0)
+        .background(Color.gray)
+        .cornerRadius(20)
     }
 }
 

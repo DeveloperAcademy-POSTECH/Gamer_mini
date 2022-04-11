@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+var mainReward : [Reward] = UserDefaults.rewardArray ?? []
+
 
 struct TabBarView: View{
     @State private var selection = 1
@@ -23,6 +25,10 @@ struct TabBarView: View{
                     Image(systemName: "house")
                     Text("Home")
                 }.tag(1)
+                .onAppear{
+                    InitRewardDateArray()
+                    initDateCircle()
+                }
 
             ReportView()
                 .tabItem {
