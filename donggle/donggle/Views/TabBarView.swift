@@ -18,7 +18,6 @@ struct TabBarView: View{
     var body: some View{
         
         TabView(selection:$selection){
-            
             HomeView()
                 .tabItem {
                     Image(systemName: "house")

@@ -174,7 +174,10 @@
 		F23139B727FEE0C700D4EB9F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F23139BA27FEE13700D4EB9F /* StressReportView.swift */,
+				F23139BC27FEE13900D4EB9F /* RewardReportView.swift */,
 				E61F252A27FFC45D00D3A96C /* RewardCard2.swift */,
+				F23139BE27FEE13C00D4EB9F /* ProgressBar.swift */,
 				91BF869C27FECD2300A95FA9 /* ContentView.swift */,
 				CCD9C74B27FED53C00C21709 /* TabBarView.swift */,
 				E604B60D2802F77E0099464C /* CardDetailView.swift */,
@@ -182,11 +185,8 @@
 				F23139D127FEE26800D4EB9F /* UpperTab */,
 				91BF86A827FED68400A95FA9 /* RecordView.swift */,
 				913108ED2801704C00C4BAB2 /* RecordTestingView.swift */,
-				F23139BA27FEE13700D4EB9F /* StressReportView.swift */,
 				CCAF999A2801D3D20096362E /* RecordRewardView.swift */,
 				CCAF999C2801D3E00096362E /* DetailView.swift */,
-				F23139BC27FEE13900D4EB9F /* RewardReportView.swift */,
-				F23139BE27FEE13C00D4EB9F /* ProgressBar.swift */,
 				F23139CF27FEE25800D4EB9F /* ModalView.swift */,
 				F23139D227FEE2A100D4EB9F /* TimelineView.swift */,
 				31A38ABA27FEEB7600F4EAE8 /* GiftCheckView.swift */,

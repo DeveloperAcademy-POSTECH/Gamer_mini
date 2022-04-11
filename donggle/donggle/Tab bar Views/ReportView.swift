@@ -7,8 +7,10 @@
 
 import SwiftUI
 
+
 struct ReportView: View {
     @State private var showModal = false
+    
     var body: some View {
         NavigationView {
             CustomTapView()
@@ -19,16 +21,22 @@ struct ReportView: View {
                             label: {
                                 Text("Timeline")
                                     .padding(10)
+                                    .font(.system(size: 18, weight: .medium))
+                                    .foregroundColor(.green)
                             })
                     }
                     ToolbarItem(placement:.navigationBarLeading) {
                             Button(action: {
                                 self.showModal = true
                             }) {
-                                Text("4월")
-                                    .foregroundColor(.black)
-                                    .font(.title2)
-                                    .padding(10)
+                                HStack {
+                                    Text("4월")
+                                        .foregroundColor(.black)
+                                        .font(.system(size: 24, weight: .semibold))
+                                    
+                                    Image(systemName: "chevron.down")
+                                        .foregroundColor(.black)
+                                }
                             }
                             .sheet(isPresented: self.$showModal) {
                                 ModalView()

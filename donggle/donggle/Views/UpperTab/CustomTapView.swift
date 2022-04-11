@@ -22,8 +22,7 @@ struct CustomTapView: View {
             }
             Spacer()
         }
-        .frame(width: UIScreen.main.bounds.width - 24, alignment: .center)
-        .padding(.horizontal, 12)
+        .frame(alignment: .center)
     }
 }
 
