@@ -29,7 +29,7 @@ struct RecordView: View {
     @State var selectedStress: [String] = []
     @State var selectedReward: [String] = []
     @State var stressCategory: [String] = ["직장", "날씨", "수면", "가족", "돈", "그냥"]
-    @State var rewardCategory: [String] = ["잠자기", "알콜", "쇼핑", "운동", "음식", "놀기"]
+    @State var rewardCategory: [String] = ["Rnfwka", "알콜", "쇼핑", "운동", "음식", "놀기"]
     @State private var rewardDate = Date()
     
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
