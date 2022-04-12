@@ -107,9 +107,6 @@ struct HomeView: View {
                 }
                 .sheet(isPresented: self.$showModal) {
                     RecordView(stressIndex: $stressIndex ,sliderValue: $sliderValue)
-                        .onDisappear{
-                            print(dateCircle)
-                        }
                 }
             }
             .padding()
@@ -165,6 +162,7 @@ struct HomeView: View {
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack{
                         ForEach(RewardCardInfo, id: \.self.id) { reward in
+                            //RewardCard2(title: reward.title, category: String(reward.category[0]), index: 0)
                             VStack{
                                 Text("\(reward.date)")
                                 Text("\(reward.category[0])")
@@ -177,6 +175,7 @@ struct HomeView: View {
                                 RoundedRectangle(cornerRadius: 15)
                                     .stroke(lineWidth: 1)
                             )
+                            
                         }.padding(10)
                     }
                 }

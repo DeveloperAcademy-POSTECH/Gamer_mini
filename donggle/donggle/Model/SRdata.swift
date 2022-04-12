@@ -54,5 +54,4 @@ extension UserDefaults {
             UserDefaults.standard.set(try? PropertyListEncoder().encode(newValue), forKey:"rewardArray")
         }
     }
-    
 }

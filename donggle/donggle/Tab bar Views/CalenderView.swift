@@ -70,6 +70,7 @@ struct CalendarView: View {
                         formatter.dateFormat = "YYYY년 M월 d일"
                         
                         return formatter.string(from: selectedDate) == formatter.string(from: reward.date) }.sorted(by: {$1.isEffective != nil})
+                    
                     if(currentInfo.count == 0){
                         Text("입력하신 보상이 없습니다 :)")
                             .padding(20)
