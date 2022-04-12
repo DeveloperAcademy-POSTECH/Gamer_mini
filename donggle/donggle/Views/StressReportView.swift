@@ -186,6 +186,7 @@ struct StressReportView: View {
                                 percent: stress.value, isStress: true)
                     }
                 }
+
             }
         }
     }

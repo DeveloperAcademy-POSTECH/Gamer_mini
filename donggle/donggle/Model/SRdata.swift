@@ -26,6 +26,42 @@ struct Reward : Codable{
     var stressKey : UUID?
 }
 
+func stringToImoticon(category:String) -> String {
+    switch category{
+    case "직장":
+        return "🧳"
+    case "날씨":
+        return "🌤"
+    case "수면":
+        return "🤤"
+    case "가족":
+        return "👨‍👩‍👧‍👦"
+    case "금전":
+        return "💵"
+// -----스트레스--------
+    case "쇼핑":
+        return "🛒"
+    case "운동":
+        return "🏋️‍♀️"
+    case "음식":
+        return "🍚"
+    case "놀기":
+        return "🕺"
+    case "잠자기":
+        return "💤"
+    case "알콜":
+        return "🍻"
+// -----보상--------
+    case "기타":
+        return "🧚‍♀️"
+
+    default:
+        return "🈚️"
+    }
+}
+
+
+
 extension UserDefaults {
     
     static var stressArray: [Stress]? {
@@ -54,7 +90,6 @@ extension UserDefaults {
             UserDefaults.standard.set(try? PropertyListEncoder().encode(newValue), forKey:"rewardArray")
         }
     }
-    
 }
 
 

@@ -2,7 +2,6 @@ import SwiftUI
 
 //Date String 추출 -> 중복값 삭제 후 정렬
 var RewardDate : [String] = initRewardDate()
-var mainReward: [Reward] = UserDefaults.rewardArray ?? []
 
 func initRewardDate()-> [String] {
     
@@ -144,34 +143,33 @@ struct HomeView: View {
                             .stroke(lineWidth: 1)
                     ).padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
                 Spacer()
-            } else {
+            }else{
                 // dateCircle
-                HStack{
-                    ForEach(dateCircle.indices, id: \.self){ index in
-                        Button(
-                            action: {
-                                selectedDate = index
-                                RewardCardInfo = RewardDateArray[index]
-                            }, label:{
-                                Text("\(dateCircle[index])")
-                                    .foregroundColor(Color.black)
-                            })
-                        .frame(width: 22, height: 22)
-                        .padding(10)
-                        .background(selectedDate == index  ? Color.yellow : Color.white)
-                        .cornerRadius(30)
-                    }
-                } // : 날짜 Hstack
-                .padding()
-                
+                    HStack{
+                        ForEach(dateCircle.indices, id: \.self){ index in
+                            Button(
+                                action: {
+                                    selectedDate = index
+                                    RewardCardInfo = RewardDateArray[index]
+                                }, label:{
+                                    Text("\(dateCircle[index])")
+                                        .foregroundColor(Color.black)
+                                })
+                            .frame(width: 22, height: 22)
+                            .padding(10)
+                            .background(selectedDate == index  ? Color.yellow : Color.white)
+                            .cornerRadius(30)
+                        }
+                    } // : 날짜 Hstack
+                    .padding()
                 Spacer()
                 
                 //건빵 List
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack{
                         ForEach(RewardCardInfo, id: \.self.id) { reward in
-                            
-                            //                            RewardCard2(title: reward.title, category: reward.category[0], index: 123)
+
+                            //RewardCard2(title: reward.title, category: String(reward.category[0]), index: 0)
                             VStack{
                                 Text("\(reward.date)")
                                 Text("\(reward.category[0])")
@@ -184,8 +182,7 @@ struct HomeView: View {
                                 RoundedRectangle(cornerRadius: 15)
                                     .stroke(lineWidth: 1)
                             )
-                            
-                            
+                       
                         }.padding(10)
                     }
                 }
