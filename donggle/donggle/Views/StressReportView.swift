@@ -56,10 +56,12 @@ struct StressReportView: View {
                 .padding(32)
             
             VStack {
-                ForEach(stressSet, id: \.self.id) { stress in
-                    ListRow(title: stress.category[0], category: stress.category[0])
-                        .padding(.vertical, 8)
-                }
+//                ForEach(stressSet, id: \.self.id) { stress in
+//                    ListRow(
+//                        title: stress.content,
+//                        category: stress.category[0])
+//                        .padding(.vertical, 8)
+//                }
             }
             .padding(.horizontal, 32)
         }

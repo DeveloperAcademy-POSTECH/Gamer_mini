@@ -7,10 +7,12 @@
 
 import SwiftUI
 
+
 import Foundation
 
 var mainReward : [Reward] = UserDefaults.rewardArray ?? []
 var mainStress : [Stress] = UserDefaults.stressArray ?? []
+
 
 struct TabBarView: View{
     @State private var selection = 1
@@ -27,6 +29,11 @@ struct TabBarView: View{
                     Image(systemName: "house")
                     Text("Home")
                 }.tag(1)
+                .onAppear{
+                    RewardDate = initRewardDate()
+                    RewardDateArray = initRewardDateArray(RewardDate : RewardDate)
+                    dateCircle = initDateCircle(RewardDateArray: RewardDateArray)
+                }
 
             ReportView()
                 .tabItem {

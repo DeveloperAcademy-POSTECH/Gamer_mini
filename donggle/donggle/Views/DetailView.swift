@@ -11,9 +11,14 @@ import SwiftUI
 struct DetailView: View {
     @Binding var isFullScreen: Bool
     
+    var reward: Reward
+    
     var body: some View {
+        
         NavigationView {
             NavigationLink(destination: CalendarView()) {
+                
+                    DetailContextView(reward: reward)
             }.navigationBarTitle("상세뷰")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
@@ -23,8 +28,27 @@ struct DetailView: View {
                         }) {
                             Image(systemName: "chevron.backward")
                         }
-                    }
-                }
+                    } // : ToolbarItem
+                } // : toolbar
+            
+        }// : NavigationView
+        
+        //DetailContextView(reward: reward)
+        
+    }
+}
+
+
+
+struct DetailContextView: View {
+    
+    var reward: Reward
+    var body: some View {
+        VStack{
+            Text("\(reward.category[0])")
+            Text("\(reward.title)")
+            Text("\(reward.content)")
+            Text("\(reward.date)")
         }
     }
 }
