@@ -8,6 +8,7 @@ import SwiftUI
 
 let rewardSet = UserDefaults.rewardArray ?? []
 func setSortedRewardArray(arr: [Reward]) -> [(key: String, value: String)] {
+    var tmpArray: Array<(key: String, value: Double)> = []
     for reward in rewardSet {
         for name in reward.category {
                     categories.append(name)
@@ -27,13 +28,50 @@ func setSortedRewardArray(arr: [Reward]) -> [(key: String, value: String)] {
     for item in tmpArray {
         array.append((key: item.key, value: "\(Int(floor(item.value / sum * 100)))%"))
     }
+    
+    return array.sorted { a, b in
+        if a.value > b.value {
+            if a.key > b.key {
+                return false
+            } else {
+                return true
+            }
+        }
+        return false
+    }
 
-    return array
+    // 6개 이상부터는 그 외 n개로 묶어서 보여주기
+}
+
+
+func getTop6Reward(filteredRewards: [Reward]) -> [(key: String, value: Double)] {
+    var tmpArray: Array<(key: String, value: Double)> = []
+    for reward in filteredRewards {
+        for name in reward.category {
+                    categories.append(name)
+                    let count = Dictionary[name]
+                    Dictionary[name] = Double(count ?? 0)+1
+        }
+    }
+    tmpArray = Dictionary.sorted { a, b in
+        a.value > b.value
+    }
+    
+    if(tmpArray.count > 6){
+        tmpArray.removeSubrange(6...tmpArray.count-1)
+    }
+    
+    return tmpArray
+}
+
+let filteredRewards = rewardSet.filter { reward in
+    reward.isEffective == true
 }
 
 struct RewardReportView: View {
     @State var sortedArray = setSortedRewardArray(arr: rewardSet)
     @State var rewardPercents = getPercent(list: setSortedRewardArray(arr: rewardSet))
+    @State var effectiveRewards = getTop6Reward(filteredRewards: filteredRewards)
     
     var body: some View {
         ScrollView {
@@ -44,33 +82,34 @@ struct RewardReportView: View {
                 
                 ScrollView(.horizontal) {
                     HStack(spacing: 0) {
-                        ForEach(rewardSet.indices, id: \.self) { index in
-                            RewardCard2(title: rewardSet[index].title, category: rewardSet[index].category, index: index + 1)
+                        ForEach(effectiveRewards.indices, id: \.self) { index in
+                            let reward = effectiveRewards[index]
+                            RewardCard2(title: reward.key, category: reward.key, index: index + 1)
                                         .padding(.horizontal, 4)
                                         .shadow(color:  Color.black.opacity(0.08), radius: 5, y: 6)
                                 }
                             }
-                    
+                            .frame(height: 200)
                         }
             }
-            .padding(24)
-            .frame(height: 240)
+            .padding(20)
             
             Rectangle()
                 .frame(height: 16)
                 .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.946))
             
             
-            ProgressBar(width: UIScreen.main.bounds.width - 32, height: 22, dataList: sortedArray, isStress: false)
+            ProgressBar(width: UIScreen.main.bounds.width - 52, height: 22, dataList: sortedArray, isStress: false)
 
             
-            VStack {
+            VStack(spacing: 16) {
                 ForEach(sortedArray.indices, id: \.self) { index in
                     let reward = sortedArray[index]
                     ListRow(title: reward.key, category: reward.key,
                             percent: reward.value, isStress: false)
                 }
             }
+            .padding(.horizontal, 20)
         }
     }
 }
