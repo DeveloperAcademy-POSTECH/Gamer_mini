@@ -22,7 +22,6 @@ struct CustomTapView: View {
             }
             Spacer()
         }
-        .frame(alignment: .center)
     }
 }
 

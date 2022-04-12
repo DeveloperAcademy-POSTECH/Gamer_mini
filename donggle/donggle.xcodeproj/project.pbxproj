@@ -11,7 +11,6 @@
 		913108EE2801704C00C4BAB2 /* RecordTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913108ED2801704C00C4BAB2 /* RecordTestingView.swift */; };
 		918E3B5E2800350A0045DA4F /* SRdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918E3B5D2800350A0045DA4F /* SRdata.swift */; };
 		91BF869B27FECD2300A95FA9 /* donggleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF869A27FECD2300A95FA9 /* donggleApp.swift */; };
-		91BF869D27FECD2300A95FA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF869C27FECD2300A95FA9 /* ContentView.swift */; };
 		91BF869F27FECD2300A95FA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91BF869E27FECD2300A95FA9 /* Assets.xcassets */; };
 		91BF86A227FECD2300A95FA9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91BF86A127FECD2300A95FA9 /* Preview Assets.xcassets */; };
 		91BF86A927FED68400A95FA9 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF86A827FED68400A95FA9 /* RecordView.swift */; };
@@ -30,13 +29,14 @@
 		F23139BB27FEE13700D4EB9F /* StressReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139BA27FEE13700D4EB9F /* StressReportView.swift */; };
 		F23139BD27FEE13900D4EB9F /* RewardReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139BC27FEE13900D4EB9F /* RewardReportView.swift */; };
 		F23139BF27FEE13C00D4EB9F /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139BE27FEE13C00D4EB9F /* ProgressBar.swift */; };
-		F23139C427FEE1CF00D4EB9F /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = F23139C327FEE1CF00D4EB9F /* SwiftUICharts */; };
 		F23139C827FEE24300D4EB9F /* CustomTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139C727FEE24300D4EB9F /* CustomTapView.swift */; };
 		F23139CA27FEE24700D4EB9F /* CustomTopTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139C927FEE24700D4EB9F /* CustomTopTabBar.swift */; };
 		F23139CC27FEE24900D4EB9F /* EdgeBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139CB27FEE24900D4EB9F /* EdgeBorder.swift */; };
 		F23139CE27FEE24B00D4EB9F /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139CD27FEE24B00D4EB9F /* TabBarButton.swift */; };
 		F23139D027FEE25800D4EB9F /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139CF27FEE25800D4EB9F /* ModalView.swift */; };
 		F23139D327FEE2A100D4EB9F /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23139D227FEE2A100D4EB9F /* TimelineView.swift */; };
+		F23A5D6428058D6900F54207 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = F23A5D6328058D6900F54207 /* Charts */; };
+		F2E90CAC28058E6C009C3D85 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E90CAB28058E6C009C3D85 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +45,6 @@
 		918E3B5D2800350A0045DA4F /* SRdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRdata.swift; sourceTree = "<group>"; };
 		91BF869727FECD2300A95FA9 /* donggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = donggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91BF869A27FECD2300A95FA9 /* donggleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = donggleApp.swift; sourceTree = "<group>"; };
-		91BF869C27FECD2300A95FA9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		91BF869E27FECD2300A95FA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91BF86A127FECD2300A95FA9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		91BF86A827FED68400A95FA9 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
@@ -69,6 +68,7 @@
 		F23139CD27FEE24B00D4EB9F /* TabBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
 		F23139CF27FEE25800D4EB9F /* ModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		F23139D227FEE2A100D4EB9F /* TimelineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		F2E90CAB28058E6C009C3D85 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F23139C427FEE1CF00D4EB9F /* SwiftUICharts in Frameworks */,
+				F23A5D6428058D6900F54207 /* Charts in Frameworks */,
 				CC3CBB182803CF9C005719EC /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,9 +111,9 @@
 		91BF869927FECD2300A95FA9 /* donggle */ = {
 			isa = PBXGroup;
 			children = (
+				91BF869A27FECD2300A95FA9 /* donggleApp.swift */,
 				918E3B5C280033BB0045DA4F /* Model */,
 				F23139B727FEE0C700D4EB9F /* Views */,
-				91BF869A27FECD2300A95FA9 /* donggleApp.swift */,
 				CCD9C74227FED4EB00C21709 /* Tab bar Views */,
 				91BF869E27FECD2300A95FA9 /* Assets.xcassets */,
 				91BF86A027FECD2300A95FA9 /* Preview Content */,
@@ -152,15 +152,11 @@
 		F23139B727FEE0C700D4EB9F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F23139BA27FEE13700D4EB9F /* StressReportView.swift */,
-				F23139BC27FEE13900D4EB9F /* RewardReportView.swift */,
-				E61F252A27FFC45D00D3A96C /* RewardCard2.swift */,
-				F23139BE27FEE13C00D4EB9F /* ProgressBar.swift */,
-				91BF869C27FECD2300A95FA9 /* ContentView.swift */,
 				CCD9C74B27FED53C00C21709 /* TabBarView.swift */,
+				F23A5D59280563DD00F54207 /* ReportView */,
+				E61F252A27FFC45D00D3A96C /* RewardCard2.swift */,
 				E604B60D2802F77E0099464C /* CardDetailView.swift */,
 				E604B6062802F7290099464C /* DetailCard */,
-				F23139D127FEE26800D4EB9F /* UpperTab */,
 				91BF86A827FED68400A95FA9 /* RecordView.swift */,
 				913108ED2801704C00C4BAB2 /* RecordTestingView.swift */,
 				CCAF999A2801D3D20096362E /* RecordRewardView.swift */,
@@ -183,6 +179,26 @@
 			path = UpperTab;
 			sourceTree = "<group>";
 		};
+		F23A5D59280563DD00F54207 /* ReportView */ = {
+			isa = PBXGroup;
+			children = (
+				F2E90CAA28058E59009C3D85 /* ChartView */,
+				F23139D127FEE26800D4EB9F /* UpperTab */,
+				F23139BA27FEE13700D4EB9F /* StressReportView.swift */,
+				F23139BC27FEE13900D4EB9F /* RewardReportView.swift */,
+				F23139BE27FEE13C00D4EB9F /* ProgressBar.swift */,
+			);
+			name = ReportView;
+			sourceTree = "<group>";
+		};
+		F2E90CAA28058E59009C3D85 /* ChartView */ = {
+			isa = PBXGroup;
+			children = (
+				F2E90CAB28058E6C009C3D85 /* ContentView.swift */,
+			);
+			path = ChartView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -200,8 +216,8 @@
 			);
 			name = donggle;
 			packageProductDependencies = (
-				F23139C327FEE1CF00D4EB9F /* SwiftUICharts */,
 				CC3CBB172803CF9C005719EC /* FSCalendar */,
+				F23A5D6328058D6900F54207 /* Charts */,
 			);
 			productName = donggle;
 			productReference = 91BF869727FECD2300A95FA9 /* donggle.app */;
@@ -232,8 +248,8 @@
 			);
 			mainGroup = 91BF868E27FECD2300A95FA9;
 			packageReferences = (
-				F23139C227FEE1CF00D4EB9F /* XCRemoteSwiftPackageReference "ChartView" */,
 				CC3CBB162803CF9C005719EC /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				F23A5D6228058D6900F54207 /* XCRemoteSwiftPackageReference "swiftui-charts" */,
 			);
 			productRefGroup = 91BF869827FECD2300A95FA9 /* Products */;
 			projectDirPath = "";
@@ -271,13 +287,13 @@
 				CCD9C74627FED50A00C21709 /* SettingView.swift in Sources */,
 				F23139B627FEE0A500D4EB9F /* ReportView.swift in Sources */,
 				CCD9C74C27FED53C00C21709 /* TabBarView.swift in Sources */,
+				F2E90CAC28058E6C009C3D85 /* ContentView.swift in Sources */,
 				F23139BD27FEE13900D4EB9F /* RewardReportView.swift in Sources */,
 				913108EE2801704C00C4BAB2 /* RecordTestingView.swift in Sources */,
 				E604B60A2802F7520099464C /* DetailCardBack.swift in Sources */,
 				E61F252B27FFC45D00D3A96C /* RewardCard2.swift in Sources */,
 				F23139CE27FEE24B00D4EB9F /* TabBarButton.swift in Sources */,
 				F23139CC27FEE24900D4EB9F /* EdgeBorder.swift in Sources */,
-				91BF869D27FECD2300A95FA9 /* ContentView.swift in Sources */,
 				91BF86A927FED68400A95FA9 /* RecordView.swift in Sources */,
 				F23139C827FEE24300D4EB9F /* CustomTapView.swift in Sources */,
 				CCAF999D2801D3E00096362E /* DetailView.swift in Sources */,
@@ -497,9 +513,9 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		F23139C227FEE1CF00D4EB9F /* XCRemoteSwiftPackageReference "ChartView" */ = {
+		F23A5D6228058D6900F54207 /* XCRemoteSwiftPackageReference "swiftui-charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/ChartView";
+			repositoryURL = "https://github.com/spacenation/swiftui-charts.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
@@ -513,10 +529,10 @@
 			package = CC3CBB162803CF9C005719EC /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
 		};
-		F23139C327FEE1CF00D4EB9F /* SwiftUICharts */ = {
+		F23A5D6328058D6900F54207 /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F23139C227FEE1CF00D4EB9F /* XCRemoteSwiftPackageReference "ChartView" */;
-			productName = SwiftUICharts;
+			package = F23A5D6228058D6900F54207 /* XCRemoteSwiftPackageReference "swiftui-charts" */;
+			productName = Charts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

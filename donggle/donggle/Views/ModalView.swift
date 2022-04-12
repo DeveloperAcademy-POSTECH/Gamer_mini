@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ModalView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
     
     var body: some View {
         VStack {
@@ -26,7 +27,7 @@ struct ModalView: View {
             .padding(26)
             .font(.title3)
             
-            List {
+            VStack(alignment: .leading) {
                 Text("2022년 4월")
                     .padding(.vertical)
                 Text("2022년 3월")
@@ -45,9 +46,9 @@ struct ModalView: View {
                     .padding(.vertical)
                 Text("2021년 8월")
                     .padding(.vertical)
-
             }
-            .listStyle(.plain)
+            .frame(width: .infinity)
+
             
             Spacer()
             

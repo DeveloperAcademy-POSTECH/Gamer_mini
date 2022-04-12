@@ -107,6 +107,12 @@ struct HomeView: View {
                 }
                 .sheet(isPresented: self.$showModal) {
                     RecordView(stressIndex: $stressIndex ,sliderValue: $sliderValue)
+                        .onDisappear{
+                            mainReward = UserDefaults.rewardArray ?? []
+                            RewardDate = initRewardDate()
+                            RewardDateArray = initRewardDateArray(RewardDate : RewardDate)
+                            dateCircle = initDateCircle(RewardDateArray: RewardDateArray)
+                        }
                 }
             }
             .padding()
@@ -162,6 +168,7 @@ struct HomeView: View {
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack{
                         ForEach(RewardCardInfo, id: \.self.id) { reward in
+
                             //RewardCard2(title: reward.title, category: String(reward.category[0]), index: 0)
                             VStack{
                                 Text("\(reward.date)")
@@ -175,7 +182,7 @@ struct HomeView: View {
                                 RoundedRectangle(cornerRadius: 15)
                                     .stroke(lineWidth: 1)
                             )
-                            
+                       
                         }.padding(10)
                     }
                 }
