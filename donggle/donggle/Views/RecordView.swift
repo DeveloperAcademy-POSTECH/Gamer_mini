@@ -55,6 +55,7 @@ struct RecordView: View {
             print("---스트레스만 기록---")
             print(sArray)
             print("-----------------")
+            mainStress = UserDefaults.stressArray ?? []
         }else{
             //    스트레스 + 보상 기록
             if selectedStress.isEmpty{
@@ -79,9 +80,10 @@ struct RecordView: View {
             print(sArray)
             print(rArray)
             print("-----------------")
+            mainStress = UserDefaults.stressArray ?? []
+            mainReward = UserDefaults.rewardArray ?? []
+            print(mainReward)
         }
-        mainStress = UserDefaults.stressArray ?? []
-        mainReward = UserDefaults.rewardArray ?? []
         
         //HomeView 데이터 재정리
 //        RewardDate = initRewardDate()
