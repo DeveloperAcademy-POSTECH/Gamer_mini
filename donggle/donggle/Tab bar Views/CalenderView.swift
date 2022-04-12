@@ -104,7 +104,9 @@ struct CalendarView: View {
                                         )
                                     }.padding(10)
                                         .fullScreenCover(isPresented: $isDetailView) {
-                                            DetailView(isFullScreen: $isDetailView, reward : reward)
+                                            
+                                            CardDetailView(reward: reward)
+                                            //DetailView(isFullScreen: $isDetailView, reward : reward)
                                         }
                                     if(reward.isEffective == nil){
                                         rewardCard.foregroundColor(Color.blue)
