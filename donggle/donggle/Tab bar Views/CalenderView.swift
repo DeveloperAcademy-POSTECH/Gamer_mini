@@ -48,7 +48,7 @@ struct CalendarView: View {
                                 Image(systemName: "plus")
                             }
                             .fullScreenCover(isPresented: $isRecordView) {
-                                RecordRewardView(isFullScreen: $isRecordView)
+                                RecordRewardView()
                             }
                         } // : ToolbarItem
                     } // : toolbar
