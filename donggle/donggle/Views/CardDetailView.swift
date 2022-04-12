@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CardDetailView: View {
     
+    var reward: Reward
+    
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     @State var showingSheet = false
@@ -46,33 +48,11 @@ struct CardDetailView: View {
         NavigationView{
         ZStack{
             Color(red: 249/255, green: 249/255, blue: 249/255).ignoresSafeArea()
-            /*
-            ZStack{
-                VStack{
-                    HStack{
-                        Image(systemName: "chevron.left")
-                            .padding(.leading, 24)
-                            .padding(.top, 12.0)
-                        Spacer()
-                        Image(systemName: "ellipsis")
-                            .padding(.trailing, 24)
-                            .padding(.top, 12.0)
-                    }
-                    Spacer()
-                }
-                VStack{
-                    Text("보상 상세")
-                        .font(.system(size: 17, weight: .semibold))
-                        .multilineTextAlignment(.center)
-                        .padding(.top, 12.0)
-                    Spacer()
-                }
-            } */
             
             VStack{
                 ZStack{
-                    DetailCardFront(width: width, height: height, degree: $backDegree)
-                    DetailCardBack(width: width, height: height, degree: $frontDegree)
+                    DetailCardFront(width: width, height: height, degree: $backDegree, reward: reward)
+                    DetailCardBack(width: width, height: height, degree: $frontDegree, reward: reward)
 
                 }.onTapGesture{
                     flipCard()
@@ -124,9 +104,10 @@ struct CardDetailView: View {
         }
     }
 }
-
+/*
 struct CardDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        CardDetailView()
+        CardDetailView(reward: reward)
     }
 }
+*/

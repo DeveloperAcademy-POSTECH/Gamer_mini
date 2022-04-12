@@ -28,6 +28,7 @@ struct CalendarView: View {
     
     @State private var isRecordView = false
     @State private var isDetailView = false
+    @State private var showModal = false
     
     var body: some View {
         
@@ -36,7 +37,7 @@ struct CalendarView: View {
                 VStack{
                     CalendarRepresentable(selectedDate: $selectedDate)
                 }
-
+                
                 .datePickerStyle(.graphical)
                 .navigationBarTitle(Text("보상캘린더"))
                 .navigationBarTitleDisplayMode(.inline)
@@ -52,28 +53,29 @@ struct CalendarView: View {
                         }
                     } // : ToolbarItem
                 } // : toolbar
-                .padding(10)   
+                .padding(10)
                 Divider()
                 
                 Text("\(selectedDate, formatter: CalendarView.dateFormatText)")
                     .padding(10)
                     .font(.title2)
-                Button("보상전체 출력"){
-
-                    print("--- 보상상 ---")
-                    print(mainReward)
-                    print("-----------------")
-                }
                 
+                //                Button("보상전체 출력"){
+                //
+                //                    print("--- 보상상 ---")
+                //                    print(mainReward)
+                //                    print("-----------------")
+                //                }
+                //
                 ScrollView {
-                    let currentInfo = mainReward.filter { (reward : Reward ) -> Bool in
+                    let currentDateRewards = mainReward.filter { (reward : Reward ) -> Bool in
                         
                         let formatter = DateFormatter()
                         formatter.dateFormat = "YYYY년 M월 d일"
                         
                         return formatter.string(from: selectedDate) == formatter.string(from: reward.date) }.sorted(by: {$1.isEffective != nil})
                     
-                    if(currentInfo.count == 0){
+                    if(currentDateRewards.count == 0){
                         Text("입력하신 보상이 없습니다 :)")
                             .padding(20)
                             .frame(maxWidth:.infinity)
@@ -81,6 +83,24 @@ struct CalendarView: View {
                                 RoundedRectangle(cornerRadius: 15)
                                     .stroke(lineWidth: 1)
                             ).padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                        
+//                        LazyVGrid(
+//                            columns: columns,
+//                            alignment: .center,
+//                            spacing: 6,
+//                            pinnedViews: [],
+//                            content: {
+//                                ForEach([1,2,3,4,5,6,7], id: \.self) { index in
+//
+//                                    Button(action: {
+//                                        isDetailView.toggle()
+//                                    }){
+//                                        DefaultRewardCard2(title: "title", img: "😘")
+//                                            .padding(.bottom,15)
+//                                    }
+//                                } // : ForEach
+//                            }) // : LazyVGrid
+                        
                     }else{
                         LazyVGrid(
                             columns: columns,
@@ -88,31 +108,23 @@ struct CalendarView: View {
                             spacing: 6,
                             pinnedViews: [],
                             content: {
-                                ForEach(currentInfo, id: \.self.id) { reward in
+                                ForEach(currentDateRewards.indices, id: \.self) { index in
+                                    let reward = RewardCardInfo[index]
+                                    
                                     let rewardCard = Button(action: {
                                         isDetailView.toggle()
+                                        self.showModal = true
                                     }){
-                                        //gridView // lazyHgrid 찾아보기 !
-                                        VStack{
-                                            Text("\(reward.category[0])")
-                                            //                                                    .font(Font.system(size: 50, design: .default))
-                                            Text("\(reward.title)").foregroundColor(Color.black)
-                                        }// : VStack
-                                        .padding(20)
-                                        .frame(height: 160)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 15)
-                                                .stroke(lineWidth: 1)
-                                        )
-                                    }.padding(10)
-                                        .fullScreenCover(isPresented: $isDetailView) {
-                                            DetailView(isFullScreen: $isDetailView, reward : reward)
-                                        }
+                                        // 여기서는 currentDateRewards의 index 차례대로 reward가 들어가는데
+                                        DefaultRewardCard(reward: reward)
+                                            .padding(.bottom,10)
+                                    }
                                     if(reward.isEffective == nil){
-                                        rewardCard.foregroundColor(Color.blue)
+                                        rewardCard.foregroundColor(Color.green)
                                     }else{
                                         rewardCard.foregroundColor(Color.black)
                                     }
+                                    
                                 } // : ForEach
                             }) // : LazyVGrid
                     }
@@ -184,7 +196,7 @@ struct CalendarRepresentable: UIViewRepresentable{
         
         return calendar
     }
-
+    
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
