@@ -18,7 +18,7 @@ struct MultipleSelectionRow: View {
 
 struct RecordView: View {
     @Environment(\.dismiss) private var dismiss
-    
+
     @Binding var stressIndex: Int
     @Binding var sliderValue : Double
     
@@ -68,6 +68,10 @@ struct RecordView: View {
             print(rArray)
             print("-----------------")
         }
+        mainReward = UserDefaults.rewardArray ?? []
+        RewardDate = initRewardDate()
+        RewardDateArray = initRewardDateArray(RewardDate : RewardDate)
+        dateCircle = initDateCircle(RewardDateArray: RewardDateArray)
     }
     
     var body: some View {
