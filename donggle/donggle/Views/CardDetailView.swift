@@ -111,7 +111,7 @@ struct CardDetailView: View {
         })
                     .confirmationDialog("", isPresented: $showingSheet, titleVisibility: .hidden){
                         Button("보상 수정"){
-
+                            //UpdateRewardView 모달 띄우기
                         }
                         Button("보상 삭제", role: .destructive){
                             

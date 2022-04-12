@@ -6,76 +6,125 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct GiftCheckView: View {
+    @Environment(\.dismiss) private var dismiss
+    @State var sliderValue : Double = 50
+    @State var rewardComplateOn : Bool = true
+    @State var modifyStressOn : Bool = false
+    @State var isRewardEffective : Bool = false
     var body: some View {
-        ZStack {
-            VStack {
-                HStack {
-                    Button("취소") {
-                    }
-                    .padding(.leading)
-                    Spacer()
+        NavigationView{
+            VStack(spacing:90){
+                if rewardComplateOn{
+                    Text("보상을 완료했나요?")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .transition(AnyTransition.opacity.animation(.easeInOut(duration:0.3)))
                 }
-
-                Spacer()
-                
-            }
-            
-            VStack {
-                Text("보상의 효과가 있었나요?")
-                    .font(.largeTitle)
-                    .fontWeight(.semibold)
-                
-                HStack {
-                    Button("예") {
-                        /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
-                    }
-                    Spacer()
-                    Button("아니요") {
-                        /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
-                    }
+                else if !rewardComplateOn && !modifyStressOn{
+                    Text("보상이 효과있었나요?")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .transition(AnyTransition.opacity.animation(.easeInOut(duration:0.3)))
+                }else{
+                    Text("지금 기분이 어떤가요?")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .transition(AnyTransition.opacity.animation(.easeInOut(duration:0.3)))
                 }
-                .padding()
-                .frame(width: /*@START_MENU_TOKEN@*/200.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                 
-                Spacer()
-                
-            }
-            .padding(.vertical, 150.0)
-            
-            
-            VStack {
-                
-                Spacer()
-                
-                Text("스트레스가 얼마나 해소되었나요?")
-                    .font(.title)
-                    .fontWeight(.semibold)
-                    .padding(/*@START_MENU_TOKEN@*/.vertical, 18.0/*@END_MENU_TOKEN@*/)
+                VStack(spacing:20){
+                    if !modifyStressOn{
+                        Text("🍔")
+                            .font(.system(size: 120))
+                        Text("야식 당장 뜯어")
+                            .font(.title3)
+                    }else{
+      
+                            Text("\(Int(sliderValue))%")
+                            Circle()
+                                .fill(Color.init(red: (sliderValue+1)*2/255, green: (101-sliderValue)*2/255, blue: (101-sliderValue)*2/255))
+                                .frame(width: 130.0, height: 120.0)
+                            HStack{
+                                Image(systemName: "circle")
+                                Slider(value: $sliderValue, in: 0...100,step: 1.0)
+                                Image(systemName: "circle.fill")
+                            }.padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+        
+                    }
                     
-                Circle()
-                    .fill(Color.gray)
-                    .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
-                
-                HStack {
-                    Text("😁")
-                    Slider(value: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant(10)/*@END_MENU_TOKEN@*/)
-                        .frame(width: /*@START_MENU_TOKEN@*/300.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
-                    Text("🤯")
+                }
+                HStack{
+                    Button(action: {
+                        if rewardComplateOn{
+                            dismiss()
+                        }
+                        else if !rewardComplateOn && !modifyStressOn{
+                            isRewardEffective = false
+                            modifyStressOn = true
+                        }
+                        else{
+                            modifyStressOn = false
+                        }
+                    }){
+                        if !modifyStressOn{
+                            Text("아니오")
+                                .modifier(confirmTextGrayModifier())
+                        }
+                        else{
+                            Text("뒤로")
+                                .modifier(confirmTextGrayModifier())
+                        }
+                    }
+                    
+                    Button(action: {
+                        if rewardComplateOn{
+                            rewardComplateOn = false
+                        }
+                        else if !rewardComplateOn && !modifyStressOn{
+                            modifyStressOn = true
+                        }
+                        else{
+                            //saveRecord
+                            //
+                            //rewardInfo.
+//                            ForEach(mainReward){ rewards in
+//                                if rewards.id == rewardInfo.id{
+//                                    rewards.isEffective = isRewardEffective
+////                                    break 없나?
+//                                }
+//                            }
+                            UserDefaults.rewardArray = mainReward
+                        }
+                        
+                    }){
+                        if !modifyStressOn{
+                            Text("예")
+                                .modifier(confirmTextYellowModifier())
+                        }
+                        else{
+                            Text("완료")
+                                .modifier(confirmTextYellowModifier())
+                        }
+                    }
                 }
                 
+                
+                
             }
-            .padding(.vertical, 150.0)
-            
-            VStack {
-                Spacer()
-                Button("완료") {
-                    /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
+            .navigationTitle(Text("보상 완료"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar{
+                ToolbarItem(placement: .navigationBarTrailing){
+                    Button("X"){
+                        dismiss()
+                    }
                 }
             }
-       
         }
+        
     }
 }
 
