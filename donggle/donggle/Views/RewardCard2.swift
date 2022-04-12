@@ -29,11 +29,13 @@ struct RewardCard2: View {
             }
             .padding(4)
             
-            Circle().frame(width: 60, height: 60)
+            Circle()
+                .frame(width: 60, height: 60)
                 .overlay {
                     Text("\(category[0])")
-                        .font(Font.system(size: 50, design: .default))
+                        .font(Font.system(size: 40, design: .default))
                 }
+                .foregroundColor(Color.black.opacity(0.1))
             Text(title)
                 .font(.system(size: 14, weight: .semibold))
                 .padding(.bottom, 12.0)
@@ -52,6 +54,6 @@ struct RewardList: Identifiable{
 */
 struct RewardCard2_Previews: PreviewProvider {
     static var previews: some View {
-        RewardCard2(title: "쩌러", category: ["🍟"], index: 0)
+        RewardCard2(title: "쩌러", category: ["🍟"], index: 1)
     }
 }

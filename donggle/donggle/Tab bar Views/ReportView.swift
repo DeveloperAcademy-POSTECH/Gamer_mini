@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ReportView: View {
     @State private var showModal = false
+    @State private var month = "4월"
     
     var body: some View {
         NavigationView {
@@ -30,7 +31,7 @@ struct ReportView: View {
                                 self.showModal = true
                             }) {
                                 HStack {
-                                    Text("4월")
+                                    Text(month)
                                         .foregroundColor(.black)
                                         .font(.system(size: 24, weight: .semibold))
                                     

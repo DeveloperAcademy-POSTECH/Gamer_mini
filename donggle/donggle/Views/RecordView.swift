@@ -32,8 +32,10 @@ struct RecordView: View {
     @State var rewardTitle: String = ""
     @State var selectedStress: [String] = []
     @State var selectedReward: [String] = []
-    @State var stressCategory: [String] = ["직장", "날씨", "수면", "가족", "금전"]
-    @State var rewardCategory: [String] = ["잠자기", "알콜", "쇼핑", "운동", "음식", "놀기"]
+
+    @State var stressCategory: [String] = ["직장", "날씨", "수면", "가족", "돈", "그냥"]
+    @State var rewardCategory: [String] = ["꿀잠", "알콜", "쇼핑", "운동", "음식", "놀기"]
+
     @State private var rewardDate = Date()
     
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
@@ -78,6 +80,7 @@ struct RecordView: View {
             print(rArray)
             print("-----------------")
         }
+        mainStress = UserDefaults.stressArray ?? []
         mainReward = UserDefaults.rewardArray ?? []
         
         //HomeView 데이터 재정리

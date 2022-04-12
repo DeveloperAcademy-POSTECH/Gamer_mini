@@ -119,7 +119,6 @@ struct CalendarView: View {
                                         DefaultRewardCard(reward: reward)
                                             .padding(.bottom,10)
                                     }
-                                    
                                     if(reward.isEffective == nil){
                                         rewardCard.foregroundColor(Color.green)
                                     }else{

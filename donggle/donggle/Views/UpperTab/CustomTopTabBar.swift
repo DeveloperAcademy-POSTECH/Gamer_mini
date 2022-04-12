@@ -17,6 +17,7 @@ struct CustomTopTabBar: View {
                 }
                 .foregroundColor(tabIndex == 0 ? .black : .gray)
                 
+                
             
             Spacer()
             
@@ -25,6 +26,7 @@ struct CustomTopTabBar: View {
                     onButtonTapped(index: 1)
                 }
                 .foregroundColor(tabIndex == 1 ? .black : .gray)
+                
                 
         }
         .border(width: 1, edges: [.bottom], color: .black)
