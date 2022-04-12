@@ -10,32 +10,47 @@ struct Total {
 }
 
 
+
+class Datas {
+    var stressSet : [Stress]
+    var rewardSet : [Reward]
+    var totalSet : [Total]
+    
+    //date 기준 내림차순 정렬
+    init(){
+        self.stressSet = mainStress.sorted(by: { $0.date > $1.date})
+        self.rewardSet = mainReward.sorted(by: { $0.date > $1.date})
+        self.totalSet = createTotalData(stressSet: self.stressSet, rewardSet: self.rewardSet).sorted(by: { $0.date > $1.date})
+    }
+    
+    //데이터 리로드
+    func refreshDatas(){
+        stressSet = mainStress.sorted(by: { $0.date > $1.date})
+        rewardSet = mainReward.sorted(by: { $0.date > $1.date})
+        totalSet = createTotalData(stressSet: self.stressSet, rewardSet: self.rewardSet).sorted(by: { $0.date > $1.date})
+    }
+}
+
+
+
+//@State private var sortedData : Datas
+
+
 struct TimelineView: View {
     @State private var date = Date()
     @State private var showModal = false
-    @State private var selectedView = 2
+    @State private var selectedView = 1
     
     
     //스트레스, 보상 데이터 임시 정의
     
     var date1 = Date()
+    var sortedData = Datas()
     
     
-    struct Datas {
-        let stressSet : [Stress]
-        let rewardSet : [Reward]
-        let totalSet : [Total]
-        
-        //date 기준 내림차순 정렬
-        init(stressSet: [Stress], rewardSet: [Reward]){
-            self.stressSet = stressSet.sorted(by: { $0.date > $1.date})
-            self.rewardSet = rewardSet.sorted(by: { $0.date > $1.date})
-            self.totalSet = createTotalData(stressSet: self.stressSet, rewardSet: self.rewardSet).sorted(by: { $0.date > $1.date})
-        }
-        
-    }
+//    UserDefaults.rewardArray
+//    UserDefaults.stressArray
     
-    var sortedData = Datas(stressSet: UserDefaults.stressArray ?? [], rewardSet: UserDefaults.rewardArray ?? [])
     
     
     var body: some View {
@@ -65,6 +80,9 @@ struct TimelineView: View {
                     Text("보상").tag(3)
                     
                 }
+//                .onChange(of: selectedView, perform: { (value) in
+//                    sortedData.refreshDatas()
+//                })
                 
             }
             .padding([.leading, .trailing])
@@ -120,8 +138,9 @@ struct TimelineView: View {
             
         }
         .navigationBarTitle("타임라인", displayMode: .inline)
-        .navigationBarItems(trailing: Text("hello"))
-        
+        .onAppear {
+            sortedData.refreshDatas()
+        }
     }
     
 }
@@ -249,6 +268,17 @@ func createTotalData(stressSet : [Stress], rewardSet : [Reward]) -> [Total]{
     
     return totalSet
 }
+
+
+//데이터 로드 function
+//func refreshData() -> Datas{
+//    var sortedData : Datas
+//
+//    sortedData = Datas(stressSet: mainStress ?? [], rewardSet: mainReward ?? [])
+//
+//    return sortedData
+//}
+
 
 //여러개의 카테고리가 ","로 구분되어 나열된 string 만들기
 func getStressCateList(stressCategory : [String]) -> String {
