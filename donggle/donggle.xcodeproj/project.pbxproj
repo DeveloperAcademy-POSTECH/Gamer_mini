@@ -15,6 +15,7 @@
 		91BF86A227FECD2300A95FA9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91BF86A127FECD2300A95FA9 /* Preview Assets.xcassets */; };
 		91BF86A927FED68400A95FA9 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF86A827FED68400A95FA9 /* RecordView.swift */; };
 		CC3CBB182803CF9C005719EC /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = CC3CBB172803CF9C005719EC /* FSCalendar */; };
+		CC91CDB1280534E3002A8924 /* DefaultRewardCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC91CDB0280534E3002A8924 /* DefaultRewardCard.swift */; };
 		CCAF999B2801D3D20096362E /* RecordRewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF999A2801D3D20096362E /* RecordRewardView.swift */; };
 		CCAF999D2801D3E00096362E /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF999C2801D3E00096362E /* DetailView.swift */; };
 		CCD9C74427FED4FB00C21709 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74327FED4FB00C21709 /* HomeView.swift */; };
@@ -48,6 +49,7 @@
 		91BF869E27FECD2300A95FA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91BF86A127FECD2300A95FA9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		91BF86A827FED68400A95FA9 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		CC91CDB0280534E3002A8924 /* DefaultRewardCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRewardCard.swift; sourceTree = "<group>"; };
 		CCAF999A2801D3D20096362E /* RecordRewardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRewardView.swift; sourceTree = "<group>"; };
 		CCAF999C2801D3E00096362E /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		CCD9C74327FED4FB00C21709 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -153,8 +155,12 @@
 			isa = PBXGroup;
 			children = (
 				CCD9C74B27FED53C00C21709 /* TabBarView.swift */,
+
+				CC91CDB0280534E3002A8924 /* DefaultRewardCard.swift */,
+
 				F23A5D59280563DD00F54207 /* ReportView */,
 				E61F252A27FFC45D00D3A96C /* RewardCard2.swift */,
+
 				E604B60D2802F77E0099464C /* CardDetailView.swift */,
 				E604B6062802F7290099464C /* DetailCard */,
 				91BF86A827FED68400A95FA9 /* RecordView.swift */,
@@ -297,6 +303,7 @@
 				91BF86A927FED68400A95FA9 /* RecordView.swift in Sources */,
 				F23139C827FEE24300D4EB9F /* CustomTapView.swift in Sources */,
 				CCAF999D2801D3E00096362E /* DetailView.swift in Sources */,
+				CC91CDB1280534E3002A8924 /* DefaultRewardCard.swift in Sources */,
 				CCD9C74827FED51F00C21709 /* CalenderView.swift in Sources */,
 				CCAF999B2801D3D20096362E /* RecordRewardView.swift in Sources */,
 				F23139D327FEE2A100D4EB9F /* TimelineView.swift in Sources */,
