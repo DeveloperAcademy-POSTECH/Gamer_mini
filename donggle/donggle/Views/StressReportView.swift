@@ -89,8 +89,6 @@ struct ListRow: View {
             Text(percent)
                 .font(.system(size: 18, weight: .semibold))
         }
-        .padding(.vertical, 8)
-        .padding(.horizontal, 12)
         .frame(height: 50)
     }
 }
@@ -101,7 +99,7 @@ struct ListRow: View {
 let stressSet: [Stress] = UserDefaults.stressArray ?? []
 var Dictionary: [String : Double] = [:]
 var categories: [String] = []
-var tmpArray: Array<(key: String, value: Double)> = []
+
 
 func setSortedArray(arr: [Stress]) -> [(key: String, value: String)] {
     for stress in stressSet {
@@ -111,6 +109,7 @@ func setSortedArray(arr: [Stress]) -> [(key: String, value: String)] {
                     Dictionary[name] = Double(count ?? 0)+1
         }
     }
+    var tmpArray: Array<(key: String, value: Double)> = []
     tmpArray = Dictionary.sorted { a, b in
         a.value > b.value
     }
@@ -124,7 +123,16 @@ func setSortedArray(arr: [Stress]) -> [(key: String, value: String)] {
         array.append((key: item.key, value: "\(Int(floor(item.value / sum * 100)))%"))
     }
 
-    return array
+    return array.sorted { a, b in
+        if a.value > b.value {
+            if a.key > b.key {
+                return false
+            } else {
+                return true
+            }
+        }
+        return false
+    }
 }
 
 func getMonthOfDate() -> [String] {
@@ -170,7 +178,7 @@ struct StressReportView: View {
                                     LinearGradient(gradient: .init(colors: [Color.blue.opacity(0.8), Color.blue.opacity(0.1)]), startPoint: .top, endPoint: .bottom)
                     )
                 )
-                .frame(width: UIScreen.main.bounds.width - 32, height: 300)
+                .frame(width: UIScreen.main.bounds.width - 36, height: 300)
                 .padding(.vertical, 32)
             
             Rectangle()
@@ -178,15 +186,15 @@ struct StressReportView: View {
                 .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.946))
             
             VStack {
-                ProgressBar(width: UIScreen.main.bounds.width - 32, height: 22,  dataList: sortedArray, isStress: true)
+                ProgressBar(width: UIScreen.main.bounds.width - 52, height: 22,  dataList: sortedArray, isStress: true)
                 
-                VStack {
+                VStack(spacing: 16) {
                     ForEach(sortedArray.indices, id: \.self){ index in let stress = sortedArray[index]
                         ListRow(title: stress.key, category: stress.key,
                                 percent: stress.value, isStress: true)
                     }
                 }
-
+                .padding(.horizontal, 20)
             }
         }
     }

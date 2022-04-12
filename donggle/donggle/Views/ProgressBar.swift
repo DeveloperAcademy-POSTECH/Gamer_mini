@@ -60,7 +60,7 @@ func setRewardColor (str: String) -> [Double] {
     case "영화":
         return [0, 204/255, 102/255]
     case "쇼핑":
-        return [255/255, 153/255, 51/255]
+        return [200/255, 153/255, 51/255]
     case "운동":
         return [153/255, 51/255, 1]
     default:

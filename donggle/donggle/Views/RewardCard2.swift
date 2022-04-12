@@ -11,7 +11,7 @@ import SwiftUI
 struct RewardCard2: View {
     
     var title: String
-    var category: [String]
+    var category: String
     var index: Int
     
     var body: some View {
@@ -32,7 +32,7 @@ struct RewardCard2: View {
             Circle()
                 .frame(width: 60, height: 60)
                 .overlay {
-                    Text("\(category[0])")
+                    Text(setEmoji(str: category))
                         .font(Font.system(size: 40, design: .default))
                 }
                 .foregroundColor(Color.black.opacity(0.1))
@@ -54,6 +54,6 @@ struct RewardList: Identifiable{
 */
 struct RewardCard2_Previews: PreviewProvider {
     static var previews: some View {
-        RewardCard2(title: "쩌러", category: ["🍟"], index: 1)
+        RewardCard2(title: "쩌러", category: "🍟", index: 1)
     }
 }
