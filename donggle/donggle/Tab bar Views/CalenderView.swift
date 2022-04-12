@@ -9,7 +9,6 @@ import SwiftUI
 import UIKit
 import FSCalendar
 
-var Mainreward : [Reward] = UserDefaults.rewardArray ?? []
 
 struct CalendarView: View {
     
@@ -61,12 +60,12 @@ struct CalendarView: View {
                     .font(.title2)
                 Button("보상전체 출력"){
                         print("--- 보상상 ---")
-                        print(Mainreward)
+                        print(mainReward)
                         print("-----------------")
                 }
                 
                 ScrollView {
-                    let currentInfo = Mainreward.filter { (reward : Reward ) -> Bool in
+                    let currentInfo = mainReward.filter { (reward : Reward ) -> Bool in
                         
                         let formatter = DateFormatter()
                         formatter.dateFormat = "YYYY년 M월 d일"
@@ -192,7 +191,7 @@ struct CalendarRepresentable: UIViewRepresentable{
     class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource{
         var parent: CalendarRepresentable
         
-        let rewardEvents : [String] = Mainreward.map({(reward) in
+        let rewardEvents : [String] = mainReward.map({(reward) in
             let formatter = DateFormatter()
             formatter.dateFormat = "YYYY년 M월 d일"
             return formatter.string(from: reward.date)

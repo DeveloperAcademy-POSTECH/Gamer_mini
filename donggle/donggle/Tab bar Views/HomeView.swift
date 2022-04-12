@@ -1,6 +1,5 @@
 import SwiftUI
 
-var mainReward : [Reward] = UserDefaults.rewardArray ?? []
 
 var dateCircle : [String] = []
 

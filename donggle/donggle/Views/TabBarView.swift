@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+import Foundation
+
+var mainReward : [Reward] = UserDefaults.rewardArray ?? []
+var mainStress : [Stress] = UserDefaults.stressArray ?? []
 
 struct TabBarView: View{
     @State private var selection = 1
