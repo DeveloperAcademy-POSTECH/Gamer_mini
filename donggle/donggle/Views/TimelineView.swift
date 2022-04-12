@@ -40,7 +40,7 @@ struct TimelineView: View {
     @State private var date = Date()
     @State private var showModal = false
     @State private var selectedView = 1
-    
+    @Environment(\.presentationMode) var presentation
     
     //스트레스, 보상 데이터 임시 정의
     
@@ -138,8 +138,12 @@ struct TimelineView: View {
             
         }
         .navigationBarTitle("타임라인", displayMode: .inline)
+//        .isDetailLink(false)
         .onAppear {
             sortedData.refreshDatas()
+        }
+        .onDisappear {
+            presentation.wrappedValue.dismiss()
         }
     }
     
