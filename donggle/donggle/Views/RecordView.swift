@@ -79,9 +79,11 @@ struct RecordView: View {
             print("-----------------")
         }
         mainReward = UserDefaults.rewardArray ?? []
-        RewardDate = initRewardDate()
-        RewardDateArray = initRewardDateArray(RewardDate : RewardDate)
-        dateCircle = initDateCircle(RewardDateArray: RewardDateArray)
+        
+        //HomeView 데이터 재정리
+//        RewardDate = initRewardDate()
+//        RewardDateArray = initRewardDateArray(RewardDate : RewardDate)
+//        dateCircle = initDateCircle(RewardDateArray: RewardDateArray)
     }
 
     var body: some View {
