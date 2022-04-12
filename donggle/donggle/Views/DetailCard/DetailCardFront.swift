@@ -20,7 +20,6 @@ struct DetailCardFront: View {
         return formatter
     }()
     
-    
     var body: some View {
         
         ZStack(){
@@ -30,7 +29,7 @@ struct DetailCardFront: View {
                     .multilineTextAlignment(.center)
                     .padding(.top, 30.0)
                 Spacer()
-                Text("\(reward.category[0])")
+                Text("\(stringToImoticon(category: reward.category[0]))")
                 Text(reward.title)
                     .font(.system(size: 22, weight: .bold))
                     .multilineTextAlignment(.center)

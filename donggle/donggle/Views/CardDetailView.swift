@@ -45,18 +45,29 @@ struct CardDetailView: View {
     @State var Evaluation = false
     
     var body: some View {
+        
         NavigationView{
         ZStack{
             Color(red: 249/255, green: 249/255, blue: 249/255).ignoresSafeArea()
             
             VStack{
-                ZStack{
-                    DetailCardFront(width: width, height: height, degree: $backDegree, reward: reward)
-                    DetailCardBack(width: width, height: height, degree: $frontDegree, reward: reward)
-
-                }.onTapGesture{
-                    flipCard()
+                if let stressIndex = mainStress.firstIndex { stress in
+                    return reward.stressKey == stress.id
+                }{
+                    ZStack{
+                        DetailCardFront(width: width, height: height, degree: $backDegree, reward: reward)
+                        DetailCardBack(width: width, height: height, degree: $frontDegree, stress: mainStress[stressIndex])
+                    }.onTapGesture{
+                        flipCard()
+                   }
+                }else{
+                    ZStack{
+                        DetailCardFront(width: width, height: height, degree: $backDegree, reward: reward)
+                    }.onTapGesture{
+                        flipCard()
+                   }
                 }
+                
                 Button(action: {
                     self.Evaluation = true
                 }) {
