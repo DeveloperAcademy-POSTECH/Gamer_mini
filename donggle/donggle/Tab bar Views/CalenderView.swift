@@ -9,6 +9,7 @@ import SwiftUI
 import UIKit
 import FSCalendar
 
+
 struct CalendarView: View {
     
     static let dateFormatText: DateFormatter = {
@@ -35,6 +36,7 @@ struct CalendarView: View {
                 VStack{
                     CalendarRepresentable(selectedDate: $selectedDate)
                 }
+
                 .datePickerStyle(.graphical)
                 .navigationBarTitle(Text("보상캘린더"))
                 .navigationBarTitleDisplayMode(.inline)
@@ -50,14 +52,14 @@ struct CalendarView: View {
                         }
                     } // : ToolbarItem
                 } // : toolbar
-                .padding(10)
-                
+                .padding(10)   
                 Divider()
                 
                 Text("\(selectedDate, formatter: CalendarView.dateFormatText)")
                     .padding(10)
                     .font(.title2)
                 Button("보상전체 출력"){
+
                     print("--- 보상상 ---")
                     print(mainReward)
                     print("-----------------")
