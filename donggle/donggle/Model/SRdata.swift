@@ -27,7 +27,7 @@ struct Reward : Codable{
 }
 
 func stringToImoticon(category:String) -> String {
-    switch category{
+    switch category{ 
     case "직장":
         return "🧳"
     case "날씨":

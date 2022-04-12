@@ -24,9 +24,9 @@ struct RecordView: View {
     @Binding var sliderValue : Double
     
     @State var stressSelectionOn: Bool = false
-    @State var rewardSelectionOn: Bool = false
+    @State var rewardSelectionOn: Bool = true
     @State var rewardIsOn: Bool = false
-    @State var rewardGroupOn: Bool = false
+    @State var rewardGroupOn: Bool = true
     @State var stressDescription: String = "어떤 일이 있었나요?"
     @State var rewardDescription: String = "나에게 어떤 선물을 줄까요?"
     @State var rewardTitle: String = ""
@@ -102,9 +102,9 @@ struct RecordView: View {
                             .padding()
                             .frame(width: 130.0, height: 120.0)
                         HStack{
-                            Text("😄")
+                            Image(systemName: "circle")
                             Slider(value: $sliderValue, in: 0...100,step: 1.0)
-                            Text("🤯")
+                            Image(systemName: "circle.fill")
                         }
                         
                     }

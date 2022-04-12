@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		31A38ABB27FEEB7600F4EAE8 /* GiftCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A38ABA27FEEB7600F4EAE8 /* GiftCheckView.swift */; };
 		913108EE2801704C00C4BAB2 /* RecordTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913108ED2801704C00C4BAB2 /* RecordTestingView.swift */; };
+		915F3A8928058D050065A765 /* UpdateRewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915F3A8828058D050065A765 /* UpdateRewardView.swift */; };
 		918E3B5E2800350A0045DA4F /* SRdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918E3B5D2800350A0045DA4F /* SRdata.swift */; };
 		91BF869B27FECD2300A95FA9 /* donggleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF869A27FECD2300A95FA9 /* donggleApp.swift */; };
 		91BF869F27FECD2300A95FA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91BF869E27FECD2300A95FA9 /* Assets.xcassets */; };
 		91BF86A227FECD2300A95FA9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91BF86A127FECD2300A95FA9 /* Preview Assets.xcassets */; };
 		91BF86A927FED68400A95FA9 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF86A827FED68400A95FA9 /* RecordView.swift */; };
+		91DCE43328055093005C830D /* StyleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DCE43228055093005C830D /* StyleData.swift */; };
 		CC3CBB182803CF9C005719EC /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = CC3CBB172803CF9C005719EC /* FSCalendar */; };
 		CC91CDB1280534E3002A8924 /* DefaultRewardCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC91CDB0280534E3002A8924 /* DefaultRewardCard.swift */; };
 		CCAF999B2801D3D20096362E /* RecordRewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF999A2801D3D20096362E /* RecordRewardView.swift */; };
@@ -43,13 +45,18 @@
 /* Begin PBXFileReference section */
 		31A38ABA27FEEB7600F4EAE8 /* GiftCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCheckView.swift; sourceTree = "<group>"; };
 		913108ED2801704C00C4BAB2 /* RecordTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTestingView.swift; sourceTree = "<group>"; };
+		915F3A8828058D050065A765 /* UpdateRewardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateRewardView.swift; sourceTree = "<group>"; };
 		918E3B5D2800350A0045DA4F /* SRdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRdata.swift; sourceTree = "<group>"; };
 		91BF869727FECD2300A95FA9 /* donggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = donggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91BF869A27FECD2300A95FA9 /* donggleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = donggleApp.swift; sourceTree = "<group>"; };
 		91BF869E27FECD2300A95FA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91BF86A127FECD2300A95FA9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		91BF86A827FED68400A95FA9 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+
+		91DCE43228055093005C830D /* StyleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleData.swift; sourceTree = "<group>"; };
+
 		CC91CDB0280534E3002A8924 /* DefaultRewardCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRewardCard.swift; sourceTree = "<group>"; };
+
 		CCAF999A2801D3D20096362E /* RecordRewardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRewardView.swift; sourceTree = "<group>"; };
 		CCAF999C2801D3E00096362E /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		CCD9C74327FED4FB00C21709 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -90,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				918E3B5D2800350A0045DA4F /* SRdata.swift */,
+				91DCE43228055093005C830D /* StyleData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -162,6 +170,8 @@
 				E61F252A27FFC45D00D3A96C /* RewardCard2.swift */,
 
 				E604B60D2802F77E0099464C /* CardDetailView.swift */,
+				31A38ABA27FEEB7600F4EAE8 /* GiftCheckView.swift */,
+				915F3A8828058D050065A765 /* UpdateRewardView.swift */,
 				E604B6062802F7290099464C /* DetailCard */,
 				91BF86A827FED68400A95FA9 /* RecordView.swift */,
 				913108ED2801704C00C4BAB2 /* RecordTestingView.swift */,
@@ -169,7 +179,6 @@
 				CCAF999C2801D3E00096362E /* DetailView.swift */,
 				F23139CF27FEE25800D4EB9F /* ModalView.swift */,
 				F23139D227FEE2A100D4EB9F /* TimelineView.swift */,
-				31A38ABA27FEEB7600F4EAE8 /* GiftCheckView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,10 +300,12 @@
 				F23139BF27FEE13C00D4EB9F /* ProgressBar.swift in Sources */,
 				F23139BB27FEE13700D4EB9F /* StressReportView.swift in Sources */,
 				CCD9C74627FED50A00C21709 /* SettingView.swift in Sources */,
+				91DCE43328055093005C830D /* StyleData.swift in Sources */,
 				F23139B627FEE0A500D4EB9F /* ReportView.swift in Sources */,
 				CCD9C74C27FED53C00C21709 /* TabBarView.swift in Sources */,
 				F2E90CAC28058E6C009C3D85 /* ContentView.swift in Sources */,
 				F23139BD27FEE13900D4EB9F /* RewardReportView.swift in Sources */,
+				915F3A8928058D050065A765 /* UpdateRewardView.swift in Sources */,
 				913108EE2801704C00C4BAB2 /* RecordTestingView.swift in Sources */,
 				E604B60A2802F7520099464C /* DetailCardBack.swift in Sources */,
 				E61F252B27FFC45D00D3A96C /* RewardCard2.swift in Sources */,
