@@ -28,7 +28,7 @@ struct DefaultRewardCard: View {
             .shadow(color:  Color.black.opacity(0.14), radius: 8, y: 6)
             .fullScreenCover(isPresented: $isDetailView) {
                 // 여기서는 currentDateRewards[0]만을 reward로 들어갑니다.
-                DetailView(isFullScreen: $isDetailView, reward : reward)
+                CardDetailView(reward : reward)
             }
         }
     }

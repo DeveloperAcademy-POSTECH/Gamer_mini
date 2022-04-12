@@ -60,13 +60,13 @@ struct CalendarView: View {
                     .padding(10)
                     .font(.title2)
                 
-                //                Button("보상전체 출력"){
-                //
-                //                    print("--- 보상상 ---")
-                //                    print(mainReward)
-                //                    print("-----------------")
-                //                }
-                //
+                                Button("보상전체 출력"){
+                
+                                    print("--- 보상상 ---")
+                                    print(mainReward)
+                                    print("-----------------")
+                                }
+                
                 ScrollView {
                     let currentDateRewards = mainReward.filter { (reward : Reward ) -> Bool in
                         
@@ -119,6 +119,7 @@ struct CalendarView: View {
                                         DefaultRewardCard(reward: reward)
                                             .padding(.bottom,10)
                                     }
+                                    
                                     if(reward.isEffective == nil){
                                         rewardCard.foregroundColor(Color.green)
                                     }else{

@@ -14,13 +14,22 @@ struct DetailCardBack: View {
     @Binding var degree : Double
     @State var sliderValue : Double = UserDefaults.standard.double(forKey: "sliderValue")
     @State var stressIndex : Int = UserDefaults.standard.integer(forKey: "stressIndex")
-    var reward: Reward
+    
+    var stress: Stress
+    
+    
+    var dateFormatText: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY.M.d"
+        return formatter
+    }()
+    
     
     var body: some View {
          
         ZStack(){
             VStack{
-                Text("2022.04.03")
+                Text("\(stress.date, formatter: dateFormatText)")
                     .font(.system(size: 15, weight: .regular))
                     .multilineTextAlignment(.center)
                     .padding(.top, 30.0)
@@ -29,7 +38,7 @@ struct DetailCardBack: View {
                     .fill(Color.init(red: (sliderValue+1)*2/255, green: (101-sliderValue)*2/255, blue: (101-sliderValue)*2/255))
                     .frame(width: 100.0, height: 100.0)
                     .padding(.top, 38)
-                Text("\(stressIndex)%")
+                Text("\(stress.index)%")
                     .font(.system(size: 15, weight: .regular))
                     .multilineTextAlignment(.center)
                     .padding(.top, 5.0)
@@ -37,7 +46,7 @@ struct DetailCardBack: View {
                     .fill(Color.gray)
                     .frame(width: 54.0, height: 24.0)
                 
-                Text("아니 왜 갑자기 야근 시켜??? 이거 수요일 마감이잖아요 약속도 취소하고 ㅠㅠ,, 너무 슬프다 저녁에 집가서 야식 먹어야지,, 그래도 오늘은 요정들 드라마볼 수 있어서 버틴다..")
+                Text(stress.content)
                     .font(.system(size: 17, weight: .regular))
                     .multilineTextAlignment(.center)
                     .padding(.top, 14.0)
