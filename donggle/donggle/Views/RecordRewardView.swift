@@ -83,6 +83,7 @@ struct RecordRewardView: View {
                     ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
                         Button(action: {
                             saveRecord(rewardTitle: rewardTitle, rewardDescription: rewardDescription, selectedReward: selectedReward, rewardDate: rewardDate)
+                            dismiss()
                         }) {
                             Text("완료")
                         }

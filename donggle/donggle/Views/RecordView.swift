@@ -78,6 +78,7 @@ struct RecordView: View {
             print(rArray)
             print("-----------------")
         }
+        mainStress = UserDefaults.stressArray ?? []
         mainReward = UserDefaults.rewardArray ?? []
         RewardDate = initRewardDate()
         RewardDateArray = initRewardDateArray(RewardDate : RewardDate)
