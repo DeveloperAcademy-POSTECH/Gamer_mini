@@ -34,6 +34,8 @@ class Datas {
     }
 }
 
+
+
 //class viewDate {
 //    var prevDate : String
 //
@@ -58,10 +60,10 @@ class Datas {
 
 
 struct TimelineView: View {
-    @State private var date = Date()
+    @State private var date = getMonth()
     @State private var showModal = false
     @State private var selectedView = 1
-    @State private var month = "4월"
+//    @State private var month = "4월"
     @State private var prevDate = ""
     @Environment(\.presentationMode) var presentation
     
@@ -69,11 +71,15 @@ struct TimelineView: View {
     
     var date1 = Date()
     var sortedData = Datas()
+//    var groupedData = Dictionary(grouping: sortedData.stressSet, by: { $0.date })
+    
 //    var manageDate = viewDate()
 //    var prevDate = String()
     
     
     var body: some View {
+        let idx: String.Index = date.index(date.startIndex, offsetBy: date.count - 4)
+        let month = String(date[idx...])
         
         Color(red: 249/255, green: 249/255, blue: 249/255).ignoresSafeArea()
             .overlay(
@@ -94,7 +100,8 @@ struct TimelineView: View {
                             }
                         }
                         .sheet(isPresented: self.$showModal) {
-//                            ModalView()
+
+                            ModalView(date: $date)
                         }
                         
                         

@@ -100,7 +100,7 @@ struct RewardReportView: View {
         let sortedRewardArray = setSortedRewardArray(arr: mainReward, date: date)
         let effectiveRewards = getTop6Reward(mainReward: mainReward, date: date)
         
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             if !effectiveRewards.isEmpty {
                 VStack {
                     Text("Top 6 스트레스 해소 보상")
@@ -109,21 +109,12 @@ struct RewardReportView: View {
                     
                     ScrollView(.horizontal) {
                         HStack(spacing: 0) {
-                            
-                            ForEach(1...6, id: \.self) { index in
-                                RewardCard2(title: "기록없음", category: "기록없음", index: index)
-                                    .padding(.horizontal, 4)
-                                    .shadow(color:  Color.black.opacity(0.08), radius: 5, y: 6)
-                            }
-                            
                             ForEach(effectiveRewards.indices, id: \.self) { index in
                                 let reward = effectiveRewards[index]
                                 RewardCard2(title: reward.key, category: reward.key, index: index + 1)
                                     .padding(.horizontal, 4)
                                     .shadow(color:  Color.black.opacity(0.08), radius: 5, y: 6)
                             }
-                            
-                            
                         }
                         .frame(height: 200)
                     }
