@@ -46,8 +46,6 @@ struct TimelineView: View {
     
     var date1 = Date()
     var sortedData = Datas()
-    //    @State private var prevDate : Date = Date()
-    
     
     
     var body: some View {
@@ -107,9 +105,11 @@ struct TimelineView: View {
             }else if (selectedView == 2){ //스트레스
                 ScrollView(showsIndicators: false) {
                     LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
+                    VStack{
                         ForEach(sortedData.stressSet, id: \.self.id) { stress in
                             stressTimeCard( stressIndex:stress.index, stressContent: stress.content, stressCategory: stress.category, stressDate: dateToString(dateInfo: stress.date))
                         }
+                    }
                     }
                 }
                 .padding(.horizontal, 24.0)
@@ -153,7 +153,7 @@ struct RewardTimeCard : View {
                 //                    .onTapGesture {
                 //                        print("tap")
                 //                    }
-                
+//                    .opacity(0.5)
             }
             .padding(.trailing, 20.0)
             VStack(alignment: .leading, spacing: 0){
@@ -185,7 +185,8 @@ struct stressTimeCard : View {
     var body: some View {
         
         HStack(alignment: .top, spacing: 0){
-            VStack{
+            
+            VStack(spacing:3){
                 Circle()
                     .fill(Color.gray)
                     .frame(width:50, height:50)
@@ -193,29 +194,40 @@ struct stressTimeCard : View {
                     .font(.system(size: 12))
             }.padding(.trailing, 20)
             
-            VStack(alignment: .leading, spacing: 12.0){
-                Text(stressContent)
-                    .font(.system(size: 17))
-                HStack(alignment: .top){ //카테고리 두 줄 이상일 때 위쪽으로 정렬되도록
-//                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]) {
-                        ForEach(stressCategory, id:\.self){ category in
-                            Text(category)
-                                .font(.system(size:12))
-                                .padding(.horizontal, 5.0)
-                                .foregroundColor(.white)
-                                .background(RoundedRectangle(cornerRadius: 15)
-                                    .foregroundColor(.gray)
-                                )
+            VStack(alignment: .leading, spacing: 0){
+
+                    Text(stressContent)
+                        .font(.system(size: 17))
+                        .padding(.bottom, 12)
+                        .fixedSize(horizontal: false, vertical: true)
+                    
+                    
+                    VStack(alignment: .leading, spacing: 5){
+                        ForEach(groupCate(stressCategory: stressCategory, parentWidth: UIScreen.main.bounds.size.width - 170), id: \.self){ group in
+                            HStack (spacing : 6){
+                                ForEach(group, id: \.self){ cate in
+                                    Text(cate)
+                                        .font(.system(size : 12))
+                                        .padding(.horizontal, 10.0)
+                                        .padding(.vertical, 2)
+                                        .foregroundColor(.white)
+                                        .background(RoundedRectangle(cornerRadius: 15)
+                                            .foregroundColor(.gray)
+                                        )
+                                }
+                            }
+                            
                         }
-//                    }
+                        
+                    }
+
                     
                     Spacer()
                 }
-                Spacer()
-            }
             Spacer()
         }
-        .padding(.vertical, 20.0)
+        .padding(.top, 20.0)
+        .padding(.bottom, 15.0)
         .padding(.horizontal, 24.0)
         .background(RoundedRectangle(cornerRadius: 15)
             .foregroundColor(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color(hue: 1.0, saturation: 0.0, brightness: 0.926)/*@END_MENU_TOKEN@*/)
@@ -224,6 +236,39 @@ struct stressTimeCard : View {
     }
     
 }
+
+
+func groupCate(stressCategory : [String], parentWidth : CGFloat) -> [[String]]{
+    var tmpGroupedCate : [String] = []
+    var groupedCate : [[String]] = [[String]]()
+    var width: CGFloat = 0
+    
+    for cate in stressCategory {
+        let label = UILabel()
+        label.text = cate
+        label.sizeToFit()
+        
+        let labelWidth = label.frame.size.width + 10 + 6
+        
+        if (width + labelWidth) < (parentWidth - 7) {
+            tmpGroupedCate.append(cate)
+            width += (labelWidth)
+        } else {
+            groupedCate.append(tmpGroupedCate)
+            tmpGroupedCate.removeAll()
+            tmpGroupedCate.append(cate)
+            width = (labelWidth)
+            
+        }
+    }
+    
+    groupedCate.append(tmpGroupedCate)
+    
+    return groupedCate
+
+}
+
+
 
 
 
@@ -248,20 +293,6 @@ func createTotalData(stressSet : [Stress], rewardSet : [Reward]) -> [Total]{
 
 
 
-//여러개의 카테고리가 ","로 구분되어 나열된 string 만들기
-func getStressCateList(stressCategory : [String]) -> String {
-    
-    var stressCateArr : [String] = []
-    var stressCateList : String
-    
-    for category in stressCategory{
-        stressCateArr.append(category)
-    }
-    
-    stressCateList = stressCateArr.joined(separator: ", ")
-    
-    return stressCateList
-}
 
 func dateToString(dateInfo : Date) -> String {
     
