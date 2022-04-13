@@ -71,16 +71,18 @@ class ReloadHomeView: ObservableObject {
 }
 
 struct HomeView: View {
-    
+
+    @Binding var sliderValue : Double
+    @Binding var stressIndex : Int
     @ObservedObject var reloadHomeView = ReloadHomeView()
+
     
     func shuffle() {
         self.reloadHomeView.shuffle()
     }
     
     @State private var showModal = false
-    @State var sliderValue : Double = UserDefaults.standard.double(forKey:"sliderValue")
-    @State var stressIndex : Int = UserDefaults.standard.integer(forKey:"stressIndex")
+
     
     @State private var selectedDate : Int = 0
     
@@ -127,7 +129,7 @@ struct HomeView: View {
                         .foregroundColor(.black)
                 }
                 .sheet(isPresented: self.$showModal) {
-                    RecordView(stressIndex: $stressIndex ,sliderValue: $sliderValue)
+                    RecordView(sliderValue: $sliderValue, stressIndex: $stressIndex)
                         .onDisappear{
                             self.shuffle()
                         }
@@ -219,14 +221,15 @@ struct HomeView: View {
                             let rewardCard = Button(action: {
                                 isDetailView.toggle()
                             }){
+
                                 if(index == 0){
-                                   RewardCard(reward: reward)
+                                    RewardCard(reward: reward, sliderValue: $sliderValue, stressIndex: $stressIndex)
                                         .padding(.leading,10.0)
                                 }else if(index == self.reloadHomeView.RewardCardInfo2.count-1){
-                                    RewardCard(reward: reward)
+                                    RewardCard(reward: reward, sliderValue: $sliderValue, stressIndex: $stressIndex)
                                         .padding(.trailing,20.0)
                                 }else{
-                                    RewardCard(reward: reward)
+                                    RewardCard(reward: reward, sliderValue: $sliderValue, stressIndex: $stressIndex)
                                 }
                             }
                             if(reward.isEffective == nil){
@@ -245,8 +248,37 @@ struct HomeView: View {
 }
 
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
-}
+//
+//struct DefaultRewardCard2: View {
+//
+//    var title : String
+//
+//    var img : String
+//
+//    var body: some View {
+//
+//        VStack{
+//            Text(img)
+//                .font(.system(size: 44, design: .default))
+//                .padding(.top, 32)
+//            Text(title)
+//                .font(.system(size: 14, weight: .semibold))
+//                .foregroundColor(Color.black)
+//                .multilineTextAlignment(.center)
+//                .padding(.bottom, 16)
+//        }
+//        .frame(width: 106, height: 140)
+//        .background(.white)
+//        .cornerRadius(20)
+//        .padding(.horizontal, 6)
+//        .shadow(color:  Color.black.opacity(0.14), radius: 8, y: 6)
+//    }
+//}
+
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView(sliderValue: <#T##Binding<Double>#>, stressIndex: <#T##Binding<Int>#>)
+//    }
+//}
+
+

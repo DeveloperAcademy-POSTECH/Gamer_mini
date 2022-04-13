@@ -27,7 +27,7 @@
                      .imageScale(.large)
              }
              .sheet(isPresented: self.$showModal) {
-                 RecordView(stressIndex: $stressIndex ,sliderValue: $sliderValue)
+                 RecordView(sliderValue: $sliderValue, stressIndex: $stressIndex)
              }
              Text("스트레스 지수: \(stressIndex)%")
              Button(action: {
