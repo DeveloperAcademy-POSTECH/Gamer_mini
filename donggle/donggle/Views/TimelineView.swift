@@ -75,7 +75,6 @@ struct TimelineView: View {
     
     var body: some View {
         
-        
         Color(red: 249/255, green: 249/255, blue: 249/255).ignoresSafeArea()
             .overlay(
                 VStack{

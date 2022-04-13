@@ -15,6 +15,7 @@ struct RewardCard2: View {
     var index: Int
     
     var body: some View {
+        let rgb = setRewardColor(str: category)
         VStack{
             HStack {
                 Circle()
@@ -22,7 +23,7 @@ struct RewardCard2: View {
                     .foregroundColor(Color.gray.opacity(0.2))
                     .overlay {
                         Text(String(index))
-                            .font(.system(size: 12, weight: .semibold))
+                            .font(.system(size: 12, weight: .bold))
                     }
                 
                 Spacer()
@@ -33,12 +34,13 @@ struct RewardCard2: View {
                 .frame(width: 60, height: 60)
                 .overlay {
                     Text(setEmoji(str: category))
-                        .font(Font.system(size: 40, design: .default))
+                        .font(Font.system(size: 30, design: .default))
                 }
-                .foregroundColor(Color.black.opacity(0.1))
+                .foregroundColor(Color(red: rgb[0], green: rgb[1], blue: rgb[2], opacity: 1))
             Text(title)
                 .font(.system(size: 14, weight: .semibold))
                 .padding(.bottom, 12.0)
+                .foregroundColor(.black)
         }
         .frame(width: 106.0, height: 140.0)
         .background(.white)
@@ -54,6 +56,6 @@ struct RewardList: Identifiable{
 */
 struct RewardCard2_Previews: PreviewProvider {
     static var previews: some View {
-        RewardCard2(title: "쩌러", category: "🍟", index: 1)
+        RewardCard2(title: "쩌러", category: "기록없음", index: 1)
     }
 }

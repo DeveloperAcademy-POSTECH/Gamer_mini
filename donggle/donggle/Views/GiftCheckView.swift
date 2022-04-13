@@ -10,10 +10,12 @@ import Foundation
 
 struct GiftCheckView: View {
     @Environment(\.dismiss) private var dismiss
-    @State var sliderValue : Double = 50
+    @State var stressIndex : Int = UserDefaults.standard.integer(forKey:"stressIndex")
+    @State var sliderValue : Double = UserDefaults.standard.double(forKey:"sliderValue")
     @State var rewardComplateOn : Bool = true
     @State var modifyStressOn : Bool = false
     @State var isRewardEffective : Bool = false
+    var reward : Reward
     var body: some View {
         NavigationView{
             VStack(spacing:90){
@@ -37,9 +39,9 @@ struct GiftCheckView: View {
                 
                 VStack(spacing:20){
                     if !modifyStressOn{
-                        Text("🍔")
+                        Text("\(stringToImoticon(category:reward.category[0]))")
                             .font(.system(size: 120))
-                        Text("야식 당장 뜯어")
+                        Text("\(reward.title)")
                             .font(.title3)
                     }else{
       
@@ -88,18 +90,21 @@ struct GiftCheckView: View {
                         }
                         else if !rewardComplateOn && !modifyStressOn{
                             modifyStressOn = true
+                            isRewardEffective = true
                         }
                         else{
-                            //saveRecord
-                            //
-                            //rewardInfo.
-//                            ForEach(mainReward){ rewards in
-//                                if rewards.id == rewardInfo.id{
-//                                    rewards.isEffective = isRewardEffective
-////                                    break 없나?
-//                                }
-//                            }
+                            for (index,rewards) in mainReward.enumerated(){
+                                if rewards.id == reward.id{
+                                    mainReward[index].isEffective = isRewardEffective
+                                    break
+                                }
+                            }
                             UserDefaults.rewardArray = mainReward
+                            stressIndex = Int(sliderValue)
+                            UserDefaults.standard.set(sliderValue, forKey: "sliderValue")
+                            UserDefaults.standard.set(stressIndex, forKey: "stressIndex")
+                            print(mainReward)
+                            dismiss()
                         }
                         
                     }){
@@ -131,8 +136,8 @@ struct GiftCheckView: View {
     }
 }
 
-struct GiftCheckView_Previews: PreviewProvider {
-    static var previews: some View {
-        GiftCheckView()
-    }
-}
+//struct GiftCheckView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GiftCheckView(reward)
+//    }
+//}
