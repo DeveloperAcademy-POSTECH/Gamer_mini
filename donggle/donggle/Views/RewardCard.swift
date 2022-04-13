@@ -6,6 +6,8 @@ struct RewardCard: View {
     var reward: Reward
     
     @State private var isDetailView = false
+    @Binding var sliderValue : Double
+    @Binding var stressIndex : Int
     
     var body: some View {
         Button(action: {
@@ -36,7 +38,8 @@ struct RewardCard: View {
             .padding(.horizontal, 6)
             .shadow(color:  Color.black.opacity(0.14), radius: 8, y: 6)
             .fullScreenCover(isPresented: $isDetailView) {
-                CardDetailView(reward : reward)
+                CardDetailView(reward: reward, sliderValue: $sliderValue, stressIndex: $stressIndex)
+
             }
         }
     }
