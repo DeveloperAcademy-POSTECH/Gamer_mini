@@ -53,6 +53,8 @@ func stringToImoticon(category:String) -> String {
         return "💤"
     case "알콜":
         return "🍻"
+    case "칭찬하기":
+        return "💝"
 // -----보상--------
     case "기타":
         return "🧚‍♀️"
@@ -62,7 +64,30 @@ func stringToImoticon(category:String) -> String {
     }
 }
 
-
+func stressCatagoryToColor(category:String) -> [String : Double] {
+    switch category{
+    case "직장":
+        return ["red": 177.0, "green":199.0 , "blue" :227.0]
+    case "날씨":
+        return ["red": 253.0, "green":178.0 , "blue" :109.0]
+    case "수면":
+        return ["red": 172.0, "green":211.0 , "blue" :110.0]
+    case "가족":
+        return ["red": 242.0, "green":178.0 , "blue" :187.0]
+    case "금전":
+        return ["red": 247.0, "green":224.0 , "blue" :106.0]
+    case "기타":
+        return ["red": 227.0, "green":202.0 , "blue" :162.0]
+    case "인간관계":
+        return ["red": 233.0, "green":142.0 , "blue" :142.0]
+    case "학업":
+        return ["red": 194.0, "green":180.0 , "blue" :222.0]
+    case "이유 모름":
+        return ["red": 181.0, "green":159.0 , "blue" :142.0]
+    default:
+        return ["red": 184.0, "green":223.0 , "blue" :211.0]
+    }
+}
 
 extension UserDefaults {
     

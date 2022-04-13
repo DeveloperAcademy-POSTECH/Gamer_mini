@@ -23,7 +23,9 @@ struct RecordRewardView: View {
             let rewardInstance = Reward(id: rewardUUID, title: rewardTitle, content: rewardDescription, date: rewardDate, category: self.selectedReward, isEffective: nil, stressKey: nil)
             rArray.append(rewardInstance)
             UserDefaults.rewardArray = rArray
-            
+        
+            mainReward = UserDefaults.rewardArray ?? []
+        
             print("---보상 기록---")
             print(rArray)
             print("-----------------")
@@ -77,7 +79,7 @@ struct RecordRewardView: View {
                         Button(action: {
                             dismiss()
                         }) {
-                            Text("취소")
+                            Text("취소").foregroundColor(.black)
                         }
                     }
                     ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
@@ -88,7 +90,7 @@ struct RecordRewardView: View {
                             saveRecord(rewardTitle: rewardTitle, rewardDescription: rewardDescription, selectedReward: selectedReward, rewardDate: rewardDate)
                             dismiss()
                         }) {
-                            Text("완료")
+                            Text("완료").foregroundColor(.black)
                         }
                     }
                 }

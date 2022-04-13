@@ -373,7 +373,6 @@ func dateToString(dateInfo : Date) -> String {
     return dateString
 }
 
-
 struct TimelineView_Previews: PreviewProvider {
     static var previews: some View {
         TimelineView()

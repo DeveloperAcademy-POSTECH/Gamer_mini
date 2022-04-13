@@ -55,6 +55,9 @@ struct RecordView: View {
             print("---스트레스만 기록---")
             print(sArray)
             print("-----------------")
+
+            mainStress = UserDefaults.stressArray ?? []
+
         } else if rewardIsOn && selectedStress.isEmpty {
             if selectedStress.isEmpty{
                 self.selectedStress.append("기타")
@@ -68,9 +71,11 @@ struct RecordView: View {
             UserDefaults.rewardArray = rArray
             print("---보상만 기록---")
             print("-----------------")
+            mainReward = UserDefaults.rewardArray ?? []
         }
         
         else{
+
             //    스트레스 + 보상 기록
             if selectedStress.isEmpty{
                 self.selectedStress.append("기타")
@@ -94,14 +99,11 @@ struct RecordView: View {
             print(sArray)
             print(rArray)
             print("-----------------")
+            mainStress = UserDefaults.stressArray ?? []
+            mainReward = UserDefaults.rewardArray ?? []
+            print(mainReward)
         }
-        mainStress = UserDefaults.stressArray ?? []
-        mainReward = UserDefaults.rewardArray ?? []
         
-        //HomeView 데이터 재정리
-//        RewardDate = initRewardDate()
-//        RewardDateArray = initRewardDateArray(RewardDate : RewardDate)
-//        dateCircle = initDateCircle(RewardDateArray: RewardDateArray)
     }
 
     var body: some View {
@@ -213,7 +215,7 @@ struct RecordView: View {
                         sliderValue = Double(stressIndex)
                         dismiss()
                     }){
-                        Text("취소")
+                        Text("취소").foregroundColor(.black)
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing){
@@ -229,7 +231,7 @@ struct RecordView: View {
                         }
                         saveRecord(sliderValue: sliderValue, stressDescription: stressDescription, selectedStress: selectedStress, rewardIsOn: rewardIsOn, rewardTitle: rewardTitle, rewardDescription: rewardDescription, selectedReward: selectedReward, rewardDate: rewardDate)
                         dismiss()
-                    }
+                    }.foregroundColor(.black)
                 }
             }
             .background(Color.white)

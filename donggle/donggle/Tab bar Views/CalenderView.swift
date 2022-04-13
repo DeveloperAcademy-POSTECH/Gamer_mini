@@ -9,8 +9,30 @@ import SwiftUI
 import UIKit
 import FSCalendar
 
+class ReloadCalendarView: ObservableObject {
+
+    @Published var selectedDate : Date = Date()
+    @Published var mainReward2 : [Reward] = mainReward
+
+    func shuffle() {
+        print("shuffleDance")
+        selectedDate = Date()
+        mainReward2 = mainReward
+        print(selectedDate)
+    }
+}
 
 struct CalendarView: View {
+    
+    @ObservedObject var reloadCalendarView = ReloadCalendarView()
+    
+    @State var selectedDate : Date = Date()
+    
+    func shuffle() {
+        self.reloadCalendarView.shuffle()
+    }
+    
+    //self.reloadCalendarView.mainReward2
     
     static let dateFormatText: DateFormatter = {
         let formatter = DateFormatter()
@@ -24,8 +46,6 @@ struct CalendarView: View {
         GridItem(.flexible())
     ]
     
-    @State var selectedDate: Date = Date()
-    
     @State private var isRecordView = false
     @State private var isDetailView = false
     @State private var showModal = false
@@ -37,7 +57,6 @@ struct CalendarView: View {
                 VStack{
                     CalendarRepresentable(selectedDate: $selectedDate)
                 }
-                
                 .datePickerStyle(.graphical)
                 .navigationBarTitle(Text("보상캘린더"))
                 .navigationBarTitleDisplayMode(.inline)
@@ -47,9 +66,13 @@ struct CalendarView: View {
                             isRecordView.toggle()
                         }) {
                             Image(systemName: "plus")
+                                .foregroundColor(.black)
                         }
                         .fullScreenCover(isPresented: $isRecordView) {
                             RecordRewardView()
+                                .onDisappear{
+                                    self.reloadCalendarView.shuffle()
+                                }
                         }
                     } // : ToolbarItem
                 } // : toolbar
@@ -60,20 +83,21 @@ struct CalendarView: View {
                     .padding(10)
                     .font(.title2)
                 
-                                Button("보상전체 출력"){
-                
-                                    print("--- 보상상 ---")
-                                    print(mainReward)
-                                    print("-----------------")
-                                }
+                Button("보상전체 출력"){
+                    
+                    print("--- 보상상 ---")
+                    print(mainReward)
+                    print("-----------------")
+                }
                 
                 ScrollView {
-                    let currentDateRewards = mainReward.filter { (reward : Reward ) -> Bool in
+                    let currentDateRewards = self.reloadCalendarView.mainReward2.filter { (reward : Reward ) -> Bool in
                         
                         let formatter = DateFormatter()
                         formatter.dateFormat = "YYYY년 M월 d일"
                         
-                        return formatter.string(from: selectedDate) == formatter.string(from: reward.date) }.sorted(by: {$1.isEffective != nil})
+                        return formatter.string(from: selectedDate) == formatter.string(from: reward.date) }
+                        .sorted(by: {$1.isEffective != nil})
                     
                     if(currentDateRewards.count == 0){
                         Text("입력하신 보상이 없습니다 :)")
@@ -84,23 +108,6 @@ struct CalendarView: View {
                                     .stroke(lineWidth: 1)
                             ).padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                         
-//                        LazyVGrid(
-//                            columns: columns,
-//                            alignment: .center,
-//                            spacing: 6,
-//                            pinnedViews: [],
-//                            content: {
-//                                ForEach([1,2,3,4,5,6,7], id: \.self) { index in
-//
-//                                    Button(action: {
-//                                        isDetailView.toggle()
-//                                    }){
-//                                        DefaultRewardCard2(title: "title", img: "😘")
-//                                            .padding(.bottom,15)
-//                                    }
-//                                } // : ForEach
-//                            }) // : LazyVGrid
-                        
                     }else{
                         LazyVGrid(
                             columns: columns,
@@ -108,25 +115,22 @@ struct CalendarView: View {
                             spacing: 6,
                             pinnedViews: [],
                             content: {
-                                ForEach(currentDateRewards.indices, id: \.self) { index in
-                                    let reward = RewardCardInfo[index]
-                                    
-                                    let rewardCard = Button(action: {
-                                        isDetailView.toggle()
-                                        self.showModal = true
-                                    }){
-                                        // 여기서는 currentDateRewards의 index 차례대로 reward가 들어가는데
-                                        DefaultRewardCard(reward: reward)
-                                            .padding(.bottom,10)
+                                    ForEach(currentDateRewards.indices, id: \.self) { index in
+                                        
+                                        let reward = currentDateRewards[index]
+                                        let rewardCard = Button(action: {
+                                            isDetailView.toggle()
+                                        }){
+                                            RewardCard(reward: reward)
+                                                .padding(.bottom, 10)
+                                        }
+                                        if(reward.isEffective == nil){
+                                            rewardCard.foregroundColor(Color.green)
+                                        }else{
+                                            rewardCard.foregroundColor(Color.black)
+                                        }
                                     }
-                                    
-                                    if(reward.isEffective == nil){
-                                        rewardCard.foregroundColor(Color.green)
-                                    }else{
-                                        rewardCard.foregroundColor(Color.black)
-                                    }
-                                    
-                                } // : ForEach
+                                
                             }) // : LazyVGrid
                     }
                 } // :ScrollView
@@ -143,8 +147,6 @@ struct CalendarRepresentable: UIViewRepresentable{
     
     var calendar = FSCalendar()
     
-    func updateUIView(_ uiView: FSCalendar, context: Context) { }
-    
     func makeUIView(context: Context) -> FSCalendar {
         calendar.delegate = context.coordinator
         calendar.dataSource = context.coordinator
@@ -154,7 +156,7 @@ struct CalendarRepresentable: UIViewRepresentable{
         
         // 색 시정
         // 캘린더 배경 색
-        //        calendar.backgroundColor = UIColor(red: 241/255, green: 249/255, blue: 255/255, alpha: 1)
+        // calendar.backgroundColor = UIColor(red: 241/255, green: 249/255, blue: 255/255, alpha: 1)
         
         // 선택한 날짜 색
         calendar.appearance.selectionColor = UIColor(red: 38/255, green: 153/255, blue: 251/255, alpha: 1)
@@ -184,13 +186,12 @@ struct CalendarRepresentable: UIViewRepresentable{
         
         // header 커스텀
         calendar.headerHeight = 45
-        calendar.appearance.headerTitleAlignment = .center
+        calendar.appearance.headerTitleAlignment = .left
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0 // 다음달 이전달 안보이게
         
         calendar.appearance.headerDateFormat = "YYYY년 M월"
         calendar.appearance.headerTitleColor = .black
         calendar.appearance.headerTitleFont = UIFont.systemFont(ofSize: 24)
-        
         
         //        calendar.locale = Locale(identifier: "ko_KR") // 일 월 화 수 목 금
         calendar.appearance.weekdayTextColor = .gray
@@ -199,18 +200,28 @@ struct CalendarRepresentable: UIViewRepresentable{
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(self)
+        return Coordinator(self)
+    }
+    
+    func updateUIView(_ uiView: FSCalendar, context: Context) {
+        uiView.reloadData()
     }
     
     class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource{
+        
         var parent: CalendarRepresentable
         
         init(_ parent: CalendarRepresentable) {
             self.parent = parent
         }
         
+        func reload(_ parent: CalendarRepresentable) {
+            self.parent = parent
+        }
+        
         // 날짜 선택 시 콜백 메소드
-        func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition)
+        {
             parent.selectedDate = date
         }
         
@@ -227,7 +238,6 @@ struct CalendarRepresentable: UIViewRepresentable{
                 formatter.dateFormat = "YYYY년 M월 d일"
                 return formatter.string(from: reward.date)
             })
-            
             let formatter = DateFormatter()
             formatter.dateFormat = "YYYY년 M월 d일"
             
@@ -240,6 +250,34 @@ struct CalendarRepresentable: UIViewRepresentable{
     }
 }
 
+
+struct DefaultRewardCard2: View {
+    
+    var title : String
+    
+    var img : String
+    
+    var body: some View {
+        VStack{
+            
+            Text(img)
+                .font(Font.system(size: 44, design: .default))
+                .padding(.top, 32.0)
+            
+            Text(title)
+                .font(.system(size: 14, weight: .semibold))
+                .multilineTextAlignment(.center)
+                .padding(.top, 12.0)
+                .padding(.bottom, 16.0)
+            
+        }
+        .frame(width: 106.0, height: 140.0)
+        .background(.white)
+        .cornerRadius(16)
+        .padding(.leading,10)
+        .shadow(color:  Color.black.opacity(0.14), radius: 8, y: 6)
+    }
+}
 
 struct CalenderView_Previews: PreviewProvider {
     static var previews: some View {
