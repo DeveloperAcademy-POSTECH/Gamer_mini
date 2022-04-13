@@ -63,7 +63,7 @@ struct TimelineView: View {
     @State private var date = getMonth()
     @State private var showModal = false
     @State private var selectedView = 1
-//    @State private var month = "4월"
+    //    @State private var month = "4월"
     @State private var prevDate = ""
     @Environment(\.presentationMode) var presentation
     
@@ -71,10 +71,10 @@ struct TimelineView: View {
     
     var date1 = Date()
     var sortedData = Datas()
-//    var groupedData = Dictionary(grouping: sortedData.stressSet, by: { $0.date })
+    //    var groupedData = Dictionary(grouping: sortedData.stressSet, by: { $0.date })
     
-//    var manageDate = viewDate()
-//    var prevDate = String()
+    //    var manageDate = viewDate()
+    //    var prevDate = String()
     
     
     var body: some View {
@@ -100,8 +100,8 @@ struct TimelineView: View {
                             }
                         }
                         .sheet(isPresented: self.$showModal) {
+                            
                             ModalView(date: $date)
-
                         }
                         
                         
@@ -109,11 +109,11 @@ struct TimelineView: View {
                         
                         Picker(selection: $selectedView, label: Text("Picker")
                             .font(.system(size: 24, weight: .regular))) {
-                            Text("전체보기").tag(1)
-                            Text("스트레스").tag(2)
-                            Text("보상").tag(3)
-                            
-                        }
+                                Text("전체보기").tag(1)
+                                Text("스트레스").tag(2)
+                                Text("보상").tag(3)
+                                
+                            }
                         
                     }
                     .padding(.horizontal, 24.0)
@@ -161,13 +161,13 @@ struct TimelineView: View {
                             LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
                                 ForEach(sortedData.rewardSet, id: \.self.id) { reward in
                                     
-//                                    if (prevDate != dateToString(dateInfo: reward.date)){
-//                                        Text(dateToString(dateInfo: reward.date))
-//                                            .onAppear{
-//                                                prevDate = dateToString(dateInfo: reward.date)
-//                                                print(prevDate)
-//                                            }
-//                                    }
+                                    //                                    if (prevDate != dateToString(dateInfo: reward.date)){
+                                    //                                        Text(dateToString(dateInfo: reward.date))
+                                    //                                            .onAppear{
+                                    //                                                prevDate = dateToString(dateInfo: reward.date)
+                                    //                                                print(prevDate)
+                                    //                                            }
+                                    //                                    }
                                     
                                     RewardTimeCard(rewardName: reward.category[0], rewardTitle: reward.title, rewardContent: reward.content, rewardDate: dateToString(dateInfo: reward.date), rewardDone: reward.isEffective)
                                 }
@@ -182,7 +182,7 @@ struct TimelineView: View {
                     .navigationBarTitle("타임라인", displayMode: .inline)
                     .onAppear {
                         sortedData.refreshDatas()
-//                        manageDate.refreshPrevDate()
+                        //                        manageDate.refreshPrevDate()
                     }
                     .onDisappear {
                         presentation.wrappedValue.dismiss()
@@ -200,30 +200,30 @@ struct RewardTimeCard : View {
     var rewardContent: String
     var rewardDate: String
     var rewardDone: Bool?
-//    var prevDate: String
-//    var manageDate: viewDate
+    //    var prevDate: String
+    //    var manageDate: viewDate
     
     var body: some View {
         
-//        if (manageDate.prevDate != rewardDate){
-//            Text(rewardDate)
-//                .onAppear{
-//                    print(manageDate.prevDate)
-//                    manageDate.updatePrevDate(curDate: rewardDate)
-//                    print(manageDate.prevDate)
-//
-//                }
-//        }
+        //        if (manageDate.prevDate != rewardDate){
+        //            Text(rewardDate)
+        //                .onAppear{
+        //                    print(manageDate.prevDate)
+        //                    manageDate.updatePrevDate(curDate: rewardDate)
+        //                    print(manageDate.prevDate)
+        //
+        //                }
+        //        }
         
         HStack(alignment: .top, spacing: 0){
             VStack{
-//                Text(rewardDate)
+                //                Text(rewardDate)
                 Text(stringToImoticon(category : rewardName))
                     .font(.system(size: 44))
                     .opacity((rewardDone == nil) ? (0.5) : (1))
-                .onTapGesture {
-                    print("tap")
-                }
+                    .onTapGesture {
+                        print("tap")
+                    }
             }
             .padding(.trailing, 20.0)
             VStack(alignment: .leading, spacing: 0){
@@ -263,6 +263,17 @@ struct stressTimeCard : View {
                 Circle()
                     .fill(Color.init(red: 255/255, green: (233-Double(stressIndex)*2)/255, blue: 89/255))
                     .frame(width:50, height:50)
+                    .overlay {
+                        Image(String(Int(stressIndex) == 100 ? 100 :((Int(stressIndex)+10)/10)*10))
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 15, height: 15)
+                            .padding(.trailing, 10)
+                            .padding(.bottom, 14)
+                    }.onAppear{
+                        print(stressIndex)
+                    }
+                
                 Text(String(stressIndex))
                     .font(.system(size: 12))
             }.padding(.trailing, 20)
@@ -287,7 +298,7 @@ struct stressTimeCard : View {
                                     .foregroundColor(.white)
                                     .background(RoundedRectangle(cornerRadius: 15)
                                         .foregroundColor(.gray)
-    
+                                                
                                     )
                             }
                         }
