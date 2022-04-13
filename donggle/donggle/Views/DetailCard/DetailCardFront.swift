@@ -22,7 +22,7 @@ struct DetailCardFront: View {
     
     var body: some View {
         
-        ZStack(){
+        VStack(){
             VStack{
                 Text("\(reward.date, formatter: dateFormatText)")
                     .font(.system(size: 15, weight: .regular))
@@ -30,10 +30,11 @@ struct DetailCardFront: View {
                     .padding(.top, 30.0)
                 Spacer()
                 Text("\(stringToImoticon(category: reward.category[0]))")
+                    .font(.system(size: 100, weight: .regular))
                 Text(reward.title)
                     .font(.system(size: 22, weight: .bold))
                     .multilineTextAlignment(.center)
-                    .padding(.top, 29.0)
+                    .padding(.top, 1.0)
                 Text(reward.content)
                     .font(.system(size: 17, weight: .regular))
                     .multilineTextAlignment(.center)
