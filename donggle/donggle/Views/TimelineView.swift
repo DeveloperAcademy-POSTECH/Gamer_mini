@@ -9,6 +9,9 @@ struct Total {
     let date : Date
 }
 
+//@State private var prevDate : String
+
+
 
 
 class Datas {
@@ -31,6 +34,24 @@ class Datas {
     }
 }
 
+//class viewDate {
+//    var prevDate : String
+//
+//    init(){
+//        self.prevDate = ""
+//    }
+//
+//    func updatePrevDate(curDate : String){
+////        if (prevDate != curDate){
+//            prevDate = curDate
+////        }
+//    }
+//
+//    func refreshPrevDate(){
+//        prevDate = ""
+//    }
+//}
+
 
 
 //@State private var sortedData : Datas
@@ -39,14 +60,17 @@ class Datas {
 struct TimelineView: View {
     @State private var date = Date()
     @State private var showModal = false
-    @State private var selectedView = 3
+    @State private var selectedView = 1
     @State private var month = "4월"
+    @State private var prevDate = ""
     @Environment(\.presentationMode) var presentation
     
     //스트레스, 보상 데이터 임시 정의
     
     var date1 = Date()
     var sortedData = Datas()
+//    var manageDate = viewDate()
+//    var prevDate = String()
     
     
     var body: some View {
@@ -115,6 +139,9 @@ struct TimelineView: View {
                         ScrollView(showsIndicators: false) {
                             LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
                                 VStack{
+                                    if (prevDate == "hello") {
+                                        Text("hello")
+                                    }
                                     ForEach(sortedData.stressSet, id: \.self.id) { stress in
                                         stressTimeCard( stressIndex:stress.index, stressContent: stress.content, stressCategory: stress.category, stressDate: dateToString(dateInfo: stress.date))
                                     }
@@ -127,6 +154,15 @@ struct TimelineView: View {
                         ScrollView(showsIndicators: false) {
                             LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
                                 ForEach(sortedData.rewardSet, id: \.self.id) { reward in
+                                    
+//                                    if (prevDate != dateToString(dateInfo: reward.date)){
+//                                        Text(dateToString(dateInfo: reward.date))
+//                                            .onAppear{
+//                                                prevDate = dateToString(dateInfo: reward.date)
+//                                                print(prevDate)
+//                                            }
+//                                    }
+                                    
                                     RewardTimeCard(rewardName: reward.category[0], rewardTitle: reward.title, rewardContent: reward.content, rewardDate: dateToString(dateInfo: reward.date), rewardDone: reward.isEffective)
                                 }
                             }
@@ -140,6 +176,7 @@ struct TimelineView: View {
                     .navigationBarTitle("타임라인", displayMode: .inline)
                     .onAppear {
                         sortedData.refreshDatas()
+//                        manageDate.refreshPrevDate()
                     }
                     .onDisappear {
                         presentation.wrappedValue.dismiss()
@@ -150,16 +187,31 @@ struct TimelineView: View {
 }
 
 
+
 struct RewardTimeCard : View {
     var rewardName: String
     var rewardTitle: String
     var rewardContent: String
     var rewardDate: String
     var rewardDone: Bool?
+//    var prevDate: String
+//    var manageDate: viewDate
     
     var body: some View {
+        
+//        if (manageDate.prevDate != rewardDate){
+//            Text(rewardDate)
+//                .onAppear{
+//                    print(manageDate.prevDate)
+//                    manageDate.updatePrevDate(curDate: rewardDate)
+//                    print(manageDate.prevDate)
+//
+//                }
+//        }
+        
         HStack(alignment: .top, spacing: 0){
             VStack{
+//                Text(rewardDate)
                 Text(stringToImoticon(category : rewardName))
                     .font(.system(size: 44))
                     .opacity((rewardDone == nil) ? (0.5) : (1))
