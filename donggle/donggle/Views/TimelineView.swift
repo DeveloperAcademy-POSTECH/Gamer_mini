@@ -100,8 +100,8 @@ struct TimelineView: View {
                             }
                         }
                         .sheet(isPresented: self.$showModal) {
-
                             ModalView(date: $date)
+
                         }
                         
                         
