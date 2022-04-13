@@ -141,8 +141,9 @@ struct HomeView: View {
                     .fill(Color.init(red: 255/255, green: (233-sliderValue*2)/255, blue: 89/255))
                     .padding(50)
                     .overlay {
-                        
+    
                         Image(String(stressIndex == 100 ? 100 :((stressIndex+10)/10)*10))
+
                             .resizable()
                             .scaledToFit()
                             .frame(width: 45, height: 45)
@@ -179,35 +180,7 @@ struct HomeView: View {
                         RoundedRectangle(cornerRadius: 15)
                             .stroke(lineWidth: 1)
                     ).padding(EdgeInsets(top: 15, leading: 24, bottom: 0, trailing: 24))
-                //                HStack{
-                //                    ForEach([11,23,24,25,26,22,22], id: \.self){ index in
-                //                        Button(
-                //                            action: {
-                //                            }, label:{
-                //                                Text("31")
-                //                                  .padding(10)
-                //                                  .background(.yellow)
-                //                                  .clipShape(Circle())
-                //                                  .foregroundColor(Color.black)
-                //                            })
-                //                    }
-                //                } // : 날짜 Hstack
-                
-                //                ScrollView(.horizontal, showsIndicators: false){
-                //                    HStack{
-                //
-                //                        DefaultRewardCard2(title: "jasdsnj", img: "😍")
-                //                            .padding(.leading, 12.0)
-                //                        DefaultRewardCard2(title: "jasdsnj", img: "😍")
-                //                        DefaultRewardCard2(title: "jasdsnj", img: "😍")
-                //                        DefaultRewardCard2(title: "jasdsnj", img: "😍")
-                //                        DefaultRewardCard2(title: "jasdsnj", img: "😍")
-                //                        DefaultRewardCard2(title: "jasdsnj", img: "😍")
-                //                            .padding(.trailing, 24.0)
-                //                    } // :HStack
-                //                    .padding(.top, 15)
-                //                    Spacer()
-                //                }
+
                 
                 Spacer()
             }else{
@@ -245,6 +218,7 @@ struct HomeView: View {
                         ForEach(self.reloadHomeView.RewardCardInfo2.indices, id: \.self) { index in
                             let reward = self.reloadHomeView.RewardCardInfo2[index]
                             if(index == 0){
+
                                 RewardCard(reward: reward, sliderValue: $sliderValue, stressIndex: $stressIndex)
                                     .padding(.leading,10.0)
                             }else if(index == self.reloadHomeView.RewardCardInfo2.count-1){
@@ -254,6 +228,7 @@ struct HomeView: View {
                                 RewardCard(reward: reward, sliderValue: $sliderValue, stressIndex: $stressIndex)
                             }
                         }
+
                     } // :HStack
                     .padding(.top, 10)
                     Spacer()

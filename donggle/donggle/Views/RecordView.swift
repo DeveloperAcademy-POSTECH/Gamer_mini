@@ -111,8 +111,7 @@ struct RecordView: View {
                         .multilineTextAlignment(.leading)
                     VStack{
                         Text("\(Int(sliderValue))%")
-                            .padding(.top, 20)
-                        
+                            .padding(.top, 20)     
                         Circle()
                             .fill(Color.init(red: 255/255, green: (233-sliderValue*2)/255, blue: 89/255))
                             .padding(2)
@@ -125,7 +124,6 @@ struct RecordView: View {
                                     .padding(.trailing, 30)
                                     .padding(.bottom, 30)
                             }
-                        
                         HStack{
                             Image(systemName: "circle.fill")
                                 .foregroundColor(.yellow)
