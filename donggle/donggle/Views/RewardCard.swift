@@ -39,7 +39,6 @@ struct RewardCard: View {
             .shadow(color:  Color.black.opacity(0.14), radius: 8, y: 6)
             .fullScreenCover(isPresented: $isDetailView) {
                 CardDetailView(reward: reward, sliderValue: $sliderValue, stressIndex: $stressIndex)
-
             }
         }
     }

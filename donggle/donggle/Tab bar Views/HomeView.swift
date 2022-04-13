@@ -87,7 +87,6 @@ struct HomeView: View {
     @State private var selectedDate : Int = 0
     
     @GestureState var isLongPressed = false
-    @State private var isDetailView = false
     
     @State var offset: CGSize = .zero
     
@@ -137,16 +136,26 @@ struct HomeView: View {
             }
             .padding(.horizontal, 24.0)
             
-            Circle()
-                .fill(Color.init(red: 255/255, green: (233-sliderValue*2)/255, blue: 89/255))
-                .frame(width: 200.0, height: 200.0)
-                .padding(50)
-                .scaleEffect(isLongPressed ? 1.15 : 1)
-                .gesture(longPressGesture)
-                .animation(.spring())
-                .offset(x: offset.width, y: offset.height)
-                .gesture(dragGesture)
-                .animation(.default)
+            VStack{
+                Circle()
+                    .fill(Color.init(red: 255/255, green: (233-sliderValue*2)/255, blue: 89/255))
+                    .padding(50)
+                    .overlay {
+                        Image(donggleFace)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 45, height: 45)
+                            .padding(.trailing, 30)
+                            .padding(.bottom, 30)
+                    }
+            }
+            .scaleEffect(isLongPressed ? 1.15 : 1)
+            .gesture(longPressGesture)
+            .animation(.spring())
+            .offset(x: offset.width, y: offset.height)
+            .gesture(dragGesture)
+            .animation(.default)
+            
             
             Text("\(stressIndex)%")
                 .font(.system(size: 24, weight: .regular))
@@ -155,14 +164,20 @@ struct HomeView: View {
             Spacer().frame(height: 10)
             
             if(self.reloadHomeView.dateCircle2 .count == 0){
+                HStack{
+                    Text("최근 보상")
+                        .font(.system(size: 22, weight: .bold))
+                        .foregroundColor(Color.black)
+                    Spacer()
+                }.padding(.leading, 24)
+                    .padding(.top,20)
                 Text("아직 입력하신 보상이 없습니다 ~ !!")
                     .padding(20)
                     .frame(maxWidth:.infinity)
                     .overlay(
                         RoundedRectangle(cornerRadius: 15)
                             .stroke(lineWidth: 1)
-                    ).padding(EdgeInsets(top: 20, leading: 24, bottom: 0, trailing: 24))
-                
+                    ).padding(EdgeInsets(top: 15, leading: 24, bottom: 0, trailing: 24))
 //                HStack{
 //                    ForEach([11,23,24,25,26,22,22], id: \.self){ index in
 //                        Button(
@@ -196,6 +211,14 @@ struct HomeView: View {
                 Spacer()
             }else{
                 // dateCircle
+                HStack{
+                    Text("최근 보상")
+                        .font(.system(size: 22, weight: .bold))
+                        .foregroundColor(Color.black)
+                    Spacer()
+                }.padding(.leading, 24)
+                    .padding(.top,20)
+                HStack{
                     HStack{
                         ForEach(self.reloadHomeView.dateCircle2.indices, id: \.self){ index in
                             Button(
@@ -204,13 +227,15 @@ struct HomeView: View {
                                     self.reloadHomeView.RewardCardInfo2 = self.reloadHomeView.RewardDateArray2[index]
                                 }, label:{
                                     Text("\(self.reloadHomeView.dateCircle2[index])")
-                                      .padding(10)
-                                      .background(selectedDate == index  ? Color.yellow : Color.white)
-                                      .clipShape(Circle())
-                                      .foregroundColor(Color.black)
+                                        .padding(10)
+                                        .background(selectedDate == index  ? Color.yellow : Color.white)
+                                        .clipShape(Circle())
+                                        .foregroundColor(Color.black)
                                 })
                         }
                     } // : 날짜 Hstack
+                    Spacer()
+                }.padding(.leading,24.0)
                 
                 //건빵 List
                 ScrollView(.horizontal, showsIndicators: false){
@@ -218,11 +243,7 @@ struct HomeView: View {
                     HStack{
                         ForEach(self.reloadHomeView.RewardCardInfo2.indices, id: \.self) { index in
                             let reward = self.reloadHomeView.RewardCardInfo2[index]
-                            let rewardCard = Button(action: {
-                                isDetailView.toggle()
-                            }){
-
-                                if(index == 0){
+                            if(index == 0){
                                     RewardCard(reward: reward, sliderValue: $sliderValue, stressIndex: $stressIndex)
                                         .padding(.leading,10.0)
                                 }else if(index == self.reloadHomeView.RewardCardInfo2.count-1){
@@ -232,12 +253,6 @@ struct HomeView: View {
                                     RewardCard(reward: reward, sliderValue: $sliderValue, stressIndex: $stressIndex)
                                 }
                             }
-                            if(reward.isEffective == nil){
-                                rewardCard.foregroundColor(Color.green)
-                            }else{
-                                rewardCard.foregroundColor(Color.black)
-                            }
-                        }
                     } // :HStack
                     .padding(.top, 10)
                     Spacer()
@@ -277,7 +292,7 @@ struct HomeView: View {
 
 //struct HomeView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        HomeView(sliderValue: <#T##Binding<Double>#>, stressIndex: <#T##Binding<Int>#>)
+//        HomeView(sliderValue: $sliderValue, stressIndex: $stressIndex)
 //    }
 //}
 
