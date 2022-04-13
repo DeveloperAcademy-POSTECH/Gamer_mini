@@ -9,6 +9,8 @@ struct Total {
     let date : Date
 }
 
+struct
+
 //@State private var prevDate : String
 
 
@@ -71,7 +73,23 @@ struct TimelineView: View {
     
     var date1 = Date()
     var sortedData = Datas()
-//    var groupedData = Dictionary(grouping: sortedData.stressSet, by: { $0.date })
+    
+//    let groupDic = Dictionary(grouping: mainStress) { (stress) -> DateComponents in
+//
+//        let dateString = Calendar.current.dateComponents([.day, .year, .month], from: (stress.date))
+//
+//        return dateString
+//    }
+    
+    let groupData = Dictionary(grouping: mainStress) { (stress) -> String in
+
+        let dateString = dateToString(dateInfo: stress.date)
+
+        return dateString
+    }
+    
+    
+//    var groupedData = Dictionary(grouping: sortedData.stressSet, by: { $0.date }}
     
 //    var manageDate = viewDate()
 //    var prevDate = String()
@@ -182,6 +200,12 @@ struct TimelineView: View {
                     .onAppear {
                         sortedData.refreshDatas()
 //                        manageDate.refreshPrevDate()
+//                        
+//                        for x in groupData {
+//                            
+//                            
+//                        }
+//                        
                     }
                     .onDisappear {
                         presentation.wrappedValue.dismiss()
