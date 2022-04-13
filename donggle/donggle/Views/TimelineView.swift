@@ -143,7 +143,7 @@ struct TimelineView: View {
                         ScrollView(showsIndicators: false) {
                             LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
                                 
-                                ForEach(Array(sortedData.groupedTotal.keys.enumerated()), id: \.element) { _, key in
+                                ForEach(Array(sortedData.groupedTotal.keys.enumerated()).sorted(by: {$0.element>$1.element}), id: \.element) { _, key in
                                     
                                     Text(key)
                                         .font(.body)
@@ -172,7 +172,7 @@ struct TimelineView: View {
                         ScrollView(showsIndicators: false) {
                             LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
                                 
-                                ForEach(Array(sortedData.groupedStress.keys.enumerated()), id: \.element) { _, key in
+                                ForEach(Array(sortedData.groupedStress.keys.enumerated()).sorted(by: {$0.element>$1.element}), id: \.element) { _, key in
                                     Text(key)
                                         .font(.body)
                                         .fontWeight(.regular)
@@ -189,9 +189,13 @@ struct TimelineView: View {
                     } else if (selectedView == 3){ //보상
 //                        Array(dictionary.keys).sorted(<)
 //                        sortedData.groupedReward.keys.enumerated()
+//                        Text("보상")
+//                            .onAppear{
+//                                print(Array(sortedData.groupedReward.keys.enumerated()).sorted(by: {$0.element>$1.element}))
+//                            }
                         ScrollView(showsIndicators: false) {
                             LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
-                                ForEach(Array(sortedData.groupedReward.keys.enumerated()).sorted(by: >), id: \.element) { _, key in
+                                ForEach(Array(sortedData.groupedReward.keys.enumerated()).sorted(by: {$0.element>$1.element}), id: \.element) { _, key in
                                     Text(key)
                                         .font(.body)
                                         .fontWeight(.regular)
