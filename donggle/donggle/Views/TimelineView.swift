@@ -175,7 +175,7 @@ struct TimelineView: View {
                                 
                                 ForEach(Array(sortedData.groupedStress.keys.enumerated()).sorted(by: {$0.element>$1.element}), id: \.element) { _, key in
                                     Text(key)
-                                        .font(.body)
+                                        .font(.system(size : 15))
                                         .fontWeight(.regular)
                                         .padding(.top, 12)
 
@@ -254,11 +254,11 @@ struct RewardTimeCard : View {
             .padding(.trailing, 20.0)
             VStack(alignment: .leading, spacing: 0){
                 Text(rewardTitle)
-                    .font(.headline)
+                    .font(.system(size: 15))
                     .fontWeight(.bold)
                     .padding(.bottom, 12.0)
                 Text(rewardContent)
-                    .font(.body)
+                    .font(.system(size: 15))
                     .fontWeight(.regular)
                 Spacer()
             }
@@ -290,14 +290,16 @@ struct stressTimeCard : View {
                 Circle()
                     .fill(Color.init(red: 255/255, green: (233-Double(stressIndex)*2)/255, blue: 89/255))
                     .frame(width:50, height:50)
-                Text(String(stressIndex))
+                Text(String(stressIndex) + "%")
                     .font(.system(size: 12))
+                    .foregroundColor(Color.init(red: 117/255, green: 117/255, blue: 117/255))
             }.padding(.trailing, 20)
             
             VStack(alignment: .leading, spacing: 0){
                 
                 Text(stressContent)
-                    .font(.body)
+                    .font(.system(size: 15))
+                    .fontWeight(.regular)
                     .fontWeight(.regular)
                     .padding(.bottom, 12)
                     .fixedSize(horizontal: false, vertical: true)
@@ -315,7 +317,7 @@ struct stressTimeCard : View {
                                     .font(.system(size : 12))
                                     .padding(.horizontal, 10.0)
                                     .padding(.vertical, 2)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.black)
                                     .background(RoundedRectangle(cornerRadius: 15)
                                         .foregroundColor(Color(red: stressColor["red"]!/255, green: stressColor["green"]!/255, blue: stressColor["blue"]!/255))
     
