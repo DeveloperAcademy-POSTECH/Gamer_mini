@@ -14,12 +14,13 @@ struct DefaultRewardCard: View {
             VStack(spacing : 0){
                 Text("\(stringToImoticon(category: reward.category[0]))")
                     .font(.system(size: 44, design: .default))
-                    .padding(.top, 32)
+                    .padding(.top, 30)
+                    .padding(.bottom, 12)
                 Text("\(reward.title)")
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(Color.black)
                     .multilineTextAlignment(.center)
-                    .padding(.bottom, 16)
+                    .padding(.bottom, 18)
             }// : VStack
             .frame(width: 106, height: 140)
             .background(.white)
