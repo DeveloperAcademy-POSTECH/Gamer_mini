@@ -21,9 +21,25 @@ struct DetailCardBack: View {
                     .font(.system(size: 15, weight: .regular))
                     .multilineTextAlignment(.center)
                     .padding(.top, 30.0)
+<<<<<<< Updated upstream
                 Spacer()
             }
             VStack{
+=======
+                
+                Circle()
+                    .fill(Color.init(red: 255/255, green: (233-sliderValue*2)/255, blue: 89/255))
+                    .frame(width: 100.0, height: 100.0)
+                    .padding(.top, 38)
+                Text("\(stressIndex)%")
+                    .font(.system(size: 15, weight: .regular))
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 5.0)
+                Capsule()
+                    .fill(Color.gray)
+                    .frame(width: 54.0, height: 24.0)
+                
+>>>>>>> Stashed changes
                 Text("아니 왜 갑자기 야근 시켜??? 이거 수요일 마감이잖아요 약속도 취소하고 ㅠㅠ,, 너무 슬프다 저녁에 집가서 야식 먹어야지,, 그래도 오늘은 요정들 드라마볼 수 있어서 버틴다..")
                     .font(.system(size: 17, weight: .regular))
                     .multilineTextAlignment(.center)

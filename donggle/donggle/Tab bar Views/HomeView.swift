@@ -112,7 +112,7 @@ struct HomeView: View {
             .padding()
             
             Circle()
-                .fill(Color.init(red: (sliderValue+1)*2/255, green: (101-sliderValue)*2/255, blue: (101-sliderValue)*2/255))
+                .fill(Color.init(red: 255/255, green: (233-sliderValue*2)/255, blue: 89/255))
                 .frame(width: 200.0, height: 200.0)
                 .padding(50)
                 .scaleEffect(isLongPressed ? 1.15 : 1)

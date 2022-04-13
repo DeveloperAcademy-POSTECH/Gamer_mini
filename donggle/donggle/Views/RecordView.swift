@@ -38,7 +38,7 @@ struct RecordView: View {
     
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
     func saveRecord(sliderValue: Double, stressDescription: String, selectedStress : [String], rewardIsOn : Bool, rewardTitle: String, rewardDescription : String, selectedReward : [String], rewardDate : Date){
-        if stressDescription.isEmpty || stressDescription == "어떤 일이 있었나요?" && selectedStress.isEmpty && !rewardIsOn{
+        if (stressDescription.isEmpty && selectedStress.isEmpty && !rewardIsOn) || rewardIsOn && selectedStress.isEmpty{
             //    스트레스 수치만 조절
             print("---스트레스 수치만 조절---")
         }else if !rewardIsOn{
@@ -47,7 +47,7 @@ struct RecordView: View {
                 self.selectedStress.append("기타")
             }
             var sArray : [Stress] = UserDefaults.stressArray ?? []
-            let stressInstance = Stress(id: UUID(), index: stressIndex, content: stressDescription, date: Date(), category: self.selectedStress, rewardKey: nil)
+            let stressInstance = Stress(id: UUID(), index: stressIndex, content: self.stressDescription, date: Date(), category: self.selectedStress, rewardKey: nil)
             sArray.append(stressInstance)
             UserDefaults.stressArray = sArray
             print("---스트레스만 기록---")
@@ -64,12 +64,12 @@ struct RecordView: View {
             let stressUUID = UUID()
             let rewardUUID = UUID()
             var sArray : [Stress] = UserDefaults.stressArray ?? []
-            let stressInstance = Stress(id: stressUUID, index: self.stressIndex, content: stressDescription, date: Date(), category: self.selectedStress, rewardKey: rewardUUID)
+            let stressInstance = Stress(id: stressUUID, index: self.stressIndex, content: self.stressDescription, date: Date(), category: self.selectedStress, rewardKey: rewardUUID)
             sArray.append(stressInstance)
             UserDefaults.stressArray = sArray
             
             var rArray : [Reward] = UserDefaults.rewardArray ?? []
-            let rewardInstance = Reward(id: rewardUUID, title: rewardTitle, content: rewardDescription, date: rewardDate, category: self.selectedReward, isEffective: nil, stressKey: stressUUID)
+            let rewardInstance = Reward(id: rewardUUID, title: rewardTitle, content: self.rewardDescription, date: rewardDate, category: self.selectedReward, isEffective: nil, stressKey: stressUUID)
             rArray.append(rewardInstance)
             UserDefaults.rewardArray = rArray
             
@@ -94,15 +94,17 @@ struct RecordView: View {
                     VStack{
                         Text("\(Int(sliderValue))%")
                         Circle()
-                            .fill(Color.init(red: (sliderValue+1)*2/255, green: (101-sliderValue)*2/255, blue: (101-sliderValue)*2/255))
+                            .fill(Color.init(red: 255/255, green: (233-sliderValue*2)/255, blue: 89/255))
                             .padding()
                             .frame(width: 130.0, height: 120.0)
                         HStack{
-                            Image(systemName: "circle")
-                            Slider(value: $sliderValue, in: 0...100,step: 1.0)
                             Image(systemName: "circle.fill")
+                                .foregroundColor(.yellow)
+                            Slider(value: $sliderValue, in: 0...100,step: 1.0)
+                                .accentColor(.black)
+                            Image(systemName: "circle.fill")
+                                .foregroundColor(.red)
                         }
-                        
                     }
                 }
                 VStack(alignment: .leading, spacing: 30){
@@ -200,6 +202,12 @@ struct RecordView: View {
                         stressIndex = Int(sliderValue)
                         UserDefaults.standard.set(stressIndex, forKey: "stressIndex")
                         UserDefaults.standard.set(sliderValue, forKey: "sliderValue")
+                        if stressDescription == "어떤 일이 있었나요?"{
+                            stressDescription = ""
+                        }
+                        if rewardDescription == "나에게 어떤 선물을 줄까요?"{
+                            rewardDescription = ""
+                        }
                         saveRecord(sliderValue: sliderValue, stressDescription: stressDescription, selectedStress: selectedStress, rewardIsOn: rewardIsOn, rewardTitle: rewardTitle, rewardDescription: rewardDescription, selectedReward: selectedReward, rewardDate: rewardDate)
                         dismiss()
                     }
