@@ -48,9 +48,12 @@ struct GiftCheckView: View {
                             .fill(Color.init(red: 255/255, green: (233-sliderValue*2)/255, blue: 89/255))
                                 .frame(width: 130.0, height: 120.0)
                             HStack{
-                                Image(systemName: "circle")
-                                Slider(value: $sliderValue, in: 0...100,step: 1.0)
                                 Image(systemName: "circle.fill")
+                                    .foregroundColor(.yellow)
+                                Slider(value: $sliderValue, in: 0...100,step: 1.0)
+                                    .tint(.black)
+                                Image(systemName: "circle.fill")
+                                    .foregroundColor(.red)
                             }.padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
         
                     }

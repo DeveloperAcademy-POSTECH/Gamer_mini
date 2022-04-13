@@ -33,14 +33,14 @@ struct RecordView: View {
     @State var selectedStress: [String] = []
     @State var selectedReward: [String] = []
 
-    @State var stressCategory: [String] = ["직장", "날씨", "수면", "가족", "돈", "그냥"]
+    @State var stressCategory: [String] = ["직장", "날씨", "수면", "가족", "금전", "그냥"]
     @State var rewardCategory: [String] = ["꿀잠", "알콜", "쇼핑", "운동", "음식", "놀기"]
 
     @State private var rewardDate = Date()
     
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
     func saveRecord(sliderValue: Double, stressDescription: String, selectedStress : [String], rewardIsOn : Bool, rewardTitle: String, rewardDescription : String, selectedReward : [String], rewardDate : Date){
-        if (stressDescription.isEmpty && selectedStress.isEmpty && !rewardIsOn) || rewardIsOn && selectedStress.isEmpty{
+        if (stressDescription.isEmpty && selectedStress.isEmpty && !rewardIsOn){
             //    스트레스 수치만 조절
             print("---스트레스 수치만 조절---")
         }else if !rewardIsOn{
@@ -55,7 +55,22 @@ struct RecordView: View {
             print("---스트레스만 기록---")
             print(sArray)
             print("-----------------")
-        }else{
+        } else if rewardIsOn && selectedStress.isEmpty {
+            if selectedStress.isEmpty{
+                self.selectedStress.append("기타")
+            }
+            if selectedReward.isEmpty{
+                self.selectedReward.append("기타")
+            }
+            var rArray : [Reward] = UserDefaults.rewardArray ?? []
+            let rewardInstance = Reward(id: UUID(), title: rewardTitle, content: self.rewardDescription, date: rewardDate, category: self.selectedReward, isEffective: nil, stressKey: nil)
+            rArray.append(rewardInstance)
+            UserDefaults.rewardArray = rArray
+            print("---보상만 기록---")
+            print("-----------------")
+        }
+        
+        else{
             //    스트레스 + 보상 기록
             if selectedStress.isEmpty{
                 self.selectedStress.append("기타")
@@ -105,7 +120,7 @@ struct RecordView: View {
                             Image(systemName: "circle.fill")
                                 .foregroundColor(.yellow)
                             Slider(value: $sliderValue, in: 0...100,step: 1.0)
-                                .accentColor(.black)
+                                .tint(.black)
                             Image(systemName: "circle.fill")
                                 .foregroundColor(.red)
                         }
