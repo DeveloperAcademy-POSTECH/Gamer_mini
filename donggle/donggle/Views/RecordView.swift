@@ -33,7 +33,7 @@ struct RecordView: View {
     @State var selectedStress: [String] = []
     @State var selectedReward: [String] = []
 
-    @State var stressCategory: [String] = ["직장", "날씨", "수면", "가족", "돈", "그냥"]
+    @State var stressCategory: [String] = ["직장", "날씨", "수면", "가족", "금전", "그냥"]
     @State var rewardCategory: [String] = ["꿀잠", "알콜", "쇼핑", "운동", "음식", "놀기"]
 
     @State private var rewardDate = Date()
@@ -120,7 +120,7 @@ struct RecordView: View {
                             Image(systemName: "circle.fill")
                                 .foregroundColor(.yellow)
                             Slider(value: $sliderValue, in: 0...100,step: 1.0)
-                                .accentColor(.black)
+                                .tint(.black)
                             Image(systemName: "circle.fill")
                                 .foregroundColor(.red)
                         }
