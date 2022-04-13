@@ -75,7 +75,7 @@ class Datas {
 struct TimelineView: View {
     @State private var date = getMonth()
     @State private var showModal = false
-    @State private var selectedView = 3
+    @State private var selectedView = 1
 //    @State private var month = "4월"
     @State private var prevDate = ""
     @Environment(\.presentationMode) var presentation
@@ -148,6 +148,7 @@ struct TimelineView: View {
                                     Text(key)
                                         .font(.body)
                                         .fontWeight(.regular)
+                                        .padding(.top, 12)
                                     
                                     ForEach(sortedData.groupedTotal[key]!, id: \.self.id) { data in
                                         if data.type == 2 {
@@ -176,6 +177,7 @@ struct TimelineView: View {
                                     Text(key)
                                         .font(.body)
                                         .fontWeight(.regular)
+                                        .padding(.top, 12)
 
                                     ForEach(sortedData.groupedStress[key]!, id: \.self.id) { stress in
                                         stressTimeCard( stressIndex:stress.index, stressContent: stress.content, stressCategory: stress.category, stressDate: dateToString(dateInfo: stress.date))
@@ -199,6 +201,7 @@ struct TimelineView: View {
                                     Text(key)
                                         .font(.body)
                                         .fontWeight(.regular)
+                                        .padding(.top, 12)
 
                                     ForEach(sortedData.groupedReward[key]!, id: \.self.id) { reward in
                                         RewardTimeCard(rewardName: reward.category[0], rewardTitle: reward.title, rewardContent: reward.content, rewardDate: dateToString(dateInfo: reward.date), rewardDone: reward.isEffective)
@@ -240,7 +243,7 @@ struct RewardTimeCard : View {
         
         HStack(alignment: .top, spacing: 0){
             VStack{
-                Text(rewardDate)
+//                Text(rewardDate)
                 Text(stringToImoticon(category : rewardName))
                     .font(.system(size: 44))
                     .opacity((rewardDone == nil) ? (0.5) : (1))
@@ -283,7 +286,7 @@ struct stressTimeCard : View {
         HStack(alignment: .top, spacing: 0){
             
             VStack(spacing:3){
-                Text(stressDate)
+//                Text(stressDate)
                 Circle()
                     .fill(Color.init(red: 255/255, green: (233-Double(stressIndex)*2)/255, blue: 89/255))
                     .frame(width:50, height:50)
@@ -299,19 +302,22 @@ struct stressTimeCard : View {
                     .padding(.bottom, 12)
                     .fixedSize(horizontal: false, vertical: true)
                 
-
+                //let stressColor : [String : Double] = stressCatagoryToColor(category: categ)
                 
                 VStack(alignment: .leading, spacing: 5){
                     ForEach(groupCate(stressCategory: stressCategory, parentWidth: UIScreen.main.bounds.size.width - 170), id: \.self){ group in
+                        
                         HStack (spacing : 6){
                             ForEach(group, id: \.self){ cate in
+                                let stressColor : [String : Double] = stressCatagoryToColor(category: cate)
+                                
                                 Text(cate)
                                     .font(.system(size : 12))
                                     .padding(.horizontal, 10.0)
                                     .padding(.vertical, 2)
                                     .foregroundColor(.white)
                                     .background(RoundedRectangle(cornerRadius: 15)
-                                        .foregroundColor(.gray)
+                                        .foregroundColor(Color(red: stressColor["red"]!/255, green: stressColor["green"]!/255, blue: stressColor["blue"]!/255))
     
                                     )
                             }
