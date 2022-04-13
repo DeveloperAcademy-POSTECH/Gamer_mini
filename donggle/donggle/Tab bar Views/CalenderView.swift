@@ -9,30 +9,30 @@ import SwiftUI
 import UIKit
 import FSCalendar
 
-//
-//class ReloadCalendarView: ObservableObject {
-//
-//    @Published var selectedDate : Date = Date()
-//
-//    func shuffle() {
-//        print("shuffleDance")
-//        selectedDate = Date()
-//        print(selectedDate)
-//    }
-//}
+class ReloadCalendarView: ObservableObject {
 
+    @Published var selectedDate : Date = Date()
+    @Published var mainReward2 : [Reward] = mainReward
+
+    func shuffle() {
+        print("shuffleDance")
+        selectedDate = Date()
+        mainReward2 = mainReward
+        print(selectedDate)
+    }
+}
 
 struct CalendarView: View {
     
-//    @ObservedObject var reloadCalendarView = ReloadCalendarView()
+    @ObservedObject var reloadCalendarView = ReloadCalendarView()
     
     @State var selectedDate : Date = Date()
     
-//    func shuffle() {
-//        self.reloadCalendarView.shuffle()
-//    }
-//    
-    //               self.reloadCalendarView.selectedDate
+    func shuffle() {
+        self.reloadCalendarView.shuffle()
+    }
+    
+    //self.reloadCalendarView.mainReward2
     
     static let dateFormatText: DateFormatter = {
         let formatter = DateFormatter()
@@ -57,7 +57,6 @@ struct CalendarView: View {
                 VStack{
                     CalendarRepresentable(selectedDate: $selectedDate)
                 }
-                
                 .datePickerStyle(.graphical)
                 .navigationBarTitle(Text("보상캘린더"))
                 .navigationBarTitleDisplayMode(.inline)
@@ -67,9 +66,13 @@ struct CalendarView: View {
                             isRecordView.toggle()
                         }) {
                             Image(systemName: "plus")
+                                .foregroundColor(.black)
                         }
                         .fullScreenCover(isPresented: $isRecordView) {
                             RecordRewardView()
+                                .onDisappear{
+                                    self.reloadCalendarView.shuffle()
+                                }
                         }
                     } // : ToolbarItem
                 } // : toolbar
@@ -88,7 +91,7 @@ struct CalendarView: View {
                 }
                 
                 ScrollView {
-                    let currentDateRewards = mainReward.filter { (reward : Reward ) -> Bool in
+                    let currentDateRewards = self.reloadCalendarView.mainReward2.filter { (reward : Reward ) -> Bool in
                         
                         let formatter = DateFormatter()
                         formatter.dateFormat = "YYYY년 M월 d일"
@@ -113,11 +116,13 @@ struct CalendarView: View {
                             pinnedViews: [],
                             content: {
                                     ForEach(currentDateRewards.indices, id: \.self) { index in
+                                        
                                         let reward = currentDateRewards[index]
                                         let rewardCard = Button(action: {
                                             isDetailView.toggle()
                                         }){
-                                            DefaultRewardCard(reward: reward)
+                                            RewardCard(reward: reward)
+                                                .padding(.bottom, 10)
                                         }
                                         if(reward.isEffective == nil){
                                             rewardCard.foregroundColor(Color.green)
@@ -141,11 +146,6 @@ struct CalendarRepresentable: UIViewRepresentable{
     @Binding var selectedDate: Date
     
     var calendar = FSCalendar()
-    
-    func updateUIView(_ uiView: FSCalendar, context: Context) {
-        print("hi")
-//        calendar.reloadData()
-    }
     
     func makeUIView(context: Context) -> FSCalendar {
         calendar.delegate = context.coordinator
@@ -186,7 +186,7 @@ struct CalendarRepresentable: UIViewRepresentable{
         
         // header 커스텀
         calendar.headerHeight = 45
-        calendar.appearance.headerTitleAlignment = .center
+        calendar.appearance.headerTitleAlignment = .left
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0 // 다음달 이전달 안보이게
         
         calendar.appearance.headerDateFormat = "YYYY년 M월"
@@ -200,7 +200,11 @@ struct CalendarRepresentable: UIViewRepresentable{
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(self)
+        return Coordinator(self)
+    }
+    
+    func updateUIView(_ uiView: FSCalendar, context: Context) {
+        uiView.reloadData()
     }
     
     class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource{
@@ -216,7 +220,8 @@ struct CalendarRepresentable: UIViewRepresentable{
         }
         
         // 날짜 선택 시 콜백 메소드
-        func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition)
+        {
             parent.selectedDate = date
         }
         
@@ -233,7 +238,6 @@ struct CalendarRepresentable: UIViewRepresentable{
                 formatter.dateFormat = "YYYY년 M월 d일"
                 return formatter.string(from: reward.date)
             })
-            
             let formatter = DateFormatter()
             formatter.dateFormat = "YYYY년 M월 d일"
             

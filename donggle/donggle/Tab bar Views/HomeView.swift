@@ -1,76 +1,65 @@
 import SwiftUI
 
-func initRewardDate()-> [String] {
+class ReloadHomeView: ObservableObject {
+    @Published var RewardDate2 : [String] = []
+    @Published var RewardDateArray2 : [[Reward]] = []
+    @Published var dateCircle2 : [String] = []
+    @Published var RewardCardInfo2 : [Reward] = []
+    
+    func initRewardDate()-> [String] {
 
-    var RewardDate : [String] = Array(Set(mainReward.map { reward in
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY년 M월 d일"
-
-        return formatter.string(from: reward.date)
-    })).sorted(by: <)
-
-    if(RewardDate.count > 7){
-        RewardDate.removeSubrange(7...RewardDate.count-1)
-    }
-
-    return RewardDate
-}
-
-func initRewardDateArray(RewardDate : [String])-> [[Reward]] {
-
-    var RewardDateArray : [[Reward]] = []
-
-    RewardDate.forEach { dateCriteria in
-        let DateReward = mainReward.filter{(reward : Reward)-> Bool in
+        var RewardDate : [String] = Array(Set(mainReward.map { reward in
             let formatter = DateFormatter()
             formatter.dateFormat = "YYYY년 M월 d일"
-            return dateCriteria == formatter.string(from: reward.date)
+
+            return formatter.string(from: reward.date)
+        })).sorted(by: <)
+
+        if(RewardDate.count > 7){
+            RewardDate.removeSubrange(7...RewardDate.count-1)
         }
-        print("-------------------")
-        print(dateCriteria)
-        //        print(DateReward)
-        print("-------------------")
 
-        RewardDateArray.append(DateReward)
+        return RewardDate
     }
 
-    return RewardDateArray
-}
+    func initRewardDateArray(RewardDate : [String])-> [[Reward]] {
 
+        var RewardDateArray : [[Reward]] = []
 
-func initDateCircle(RewardDateArray: [[Reward]])-> [String]{
+        RewardDate.forEach { dateCriteria in
+            let DateReward = mainReward.filter{(reward : Reward)-> Bool in
+                let formatter = DateFormatter()
+                formatter.dateFormat = "YYYY년 M월 d일"
+                return dateCriteria == formatter.string(from: reward.date)
+            }
+            print("-------------------")
+            print(dateCriteria)
+            //        print(DateReward)
+            print("-------------------")
 
-    var dateCircle: [String] = []
+            RewardDateArray.append(DateReward)
+        }
 
-    let array = RewardDateArray.map { array -> String in
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY년 M월 d일"
-        let date = formatter.string(from: array[0].date)
-        //        print(date)
-        //        print("--")
-        //        print(String(date.split(separator: " ")[2].split(separator: "일")[0]))
-        //        print("--")
-        return String(date.split(separator: " ")[2].split(separator: "일")[0])
+        return RewardDateArray
     }
 
-    dateCircle = array
 
-    return dateCircle
-}
+    func initDateCircle(RewardDateArray: [[Reward]])-> [String]{
 
-////Date String 추출 -> 중복값 삭제 후 정렬
-var RewardDate : [String] = initRewardDate()
+        var dateCircle: [String] = []
 
-// Date에 해당하는 보상 넣기
-var RewardDateArray : [[Reward]] = initRewardDateArray(RewardDate : RewardDate)
-var dateCircle : [String] = initDateCircle(RewardDateArray: RewardDateArray)
-var RewardCardInfo : [Reward] = RewardDateArray.count==0 ? [] : RewardDateArray[0]
+        let array = RewardDateArray.map { array -> String in
+            let formatter = DateFormatter()
+            formatter.dateFormat = "YYYY년 M월 d일"
+            let date = formatter.string(from: array[0].date)
+            return String(date.split(separator: " ")[2].split(separator: "일")[0])
+        }
 
-class ReloadHomeView: ObservableObject {
-    @Published var RewardDate2 : [String] = RewardDate
-    @Published var RewardDateArray2 : [[Reward]] = RewardDateArray
-    @Published var dateCircle2 : [String] = dateCircle
-    @Published var RewardCardInfo2 : [Reward] = RewardCardInfo
+        dateCircle = array
+
+        return dateCircle
+    }
+
     
     func shuffle() {
         print("shuffleDance")
@@ -135,6 +124,7 @@ struct HomeView: View {
                 }){
                     Image(systemName: "square.and.pencil")
                         .imageScale(.large)
+                        .foregroundColor(.black)
                 }
                 .sheet(isPresented: self.$showModal) {
                     RecordView(stressIndex: $stressIndex ,sliderValue: $sliderValue)
@@ -171,6 +161,20 @@ struct HomeView: View {
                             .stroke(lineWidth: 1)
                     ).padding(EdgeInsets(top: 20, leading: 24, bottom: 0, trailing: 24))
                 
+//                HStack{
+//                    ForEach([11,23,24,25,26,22,22], id: \.self){ index in
+//                        Button(
+//                            action: {
+//                            }, label:{
+//                                Text("31")
+//                                  .padding(10)
+//                                  .background(.yellow)
+//                                  .clipShape(Circle())
+//                                  .foregroundColor(Color.black)
+//                            })
+//                    }
+//                } // : 날짜 Hstack
+                
 //                ScrollView(.horizontal, showsIndicators: false){
 //                    HStack{
 //
@@ -198,13 +202,11 @@ struct HomeView: View {
                                     self.reloadHomeView.RewardCardInfo2 = self.reloadHomeView.RewardDateArray2[index]
                                 }, label:{
                                     Text("\(self.reloadHomeView.dateCircle2[index])")
-                                        .foregroundColor(Color.black)
-                                        .font(.system(size: 14, design:.default))
+                                      .padding(10)
+                                      .background(selectedDate == index  ? Color.yellow : Color.white)
+                                      .clipShape(Circle())
+                                      .foregroundColor(Color.black)
                                 })
-                            .frame(width: 18, height: 18)
-                            .padding()
-                            .background(selectedDate == index  ? Color.yellow : Color.white)
-                            .cornerRadius(30)
                         }
                     } // : 날짜 Hstack
                 
@@ -218,13 +220,13 @@ struct HomeView: View {
                                 isDetailView.toggle()
                             }){
                                 if(index == 0){
-                                    DefaultRewardCard(reward: reward)
+                                   RewardCard(reward: reward)
                                         .padding(.leading,10.0)
                                 }else if(index == self.reloadHomeView.RewardCardInfo2.count-1){
-                                    DefaultRewardCard(reward: reward)
+                                    RewardCard(reward: reward)
                                         .padding(.trailing,20.0)
                                 }else{
-                                    DefaultRewardCard(reward: reward)
+                                    RewardCard(reward: reward)
                                 }
                             }
                             if(reward.isEffective == nil){

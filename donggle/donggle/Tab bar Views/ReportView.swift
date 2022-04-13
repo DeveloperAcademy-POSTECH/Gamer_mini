@@ -23,7 +23,7 @@ struct ReportView: View {
                                 Text("Timeline")
                                     .padding(10)
                                     .font(.system(size: 18, weight: .medium))
-                                    .foregroundColor(.green)
+                                    .foregroundColor(.black)
                             })
                     }
                     ToolbarItem(placement:.navigationBarLeading) {

@@ -85,10 +85,6 @@ struct RecordView: View {
             print(mainReward)
         }
         
-        //HomeView 데이터 재정리
-//        RewardDate = initRewardDate()
-//        RewardDateArray = initRewardDateArray(RewardDate : RewardDate)
-//        dateCircle = initDateCircle(RewardDateArray: RewardDateArray)
     }
 
     var body: some View {
@@ -198,7 +194,7 @@ struct RecordView: View {
                         sliderValue = Double(stressIndex)
                         dismiss()
                     }){
-                        Text("취소")
+                        Text("취소").foregroundColor(.black)
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing){
@@ -208,7 +204,7 @@ struct RecordView: View {
                         UserDefaults.standard.set(sliderValue, forKey: "sliderValue")
                         saveRecord(sliderValue: sliderValue, stressDescription: stressDescription, selectedStress: selectedStress, rewardIsOn: rewardIsOn, rewardTitle: rewardTitle, rewardDescription: rewardDescription, selectedReward: selectedReward, rewardDate: rewardDate)
                         dismiss()
-                    }
+                    }.foregroundColor(.black)
                 }
             }
             .background(Color.white)

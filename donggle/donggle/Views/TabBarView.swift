@@ -23,37 +23,40 @@ struct TabBarView: View{
     
     var body: some View{
         
+        let calendarView = CalendarView()
+        let homeView = HomeView()
+        
         TabView(selection:$selection){
-            HomeView()
+            homeView
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home")
                 }.tag(1)
                 .onAppear{
-                    RewardDate = initRewardDate()
-                    RewardDateArray = initRewardDateArray(RewardDate : RewardDate)
-                    dateCircle = initDateCircle(RewardDateArray: RewardDateArray)
+                    homeView.reloadHomeView.shuffle()
                 }
-
+            
             ReportView()
                 .tabItem {
-                    Image(systemName: "doc.text.magnifyingglass")
+                    Image(systemName: "chart.bar.fill")
                     Text("Report")
                 }.tag(2)
             
-            CalendarView()
+            calendarView
                 .tabItem {
-                    Image(systemName: "square.and.pencil")
+                    Image(systemName: "giftcard")
                     Text("Calendar")
                 }.tag(3)
+                .onAppear{
+                    calendarView.reloadCalendarView.shuffle()
+                }
             
             SettingView()
                 .tabItem {
                     Image(systemName: "gearshape")
                     Text("Setting")
                 }.tag(4)
-            
-        }.accentColor(.green)
+        }.accentColor(.black)
         
     }
 }
