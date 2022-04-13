@@ -39,7 +39,7 @@ class Datas {
 struct TimelineView: View {
     @State private var date = Date()
     @State private var showModal = false
-    @State private var selectedView = 2
+    @State private var selectedView = 3
     @Environment(\.presentationMode) var presentation
     
     //스트레스, 보상 데이터 임시 정의
@@ -95,7 +95,7 @@ struct TimelineView: View {
                                         
                                         //type 3 : 보상 데이터
                                     } else if data.type == 3 {
-                                        RewardTimeCard(rewardName: sortedData.rewardSet[data.index].category[0], rewardTitle: sortedData.rewardSet[data.index].title, rewardContent: sortedData.rewardSet[data.index].content, rewardDate: dateToString(dateInfo: sortedData.rewardSet[data.index].date))
+                                        RewardTimeCard(rewardName: sortedData.rewardSet[data.index].category[0], rewardTitle: sortedData.rewardSet[data.index].title, rewardContent: sortedData.rewardSet[data.index].content, rewardDate: dateToString(dateInfo: sortedData.rewardSet[data.index].date), rewardDone: sortedData.rewardSet[data.index].isEffective)
                                     } else {
                                         Text("no data")
                                     }
@@ -121,7 +121,7 @@ struct TimelineView: View {
                         ScrollView(showsIndicators: false) {
                             LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
                                 ForEach(sortedData.rewardSet, id: \.self.id) { reward in
-                                    RewardTimeCard(rewardName: reward.category[0], rewardTitle: reward.title, rewardContent: reward.content, rewardDate: dateToString(dateInfo: reward.date))
+                                    RewardTimeCard(rewardName: reward.category[0], rewardTitle: reward.title, rewardContent: reward.content, rewardDate: dateToString(dateInfo: reward.date), rewardDone: reward.isEffective)
                                 }
                             }
                         }
@@ -149,15 +149,17 @@ struct RewardTimeCard : View {
     var rewardTitle: String
     var rewardContent: String
     var rewardDate: String
+    var rewardDone: Bool?
+    
     var body: some View {
         HStack(alignment: .top, spacing: 0){
-            VStack{
+            VStack{xw
                 Text(stringToImoticon(category : rewardName))
                     .font(.system(size: 44))
-                //                    .onTapGesture {
-                //                        print("tap")
-                //                    }
-                //                    .opacity(0.5)
+                    .opacity((rewardDone == nil) ? (0.5) : (1))
+                .onTapGesture {
+                    print("tap")
+                }
             }
             .padding(.trailing, 20.0)
             VStack(alignment: .leading, spacing: 0){
