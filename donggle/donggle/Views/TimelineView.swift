@@ -22,18 +22,26 @@ class Datas {
     var totalSet : [Total]
     var groupedStress : [String : [Stress]]
     var groupedReward : [String : [Reward]]
-    
+    var groupedTotal : [String : [Total]]
+//    let sortedKeysAndValues = sorted(dictionary) { $0.0 < $1.0 }
     //date 기준 내림차순 정렬
     init(){
         self.stressSet = mainStress.sorted(by: { $0.date > $1.date})
         self.rewardSet = mainReward.sorted(by: { $0.date > $1.date})
-        self.totalSet = createTotalData(stressSet: self.stressSet, rewardSet: self.rewardSet).sorted(by: { $0.date > $1.date})
+        self.totalSet = createTotalData(stressSet: self.stressSet, rewardSet: self.rewardSet).sorted(by: {$0.date > $1.date})
         self.groupedStress = Dictionary(grouping: self.stressSet) { (stress) -> String in
             let dateString = dateToString(dateInfo: stress.date)
             return dateString
         }
+        
+//        self.groupedStress = groupedStress.sorted(by: {$0.key > $1.key})
+//
         self.groupedReward = Dictionary(grouping: self.rewardSet) { (reward) -> String in
             let dateString = dateToString(dateInfo: reward.date)
+            return dateString
+        }
+        self.groupedTotal = Dictionary(grouping: self.totalSet) { (total) -> String in
+            let dateString = dateToString(dateInfo: total.date)
             return dateString
         }
     }
@@ -51,28 +59,13 @@ class Datas {
             let dateString = dateToString(dateInfo: reward.date)
             return dateString
         }
+        groupedTotal = Dictionary(grouping: totalSet) { (total) -> String in
+            let dateString = dateToString(dateInfo: total.date)
+            return dateString
+        }
     }
 }
 
-
-
-//class viewDate {
-//    var prevDate : String
-//
-//    init(){
-//        self.prevDate = ""
-//    }
-//
-//    func updatePrevDate(curDate : String){
-////        if (prevDate != curDate){
-//            prevDate = curDate
-////        }
-//    }
-//
-//    func refreshPrevDate(){
-//        prevDate = ""
-//    }
-//}
 
 
 
@@ -100,11 +93,7 @@ struct TimelineView: View {
         return dateString
     }
     
-    
-//    var groupedData = Dictionary(grouping: sortedData.stressSet, by: { $0.date }}
-    
-//    var manageDate = viewDate()
-//    var prevDate = String()
+
     
     
     var body: some View {
@@ -153,17 +142,26 @@ struct TimelineView: View {
                         
                         ScrollView(showsIndicators: false) {
                             LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
-                                ForEach(sortedData.totalSet, id: \.self.id){ data in
-                                    //type 2 : 스트레스 데이터
-                                    if data.type == 2 {
-                                        stressTimeCard(stressIndex: sortedData.stressSet[data.index].index, stressContent: sortedData.stressSet[data.index].content, stressCategory: sortedData.stressSet[data.index].category, stressDate: dateToString(dateInfo: sortedData.stressSet[data.index].date))
+                                
+                                ForEach(Array(sortedData.groupedTotal.keys.enumerated()), id: \.element) { _, key in
+                                    
+                                    Text(key)
+                                        .font(.body)
+                                        .fontWeight(.regular)
+                                    
+                                    ForEach(sortedData.groupedTotal[key]!, id: \.self.id) { data in
+                                        if data.type == 2 {
+                                            stressTimeCard(stressIndex: sortedData.stressSet[data.index].index, stressContent: sortedData.stressSet[data.index].content, stressCategory: sortedData.stressSet[data.index].category, stressDate: dateToString(dateInfo: sortedData.stressSet[data.index].date))
+                                            
+                                            //type 3 : 보상 데이터
+                                        } else if data.type == 3 {
+                                            RewardTimeCard(rewardName: sortedData.rewardSet[data.index].category[0], rewardTitle: sortedData.rewardSet[data.index].title, rewardContent: sortedData.rewardSet[data.index].content, rewardDate: dateToString(dateInfo: sortedData.rewardSet[data.index].date), rewardDone: sortedData.rewardSet[data.index].isEffective)
+                                        } else {
+                                            Text("no data")
+                                        }
                                         
-                                        //type 3 : 보상 데이터
-                                    } else if data.type == 3 {
-                                        RewardTimeCard(rewardName: sortedData.rewardSet[data.index].category[0], rewardTitle: sortedData.rewardSet[data.index].title, rewardContent: sortedData.rewardSet[data.index].content, rewardDate: dateToString(dateInfo: sortedData.rewardSet[data.index].date), rewardDone: sortedData.rewardSet[data.index].isEffective)
-                                    } else {
-                                        Text("no data")
                                     }
+                                    
                                 }
                                 
                             }
@@ -180,24 +178,20 @@ struct TimelineView: View {
                                         .fontWeight(.regular)
 
                                     ForEach(sortedData.groupedStress[key]!, id: \.self.id) { stress in
-                                        RewardTimeCard(rewardName: reward.category[0], rewardTitle: reward.title, rewardContent: reward.content, rewardDate: dateToString(dateInfo: reward.date), rewardDone: reward.isEffective)
-                                    }
-                                }
-                                
-                                VStack{
-                        
-                                    ForEach(sortedData.stressSet, id: \.self.id) { stress in
                                         stressTimeCard( stressIndex:stress.index, stressContent: stress.content, stressCategory: stress.category, stressDate: dateToString(dateInfo: stress.date))
                                     }
                                 }
+
                             }
                         }
                         .padding(.horizontal, 24.0)
                         
                     } else if (selectedView == 3){ //보상
+//                        Array(dictionary.keys).sorted(<)
+//                        sortedData.groupedReward.keys.enumerated()
                         ScrollView(showsIndicators: false) {
                             LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
-                                ForEach(Array(sortedData.groupedReward.keys.enumerated()), id: \.element) { _, key in
+                                ForEach(Array(sortedData.groupedReward.keys.enumerated()).sorted(by: >), id: \.element) { _, key in
                                     Text(key)
                                         .font(.body)
                                         .fontWeight(.regular)
@@ -209,6 +203,7 @@ struct TimelineView: View {
                             }
                         }
                         .padding(.horizontal, 24.0)
+//                        .onAppear{Array(sortedData.groupedReward.keys.enumerated()).sorted(by: >)}
                     } else {
                         Text("no page")
                     }
@@ -235,20 +230,9 @@ struct RewardTimeCard : View {
     var rewardContent: String
     var rewardDate: String
     var rewardDone: Bool?
-//    var prevDate: String
-//    var manageDate: viewDate
     
     var body: some View {
         
-//        if (manageDate.prevDate != rewardDate){
-//            Text(rewardDate)
-//                .onAppear{
-//                    print(manageDate.prevDate)
-//                    manageDate.updatePrevDate(curDate: rewardDate)
-//                    print(manageDate.prevDate)
-//
-//                }
-//        }
         
         HStack(alignment: .top, spacing: 0){
             VStack{
@@ -295,6 +279,7 @@ struct stressTimeCard : View {
         HStack(alignment: .top, spacing: 0){
             
             VStack(spacing:3){
+                Text(stressDate)
                 Circle()
                     .fill(Color.init(red: 255/255, green: (233-Double(stressIndex)*2)/255, blue: 89/255))
                     .frame(width:50, height:50)
@@ -310,8 +295,7 @@ struct stressTimeCard : View {
                     .padding(.bottom, 12)
                     .fixedSize(horizontal: false, vertical: true)
                 
-                
-//                let stressColor : [String : Double] = stressCatagoryToColor(category: categ)
+
                 
                 VStack(alignment: .leading, spacing: 5){
                     ForEach(groupCate(stressCategory: stressCategory, parentWidth: UIScreen.main.bounds.size.width - 170), id: \.self){ group in
