@@ -45,7 +45,7 @@ struct GiftCheckView: View {
       
                             Text("\(Int(sliderValue))%")
                             Circle()
-                                .fill(Color.init(red: (sliderValue+1)*2/255, green: (101-sliderValue)*2/255, blue: (101-sliderValue)*2/255))
+                            .fill(Color.init(red: 255/255, green: (233-sliderValue*2)/255, blue: 89/255))
                                 .frame(width: 130.0, height: 120.0)
                             HStack{
                                 Image(systemName: "circle")
