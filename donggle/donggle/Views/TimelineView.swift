@@ -50,91 +50,95 @@ struct TimelineView: View {
     
     var body: some View {
         
-        VStack{
-            
-            HStack{
-                
-                Button(action: {
-                    self.showModal = true
-                }) {
-                    Text("4월")
-                        .foregroundColor(.black)
-                        .font(.title2)
-                        .padding(10)
-                }
-                .sheet(isPresented: self.$showModal) {
-                    ModalView()
-                }
-                
-                
-                Spacer()
-                
-                Picker(selection: $selectedView, label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
-                    Text("전체").tag(1)
-                    Text("스트레스").tag(2)
-                    Text("보상").tag(3)
+        
+        Color(red: 249/255, green: 249/255, blue: 249/255).ignoresSafeArea()
+            .overlay(
+                VStack{
                     
-                }
-                
-            }
-            .padding([.leading, .trailing])
-            
-            
-            if (selectedView == 1){ //전체
-                
-                
-                ScrollView(showsIndicators: false) {
-                    LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
-                        ForEach(sortedData.totalSet, id: \.self.id){ data in
-                            //type 2 : 스트레스 데이터
-                            if data.type == 2 {
-                                stressTimeCard(stressIndex: sortedData.stressSet[data.index].index, stressContent: sortedData.stressSet[data.index].content, stressCategory: sortedData.stressSet[data.index].category, stressDate: dateToString(dateInfo: sortedData.stressSet[data.index].date))
-                                
-                                //type 3 : 보상 데이터
-                            } else if data.type == 3 {
-                                RewardTimeCard(rewardName: sortedData.rewardSet[data.index].category[0], rewardTitle: sortedData.rewardSet[data.index].title, rewardContent: sortedData.rewardSet[data.index].content, rewardDate: dateToString(dateInfo: sortedData.rewardSet[data.index].date))
-                            } else {
-                                Text("no data")
-                            }
+                    HStack{
+                        
+                        Button(action: {
+                            self.showModal = true
+                        }) {
+                            Text("4월")
+                                .foregroundColor(.black)
+                                .font(.title2)
+                                .padding(10)
+                        }
+                        .sheet(isPresented: self.$showModal) {
+                            ModalView()
+                        }
+                        
+                        
+                        Spacer()
+                        
+                        Picker(selection: $selectedView, label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
+                            Text("전체").tag(1)
+                            Text("스트레스").tag(2)
+                            Text("보상").tag(3)
+                            
                         }
                         
                     }
-                }
-                .padding(.horizontal, 24.0)
-                
-            }else if (selectedView == 2){ //스트레스
-                ScrollView(showsIndicators: false) {
-                    LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
-                    VStack{
-                        ForEach(sortedData.stressSet, id: \.self.id) { stress in
-                            stressTimeCard( stressIndex:stress.index, stressContent: stress.content, stressCategory: stress.category, stressDate: dateToString(dateInfo: stress.date))
+                    .padding([.leading, .trailing])
+                    
+                    
+                    if (selectedView == 1){ //전체
+                        
+                        
+                        ScrollView(showsIndicators: false) {
+                            LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
+                                ForEach(sortedData.totalSet, id: \.self.id){ data in
+                                    //type 2 : 스트레스 데이터
+                                    if data.type == 2 {
+                                        stressTimeCard(stressIndex: sortedData.stressSet[data.index].index, stressContent: sortedData.stressSet[data.index].content, stressCategory: sortedData.stressSet[data.index].category, stressDate: dateToString(dateInfo: sortedData.stressSet[data.index].date))
+                                        
+                                        //type 3 : 보상 데이터
+                                    } else if data.type == 3 {
+                                        RewardTimeCard(rewardName: sortedData.rewardSet[data.index].category[0], rewardTitle: sortedData.rewardSet[data.index].title, rewardContent: sortedData.rewardSet[data.index].content, rewardDate: dateToString(dateInfo: sortedData.rewardSet[data.index].date))
+                                    } else {
+                                        Text("no data")
+                                    }
+                                }
+                                
+                            }
                         }
-                    }
-                    }
-                }
-                .padding(.horizontal, 24.0)
-                
-            } else if (selectedView == 3){ //보상
-                ScrollView(showsIndicators: false) {
-                    LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
-                        ForEach(sortedData.rewardSet, id: \.self.id) { reward in
-                            RewardTimeCard(rewardName: reward.category[0], rewardTitle: reward.title, rewardContent: reward.content, rewardDate: dateToString(dateInfo: reward.date))
+                        .padding(.horizontal, 24.0)
+                        
+                    }else if (selectedView == 2){ //스트레스
+                        ScrollView(showsIndicators: false) {
+                            LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
+                                VStack{
+                                    ForEach(sortedData.stressSet, id: \.self.id) { stress in
+                                        stressTimeCard( stressIndex:stress.index, stressContent: stress.content, stressCategory: stress.category, stressDate: dateToString(dateInfo: stress.date))
+                                    }
+                                }
+                            }
                         }
+                        .padding(.horizontal, 24.0)
+                        
+                    } else if (selectedView == 3){ //보상
+                        ScrollView(showsIndicators: false) {
+                            LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
+                                ForEach(sortedData.rewardSet, id: \.self.id) { reward in
+                                    RewardTimeCard(rewardName: reward.category[0], rewardTitle: reward.title, rewardContent: reward.content, rewardDate: dateToString(dateInfo: reward.date))
+                                }
+                            }
+                        }
+                        .padding(.horizontal, 24.0)
+                    } else {
+                        Text("no page")
                     }
+                    
                 }
-                .padding(.horizontal, 24.0)
-            } else {
-                Text("no page")
-            }
-            
-        }
-        .navigationBarTitle("타임라인", displayMode: .inline)
-        .onAppear {
-            sortedData.refreshDatas()
-        }
-        .onDisappear {
-            presentation.wrappedValue.dismiss()
-        }
+                    .navigationBarTitle("타임라인", displayMode: .inline)
+                    .onAppear {
+                        sortedData.refreshDatas()
+                    }
+                    .onDisappear {
+                        presentation.wrappedValue.dismiss()
+                    }
+            )
     }
     
 }
@@ -153,7 +157,7 @@ struct RewardTimeCard : View {
                 //                    .onTapGesture {
                 //                        print("tap")
                 //                    }
-//                    .opacity(0.5)
+                //                    .opacity(0.5)
             }
             .padding(.trailing, 20.0)
             VStack(alignment: .leading, spacing: 0){
@@ -169,7 +173,7 @@ struct RewardTimeCard : View {
         .padding(.vertical, 20.0)
         .padding(.horizontal, 24.0)
         .background(RoundedRectangle(cornerRadius: 15)
-            .foregroundColor(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color(hue: 1.0, saturation: 0.0, brightness: 0.926)/*@END_MENU_TOKEN@*/)
+            .foregroundColor(.white)
         )
     }
     
@@ -195,42 +199,42 @@ struct stressTimeCard : View {
             }.padding(.trailing, 20)
             
             VStack(alignment: .leading, spacing: 0){
-
-                    Text(stressContent)
-                        .font(.system(size: 17))
-                        .padding(.bottom, 12)
-                        .fixedSize(horizontal: false, vertical: true)
-                    
-                    
-                    VStack(alignment: .leading, spacing: 5){
-                        ForEach(groupCate(stressCategory: stressCategory, parentWidth: UIScreen.main.bounds.size.width - 170), id: \.self){ group in
-                            HStack (spacing : 6){
-                                ForEach(group, id: \.self){ cate in
-                                    Text(cate)
-                                        .font(.system(size : 12))
-                                        .padding(.horizontal, 10.0)
-                                        .padding(.vertical, 2)
-                                        .foregroundColor(.white)
-                                        .background(RoundedRectangle(cornerRadius: 15)
-                                            .foregroundColor(.gray)
-                                        )
-                                }
+                
+                Text(stressContent)
+                    .font(.system(size: 17))
+                    .padding(.bottom, 12)
+                    .fixedSize(horizontal: false, vertical: true)
+                
+                
+                VStack(alignment: .leading, spacing: 5){
+                    ForEach(groupCate(stressCategory: stressCategory, parentWidth: UIScreen.main.bounds.size.width - 170), id: \.self){ group in
+                        HStack (spacing : 6){
+                            ForEach(group, id: \.self){ cate in
+                                Text(cate)
+                                    .font(.system(size : 12))
+                                    .padding(.horizontal, 10.0)
+                                    .padding(.vertical, 2)
+                                    .foregroundColor(.white)
+                                    .background(RoundedRectangle(cornerRadius: 15)
+                                        .foregroundColor(.gray)
+                                    )
                             }
-                            
                         }
                         
                     }
-
                     
-                    Spacer()
                 }
+                
+                
+                Spacer()
+            }
             Spacer()
         }
         .padding(.top, 20.0)
         .padding(.bottom, 15.0)
         .padding(.horizontal, 24.0)
         .background(RoundedRectangle(cornerRadius: 15)
-            .foregroundColor(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color(hue: 1.0, saturation: 0.0, brightness: 0.926)/*@END_MENU_TOKEN@*/)
+            .foregroundColor(.white)
         )
         
     }
@@ -265,7 +269,7 @@ func groupCate(stressCategory : [String], parentWidth : CGFloat) -> [[String]]{
     groupedCate.append(tmpGroupedCate)
     
     return groupedCate
-
+    
 }
 
 
