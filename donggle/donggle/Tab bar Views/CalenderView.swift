@@ -50,7 +50,6 @@ struct CalendarView: View {
     
     @State var selectedDate: Date = Date()
     @State private var isRecordView = false
-    @State private var isDetailView = false
     @State private var showModal = false
     
     var body: some View {
@@ -121,18 +120,9 @@ struct CalendarView: View {
 
                                     ForEach(currentDateRewards.indices, id: \.self) { index in
                                         
-                                        let reward = currentDateRewards[index]
-                                        let rewardCard = Button(action: {
-                                            isDetailView.toggle()
-                                        }){
-                                            RewardCard(reward: reward, sliderValue: $sliderValue, stressIndex: $stressIndex)
+                                            RewardCard(reward: currentDateRewards[index], sliderValue: $sliderValue, stressIndex: $stressIndex)
                                                 .padding(.bottom, 10)
-                                        }
-                                        if(reward.isEffective == nil){
-                                            rewardCard.foregroundColor(Color.green)
-                                        }else{
-                                            rewardCard.foregroundColor(Color.black)
-                                        }
+                                        
                                     }
                                 
                             }) // : LazyVGrid
@@ -175,7 +165,7 @@ struct CalendarRepresentable: UIViewRepresentable{
         
         // dot 기본 색
         calendar.appearance.eventDefaultColor = .gray
-        calendar.appearance.eventSelectionColor = .red
+        calendar.appearance.eventSelectionColor = UIColor(red: 38/255, green: 153/255, blue: 251/255, alpha: 1)
         
         //폰트
         // Weekday

@@ -99,9 +99,10 @@ struct RecordView: View {
             print("-----------------")
             mainStress = UserDefaults.stressArray ?? []
             mainReward = UserDefaults.rewardArray ?? []
-            print(mainReward)
         }
-        
+        donggleFace = String(stressIndex == 100 ? 100 :((stressIndex+10)/10)*10)
+        print("donggleFace")
+        print(donggleFace)
     }
 
     var body: some View {
@@ -112,10 +113,21 @@ struct RecordView: View {
                         .multilineTextAlignment(.leading)
                     VStack{
                         Text("\(Int(sliderValue))%")
+                            .padding(.top, 10)
+                        
                         Circle()
                             .fill(Color.init(red: 255/255, green: (233-sliderValue*2)/255, blue: 89/255))
-                            .padding()
-                            .frame(width: 130.0, height: 120.0)
+                            .padding(2)
+                            .frame(width: 120.0, height: 120.0)
+                            .overlay {
+                                Image(String(Int(sliderValue) == 100 ? 100 :((Int(sliderValue)+10)/10)*10))
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 35, height: 35)
+                                    .padding(.trailing, 30)
+                                    .padding(.bottom, 30)
+                            }
+                                                
                         HStack{
                             Image(systemName: "circle.fill")
                                 .foregroundColor(.yellow)
@@ -124,6 +136,7 @@ struct RecordView: View {
                             Image(systemName: "circle.fill")
                                 .foregroundColor(.red)
                         }
+                        .padding(.top, 15)
                     }
                 }
                 VStack(alignment: .leading, spacing: 30){
