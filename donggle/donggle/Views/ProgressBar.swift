@@ -15,6 +15,8 @@ func setStressPostfix (str: String) -> String {
         return "가"
     case "돈":
         return "이"
+    case "금전":
+        return "이"
     case "날씨":
         return "가"
     case "가족":
@@ -63,6 +65,8 @@ func setRewardColor (str: String) -> [Double] {
         return [200/255, 153/255, 51/255]
     case "운동":
         return [153/255, 51/255, 1]
+    case "음식":
+        return [100/255, 153/255, 204/255]
     default:
         return [224/255, 224/255, 224/255]
     }
@@ -81,13 +85,26 @@ struct ProgressBar: View {
         let multiplier = width / 100
         VStack {
             if isStress {
-                Text("\(dataList[0].key)\(setStressPostfix(str: dataList[0].key)) 가장 스트레스에요")
-                    .font(.system(size: 22, weight: .bold))
-                    .frame(maxWidth: width, alignment: .leading)
+                if dataList.isEmpty {
+                    Text("스트레스가 없어요!")
+                        .font(.system(size: 22, weight: .bold))
+                        .frame(maxWidth: width, alignment: .leading)
+                } else {
+                    Text("\(dataList[0].key)\(setStressPostfix(str: dataList[0].key)) 가장 스트레스에요")
+                        .font(.system(size: 22, weight: .bold))
+                        .frame(maxWidth: width, alignment: .leading)
+                }
             } else {
-                Text("\(dataList[0].key) 보상을 가장 많이 받아요")
-                    .font(.system(size: 22, weight: .bold))
-                    .frame(maxWidth: width, alignment: .leading)
+                if dataList.isEmpty {
+                    Text("보상이 없어요!")
+                        .font(.system(size: 22, weight: .bold))
+                        .frame(maxWidth: width, alignment: .leading)
+                } else {
+                    Text("\(dataList[0].key) 보상을 가장 많이 받아요")
+                        .font(.system(size: 22, weight: .bold))
+                        .frame(maxWidth: width, alignment: .leading)
+                }
+                
             }
             
             ZStack(alignment: .leading) {

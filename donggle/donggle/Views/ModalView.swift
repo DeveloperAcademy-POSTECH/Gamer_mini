@@ -7,10 +7,27 @@
 
 import SwiftUI
 
+func getDateList() -> [String] {
+    var dateList: [String] = []
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "YYYY년 MM월"
+    for i in 0...20 {
+        let currentDate = Date()
+        var dateComponent = DateComponents()
+        dateComponent.month = -i
+        let futureDate = Calendar.current.date(byAdding: dateComponent, to: currentDate)
+        let date = dateFormatter.string(from: futureDate!)
+        dateList.append(date)
+    }
+    
+    return dateList
+}
+
 struct ModalView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
-    
+    @Binding var date: String
+    @State var dateList = getDateList()
     var body: some View {
         VStack {
             HStack {
@@ -27,27 +44,19 @@ struct ModalView: View {
             .padding(26)
             .font(.title3)
             
-            VStack(alignment: .leading) {
-                Text("2022년 4월")
-                    .padding(.vertical)
-                Text("2022년 3월")
-                    .padding(.vertical)
-                Text("2022년 2월")
-                    .padding(.vertical)
-                Text("2022년 1월")
-                    .padding(.vertical)
-                Text("2021년 12월")
-                    .padding(.vertical)
-                Text("2021년 11월")
-                    .padding(.vertical)
-                Text("2021년 10월")
-                    .padding(.vertical)
-                Text("2021년 9월")
-                    .padding(.vertical)
-                Text("2021년 8월")
-                    .padding(.vertical)
+            List {
+                ForEach(dateList, id: \.self) { selectDate in
+                    Button {
+                        date = selectDate
+                        self.presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Text(selectDate)
+                    }
+                    .padding(.horizontal)
+                    .font(.system(size: 18, weight: .semibold))
+                }
             }
-            .frame(width: .infinity)
+            .listStyle(.plain)
 
             
             Spacer()
@@ -56,8 +65,3 @@ struct ModalView: View {
     }
 }
 
-struct ModalView_Previews: PreviewProvider {
-    static var previews: some View {
-        ModalView()
-    }
-}

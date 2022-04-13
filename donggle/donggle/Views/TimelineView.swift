@@ -9,6 +9,9 @@ struct Total {
     let date : Date
 }
 
+//@State private var prevDate : String
+
+
 
 
 class Datas {
@@ -31,6 +34,24 @@ class Datas {
     }
 }
 
+//class viewDate {
+//    var prevDate : String
+//
+//    init(){
+//        self.prevDate = ""
+//    }
+//
+//    func updatePrevDate(curDate : String){
+////        if (prevDate != curDate){
+//            prevDate = curDate
+////        }
+//    }
+//
+//    func refreshPrevDate(){
+//        prevDate = ""
+//    }
+//}
+
 
 
 //@State private var sortedData : Datas
@@ -39,105 +60,131 @@ class Datas {
 struct TimelineView: View {
     @State private var date = Date()
     @State private var showModal = false
-    @State private var selectedView = 2
+    @State private var selectedView = 1
+    @State private var month = "4월"
+    @State private var prevDate = ""
     @Environment(\.presentationMode) var presentation
     
     //스트레스, 보상 데이터 임시 정의
     
     var date1 = Date()
     var sortedData = Datas()
-    //    @State private var prevDate : Date = Date()
-    
+//    var manageDate = viewDate()
+//    var prevDate = String()
     
     
     var body: some View {
         
-        VStack{
-            
-            HStack{
-                
-                Button(action: {
-                    self.showModal = true
-                }) {
-                    Text("4월")
-                        .foregroundColor(.black)
-                        .font(.title2)
-                        .padding(10)
-                }
-                .sheet(isPresented: self.$showModal) {
-                    ModalView()
-                }
-                
-                
-                Spacer()
-                
-                Picker(selection: $selectedView, label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
-                    Text("전체").tag(1)
-                    Text("스트레스").tag(2)
-                    Text("보상").tag(3)
+        Color(red: 249/255, green: 249/255, blue: 249/255).ignoresSafeArea()
+            .overlay(
+                VStack{
                     
-                }
-                
-            }
-            .padding([.leading, .trailing])
-            
-            
-            if (selectedView == 1){ //전체
-                
-                
-                ScrollView(showsIndicators: false) {
-                    LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
-                        ForEach(sortedData.totalSet, id: \.self.id){ data in
-                            //type 2 : 스트레스 데이터
-                            if data.type == 2 {
-                                stressTimeCard(stressIndex: sortedData.stressSet[data.index].index, stressContent: sortedData.stressSet[data.index].content, stressCategory: sortedData.stressSet[data.index].category, stressDate: dateToString(dateInfo: sortedData.stressSet[data.index].date))
+                    HStack{
+                        
+                        Button(action: {
+                            self.showModal = true
+                        }) {
+                            HStack {
+                                Text(month)
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 24, weight: .semibold))
                                 
-                                //type 3 : 보상 데이터
-                            } else if data.type == 3 {
-                                RewardTimeCard(rewardName: sortedData.rewardSet[data.index].category[0], rewardTitle: sortedData.rewardSet[data.index].title, rewardContent: sortedData.rewardSet[data.index].content, rewardDate: dateToString(dateInfo: sortedData.rewardSet[data.index].date))
-                            } else {
-                                Text("no data")
+                                Image(systemName: "chevron.down")
+                                    .foregroundColor(.black)
                             }
+                        }
+                        .sheet(isPresented: self.$showModal) {
+//                            ModalView()
+                        }
+                        
+                        
+                        Spacer()
+                        
+                        Picker(selection: $selectedView, label: Text("Picker")
+                            .font(.system(size: 24, weight: .regular))) {
+                            Text("전체보기").tag(1)
+                            Text("스트레스").tag(2)
+                            Text("보상").tag(3)
+                            
                         }
                         
                     }
-                }
-                .padding(.horizontal, 24.0)
-                
-            }else if (selectedView == 2){ //스트레스
-                ScrollView(showsIndicators: false) {
-                    LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
-                        ForEach(sortedData.stressSet, id: \.self.id) { stress in
-                            stressTimeCard( stressIndex:stress.index, stressContent: stress.content, stressCategory: stress.category, stressDate: dateToString(dateInfo: stress.date))
+                    .padding(.horizontal, 24.0)
+                    
+                    
+                    if (selectedView == 1){ //전체
+                        
+                        
+                        ScrollView(showsIndicators: false) {
+                            LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
+                                ForEach(sortedData.totalSet, id: \.self.id){ data in
+                                    //type 2 : 스트레스 데이터
+                                    if data.type == 2 {
+                                        stressTimeCard(stressIndex: sortedData.stressSet[data.index].index, stressContent: sortedData.stressSet[data.index].content, stressCategory: sortedData.stressSet[data.index].category, stressDate: dateToString(dateInfo: sortedData.stressSet[data.index].date))
+                                        
+                                        //type 3 : 보상 데이터
+                                    } else if data.type == 3 {
+                                        RewardTimeCard(rewardName: sortedData.rewardSet[data.index].category[0], rewardTitle: sortedData.rewardSet[data.index].title, rewardContent: sortedData.rewardSet[data.index].content, rewardDate: dateToString(dateInfo: sortedData.rewardSet[data.index].date), rewardDone: sortedData.rewardSet[data.index].isEffective)
+                                    } else {
+                                        Text("no data")
+                                    }
+                                }
+                                
+                            }
                         }
-                    }
-                }
-                .padding(.horizontal, 24.0)
-                
-            } else if (selectedView == 3){ //보상
-                ScrollView(showsIndicators: false) {
-                    LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
-                        ForEach(sortedData.rewardSet, id: \.self.id) { reward in
-                            RewardTimeCard(rewardName: reward.category[0], rewardTitle: reward.title, rewardContent: reward.content, rewardDate: dateToString(dateInfo: reward.date))
+                        .padding(.horizontal, 24.0)
+                        
+                    }else if (selectedView == 2){ //스트레스
+                        ScrollView(showsIndicators: false) {
+                            LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
+                                VStack{
+                                    if (prevDate == "hello") {
+                                        Text("hello")
+                                    }
+                                    ForEach(sortedData.stressSet, id: \.self.id) { stress in
+                                        stressTimeCard( stressIndex:stress.index, stressContent: stress.content, stressCategory: stress.category, stressDate: dateToString(dateInfo: stress.date))
+                                    }
+                                }
+                            }
                         }
+                        .padding(.horizontal, 24.0)
+                        
+                    } else if (selectedView == 3){ //보상
+                        ScrollView(showsIndicators: false) {
+                            LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
+                                ForEach(sortedData.rewardSet, id: \.self.id) { reward in
+                                    
+//                                    if (prevDate != dateToString(dateInfo: reward.date)){
+//                                        Text(dateToString(dateInfo: reward.date))
+//                                            .onAppear{
+//                                                prevDate = dateToString(dateInfo: reward.date)
+//                                                print(prevDate)
+//                                            }
+//                                    }
+                                    
+                                    RewardTimeCard(rewardName: reward.category[0], rewardTitle: reward.title, rewardContent: reward.content, rewardDate: dateToString(dateInfo: reward.date), rewardDone: reward.isEffective)
+                                }
+                            }
+                        }
+                        .padding(.horizontal, 24.0)
+                    } else {
+                        Text("no page")
                     }
+                    
                 }
-                .padding(.horizontal, 24.0)
-            } else {
-                Text("no page")
-            }
-            
-        }
-        .navigationBarTitle("타임라인", displayMode: .inline)
-        .onAppear {
-            sortedData.refreshDatas()
-        }
-        .onDisappear {
-            presentation.wrappedValue.dismiss()
-        }
+                    .navigationBarTitle("타임라인", displayMode: .inline)
+                    .onAppear {
+                        sortedData.refreshDatas()
+//                        manageDate.refreshPrevDate()
+                    }
+                    .onDisappear {
+                        presentation.wrappedValue.dismiss()
+                    }
+            )
     }
     
 }
+
 
 
 struct RewardTimeCard : View {
@@ -145,22 +192,41 @@ struct RewardTimeCard : View {
     var rewardTitle: String
     var rewardContent: String
     var rewardDate: String
+    var rewardDone: Bool?
+//    var prevDate: String
+//    var manageDate: viewDate
+    
     var body: some View {
+        
+//        if (manageDate.prevDate != rewardDate){
+//            Text(rewardDate)
+//                .onAppear{
+//                    print(manageDate.prevDate)
+//                    manageDate.updatePrevDate(curDate: rewardDate)
+//                    print(manageDate.prevDate)
+//
+//                }
+//        }
+        
         HStack(alignment: .top, spacing: 0){
             VStack{
+//                Text(rewardDate)
                 Text(stringToImoticon(category : rewardName))
                     .font(.system(size: 44))
-                //                    .onTapGesture {
-                //                        print("tap")
-                //                    }
-                
+                    .opacity((rewardDone == nil) ? (0.5) : (1))
+                .onTapGesture {
+                    print("tap")
+                }
             }
             .padding(.trailing, 20.0)
             VStack(alignment: .leading, spacing: 0){
                 Text(rewardTitle)
+                    .font(.headline)
                     .fontWeight(.bold)
                     .padding(.bottom, 12.0)
                 Text(rewardContent)
+                    .font(.body)
+                    .fontWeight(.regular)
                 Spacer()
             }
             
@@ -169,7 +235,7 @@ struct RewardTimeCard : View {
         .padding(.vertical, 20.0)
         .padding(.horizontal, 24.0)
         .background(RoundedRectangle(cornerRadius: 15)
-            .foregroundColor(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color(hue: 1.0, saturation: 0.0, brightness: 0.926)/*@END_MENU_TOKEN@*/)
+            .foregroundColor(.white)
         )
     }
     
@@ -185,45 +251,92 @@ struct stressTimeCard : View {
     var body: some View {
         
         HStack(alignment: .top, spacing: 0){
-            VStack{
+            
+            VStack(spacing:3){
                 Circle()
-                    .fill(Color.gray)
+                    .fill(Color.init(red: 255/255, green: (233-Double(stressIndex)*2)/255, blue: 89/255))
                     .frame(width:50, height:50)
                 Text(String(stressIndex))
                     .font(.system(size: 12))
             }.padding(.trailing, 20)
             
-            VStack(alignment: .leading, spacing: 12.0){
+            VStack(alignment: .leading, spacing: 0){
+                
                 Text(stressContent)
-                    .font(.system(size: 17))
-                HStack(alignment: .top){ //카테고리 두 줄 이상일 때 위쪽으로 정렬되도록
-//                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]) {
-                        ForEach(stressCategory, id:\.self){ category in
-                            Text(category)
-                                .font(.system(size:12))
-                                .padding(.horizontal, 5.0)
-                                .foregroundColor(.white)
-                                .background(RoundedRectangle(cornerRadius: 15)
-                                    .foregroundColor(.gray)
-                                )
+                    .font(.body)
+                    .fontWeight(.regular)
+                    .padding(.bottom, 12)
+                    .fixedSize(horizontal: false, vertical: true)
+                
+                
+                VStack(alignment: .leading, spacing: 5){
+                    ForEach(groupCate(stressCategory: stressCategory, parentWidth: UIScreen.main.bounds.size.width - 170), id: \.self){ group in
+                        HStack (spacing : 6){
+                            ForEach(group, id: \.self){ cate in
+                                Text(cate)
+                                    .font(.system(size : 12))
+                                    .padding(.horizontal, 10.0)
+                                    .padding(.vertical, 2)
+                                    .foregroundColor(.white)
+                                    .background(RoundedRectangle(cornerRadius: 15)
+                                        .foregroundColor(.gray)
+    
+                                    )
+                            }
                         }
-//                    }
+                        
+                    }
                     
-                    Spacer()
                 }
+                
+                
                 Spacer()
             }
             Spacer()
         }
-        .padding(.vertical, 20.0)
+        .padding(.top, 20.0)
+        .padding(.bottom, 15.0)
         .padding(.horizontal, 24.0)
         .background(RoundedRectangle(cornerRadius: 15)
-            .foregroundColor(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color(hue: 1.0, saturation: 0.0, brightness: 0.926)/*@END_MENU_TOKEN@*/)
+            .foregroundColor(.white)
         )
         
     }
     
 }
+
+
+func groupCate(stressCategory : [String], parentWidth : CGFloat) -> [[String]]{
+    var tmpGroupedCate : [String] = []
+    var groupedCate : [[String]] = [[String]]()
+    var width: CGFloat = 0
+    
+    for cate in stressCategory {
+        let label = UILabel()
+        label.text = cate
+        label.sizeToFit()
+        
+        let labelWidth = label.frame.size.width + 10 + 6
+        
+        if (width + labelWidth) < (parentWidth - 7) {
+            tmpGroupedCate.append(cate)
+            width += (labelWidth)
+        } else {
+            groupedCate.append(tmpGroupedCate)
+            tmpGroupedCate.removeAll()
+            tmpGroupedCate.append(cate)
+            width = (labelWidth)
+            
+        }
+    }
+    
+    groupedCate.append(tmpGroupedCate)
+    
+    return groupedCate
+    
+}
+
+
 
 
 
@@ -248,20 +361,6 @@ func createTotalData(stressSet : [Stress], rewardSet : [Reward]) -> [Total]{
 
 
 
-//여러개의 카테고리가 ","로 구분되어 나열된 string 만들기
-func getStressCateList(stressCategory : [String]) -> String {
-    
-    var stressCateArr : [String] = []
-    var stressCateList : String
-    
-    for category in stressCategory{
-        stressCateArr.append(category)
-    }
-    
-    stressCateList = stressCateArr.joined(separator: ", ")
-    
-    return stressCateList
-}
 
 func dateToString(dateInfo : Date) -> String {
     
@@ -273,7 +372,6 @@ func dateToString(dateInfo : Date) -> String {
     
     return dateString
 }
-
 
 struct TimelineView_Previews: PreviewProvider {
     static var previews: some View {

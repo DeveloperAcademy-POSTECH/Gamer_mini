@@ -69,7 +69,7 @@ struct UpdateRewardView: View {
                         Button(action: {
                             dismiss()
                         }) {
-                            Text("취소")
+                            Text("취소").foregroundColor(.black)
                         }
                     }
                     ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
@@ -86,7 +86,7 @@ struct UpdateRewardView: View {
 //                            }
                             dismiss()
                         }) {
-                            Text("완료")
+                            Text("완료").foregroundColor(.black)
                         }
                     }
                 }

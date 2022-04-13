@@ -18,7 +18,7 @@
 		91DCE43328055093005C830D /* StyleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DCE43228055093005C830D /* StyleData.swift */; };
 		91E171242805B5CB00B7B188 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 91E171232805B5CB00B7B188 /* Charts */; };
 		91E171272805B5D600B7B188 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 91E171262805B5D600B7B188 /* FSCalendar */; };
-		CC91CDB1280534E3002A8924 /* DefaultRewardCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC91CDB0280534E3002A8924 /* DefaultRewardCard.swift */; };
+		CC91CDB1280534E3002A8924 /* RewardCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC91CDB0280534E3002A8924 /* RewardCard.swift */; };
 		CCAF999B2801D3D20096362E /* RecordRewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF999A2801D3D20096362E /* RecordRewardView.swift */; };
 		CCD9C74427FED4FB00C21709 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74327FED4FB00C21709 /* HomeView.swift */; };
 		CCD9C74627FED50A00C21709 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9C74527FED50A00C21709 /* SettingView.swift */; };
@@ -52,7 +52,7 @@
 		91BF86A127FECD2300A95FA9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		91BF86A827FED68400A95FA9 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		91DCE43228055093005C830D /* StyleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleData.swift; sourceTree = "<group>"; };
-		CC91CDB0280534E3002A8924 /* DefaultRewardCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRewardCard.swift; sourceTree = "<group>"; };
+		CC91CDB0280534E3002A8924 /* RewardCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardCard.swift; sourceTree = "<group>"; };
 		CCAF999A2801D3D20096362E /* RecordRewardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRewardView.swift; sourceTree = "<group>"; };
 		CCD9C74327FED4FB00C21709 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CCD9C74527FED50A00C21709 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				CCD9C74B27FED53C00C21709 /* TabBarView.swift */,
-				CC91CDB0280534E3002A8924 /* DefaultRewardCard.swift */,
+				CC91CDB0280534E3002A8924 /* RewardCard.swift */,
 				E61F252A27FFC45D00D3A96C /* RewardCard2.swift */,
 				F23A5D59280563DD00F54207 /* ReportView */,
 				E604B60D2802F77E0099464C /* CardDetailView.swift */,
@@ -304,7 +304,7 @@
 				F23139CC27FEE24900D4EB9F /* EdgeBorder.swift in Sources */,
 				91BF86A927FED68400A95FA9 /* RecordView.swift in Sources */,
 				F23139C827FEE24300D4EB9F /* CustomTapView.swift in Sources */,
-				CC91CDB1280534E3002A8924 /* DefaultRewardCard.swift in Sources */,
+				CC91CDB1280534E3002A8924 /* RewardCard.swift in Sources */,
 				CCD9C74827FED51F00C21709 /* CalenderView.swift in Sources */,
 				CCAF999B2801D3D20096362E /* RecordRewardView.swift in Sources */,
 				F23139D327FEE2A100D4EB9F /* TimelineView.swift in Sources */,

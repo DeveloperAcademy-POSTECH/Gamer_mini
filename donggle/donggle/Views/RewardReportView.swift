@@ -7,13 +7,23 @@
 import SwiftUI
 
 let rewardSet = UserDefaults.rewardArray ?? []
-func setSortedRewardArray(arr: [Reward]) -> [(key: String, value: String)] {
+func setSortedRewardArray(arr: [Reward], date: String) -> [(key: String, value: String)] {
+    var Dictionary: [String : Double] = [:]
+    var categories: [String] = []
     var tmpArray: Array<(key: String, value: Double)> = []
-    for reward in rewardSet {
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "YYYY년 MM월"
+    
+    let filteredRewards = arr.filter { reward in
+        date == dateFormatter.string(from: reward.date)
+    }
+    
+    for reward in filteredRewards {
         for name in reward.category {
-                    categories.append(name)
-                    let count = Dictionary[name]
-                    Dictionary[name] = Double(count ?? 0)+1
+            categories.append(name)
+            let count = Dictionary[name]
+            Dictionary[name] = Double(count ?? 0)+1
         }
     }
     tmpArray = Dictionary.sorted { a, b in
@@ -22,7 +32,7 @@ func setSortedRewardArray(arr: [Reward]) -> [(key: String, value: String)] {
     
     var array: [(key: String, value: String)] = []
     var sum: Double = 0
-    for _ in 1 ... categories.count {
+    for _ in 0 ... categories.count {
         sum += 1
     }
     for item in tmpArray {
@@ -39,20 +49,35 @@ func setSortedRewardArray(arr: [Reward]) -> [(key: String, value: String)] {
         }
         return false
     }
-
     // 6개 이상부터는 그 외 n개로 묶어서 보여주기
 }
 
 
-func getTop6Reward(filteredRewards: [Reward]) -> [(key: String, value: Double)] {
+// top6는 매달 최고 보상으로 해야하는지 전체 중에서
+func getTop6Reward(mainReward: [Reward], date: String) -> [(key: String, value: Double)] {
+    var Dictionary: [String : Double] = [:]
+    var categories: [String] = []
     var tmpArray: Array<(key: String, value: Double)> = []
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "YYYY년 MM월"
+    
+    let rewards = mainReward.filter { stress in
+        date == dateFormatter.string(from: stress.date)
+    }
+    
+    let filteredRewards = rewards.filter { reward in
+        reward.isEffective == true
+    }
+    
     for reward in filteredRewards {
         for name in reward.category {
-                    categories.append(name)
-                    let count = Dictionary[name]
-                    Dictionary[name] = Double(count ?? 0)+1
+            categories.append(name)
+            let count = Dictionary[name]
+            Dictionary[name] = Double(count ?? 0)+1
         }
     }
+    
     tmpArray = Dictionary.sorted { a, b in
         a.value > b.value
     }
@@ -64,47 +89,58 @@ func getTop6Reward(filteredRewards: [Reward]) -> [(key: String, value: Double)] 
     return tmpArray
 }
 
-let filteredRewards = rewardSet.filter { reward in
-    reward.isEffective == true
-}
+
+
 
 struct RewardReportView: View {
-    @State var sortedArray = setSortedRewardArray(arr: rewardSet)
-    @State var rewardPercents = getPercent(list: setSortedRewardArray(arr: rewardSet))
-    @State var effectiveRewards = getTop6Reward(filteredRewards: filteredRewards)
+    //    @State var rewardPercents = getPercent(list: setSortedRewardArray(arr: mainReward))
     
+    var date: String
     var body: some View {
+        let sortedRewardArray = setSortedRewardArray(arr: mainReward, date: date)
+        let effectiveRewards = getTop6Reward(mainReward: mainReward, date: date)
+        
         ScrollView {
-            VStack {
-                Text("Top 6 스트레스 해소 보상")
-                    .font(.system(size: 22, weight: .semibold))
-                    .frame(maxWidth: UIScreen.main.bounds.width - 32 ,alignment: .leading)
-                
-                ScrollView(.horizontal) {
-                    HStack(spacing: 0) {
-                        ForEach(effectiveRewards.indices, id: \.self) { index in
-                            let reward = effectiveRewards[index]
-                            RewardCard2(title: reward.key, category: reward.key, index: index + 1)
-                                        .padding(.horizontal, 4)
-                                        .shadow(color:  Color.black.opacity(0.08), radius: 5, y: 6)
-                                }
+            if !effectiveRewards.isEmpty {
+                VStack {
+                    Text("Top 6 스트레스 해소 보상")
+                        .font(.system(size: 22, weight: .semibold))
+                        .frame(maxWidth: UIScreen.main.bounds.width - 32 ,alignment: .leading)
+                    
+                    ScrollView(.horizontal) {
+                        HStack(spacing: 0) {
+                            
+                            ForEach(1...6, id: \.self) { index in
+                                RewardCard2(title: "기록없음", category: "기록없음", index: index)
+                                    .padding(.horizontal, 4)
+                                    .shadow(color:  Color.black.opacity(0.08), radius: 5, y: 6)
                             }
-                            .frame(height: 200)
+                            
+                            ForEach(effectiveRewards.indices, id: \.self) { index in
+                                let reward = effectiveRewards[index]
+                                RewardCard2(title: reward.key, category: reward.key, index: index + 1)
+                                    .padding(.horizontal, 4)
+                                    .shadow(color:  Color.black.opacity(0.08), radius: 5, y: 6)
+                            }
+                            
+                            
                         }
+                        .frame(height: 200)
+                    }
+                }
+                .padding(20)
+                .frame(height: 280)
+                
+                Rectangle()
+                    .frame(height: 16)
+                    .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.946))
             }
-            .padding(20)
             
-            Rectangle()
-                .frame(height: 16)
-                .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.946))
+            ProgressBar(width: UIScreen.main.bounds.width - 52, height: 22, dataList: sortedRewardArray, isStress: false)
             
-            
-            ProgressBar(width: UIScreen.main.bounds.width - 52, height: 22, dataList: sortedArray, isStress: false)
-
             
             VStack(spacing: 16) {
-                ForEach(sortedArray.indices, id: \.self) { index in
-                    let reward = sortedArray[index]
+                ForEach(sortedRewardArray.indices, id: \.self) { index in let reward = sortedRewardArray[index]
                     ListRow(title: reward.key, category: reward.key,
                             percent: reward.value, isStress: false)
                 }
@@ -116,6 +152,6 @@ struct RewardReportView: View {
 
 struct RewardReportView_Previews: PreviewProvider {
     static var previews: some View {
-        RewardReportView()
+        RewardReportView(date: "2022년 04월")
     }
 }

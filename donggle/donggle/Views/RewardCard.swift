@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-struct DefaultRewardCard: View {
+struct RewardCard: View {
     
     var reward: Reward
     
@@ -14,14 +14,23 @@ struct DefaultRewardCard: View {
             isDetailView.toggle()
         }){
             VStack(spacing : 0){
-                Text("\(stringToImoticon(category: reward.category[0]))")
-                    .font(.system(size: 44, design: .default))
-                    .padding(.top, 32)
+                if(reward.isEffective == nil){
+                    Text("\(stringToImoticon(category: reward.category[0]))")
+                        .font(.system(size: 44, design: .default))
+                        .padding(.top, 30)
+                        .padding(.bottom, 12)
+                    .opacity(0.3)
+                }else{
+                    Text("\(stringToImoticon(category: reward.category[0]))")
+                        .font(.system(size: 44, design: .default))
+                        .padding(.top, 30)
+                        .padding(.bottom, 12)
+                }
                 Text("\(reward.title)")
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(Color.black)
                     .multilineTextAlignment(.center)
-                    .padding(.bottom, 16)
+                    .padding(.bottom, 18)
             }// : VStack
             .frame(width: 106, height: 140)
             .background(.white)
@@ -29,8 +38,8 @@ struct DefaultRewardCard: View {
             .padding(.horizontal, 6)
             .shadow(color:  Color.black.opacity(0.14), radius: 8, y: 6)
             .fullScreenCover(isPresented: $isDetailView) {
-                // 여기서는 currentDateRewards[0]만을 reward로 들어갑니다.
                 CardDetailView(reward: reward, sliderValue: $sliderValue, stressIndex: $stressIndex)
+
             }
         }
     }
