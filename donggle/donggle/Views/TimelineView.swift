@@ -40,6 +40,7 @@ struct TimelineView: View {
     @State private var date = Date()
     @State private var showModal = false
     @State private var selectedView = 3
+    @State private var month = "4월"
     @Environment(\.presentationMode) var presentation
     
     //스트레스, 보상 데이터 임시 정의
@@ -60,10 +61,14 @@ struct TimelineView: View {
                         Button(action: {
                             self.showModal = true
                         }) {
-                            Text("4월")
-                                .foregroundColor(.black)
-                                .font(.title2)
-                                .padding(10)
+                            HStack {
+                                Text(month)
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 24, weight: .semibold))
+                                
+                                Image(systemName: "chevron.down")
+                                    .foregroundColor(.black)
+                            }
                         }
                         .sheet(isPresented: self.$showModal) {
                             ModalView()
@@ -72,15 +77,16 @@ struct TimelineView: View {
                         
                         Spacer()
                         
-                        Picker(selection: $selectedView, label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
-                            Text("전체").tag(1)
+                        Picker(selection: $selectedView, label: Text("Picker")
+                            .font(.system(size: 24, weight: .regular))) {
+                            Text("전체보기").tag(1)
                             Text("스트레스").tag(2)
                             Text("보상").tag(3)
                             
                         }
                         
                     }
-                    .padding([.leading, .trailing])
+                    .padding(.horizontal, 24.0)
                     
                     
                     if (selectedView == 1){ //전체
@@ -164,9 +170,12 @@ struct RewardTimeCard : View {
             .padding(.trailing, 20.0)
             VStack(alignment: .leading, spacing: 0){
                 Text(rewardTitle)
+                    .font(.headline)
                     .fontWeight(.bold)
                     .padding(.bottom, 12.0)
                 Text(rewardContent)
+                    .font(.body)
+                    .fontWeight(.regular)
                 Spacer()
             }
             
@@ -203,7 +212,8 @@ struct stressTimeCard : View {
             VStack(alignment: .leading, spacing: 0){
                 
                 Text(stressContent)
-                    .font(.system(size: 17))
+                    .font(.body)
+                    .fontWeight(.regular)
                     .padding(.bottom, 12)
                     .fixedSize(horizontal: false, vertical: true)
                 
@@ -219,6 +229,7 @@ struct stressTimeCard : View {
                                     .foregroundColor(.white)
                                     .background(RoundedRectangle(cornerRadius: 15)
                                         .foregroundColor(.gray)
+    
                                     )
                             }
                         }
