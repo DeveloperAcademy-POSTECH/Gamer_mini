@@ -145,7 +145,8 @@ class ReloadView: ObservableObject {
 
 
 struct HomeView: View {
-    
+    @Binding var sliderValue : Double
+    @Binding var stressIndex : Int
     @ObservedObject var reloadView = ReloadView()
     
     func shuffle() {
@@ -153,8 +154,7 @@ struct HomeView: View {
     }
     
     @State private var showModal = false
-    @State var sliderValue : Double = UserDefaults.standard.double(forKey:"sliderValue")
-    @State var stressIndex : Int = UserDefaults.standard.integer(forKey:"stressIndex")
+
     
     @State private var selectedDate : Int = 0
     
@@ -190,7 +190,7 @@ struct HomeView: View {
                         .imageScale(.large)
                 }
                 .sheet(isPresented: self.$showModal) {
-                    RecordView(stressIndex: $stressIndex ,sliderValue: $sliderValue)
+                    RecordView(sliderValue: $sliderValue, stressIndex: $stressIndex)
                         .onDisappear{
                             self.shuffle()
                         }
@@ -270,24 +270,24 @@ struct HomeView: View {
                             let rewardCard = Button(action: {
                                 isDetailView.toggle()
                             }){
-                                if(index == 0){
-                                    DefaultRewardCard(reward: reward)
-                                        .padding(.leading,12.0)
-                                        .fullScreenCover(isPresented: $isDetailView) {
-                                            DetailView(isFullScreen: $isDetailView, reward : self.reloadView.RewardCardInfo2[index])
-                                        }
-                                }else if(index == self.reloadView.RewardCardInfo2.count-1){
-                                    DefaultRewardCard(reward: reward)
-                                        .padding(.trailing,24.0)
-                                        .fullScreenCover(isPresented: $isDetailView) {
-                                            DetailView(isFullScreen: $isDetailView, reward : self.reloadView.RewardCardInfo2[index])
-                                        }
-                                }else{
-                                    DefaultRewardCard(reward: reward)
-                                        .fullScreenCover(isPresented: $isDetailView) {
-                                            DetailView(isFullScreen: $isDetailView, reward : self.reloadView.RewardCardInfo2[index])
-                                        }
-                                }
+//                                if(index == 0){
+//                                    DefaultRewardCard(reward: reward, sliderValue: $sliderValue, stressIndex: $stressIndex)
+//                                        .padding(.leading,12.0)
+//                                        .fullScreenCover(isPresented: $isDetailView) {
+//                                            DetailView(isFullScreen: $isDetailView, reward : self.reloadView.RewardCardInfo2[index])
+//                                        }
+//                                }else if(index == self.reloadView.RewardCardInfo2.count-1){
+//                                    DefaultRewardCard(reward: reward, sliderValue: $sliderValue, stressIndex: $stressIndex)
+//                                        .padding(.trailing,24.0)
+//                                        .fullScreenCover(isPresented: $isDetailView) {
+//                                            DetailView(isFullScreen: $isDetailView, reward : self.reloadView.RewardCardInfo2[index])
+//                                        }
+//                                }else{
+//                                    DefaultRewardCard(reward: reward, sliderValue: $sliderValue, stressIndex: $stressIndex)
+//                                        .fullScreenCover(isPresented: $isDetailView) {
+//                                            DetailView(isFullScreen: $isDetailView, reward : self.reloadView.RewardCardInfo2[index])
+//                                        }
+//                                }
                             }
                                 
                             
@@ -332,8 +332,8 @@ struct DefaultRewardCard2: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
-}
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView(sliderValue: <#T##Binding<Double>#>, stressIndex: <#T##Binding<Int>#>)
+//    }
+//}

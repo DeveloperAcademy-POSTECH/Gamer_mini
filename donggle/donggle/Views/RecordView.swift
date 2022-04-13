@@ -19,10 +19,8 @@ struct MultipleSelectionRow: View {
 struct RecordView: View {
 
     @Environment(\.dismiss) private var dismiss
-
-    @Binding var stressIndex: Int
     @Binding var sliderValue : Double
-    
+    @Binding var stressIndex : Int
     @State var stressSelectionOn: Bool = false
     @State var rewardSelectionOn: Bool = true
     @State var rewardIsOn: Bool = false
@@ -39,7 +37,7 @@ struct RecordView: View {
     @State private var rewardDate = Date()
     
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
-    func saveRecord(sliderValue: Double, stressDescription: String, selectedStress : [String], rewardIsOn : Bool, rewardTitle: String, rewardDescription : String, selectedReward : [String], rewardDate : Date){
+    func saveRecord(stressDescription: String, selectedStress : [String], rewardIsOn : Bool, rewardTitle: String, rewardDescription : String, selectedReward : [String], rewardDate : Date){
         if (stressDescription.isEmpty && selectedStress.isEmpty && !rewardIsOn){
             //    스트레스 수치만 조절
             print("---스트레스 수치만 조절---")
@@ -81,7 +79,7 @@ struct RecordView: View {
             let stressUUID = UUID()
             let rewardUUID = UUID()
             var sArray : [Stress] = UserDefaults.stressArray ?? []
-            let stressInstance = Stress(id: stressUUID, index: self.stressIndex, content: self.stressDescription, date: Date(), category: self.selectedStress, rewardKey: rewardUUID)
+            let stressInstance = Stress(id: stressUUID, index: stressIndex, content: self.stressDescription, date: Date(), category: self.selectedStress, rewardKey: rewardUUID)
             sArray.append(stressInstance)
             UserDefaults.stressArray = sArray
             
@@ -219,6 +217,8 @@ struct RecordView: View {
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button("추가"){
                         stressIndex = Int(sliderValue)
+                        print(stressIndex)
+                        print(sliderValue)
                         UserDefaults.standard.set(stressIndex, forKey: "stressIndex")
                         UserDefaults.standard.set(sliderValue, forKey: "sliderValue")
                         if stressDescription == "어떤 일이 있었나요?"{
@@ -227,7 +227,7 @@ struct RecordView: View {
                         if rewardDescription == "나에게 어떤 선물을 줄까요?"{
                             rewardDescription = ""
                         }
-                        saveRecord(sliderValue: sliderValue, stressDescription: stressDescription, selectedStress: selectedStress, rewardIsOn: rewardIsOn, rewardTitle: rewardTitle, rewardDescription: rewardDescription, selectedReward: selectedReward, rewardDate: rewardDate)
+                        saveRecord(stressDescription: stressDescription, selectedStress: selectedStress, rewardIsOn: rewardIsOn, rewardTitle: rewardTitle, rewardDescription: rewardDescription, selectedReward: selectedReward, rewardDate: rewardDate)
                         dismiss()
                     }
                 }

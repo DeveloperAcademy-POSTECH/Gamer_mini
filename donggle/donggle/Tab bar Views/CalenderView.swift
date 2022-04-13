@@ -24,6 +24,9 @@ struct CalendarView: View {
         GridItem(.flexible())
     ]
     
+    @Binding var sliderValue : Double
+    @Binding var stressIndex : Int
+    
     @State var selectedDate: Date = Date()
     
     @State private var isRecordView = false
@@ -116,7 +119,7 @@ struct CalendarView: View {
                                         self.showModal = true
                                     }){
                                         // 여기서는 currentDateRewards의 index 차례대로 reward가 들어가는데
-                                        DefaultRewardCard(reward: reward)
+                                        DefaultRewardCard(reward: reward, sliderValue: $sliderValue, stressIndex: $stressIndex)
                                             .padding(.bottom,10)
                                     }
                                     
@@ -241,8 +244,8 @@ struct CalendarRepresentable: UIViewRepresentable{
 }
 
 
-struct CalenderView_Previews: PreviewProvider {
-    static var previews: some View {
-        CalendarView()
-    }
-}
+//struct CalenderView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CalendarView()
+//    }
+//}

@@ -10,8 +10,8 @@ import Foundation
 
 struct GiftCheckView: View {
     @Environment(\.dismiss) private var dismiss
-    @State var stressIndex : Int = UserDefaults.standard.integer(forKey:"stressIndex")
-    @State var sliderValue : Double = UserDefaults.standard.double(forKey:"sliderValue")
+    @Binding var sliderValue : Double
+    @Binding var stressIndex : Int
     @State var rewardComplateOn : Bool = true
     @State var modifyStressOn : Bool = false
     @State var isRewardEffective : Bool = false

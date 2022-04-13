@@ -20,11 +20,12 @@ struct TabBarView: View{
     init() {
         UITabBar.appearance().backgroundColor = UIColor.white
     }
+    @State var sliderValue : Double = UserDefaults.standard.double(forKey: "sliderValue")
+    @State var stressIndex : Int = UserDefaults.standard.integer(forKey: "stressIndex")
     
     var body: some View{
-        
         TabView(selection:$selection){
-            HomeView()
+            HomeView(sliderValue: $sliderValue, stressIndex: $stressIndex)
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home")
@@ -41,7 +42,7 @@ struct TabBarView: View{
                     Text("Report")
                 }.tag(2)
             
-            CalendarView()
+            CalendarView(sliderValue: $sliderValue, stressIndex: $stressIndex)
                 .tabItem {
                     Image(systemName: "square.and.pencil")
                     Text("Calendar")
