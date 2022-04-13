@@ -77,9 +77,14 @@ func setSortedStressArray(arr: [Stress], date: String) -> [(key: String, value: 
     
     var array: [(key: String, value: String)] = []
     var sum: Double = 0
-    for _ in 0 ... categories.count {
-        sum += 1
+    if categories.isEmpty {
+        for _ in 1 ... categories.count {
+            sum += 1
+        }
+    } else {
+        sum = 1
     }
+    
     for item in tmpArray {
         array.append((key: item.key, value: "\(Int(floor(item.value / sum * 100)))%"))
     }
