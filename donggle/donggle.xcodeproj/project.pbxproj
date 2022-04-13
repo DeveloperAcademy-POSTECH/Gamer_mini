@@ -161,8 +161,8 @@
 			children = (
 				CCD9C74B27FED53C00C21709 /* TabBarView.swift */,
 				CC91CDB0280534E3002A8924 /* DefaultRewardCard.swift */,
-				F23A5D59280563DD00F54207 /* ReportView */,
 				E61F252A27FFC45D00D3A96C /* RewardCard2.swift */,
+				F23A5D59280563DD00F54207 /* ReportView */,
 				E604B60D2802F77E0099464C /* CardDetailView.swift */,
 				31A38ABA27FEEB7600F4EAE8 /* GiftCheckView.swift */,
 				915F3A8828058D050065A765 /* UpdateRewardView.swift */,

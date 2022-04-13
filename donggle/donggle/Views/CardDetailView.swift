@@ -81,7 +81,7 @@ struct CardDetailView: View {
                 }
                 .padding(.top, 32.0)
                 .sheet(isPresented: self.$Evaluation){
-                    GiftCheckView()
+                    GiftCheckView(reward: reward)
                 }
             }
         }
