@@ -40,7 +40,7 @@ struct RecordView: View {
     
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
     func saveRecord(sliderValue: Double, stressDescription: String, selectedStress : [String], rewardIsOn : Bool, rewardTitle: String, rewardDescription : String, selectedReward : [String], rewardDate : Date){
-        if (stressDescription.isEmpty && selectedStress.isEmpty && !rewardIsOn) || rewardIsOn && selectedStress.isEmpty{
+        if (stressDescription.isEmpty && selectedStress.isEmpty && !rewardIsOn){
             //    스트레스 수치만 조절
             print("---스트레스 수치만 조절---")
         }else if !rewardIsOn{
@@ -55,7 +55,22 @@ struct RecordView: View {
             print("---스트레스만 기록---")
             print(sArray)
             print("-----------------")
-        }else{
+        } else if rewardIsOn && selectedStress.isEmpty {
+            if selectedStress.isEmpty{
+                self.selectedStress.append("기타")
+            }
+            if selectedReward.isEmpty{
+                self.selectedReward.append("기타")
+            }
+            var rArray : [Reward] = UserDefaults.rewardArray ?? []
+            let rewardInstance = Reward(id: UUID(), title: rewardTitle, content: self.rewardDescription, date: rewardDate, category: self.selectedReward, isEffective: nil, stressKey: nil)
+            rArray.append(rewardInstance)
+            UserDefaults.rewardArray = rArray
+            print("---보상만 기록---")
+            print("-----------------")
+        }
+        
+        else{
             //    스트레스 + 보상 기록
             if selectedStress.isEmpty{
                 self.selectedStress.append("기타")
