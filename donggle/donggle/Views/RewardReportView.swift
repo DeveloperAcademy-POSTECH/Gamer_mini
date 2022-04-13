@@ -33,11 +33,11 @@ func setSortedRewardArray(arr: [Reward], date: String) -> [(key: String, value: 
     var array: [(key: String, value: String)] = []
     var sum: Double = 0
     if categories.isEmpty {
+        sum = 1
+    } else {
         for _ in 1 ... categories.count {
             sum += 1
         }
-    } else {
-        sum = 1
     }
     
     for item in tmpArray {

@@ -78,11 +78,11 @@ func setSortedStressArray(arr: [Stress], date: String) -> [(key: String, value: 
     var array: [(key: String, value: String)] = []
     var sum: Double = 0
     if categories.isEmpty {
+        sum = 1
+    } else {
         for _ in 1 ... categories.count {
             sum += 1
         }
-    } else {
-        sum = 1
     }
     
     for item in tmpArray {
@@ -218,10 +218,10 @@ func selectMonth(date: String) -> String {
 }
 
 struct StressReportView: View {
+    var date: String
     @State var chartXaxis = getMonthOfDate()
     @State var trim: CGFloat = 0
 //    @State var stressPercents = getPercent(list: setSortedStressArray(arr: mainStress))
-    var date: String
     var body: some View {
         let width: CGFloat = UIScreen.main.bounds.width
         let nowDay = CGFloat((chartXaxis[3] as NSString).floatValue)
