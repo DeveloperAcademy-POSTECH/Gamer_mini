@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct CustomTapView: View {
-    
     @State var tabIndex = 0
-    
+    var date: String
     var body: some View {
         VStack{
             CustomTopTabBar(tabIndex: $tabIndex)
             if tabIndex == 0 {
-                StressReportView()
+                StressReportView(date: date)
             }
             else {
-                RewardReportView()
+                RewardReportView(date: date)
             }
             Spacer()
         }
@@ -34,6 +33,6 @@ extension View {
 
 struct CustomTapView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomTapView()
+        CustomTapView(date: "2022년 04월")
     }
 }

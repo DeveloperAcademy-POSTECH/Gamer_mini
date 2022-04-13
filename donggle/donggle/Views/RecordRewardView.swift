@@ -84,6 +84,9 @@ struct RecordRewardView: View {
                     }
                     ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
                         Button(action: {
+                            if rewardDescription == "나에게 어떤 선물을 줄까요?"{
+                                rewardDescription = ""
+                            }
                             saveRecord(rewardTitle: rewardTitle, rewardDescription: rewardDescription, selectedReward: selectedReward, rewardDate: rewardDate)
                             dismiss()
                         }) {

@@ -33,12 +33,14 @@ struct DetailCardBack: View {
                     .font(.system(size: 15, weight: .regular))
                     .multilineTextAlignment(.center)
                     .padding(.top, 30.0)
-                
+                Spacer()
+            }
+            VStack{
                 Circle()
-                    .fill(Color.init(red: (sliderValue+1)*2/255, green: (101-sliderValue)*2/255, blue: (101-sliderValue)*2/255))
+                    .fill(Color.init(red: 255/255, green: (233-sliderValue*2)/255, blue: 89/255))
                     .frame(width: 100.0, height: 100.0)
                     .padding(.top, 38)
-                Text("\(stress.index)%")
+                Text("\(stressIndex)%")
                     .font(.system(size: 15, weight: .regular))
                     .multilineTextAlignment(.center)
                     .padding(.top, 5.0)
@@ -46,6 +48,7 @@ struct DetailCardBack: View {
                     .fill(Color.gray)
                     .frame(width: 54.0, height: 24.0)
                 
+
                 Text(stress.content)
                     .font(.system(size: 17, weight: .regular))
                     .multilineTextAlignment(.center)

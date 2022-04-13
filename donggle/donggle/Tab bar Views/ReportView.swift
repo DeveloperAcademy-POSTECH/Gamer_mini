@@ -7,14 +7,25 @@
 
 import SwiftUI
 
+let dateFormatter = DateFormatter()
+
+func getMonth() -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "YYYY년 MM월"
+    let month = dateFormatter.string(from: Date())
+    return month
+}
 
 struct ReportView: View {
     @State private var showModal = false
-    @State private var month = "4월"
+    @State private var date = getMonth()
     
     var body: some View {
+        let idx: String.Index = date.index(date.startIndex, offsetBy: date.count - 4)
+        let month = String(date[idx...])
+
         NavigationView {
-            CustomTapView()
+            CustomTapView(date: date)
                 .toolbar {
                     ToolbarItem(placement:.navigationBarTrailing) {
                         NavigationLink(
@@ -22,7 +33,7 @@ struct ReportView: View {
                             label: {
                                 Text("Timeline")
                                     .padding(10)
-                                    .font(.system(size: 18, weight: .medium))
+                                    .font(.system(size: 18, weight: .semibold))
                                     .foregroundColor(.black)
                             })
                     }
@@ -40,7 +51,7 @@ struct ReportView: View {
                                 }
                             }
                             .sheet(isPresented: self.$showModal) {
-                                ModalView()
+                                ModalView(date: $date)
                             }
                     }
                 }
