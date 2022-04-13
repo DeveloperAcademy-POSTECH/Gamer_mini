@@ -76,7 +76,7 @@ struct TimelineView: View {
     @State private var date = getMonth()
     @State private var showModal = false
     @State private var selectedView = 1
-//    @State private var month = "4월"
+    //    @State private var month = "4월"
     @State private var prevDate = ""
     @Environment(\.presentationMode) var presentation
     
@@ -84,16 +84,12 @@ struct TimelineView: View {
     
     var date1 = Date()
     var sortedData = Datas()
-    
-    
     let groupData = Dictionary(grouping: mainStress) { (stress) -> String in
 
         let dateString = dateToString(dateInfo: stress.date)
 
         return dateString
     }
-    
-
     
     
     var body: some View {
@@ -119,8 +115,8 @@ struct TimelineView: View {
                             }
                         }
                         .sheet(isPresented: self.$showModal) {
+                            
                             ModalView(date: $date)
-
                         }
                         
                         
@@ -128,11 +124,11 @@ struct TimelineView: View {
                         
                         Picker(selection: $selectedView, label: Text("Picker")
                             .font(.system(size: 24, weight: .regular))) {
-                            Text("전체보기").tag(1)
-                            Text("스트레스").tag(2)
-                            Text("보상").tag(3)
-                            
-                        }
+                                Text("전체보기").tag(1)
+                                Text("스트레스").tag(2)
+                                Text("보상").tag(3)
+                                
+                            }
                         
                     }
                     .padding(.horizontal, 24.0)
@@ -198,6 +194,7 @@ struct TimelineView: View {
 //                            }
                         ScrollView(showsIndicators: false) {
                             LazyVGrid(columns: [GridItem()], alignment: .center, spacing: 12){
+
                                 ForEach(Array(sortedData.groupedReward.keys.enumerated()).sorted(by: {$0.element>$1.element}), id: \.element) { _, key in
                                     Text(key)
                                         .font(.body)
@@ -207,6 +204,7 @@ struct TimelineView: View {
                                     ForEach(sortedData.groupedReward[key]!, id: \.self.id) { reward in
                                         RewardTimeCard(rewardName: reward.category[0], rewardTitle: reward.title, rewardContent: reward.content, rewardDate: dateToString(dateInfo: reward.date), rewardDone: reward.isEffective)
                                     }
+
                                 }
                             }
                         }
@@ -220,7 +218,7 @@ struct TimelineView: View {
                     .navigationBarTitle("타임라인", displayMode: .inline)
                     .onAppear {
                         sortedData.refreshDatas()
-                       
+
                     }
                     .onDisappear {
                         presentation.wrappedValue.dismiss()
@@ -241,16 +239,17 @@ struct RewardTimeCard : View {
     
     var body: some View {
         
+
         
         HStack(alignment: .top, spacing: 0){
             VStack{
-//                Text(rewardDate)
+                //                Text(rewardDate)
                 Text(stringToImoticon(category : rewardName))
                     .font(.system(size: 44))
                     .opacity((rewardDone == nil) ? (0.5) : (1))
-                .onTapGesture {
-                    print("tap")
-                }
+                    .onTapGesture {
+                        print("tap")
+                    }
             }
             .padding(.trailing, 20.0)
             VStack(alignment: .leading, spacing: 0){
@@ -291,7 +290,19 @@ struct stressTimeCard : View {
                 Circle()
                     .fill(Color.init(red: 255/255, green: (233-Double(stressIndex)*2)/255, blue: 89/255))
                     .frame(width:50, height:50)
+                    .overlay {
+                        Image(String(Int(stressIndex) == 100 ? 100 :((Int(stressIndex)+10)/10)*10))
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 15, height: 15)
+                            .padding(.trailing, 10)
+                            .padding(.bottom, 14)
+                    }.onAppear{
+                        print(stressIndex)
+                    }
+                
                 Text(String(stressIndex) + "%")
+
                     .font(.system(size: 12))
                     .foregroundColor(Color.init(red: 117/255, green: 117/255, blue: 117/255))
             }.padding(.trailing, 20)
@@ -322,6 +333,7 @@ struct stressTimeCard : View {
                                     .background(RoundedRectangle(cornerRadius: 15)
                                         .foregroundColor(Color(red: stressColor["red"]!/255, green: stressColor["green"]!/255, blue: stressColor["blue"]!/255))
     
+
                                     )
                             }
                         }

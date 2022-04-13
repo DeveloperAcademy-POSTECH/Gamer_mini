@@ -7,25 +7,25 @@ class ReloadHomeView: ObservableObject {
     @Published var RewardCardInfo2 : [Reward] = []
     
     func initRewardDate()-> [String] {
-
+        
         var RewardDate : [String] = Array(Set(mainReward.map { reward in
             let formatter = DateFormatter()
             formatter.dateFormat = "YYYY년 M월 d일"
-
+            
             return formatter.string(from: reward.date)
         })).sorted(by: <)
-
+        
         if(RewardDate.count > 7){
             RewardDate.removeSubrange(7...RewardDate.count-1)
         }
-
+        
         return RewardDate
     }
-
+    
     func initRewardDateArray(RewardDate : [String])-> [[Reward]] {
-
+        
         var RewardDateArray : [[Reward]] = []
-
+        
         RewardDate.forEach { dateCriteria in
             let DateReward = mainReward.filter{(reward : Reward)-> Bool in
                 let formatter = DateFormatter()
@@ -36,53 +36,53 @@ class ReloadHomeView: ObservableObject {
             print(dateCriteria)
             //        print(DateReward)
             print("-------------------")
-
+            
             RewardDateArray.append(DateReward)
         }
-
+        
         return RewardDateArray
     }
-
-
+    
+    
     func initDateCircle(RewardDateArray: [[Reward]])-> [String]{
-
+        
         var dateCircle: [String] = []
-
+        
         let array = RewardDateArray.map { array -> String in
             let formatter = DateFormatter()
             formatter.dateFormat = "YYYY년 M월 d일"
             let date = formatter.string(from: array[0].date)
             return String(date.split(separator: " ")[2].split(separator: "일")[0])
         }
-
+        
         dateCircle = array
-
+        
         return dateCircle
     }
-
+    
     
     func shuffle() {
         print("shuffleDance")
         RewardDate2 = initRewardDate()
         RewardDateArray2 = initRewardDateArray(RewardDate: RewardDate2)
         dateCircle2 = initDateCircle(RewardDateArray: RewardDateArray2)
-        RewardCardInfo2 = RewardDateArray2.count==0 ? [] : RewardDateArray2[0]
+        RewardCardInfo2 = (RewardDateArray2.count==0 ? [] : RewardDateArray2[0]).sorted(by: {$1.isEffective != nil})
     }
 }
 
 struct HomeView: View {
-
+    
     @Binding var sliderValue : Double
     @Binding var stressIndex : Int
     @ObservedObject var reloadHomeView = ReloadHomeView()
-
+    
     
     func shuffle() {
         self.reloadHomeView.shuffle()
     }
     
     @State private var showModal = false
-
+    
     
     @State private var selectedDate : Int = 0
     
@@ -96,16 +96,16 @@ struct HomeView: View {
             .updating($isLongPressed){ newValue, state, transaction in
                 state = newValue
             }
-//                //드래그 가로의 위치가 -100보다 작은 위치로 가면 실행
-//                if $0.translation.width < -100 {
-//                    self.offset = .init(width: -1000, height: 0)
-//                //드래그 가로의 위치가 100보다 커지면 실행
-//                } else if $0.translation.width > 100 {
-//                    self.offset = .init(width: 1000, height: 0)
-//                //아니면 원래 위치로 돌아감
-//                } else {
-//                    self.offset = .zero
-//                }
+        //                //드래그 가로의 위치가 -100보다 작은 위치로 가면 실행
+        //                if $0.translation.width < -100 {
+        //                    self.offset = .init(width: -1000, height: 0)
+        //                //드래그 가로의 위치가 100보다 커지면 실행
+        //                } else if $0.translation.width > 100 {
+        //                    self.offset = .init(width: 1000, height: 0)
+        //                //아니면 원래 위치로 돌아감
+        //                } else {
+        //                    self.offset = .zero
+        //                }
         
         let dragGesture = DragGesture()
             .onChanged{ value in
@@ -115,7 +115,7 @@ struct HomeView: View {
         
         VStack{
             HStack{
-//                Text(self.reloadHomeView.RewardDate2[self.reloadHomeView.RewardDate2.count-1])
+                //                Text(self.reloadHomeView.RewardDate2[self.reloadHomeView.RewardDate2.count-1])
                 
                 Text("동글이")
                     .font(.system(size: 28, weight: .bold))
@@ -141,7 +141,9 @@ struct HomeView: View {
                     .fill(Color.init(red: 255/255, green: (233-sliderValue*2)/255, blue: 89/255))
                     .padding(50)
                     .overlay {
-                        Image(donggleFace)
+    
+                        Image(String(stressIndex == 100 ? 100 :((stressIndex+10)/10)*10))
+
                             .resizable()
                             .scaledToFit()
                             .frame(width: 45, height: 45)
@@ -178,35 +180,7 @@ struct HomeView: View {
                         RoundedRectangle(cornerRadius: 15)
                             .stroke(lineWidth: 1)
                     ).padding(EdgeInsets(top: 15, leading: 24, bottom: 0, trailing: 24))
-//                HStack{
-//                    ForEach([11,23,24,25,26,22,22], id: \.self){ index in
-//                        Button(
-//                            action: {
-//                            }, label:{
-//                                Text("31")
-//                                  .padding(10)
-//                                  .background(.yellow)
-//                                  .clipShape(Circle())
-//                                  .foregroundColor(Color.black)
-//                            })
-//                    }
-//                } // : 날짜 Hstack
-                
-//                ScrollView(.horizontal, showsIndicators: false){
-//                    HStack{
-//
-//                        DefaultRewardCard2(title: "jasdsnj", img: "😍")
-//                            .padding(.leading, 12.0)
-//                        DefaultRewardCard2(title: "jasdsnj", img: "😍")
-//                        DefaultRewardCard2(title: "jasdsnj", img: "😍")
-//                        DefaultRewardCard2(title: "jasdsnj", img: "😍")
-//                        DefaultRewardCard2(title: "jasdsnj", img: "😍")
-//                        DefaultRewardCard2(title: "jasdsnj", img: "😍")
-//                            .padding(.trailing, 24.0)
-//                    } // :HStack
-//                    .padding(.top, 15)
-//                    Spacer()
-//                }
+
                 
                 Spacer()
             }else{
@@ -244,15 +218,17 @@ struct HomeView: View {
                         ForEach(self.reloadHomeView.RewardCardInfo2.indices, id: \.self) { index in
                             let reward = self.reloadHomeView.RewardCardInfo2[index]
                             if(index == 0){
-                                    RewardCard(reward: reward, sliderValue: $sliderValue, stressIndex: $stressIndex)
-                                        .padding(.leading,10.0)
-                                }else if(index == self.reloadHomeView.RewardCardInfo2.count-1){
-                                    RewardCard(reward: reward, sliderValue: $sliderValue, stressIndex: $stressIndex)
-                                        .padding(.trailing,20.0)
-                                }else{
-                                    RewardCard(reward: reward, sliderValue: $sliderValue, stressIndex: $stressIndex)
-                                }
+
+                                RewardCard(reward: reward, sliderValue: $sliderValue, stressIndex: $stressIndex)
+                                    .padding(.leading,10.0)
+                            }else if(index == self.reloadHomeView.RewardCardInfo2.count-1){
+                                RewardCard(reward: reward, sliderValue: $sliderValue, stressIndex: $stressIndex)
+                                    .padding(.trailing,20.0)
+                            }else{
+                                RewardCard(reward: reward, sliderValue: $sliderValue, stressIndex: $stressIndex)
                             }
+                        }
+
                     } // :HStack
                     .padding(.top, 10)
                     Spacer()

@@ -24,7 +24,7 @@ struct TabBarView: View{
     @State var stressIndex : Int = UserDefaults.standard.integer(forKey: "stressIndex")
     
     var body: some View{
- 
+        
         let calendarView = CalendarView(sliderValue: $sliderValue, stressIndex: $stressIndex)
         let homeView = HomeView(sliderValue: $sliderValue, stressIndex: $stressIndex)
         
@@ -44,7 +44,7 @@ struct TabBarView: View{
                     Text("Report")
                 }.tag(2)
             
-
+            
             calendarView
                 .tabItem {
                     Image(systemName: "giftcard")

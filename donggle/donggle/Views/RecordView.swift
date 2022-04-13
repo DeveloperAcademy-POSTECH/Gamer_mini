@@ -11,13 +11,14 @@ struct MultipleSelectionRow: View {
             VStack{
                 Text(stringToImoticon(category:self.title))
                 Text(self.title).foregroundColor(Color.black)
-            }.background(self.isSelected == false ? nil : RoundedRectangle(cornerRadius: 10).fill(Color.init(red: 193/255, green: 233/255, blue: 252/255)))
+            }.padding(.top,10)
+            .background(self.isSelected == false ? nil : RoundedRectangle(cornerRadius: 10).fill(Color.init(red: 193/255, green: 233/255, blue: 252/255)))
         }
     }
 }
 
 struct RecordView: View {
-
+    
     @Environment(\.dismiss) private var dismiss
     @Binding var sliderValue : Double
     @Binding var stressIndex : Int
@@ -30,10 +31,10 @@ struct RecordView: View {
     @State var rewardTitle: String = ""
     @State var selectedStress: [String] = []
     @State var selectedReward: [String] = []
-
+    
     @State var stressCategory: [String] = ["직장", "날씨", "수면", "가족", "금전", "그냥"]
     @State var rewardCategory: [String] = ["꿀잠", "알콜", "쇼핑", "운동", "음식", "놀기"]
-
+    
     @State private var rewardDate = Date()
     
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
@@ -53,9 +54,9 @@ struct RecordView: View {
             print("---스트레스만 기록---")
             print(sArray)
             print("-----------------")
-
+            
             mainStress = UserDefaults.stressArray ?? []
-
+            
         } else if rewardIsOn && selectedStress.isEmpty {
             if selectedStress.isEmpty{
                 self.selectedStress.append("기타")
@@ -73,7 +74,7 @@ struct RecordView: View {
         }
         
         else{
-
+            
             //    스트레스 + 보상 기록
             if selectedStress.isEmpty{
                 self.selectedStress.append("기타")
@@ -100,11 +101,8 @@ struct RecordView: View {
             mainStress = UserDefaults.stressArray ?? []
             mainReward = UserDefaults.rewardArray ?? []
         }
-        donggleFace = String(stressIndex == 100 ? 100 :((stressIndex+10)/10)*10)
-        print("donggleFace")
-        print(donggleFace)
     }
-
+    
     var body: some View {
         NavigationView{
             Form {
@@ -113,8 +111,7 @@ struct RecordView: View {
                         .multilineTextAlignment(.leading)
                     VStack{
                         Text("\(Int(sliderValue))%")
-                            .padding(.top, 10)
-                        
+                            .padding(.top, 20)     
                         Circle()
                             .fill(Color.init(red: 255/255, green: (233-sliderValue*2)/255, blue: 89/255))
                             .padding(2)
@@ -127,7 +124,6 @@ struct RecordView: View {
                                     .padding(.trailing, 30)
                                     .padding(.bottom, 30)
                             }
-                                                
                         HStack{
                             Image(systemName: "circle.fill")
                                 .foregroundColor(.yellow)
@@ -139,6 +135,12 @@ struct RecordView: View {
                         .padding(.top, 15)
                     }
                 }
+                
+//                Rectangle()
+//                    .frame(height: 16)
+//                    .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.946))
+
+                
                 VStack(alignment: .leading, spacing: 30){
                     Text("스트레스 요인")
                         .multilineTextAlignment(.leading)
@@ -150,7 +152,7 @@ struct RecordView: View {
                             }
                         }.background(RoundedRectangle(cornerRadius: 20).fill(Color(red: 247/255, green: 247/255, blue: 247/255)))
                         .frame(height:100)
-   
+                    
                 }
                 Section{
                     DisclosureGroup("스트레스 카테고리", isExpanded: $stressSelectionOn){
@@ -169,53 +171,56 @@ struct RecordView: View {
                             }
                             .padding(.horizontal)
                         }
-                    }
+                    }.accentColor(.black)
                 }
+//                Rectangle()
+//                    .frame(height: 16)
+//                    .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.946))
+
+                
                 Toggle(isOn: $rewardIsOn) {
                     Text("보상 추가")
-                }
+                }.tint(Color.init(red: 255/255, green: (233-sliderValue*2)/255, blue: 89/255))
                 if rewardIsOn{
                     Section{
-                    DisclosureGroup("보상", isExpanded: $rewardGroupOn){
-                        VStack(alignment: .leading, spacing: 30){
-                            DatePicker(selection: $rewardDate, in: Date()..., displayedComponents: .date , label: { Text("날짜") })
-                                .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
-                            Text("보상 이름")
-                            TextField("", text: $rewardTitle)
-                                .background(RoundedRectangle(cornerRadius: 20).fill(Color(red: 247/255, green: 247/255, blue: 247/255)))
-                            Text("보상 내용")
-                            
-                            TextEditor(text: $rewardDescription)
-                                .foregroundColor(self.rewardDescription == "나에게 어떤 선물을 줄까요?" ? .gray : .primary)
-                                .onTapGesture {
-                                    if self.rewardDescription == "나에게 어떤 선물을 줄까요?"{
-                                        self.rewardDescription = ""
+                            VStack(alignment: .leading, spacing: 30){
+                                DatePicker(selection: $rewardDate, in: Date()..., displayedComponents: .date , label: { Text("날짜") })
+                                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                                Text("보상 이름")
+                                TextField("", text: $rewardTitle)
+                                    .frame(height: 50)
+                                    .background(RoundedRectangle(cornerRadius: 10).fill(Color(red: 247/255, green: 247/255, blue: 247/255)))
+                                Text("보상 내용")
+                                
+                                TextEditor(text: $rewardDescription)
+                                    .foregroundColor(self.rewardDescription == "나에게 어떤 선물을 줄까요?" ? .gray : .primary)
+                                    .onTapGesture {
+                                        if self.rewardDescription == "나에게 어떤 선물을 줄까요?"{
+                                            self.rewardDescription = ""
+                                        }
                                     }
-                                }
-                                .background(RoundedRectangle(cornerRadius: 20).fill(Color(red: 247/255, green: 247/255, blue: 247/255)))
-                                .frame(height:100)
-
-                        }
-                            Section{
-                            DisclosureGroup("보상 카테고리", isExpanded: $rewardSelectionOn ){
-                                ScrollView{
-                                    LazyVGrid(columns: columns,spacing: 20){
-                                        ForEach(self.rewardCategory, id: \.self) { item in
-                                            MultipleSelectionRow(title: item, isSelected: self.selectedReward.contains(item)) {
-                                                if self.selectedReward.contains(item) {
-                                                    self.selectedReward.removeAll(where: { $0 == item })
-                                                }
-                                                else {
-                                                    self.selectedReward.append(item)
+                                    .background(RoundedRectangle(cornerRadius: 10).fill(Color(red: 247/255, green: 247/255, blue: 247/255)))
+                                    .frame(height:100)
+                                
+                            }
+                                DisclosureGroup("보상 카테고리", isExpanded: $rewardSelectionOn ){
+                                    ScrollView{
+                                        LazyVGrid(columns: columns,spacing: 20){
+                                            ForEach(self.rewardCategory, id: \.self) { item in
+                                                MultipleSelectionRow(title: item, isSelected: self.selectedReward.contains(item)) {
+                                                    if self.selectedReward.contains(item) {
+                                                        self.selectedReward.removeAll(where: { $0 == item })
+                                                    }
+                                                    else {
+                                                        self.selectedReward.append(item)
+                                                    }
                                                 }
                                             }
                                         }
                                     }
-                                }
-                            }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                                }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                            .accentColor(.black)
                         }
-                    }
-                }
                 }
             }
             .navigationTitle(Text("스트레스 기록"))
@@ -249,10 +254,10 @@ struct RecordView: View {
             }
             .background(Color.white)
             .onAppear {
-              UITableView.appearance().backgroundColor = .clear
+                UITableView.appearance().backgroundColor = .clear
             }
             .onDisappear {
-              UITableView.appearance().backgroundColor = .systemGroupedBackground
+                UITableView.appearance().backgroundColor = .systemGroupedBackground
             }
         }
     }
