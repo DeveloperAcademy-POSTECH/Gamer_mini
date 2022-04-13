@@ -135,21 +135,32 @@ struct HomeView: View {
                 }
             }
             .padding(.horizontal, 24.0)
-            
             VStack{
-                Circle()
-                    .fill(Color.init(red: 255/255, green: (233-sliderValue*2)/255, blue: 89/255))
-                    .padding(50)
-                    .overlay {
-    
-                        Image(String(stressIndex == 100 ? 100 :((stressIndex+10)/10)*10))
-
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 45, height: 45)
-                            .padding(.trailing, 30)
-                            .padding(.bottom, 30)
+            VStack{
+//                Circle()
+//                    .fill(Color.init(red: 255/255, green: (233-sliderValue*2)/255, blue: 89/255))
+//                    .padding(50)
+//                    .overlay {
+//
+//                        Image(String(stressIndex == 100 ? 100 :((stressIndex+10)/10)*10))
+//
+//                            .resizable()
+//                            .scaledToFit()
+//                            .frame(width: 45, height: 45)
+//                            .padding(.trailing, 30)
+//                            .padding(.bottom, 30)
+                        Circle()
+                            .fill(Color.init(red: 255/255, green: (233-Double(sliderValue)*2)/255, blue: 89/255))
+                            .frame(width:180, height:180)
+                            .overlay {
+                                Image(String(Int(sliderValue) == 100 ? 100 :((Int(sliderValue)+10)/10)*10))
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 45, height: 45)
+                                    .padding(.trailing, 60)
+                                    .padding(.bottom, 60)
                     }
+                
             }
             .scaleEffect(isLongPressed ? 1.15 : 1)
             .gesture(longPressGesture)
@@ -162,6 +173,9 @@ struct HomeView: View {
             Text("\(stressIndex)%")
                 .font(.system(size: 24, weight: .regular))
                 .foregroundColor(Color.gray)
+                .padding(.top,20)
+            }.frame(width: .infinity, height: 330)
+            
             Divider()
             Spacer().frame(height: 10)
             
