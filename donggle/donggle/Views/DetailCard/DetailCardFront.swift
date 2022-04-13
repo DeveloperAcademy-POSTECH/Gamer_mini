@@ -12,34 +12,40 @@ struct DetailCardFront: View {
     let width: CGFloat
     let height: CGFloat
     @Binding var degree : Double
-     
-    var body: some View {
+    var reward: Reward
 
+    var dateFormatText: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY.M.d"
+        return formatter
+    }()
+    
+    var body: some View {
+        
         ZStack(){
             VStack{
-                Text("2022.04.03")
+                Text("\(reward.date, formatter: dateFormatText)")
                     .font(.system(size: 15, weight: .regular))
                     .multilineTextAlignment(.center)
                     .padding(.top, 30.0)
                 Spacer()
-            }
-            VStack{
-                Text("야식 뜯어")
+                Text("\(stringToImoticon(category: reward.category[0]))")
+                Text(reward.title)
                     .font(.system(size: 22, weight: .bold))
                     .multilineTextAlignment(.center)
-                    .padding(.top, 265.0)
-                    .padding(.bottom, 12.0)
-                Text("오늘 도미노 세일 하던데 리버 꼬셔서 같이 먹어야지 우헤헤")
+                    .padding(.top, 29.0)
+                Text(reward.content)
                     .font(.system(size: 17, weight: .regular))
                     .multilineTextAlignment(.center)
+                    .padding(.top, 12.0)
                     .padding([.leading, .trailing], 30.0)
                 Spacer()
-                
             }
+            .foregroundColor(Color.black)
         }
         .frame(width: 316.0, height: 418.0)
         .background(Color.white)
-        .cornerRadius(24)
+        .cornerRadius(20)
         .shadow(color: .black.opacity(0.1), radius: 28, x: 0, y: 12)
         .rotation3DEffect(Angle(degrees: degree), axis: (x:0, y:1, z:0))
         

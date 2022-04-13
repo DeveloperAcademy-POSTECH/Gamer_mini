@@ -2,18 +2,18 @@
 //  ContentView.swift
 //  donggle
 //
-//  Created by Lee Myeonghwan on 2022/04/07.
+//  Created by 정재윤 on 2022/04/12.
 //
 
+import Charts
 import SwiftUI
-
-import Foundation
 
 struct ContentView: View {
     var body: some View {
-            VStack {
-                Text("Hello world")
-            }
+        Chart(data: [0.1, 0.3, 0.2, 0.5, 0.4, 0.9, 0.1])
+            .chartStyle(
+                LineChartStyle(.quadCurve, lineColor: .blue, lineWidth: 5)
+            )
     }
 }
 
