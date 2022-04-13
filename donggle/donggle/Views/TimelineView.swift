@@ -192,7 +192,7 @@ struct stressTimeCard : View {
             
             VStack(spacing:3){
                 Circle()
-                    .fill(Color.gray)
+                    .fill(Color.init(red: 255/255, green: (233-Double(stressIndex)*2)/255, blue: 89/255))
                     .frame(width:50, height:50)
                 Text(String(stressIndex))
                     .font(.system(size: 12))
