@@ -11,12 +11,14 @@ struct DetailCardBack: View {
     
     let width: CGFloat
     let height: CGFloat
+    //let stressColor = [String : Double]
     @Binding var degree : Double
     @State var sliderValue : Double = UserDefaults.standard.double(forKey: "sliderValue")
     @State var stressIndex : Int = UserDefaults.standard.integer(forKey: "stressIndex")
     
     var stress: Stress
     
+    //let stressColor = [string : Double] = stressCatagoryToColor(category: <#T##String#>)
     
     var dateFormatText: DateFormatter = {
         let formatter = DateFormatter()
@@ -33,9 +35,6 @@ struct DetailCardBack: View {
                     .font(.system(size: 15, weight: .regular))
                     .multilineTextAlignment(.center)
                     .padding(.top, 30.0)
-                Spacer()
-            }
-            VStack{
                 Circle()
                     .fill(Color.init(red: 255/255, green: (233-sliderValue*2)/255, blue: 89/255))
                     .frame(width: 100.0, height: 100.0)
@@ -44,18 +43,34 @@ struct DetailCardBack: View {
                     .font(.system(size: 15, weight: .regular))
                     .multilineTextAlignment(.center)
                     .padding(.top, 5.0)
-                Capsule()
-                    .fill(Color.gray)
-                    .frame(width: 54.0, height: 24.0)
                 
+                 HStack(spacing: 6){
+                    ForEach(stress.category, id: \.self){ categ in
+                        let stressColor : [String : Double] = stressCatagoryToColor(category: categ)
+                        
+                    Text(categ)
+                            .font(.system(size: 15, weight: .regular))
+                            .onAppear{print(stressColor)}
+                            .padding(.horizontal, 10.0)
+                            .padding(.vertical, 2)
+                            .foregroundColor(.black)
+                            .background(RoundedRectangle(cornerRadius: 12) .fill(Color(red: stressColor["red"]!/255, green: stressColor["green"]!/255, blue: stressColor["blue"]!/255)))
+                            .padding(.top, 2.0)
+                    }
+                     
+                 }
+                Spacer()
 
+            }
+            VStack{
                 Text(stress.content)
                     .font(.system(size: 17, weight: .regular))
                     .multilineTextAlignment(.center)
-                    .padding(.top, 14.0)
+                    .padding(.top, 278.0)
                     .padding([.leading, .trailing], 20.0)
                 Spacer()
             }
+
         }
         .frame(width: 316.0, height: 418.0)
         .foregroundColor(Color.black)

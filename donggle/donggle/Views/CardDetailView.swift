@@ -63,9 +63,7 @@ struct CardDetailView: View {
                 }else{
                     ZStack{
                         DetailCardFront(width: width, height: height, degree: $backDegree, reward: reward)
-                    }.onTapGesture{
-                        flipCard()
-                   }
+                    }
                 }
                 
                 Button(action: {

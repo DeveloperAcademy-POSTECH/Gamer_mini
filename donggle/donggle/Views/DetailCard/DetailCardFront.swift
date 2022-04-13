@@ -26,22 +26,28 @@ struct DetailCardFront: View {
             VStack{
                 Text("\(reward.date, formatter: dateFormatText)")
                     .font(.system(size: 15, weight: .regular))
+                    .foregroundColor(Color.black)
                     .multilineTextAlignment(.center)
                     .padding(.top, 30.0)
-                Spacer()
                 Text("\(stringToImoticon(category: reward.category[0]))")
+                    .font(.system(size: 80))
+                    .padding(.top,62.0)
+                Spacer()
+            }
+            VStack(){
                 Text(reward.title)
                     .font(.system(size: 22, weight: .bold))
+                    .foregroundColor(Color.black)
                     .multilineTextAlignment(.center)
-                    .padding(.top, 29.0)
+                    .padding(.top, 265.0)
                 Text(reward.content)
                     .font(.system(size: 17, weight: .regular))
+                    .foregroundColor(Color.black)
                     .multilineTextAlignment(.center)
-                    .padding(.top, 12.0)
+                    .padding(.top, 8.0)
                     .padding([.leading, .trailing], 30.0)
                 Spacer()
             }
-            .foregroundColor(Color.black)
         }
         .frame(width: 316.0, height: 418.0)
         .background(Color.white)
