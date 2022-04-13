@@ -29,12 +29,12 @@ struct DetailCardBack: View {
     
     var body: some View {
         
-        ZStack(){
+        VStack(){
             VStack{
                 Text("\(stress.date, formatter: dateFormatText)")
                     .font(.system(size: 15, weight: .regular))
                     .multilineTextAlignment(.center)
-                    .padding(.top, 30.0)
+                
                 Circle()
                     .fill(Color.init(red: 255/255, green: (233-Double(stress.index)*2)/255, blue: 89/255))
                     .padding(2)
@@ -45,22 +45,17 @@ struct DetailCardBack: View {
                             .scaledToFit()
                             .frame(width: 35, height: 35)
                             .padding(.trailing, 30)
-                            .padding(.bottom, 30)
                     }
+                    .padding(.top, 30.0)
                 Text("\(stress.index)%")
                     .font(.system(size: 15, weight: .regular))
                     .multilineTextAlignment(.center)
                     .padding(.top, 5.0)
-                /*
-                 let stressColor = [String : Double] = stressCatagoryToColor(스트레스카테고리.category)
-                 
-                 .foregroundColor(Color(red: stressColor.red, green: stressColor.green, blue: stressColor.blue, opacity: 1))
-                 */
+                    .padding(.bottom, 30.0)
                 
                 HStack(spacing: 6){
                     ForEach(stress.category, id: \.self){ categ in
                         let stressColor : [String : Double] = stressCatagoryToColor(category: categ)
-                        
                         Text(categ)
                             .font(.system(size : 12))
                             .padding(.horizontal, 10.0)
@@ -68,26 +63,16 @@ struct DetailCardBack: View {
                             .foregroundColor(.white)
                             .background(RoundedRectangle(cornerRadius: 15)
                                 .foregroundColor(Color.init(red: stressColor["red"]!/255, green: stressColor["green"]!/255, blue: stressColor["blue"]!/255))
-                                        
                             )
-                        
-                        //                            .foregroundColor(Color.init(red: 255/255, green: (233-sliderValue*2)/255, blue: 89/255))
-                        //                            .background(RoundedRectangle(cornerRadius: 12)
-                        //                                .foregroundColor(Color(red: stressColor["red"]!, green: stressColor["green"]!, blue: stressColor["blue"]!)))
-                        //.padding(.top, 2.0)
                     }
-                    
+
                 }
-                Spacer()
-                
             }
             VStack{
                 Text(stress.content)
                     .font(.system(size: 17, weight: .regular))
                     .multilineTextAlignment(.center)
-                    .padding(.top, 278.0)
                     .padding([.leading, .trailing], 20.0)
-                Spacer()
             }
             
         }
