@@ -153,7 +153,7 @@ struct RewardTimeCard : View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 0){
-            VStack{xw
+            VStack{
                 Text(stringToImoticon(category : rewardName))
                     .font(.system(size: 44))
                     .opacity((rewardDone == nil) ? (0.5) : (1))
