@@ -43,7 +43,7 @@ struct TabBarView: View{
             
             CalendarView()
                 .tabItem {
-                    Image(systemName: "square.and.pencil")
+                    Image(systemName: "giftcard")
                     Text("Calendar")
                 }.tag(3)
             
@@ -53,7 +53,7 @@ struct TabBarView: View{
                     Text("Setting")
                 }.tag(4)
             
-        }.accentColor(.green)
+        }.accentColor(.black)
         
     }
 }

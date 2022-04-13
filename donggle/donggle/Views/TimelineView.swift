@@ -65,7 +65,7 @@ struct TimelineView: View {
                         .padding(10)
                 }
                 .sheet(isPresented: self.$showModal) {
-                    ModalView()
+//                    ModalView(date: )
                 }
                 
                 
