@@ -22,7 +22,7 @@ struct DetailCardFront: View {
     
     var body: some View {
         
-        VStack(){
+        ZStack(){
             VStack{
                 Text("\(reward.date, formatter: dateFormatText)")
                     .font(.system(size: 15, weight: .regular))
@@ -40,7 +40,6 @@ struct DetailCardFront: View {
                     .foregroundColor(Color.black)
                     .multilineTextAlignment(.center)
                     .padding(.top, 265.0)
-
                 Text(reward.content)
                     .font(.system(size: 17, weight: .regular))
                     .foregroundColor(Color.black)
@@ -65,3 +64,4 @@ struct DetailCardFront_Previews: PreviewProvider {
     }
 }
 */
+
