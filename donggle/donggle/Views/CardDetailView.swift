@@ -18,6 +18,8 @@ struct CardDetailView: View {
     @State var backDegree = 0.0
     @State var frontDegree = -90.0
     @State var isFlipped = false
+    @Binding var sliderValue : Double
+    @Binding var stressIndex : Int
     
     let width : CGFloat = 316
     let height: CGFloat = 418
@@ -79,7 +81,7 @@ struct CardDetailView: View {
                 }
                 .padding(.top, 32.0)
                 .sheet(isPresented: self.$Evaluation){
-                    GiftCheckView(reward: reward)
+                    GiftCheckView(sliderValue: $sliderValue, stressIndex: $stressIndex, reward: reward)
                 }
             }
         }

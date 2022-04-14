@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-
 import Foundation
 
 var mainReward : [Reward] = UserDefaults.rewardArray ?? []
 var mainStress : [Stress] = UserDefaults.stressArray ?? []
 
+var donggleFace : String = "10"
 
 struct TabBarView: View{
     @State private var selection = 1
@@ -20,11 +20,13 @@ struct TabBarView: View{
     init() {
         UITabBar.appearance().backgroundColor = UIColor.white
     }
+    @State var sliderValue : Double = UserDefaults.standard.double(forKey: "sliderValue")
+    @State var stressIndex : Int = UserDefaults.standard.integer(forKey: "stressIndex")
     
     var body: some View{
         
-        let calendarView = CalendarView()
-        let homeView = HomeView()
+        let calendarView = CalendarView(sliderValue: $sliderValue, stressIndex: $stressIndex)
+        let homeView = HomeView(sliderValue: $sliderValue, stressIndex: $stressIndex)
         
         TabView(selection:$selection){
             homeView
@@ -41,6 +43,7 @@ struct TabBarView: View{
                     Image(systemName: "chart.bar.fill")
                     Text("Report")
                 }.tag(2)
+            
             
             calendarView
                 .tabItem {
@@ -66,4 +69,3 @@ struct TabBarView_Previews: PreviewProvider {
         TabBarView()
     }
 }
-

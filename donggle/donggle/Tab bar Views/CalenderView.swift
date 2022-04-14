@@ -26,8 +26,6 @@ struct CalendarView: View {
     
     @ObservedObject var reloadCalendarView = ReloadCalendarView()
     
-    @State var selectedDate : Date = Date()
-    
     func shuffle() {
         self.reloadCalendarView.shuffle()
     }
@@ -46,8 +44,12 @@ struct CalendarView: View {
         GridItem(.flexible())
     ]
     
+
+    @Binding var sliderValue : Double
+    @Binding var stressIndex : Int
+    
+    @State var selectedDate: Date = Date()
     @State private var isRecordView = false
-    @State private var isDetailView = false
     @State private var showModal = false
     
     var body: some View {
@@ -115,20 +117,12 @@ struct CalendarView: View {
                             spacing: 6,
                             pinnedViews: [],
                             content: {
+
                                     ForEach(currentDateRewards.indices, id: \.self) { index in
                                         
-                                        let reward = currentDateRewards[index]
-                                        let rewardCard = Button(action: {
-                                            isDetailView.toggle()
-                                        }){
-                                            RewardCard(reward: reward)
+                                            RewardCard(reward: currentDateRewards[index], sliderValue: $sliderValue, stressIndex: $stressIndex)
                                                 .padding(.bottom, 10)
-                                        }
-                                        if(reward.isEffective == nil){
-                                            rewardCard.foregroundColor(Color.green)
-                                        }else{
-                                            rewardCard.foregroundColor(Color.black)
-                                        }
+                                        
                                     }
                                 
                             }) // : LazyVGrid
@@ -171,7 +165,7 @@ struct CalendarRepresentable: UIViewRepresentable{
         
         // dot 기본 색
         calendar.appearance.eventDefaultColor = .gray
-        calendar.appearance.eventSelectionColor = .red
+        calendar.appearance.eventSelectionColor = UIColor(red: 38/255, green: 153/255, blue: 251/255, alpha: 1)
         
         //폰트
         // Weekday
@@ -251,36 +245,8 @@ struct CalendarRepresentable: UIViewRepresentable{
 }
 
 
-struct DefaultRewardCard2: View {
-    
-    var title : String
-    
-    var img : String
-    
-    var body: some View {
-        VStack{
-            
-            Text(img)
-                .font(Font.system(size: 44, design: .default))
-                .padding(.top, 32.0)
-            
-            Text(title)
-                .font(.system(size: 14, weight: .semibold))
-                .multilineTextAlignment(.center)
-                .padding(.top, 12.0)
-                .padding(.bottom, 16.0)
-            
-        }
-        .frame(width: 106.0, height: 140.0)
-        .background(.white)
-        .cornerRadius(16)
-        .padding(.leading,10)
-        .shadow(color:  Color.black.opacity(0.14), radius: 8, y: 6)
-    }
-}
-
-struct CalenderView_Previews: PreviewProvider {
-    static var previews: some View {
-        CalendarView()
-    }
-}
+//struct CalenderView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CalendarView()
+//    }
+//}

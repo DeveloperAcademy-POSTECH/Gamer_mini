@@ -10,8 +10,8 @@ import Foundation
 
 struct GiftCheckView: View {
     @Environment(\.dismiss) private var dismiss
-    @State var stressIndex : Int = UserDefaults.standard.integer(forKey:"stressIndex")
-    @State var sliderValue : Double = UserDefaults.standard.double(forKey:"sliderValue")
+    @Binding var sliderValue : Double
+    @Binding var stressIndex : Int
     @State var rewardComplateOn : Bool = true
     @State var modifyStressOn : Bool = false
     @State var isRewardEffective : Bool = false
@@ -44,20 +44,30 @@ struct GiftCheckView: View {
                         Text("\(reward.title)")
                             .font(.title3)
                     }else{
-      
-                            Text("\(Int(sliderValue))%")
-                            Circle()
+                        
+                        Text("\(Int(sliderValue))%")
+                        Circle()
                             .fill(Color.init(red: 255/255, green: (233-sliderValue*2)/255, blue: 89/255))
-                                .frame(width: 130.0, height: 120.0)
-                            HStack{
-                                Image(systemName: "circle.fill")
-                                    .foregroundColor(.yellow)
-                                Slider(value: $sliderValue, in: 0...100,step: 1.0)
-                                    .tint(.black)
-                                Image(systemName: "circle.fill")
-                                    .foregroundColor(.red)
-                            }.padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-        
+                            .frame(width: 130.0, height: 120.0)
+                            .padding(.bottom,10)
+                            .overlay {
+                                Image(String(Int(sliderValue) == 100 ? 100 :((Int(sliderValue)+10)/10)*10))
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 35, height: 35)
+                                    .padding(.trailing, 30)
+                                    .padding(.bottom, 30)
+                            }
+                        
+                        HStack{
+                            Image(systemName: "circle.fill")
+                                .foregroundColor(.yellow)
+                            Slider(value: $sliderValue, in: 0...100,step: 1.0)
+                                .tint(.black)
+                            Image(systemName: "circle.fill")
+                                .foregroundColor(.red)
+                        }.padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                        
                     }
                     
                 }
@@ -126,12 +136,14 @@ struct GiftCheckView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing){
-                    Button("X"){
+                    Button(action: {
                         dismiss()
-                    }
-                }
+                    }) {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.black)
+                    }                }
             }
-        }
+        }.foregroundColor(.black)
         
     }
 }
