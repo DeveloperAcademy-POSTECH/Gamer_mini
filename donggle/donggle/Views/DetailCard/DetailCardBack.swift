@@ -28,31 +28,21 @@ struct DetailCardBack: View {
     
     
     var body: some View {
-        
-        VStack(){
+         
+        ZStack(){
             VStack{
                 Text("\(stress.date, formatter: dateFormatText)")
                     .font(.system(size: 15, weight: .regular))
                     .multilineTextAlignment(.center)
                     .padding(.top, 30.0)
-              
                 Circle()
-                    .fill(Color.init(red: 255/255, green: (233-Double(stress.index)*2)/255, blue: 89/255))
-                    .padding(2)
-                    .frame(width: 120.0, height: 120.0)
-                    .overlay {
-                        Image(String(Int(stress.index) == 100 ? 100 :((Int(stress.index)+10)/10)*10))
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 35, height: 35)
-                            .padding(.trailing, 30)
-                    }
-                    .padding(.top, 30.0)
-                Text("\(stress.index)%")
+                    .fill(Color.init(red: 255/255, green: (233-sliderValue*2)/255, blue: 89/255))
+                    .frame(width: 100.0, height: 100.0)
+                    .padding(.top, 38)
+                Text("\(stressIndex)%")
                     .font(.system(size: 15, weight: .regular))
                     .multilineTextAlignment(.center)
                     .padding(.top, 5.0)
-
                 
                  HStack(spacing: 6){
                     ForEach(stress.category, id: \.self){ categ in
@@ -77,7 +67,10 @@ struct DetailCardBack: View {
                     .font(.system(size: 17, weight: .regular))
                     .multilineTextAlignment(.center)
                     .padding(.top, 278.0)
+                    .padding([.leading, .trailing], 20.0)
+                Spacer()
             }
+
         }
         .frame(width: 316.0, height: 418.0)
         .foregroundColor(Color.black)
@@ -89,18 +82,19 @@ struct DetailCardBack: View {
     }
 }
 /*
- func GetStress(reward: reward){
- var RStress = UserDefaults.stressArray.filter { stress in reward.stressKey == stress.id}
- ForEach(RStress) { stress in
- let content = stress.content
- }
- }
- */
+func GetStress(reward: reward){
+    var RStress = UserDefaults.stressArray.filter { stress in reward.stressKey == stress.id}
+     ForEach(RStress) { stress in
+        let content = stress.content
+     }
+}
+*/
 
 /*
- struct DetailCardBack_Previews: PreviewProvider {
- static var previews: some View {
- DetailCardBack()
- }
- }
- */
+struct DetailCardBack_Previews: PreviewProvider {
+    static var previews: some View {
+        DetailCardBack()
+    }
+}
+*/
+
