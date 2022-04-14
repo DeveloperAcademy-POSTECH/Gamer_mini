@@ -33,7 +33,7 @@ func stringToImoticon(category:String) -> String {
     case "날씨":
         return "🌤"
     case "수면":
-        return "🤤"
+        return "💤"
     case "가족":
         return "👨‍👩‍👧‍👦"
     case "금전":
@@ -43,7 +43,7 @@ func stringToImoticon(category:String) -> String {
     case "인간관계":
         return "👫"
     case "그냥":
-        return "🤡"
+        return "😎"
 // -----스트레스--------
     case "쇼핑":
         return "🛒"
