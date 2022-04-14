@@ -11,6 +11,7 @@ struct MultipleSelectionRow: View {
             VStack{
                 Text(stringToImoticon(category:self.title))
                 Text(self.title).foregroundColor(Color.black)
+                    .font(.system(size: 12))
             }.padding(.top,10)
             .background(self.isSelected == false ? nil : RoundedRectangle(cornerRadius: 10).fill(Color.init(red: 193/255, green: 233/255, blue: 252/255)))
         }
@@ -32,7 +33,7 @@ struct RecordView: View {
     @State var selectedStress: [String] = []
     @State var selectedReward: [String] = []
     
-    @State var stressCategory: [String] = ["직장", "날씨", "수면", "가족", "금전", "그냥"]
+    @State var stressCategory: [String] = ["직장", "날씨", "수면", "가족", "금전","학업","인간관계","그냥"]
     @State var rewardCategory: [String] = ["꿀잠", "알콜", "쇼핑", "운동", "음식", "놀기"]
     
     @State private var rewardDate = Date()
@@ -237,8 +238,8 @@ struct RecordView: View {
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button("추가"){
                         stressIndex = Int(sliderValue)
-                        print(stressIndex)
-                        print(sliderValue)
+//                        print(stressIndex)
+//                        print(sliderValue)
                         UserDefaults.standard.set(stressIndex, forKey: "stressIndex")
                         UserDefaults.standard.set(sliderValue, forKey: "sliderValue")
                         if stressDescription == "어떤 일이 있었나요?"{

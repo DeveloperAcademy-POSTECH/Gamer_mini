@@ -38,6 +38,10 @@ func stringToImoticon(category:String) -> String {
         return "👨‍👩‍👧‍👦"
     case "금전":
         return "💵"
+    case "학업":
+        return "📚"
+    case "인간관계":
+        return "👫"
     case "그냥":
         return "🤡"
 // -----스트레스--------
@@ -55,6 +59,8 @@ func stringToImoticon(category:String) -> String {
         return "🍻"
     case "칭찬하기":
         return "💝"
+    case "꿀잠":
+        return "🛌"
 // -----보상--------
     case "기타":
         return "🧚‍♀️"
