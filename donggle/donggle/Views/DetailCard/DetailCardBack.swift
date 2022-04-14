@@ -34,7 +34,8 @@ struct DetailCardBack: View {
                 Text("\(stress.date, formatter: dateFormatText)")
                     .font(.system(size: 15, weight: .regular))
                     .multilineTextAlignment(.center)
-                
+                    .padding(.top, 30.0)
+              
                 Circle()
                     .fill(Color.init(red: 255/255, green: (233-Double(stress.index)*2)/255, blue: 89/255))
                     .padding(2)
@@ -51,30 +52,32 @@ struct DetailCardBack: View {
                     .font(.system(size: 15, weight: .regular))
                     .multilineTextAlignment(.center)
                     .padding(.top, 5.0)
-                    .padding(.bottom, 30.0)
+
                 
-                HStack(spacing: 6){
+                 HStack(spacing: 6){
                     ForEach(stress.category, id: \.self){ categ in
                         let stressColor : [String : Double] = stressCatagoryToColor(category: categ)
-                        Text(categ)
-                            .font(.system(size : 12))
+                        
+                    Text(categ)
+                            .font(.system(size: 15, weight: .regular))
+                            .onAppear{print(stressColor)}
                             .padding(.horizontal, 10.0)
                             .padding(.vertical, 2)
-                            .foregroundColor(.white)
-                            .background(RoundedRectangle(cornerRadius: 15)
-                                .foregroundColor(Color.init(red: stressColor["red"]!/255, green: stressColor["green"]!/255, blue: stressColor["blue"]!/255))
-                            )
+                            .foregroundColor(.black)
+                            .background(RoundedRectangle(cornerRadius: 12) .fill(Color(red: stressColor["red"]!/255, green: stressColor["green"]!/255, blue: stressColor["blue"]!/255)))
+                            .padding(.top, 2.0)
                     }
+                     
+                 }
+                Spacer()
 
-                }
             }
             VStack{
                 Text(stress.content)
                     .font(.system(size: 17, weight: .regular))
                     .multilineTextAlignment(.center)
-                    .padding([.leading, .trailing], 20.0)
+                    .padding(.top, 278.0)
             }
-            
         }
         .frame(width: 316.0, height: 418.0)
         .foregroundColor(Color.black)
