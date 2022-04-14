@@ -19,6 +19,8 @@ struct MultipleSelectionRow: View {
 }
 
 struct RecordView: View {
+    @ObservedObject private var keyboard = KeyboardResponder()
+    @State private var textFieldInput: String = ""
     
     @Environment(\.dismiss) private var dismiss
     @Binding var sliderValue : Double
@@ -260,6 +262,7 @@ struct RecordView: View {
             .onDisappear {
                 UITableView.appearance().backgroundColor = .systemGroupedBackground
             }
+            .onAppear (perform : UIApplication.shared.hideKeyboard)
         }
     }
 }
