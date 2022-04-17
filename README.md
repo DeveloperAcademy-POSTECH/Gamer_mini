@@ -20,7 +20,7 @@
 
 <br/>
 
-# package 🧰
+# Package 🧰
 
 [FSCalendar](https://github.com/WenchaoD/FSCalendar)      
 [swiftui-charts](https://github.com/spacenation/swiftui-charts)
