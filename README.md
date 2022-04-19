@@ -1,32 +1,48 @@
-# 동글
+
+![Logo](https://dummyimage.com/1000x300/000/fff.png)
 
 
+# :iphone: Project Title
 
-<br/>
-
-
-# About the Project :art:
+A brief description of what this project does and who it's for
 
 
+## :pushpin: Features
 
-<br/>
+- Light/dark mode toggle
+- Live previews
+- Fullscreen mode
+- Cross platform
 
-# Features ⚙️
 
-<br/>
+## :people_hugging: Authors
 
-# Development Stack :hammer:
-![iOS](https://img.shields.io/badge/Swift-iOS-51a9e8?logo=Swift)
+- [@YourName](https://www.github.com/) | [@YourName](https://www.github.com/) | [@YourName](https://www.github.com/) | [@YourName](https://www.github.com/) | [@YourName](https://www.github.com/) | [@YourName](https://www.github.com/)
 
-<br/>
 
-# Package 🧰
+## :framed_picture: Demo
 
-[FSCalendar](https://github.com/WenchaoD/FSCalendar)      
-[swiftui-charts](https://github.com/spacenation/swiftui-charts)
+Insert gif or link to demo
 
-<br/>
 
-# License
+## :fireworks: Screenshots
 
-![GitHub message](https://img.shields.io/apm/l/vim-mode)
+![App Screenshot](https://dummyimage.com/250x500/000/fff.png)
+![App Screenshot](https://dummyimage.com/250x500/000/fff.png)
+![App Screenshot](https://dummyimage.com/250x500/000/fff.png)
+![App Screenshot](https://dummyimage.com/250x500/000/fff.png)
+![App Screenshot](https://dummyimage.com/250x500/000/fff.png)
+![App Screenshot](https://dummyimage.com/250x500/000/fff.png)
+
+
+## :sparkles: Skills & Tech Stack
+swiftUI ...
+
+## :books: Documentation
+
+[Documentation](https://linktodocumentation)
+
+
+## :lock_with_ink_pen: License
+
+[MIT](https://choosealicense.com/licenses/mit/)
