@@ -1,12 +1,9 @@
 
-![Logo](https://dummyimage.com/1000x300/000/fff.png)
-
-<br></br>
-
-# :iphone: 동글( Donggle )
+<h1><img width="121" alt="스크린샷 2022-05-05 오후 11 15 20" src="https://user-images.githubusercontent.com/82457928/166943042-5f78cfeb-312b-4783-b8cd-dc26aa00a1b3.png"> 동글( Donggle )</h1>
 
 Donggle은 사용자가 스트레스를 관리하고 자신에게 맞는 스트레스 해소 방법을 찾을 수 있도록 도와줍니다.
 
+<br></br>
 <img width="736" alt="스크린샷 2022-05-05 오후 10 56 41" src="https://user-images.githubusercontent.com/82457928/166940853-4ab45bab-491e-4396-b5c6-2ec87c873cdb.png">
 <img width="736" alt="스크린샷 2022-05-05 오후 10 56 58" src="https://user-images.githubusercontent.com/82457928/166940926-fc949290-93d9-44ad-aae1-11263d3a26e6.png">
 <br></br>
